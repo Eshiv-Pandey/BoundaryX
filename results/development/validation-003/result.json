@@ -1,0 +1,71 @@
+{
+  "schema_version": "boundaryx_validation_v1",
+  "status": "passed",
+  "scope": "BoundaryX core only",
+  "python": "3.13.1 (tags/v3.13.1:0671451, Dec  3 2024, 19:06:28) [MSC v.1942 64 bit (AMD64)]",
+  "platform": "Windows-11-10.0.26300-SP0",
+  "checks": [
+    {
+      "name": "lint",
+      "command": [
+        ".venv/Scripts/ruff.exe",
+        "check",
+        "."
+      ],
+      "cwd": ".",
+      "started_utc": "2026-11-13T18:44:58.067656+00:00",
+      "completed_utc": "2026-11-13T18:44:58.960841+00:00",
+      "exit_code": 0,
+      "wall_seconds": 0.8931927000085125,
+      "status": "passed"
+    },
+    {
+      "name": "types",
+      "command": [
+        ".venv/Scripts/mypy.exe"
+      ],
+      "cwd": ".",
+      "started_utc": "2026-11-13T18:44:58.962039+00:00",
+      "completed_utc": "2026-11-13T18:44:59.815567+00:00",
+      "exit_code": 0,
+      "wall_seconds": 0.8535207999957493,
+      "status": "passed"
+    },
+    {
+      "name": "new-controls",
+      "command": [
+        "python",
+        "-B",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests",
+        "-p",
+        "test_boundaryx*.py",
+        "-v"
+      ],
+      "cwd": ".",
+      "started_utc": "2026-11-13T18:44:59.815633+00:00",
+      "completed_utc": "2026-11-13T18:45:00.123205+00:00",
+      "exit_code": 0,
+      "wall_seconds": 0.3075847000000067,
+      "status": "passed"
+    },
+    {
+      "name": "frozen-heldout",
+      "command": [
+        "python",
+        "-B",
+        "scripts/boundaryx.py",
+        "heldout-status"
+      ],
+      "cwd": ".",
+      "started_utc": "2026-11-13T18:45:00.123287+00:00",
+      "completed_utc": "2026-11-13T18:45:00.292674+00:00",
+      "exit_code": 0,
+      "wall_seconds": 0.16939530000672676,
+      "status": "passed"
+    }
+  ]
+}

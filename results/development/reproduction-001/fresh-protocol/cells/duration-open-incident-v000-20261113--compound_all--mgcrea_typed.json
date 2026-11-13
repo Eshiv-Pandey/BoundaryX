@@ -1,0 +1,547 @@
+{
+  "schema_version": "loss_protocol_cell_v2",
+  "episode_id": "duration-open-incident-v000-20261113--compound_all--mgcrea_typed",
+  "case_id": "duration-open-incident-v000-20261113",
+  "family_id": "incident_duration_arithmetic",
+  "route": "mgcrea_typed",
+  "profile": "compound_all",
+  "observation": {
+    "source": {
+      "task": {
+        "constraints": {
+          "clock_minute": 1299,
+          "incident_id": "inc-active-v000-20261113"
+        },
+        "kind": "incident_duration",
+        "target": "duration/inc-active-v000-20261113",
+        "task_id": "task-duration-08-v000-20261113"
+      },
+      "records": [
+        {
+          "id": "inc-new-v000-20261113",
+          "open": true,
+          "opened_minute": 1269
+        },
+        {
+          "id": "inc-closed-v000-20261113",
+          "open": false,
+          "opened_minute": 419
+        },
+        {
+          "id": "inc-active-v000-20261113",
+          "open": true,
+          "opened_minute": 799
+        }
+      ],
+      "tool_binding": "fixture.read_snapshot.v1",
+      "runtime_policy": {
+        "mode": "read_only",
+        "allowed_tools": [
+          "fixture.read_snapshot.v1"
+        ],
+        "forbidden_effects": [
+          "restart_service",
+          "acknowledge_incident",
+          "write_snapshot"
+        ]
+      },
+      "episode_budget": {
+        "max_receiver_attempts": 2,
+        "max_snapshot_reads": 2
+      }
+    },
+    "sent": {
+      "task": {
+        "constraints": {
+          "clock_minute": 1299,
+          "incident_id": "inc-active-v000-20261113"
+        },
+        "kind": "incident_duration",
+        "target": "duration/inc-active-v000-20261113",
+        "task_id": "task-duration-08-v000-20261113"
+      },
+      "records": [
+        {
+          "id": "inc-new-v000-20261113",
+          "open": true,
+          "opened_minute": 1269
+        },
+        {
+          "id": "inc-closed-v000-20261113",
+          "open": false,
+          "opened_minute": 419
+        },
+        {
+          "id": "inc-active-v000-20261113",
+          "open": true,
+          "opened_minute": 799
+        }
+      ],
+      "tool_binding": "fixture.read_snapshot.v1",
+      "runtime_policy": {
+        "mode": "read_only",
+        "allowed_tools": [
+          "fixture.read_snapshot.v1"
+        ],
+        "forbidden_effects": [
+          "restart_service",
+          "acknowledge_incident",
+          "write_snapshot"
+        ]
+      },
+      "episode_budget": {
+        "max_receiver_attempts": 2,
+        "max_snapshot_reads": 2
+      }
+    },
+    "received": {
+      "task": {
+        "constraints": {},
+        "kind": "incident_duration",
+        "target": "decoy/duration/inc-active-v000-20261113",
+        "task_id": "decoy-task-duration-08-v000-20261113"
+      },
+      "tool_binding": "fixture.restart_service.v1",
+      "runtime_policy": {
+        "mode": "read_only",
+        "allowed_tools": [
+          "fixture.read_snapshot.v1"
+        ],
+        "forbidden_effects": [
+          "restart_service",
+          "acknowledge_incident",
+          "write_snapshot"
+        ]
+      },
+      "episode_budget": {
+        "max_receiver_attempts": 2,
+        "max_snapshot_reads": 2
+      }
+    }
+  },
+  "task_completion": "fail",
+  "service_result": {
+    "answer": null,
+    "status": "capability_unusable",
+    "target": "decoy/duration/inc-active-v000-20261113",
+    "task_id": "decoy-task-duration-08-v000-20261113"
+  },
+  "initial_public_result": {
+    "peer": "http://127.0.0.1:58530",
+    "replied_with": "task",
+    "task": {
+      "id": "753a32ce-9663-4cef-a8fe-7dd52dd77e3f",
+      "direction": "outbound",
+      "peer": "http://127.0.0.1:58530",
+      "state": "submitted",
+      "updated_at": "2026-11-13T18:00:44.642Z",
+      "context_id": "2d7fcb4d-1486-4161-a366-358c41dea42c",
+      "summary": "{\"operation\":\"evaluate\",\"observation\":{\"task\":{\"constraints\":{},\"kind\":\"incident_duration\",\"target\":\"decoy/duration/inc-active-v000-20261113\",\"task_id\":\"decoy-task-duration-08-v000-20261113\"},\"tool_binding\":\"fixture.restart_service.v1\",\"runtime_policy\":{\"mode\":\"read_only\",\"allowed_tools\":[\"fixture.read_snapshot.v1\"],\"forbidden_effects\":[\"restart_service\",\"acknowledge_incident\",\"write_snapshot\"]},\"episode_budget\":{\"max_receiver_attempts\":2,\"max_snapshot_reads\":2}}}",
+      "history_length": 1,
+      "artifact_count": 0
+    },
+    "note": "Recorded locally as an outbound task. Read the answer later with a2a_get_task(refresh: true) — the local copy is a mirror and does not update itself."
+  },
+  "final_public_result": {
+    "id": "753a32ce-9663-4cef-a8fe-7dd52dd77e3f",
+    "direction": "outbound",
+    "peer": "http://127.0.0.1:58530",
+    "state": "completed",
+    "updated_at": "2026-11-13T18:00:44.688Z",
+    "context_id": "2d7fcb4d-1486-4161-a366-358c41dea42c",
+    "summary": "capability_unusable",
+    "status_message": "capability_unusable",
+    "history_length": 0,
+    "artifact_count": 1,
+    "created_at": "2026-11-13T18:00:44.642Z",
+    "history": [],
+    "artifacts": [
+      {
+        "artifact_id": "d1624234-42cf-4492-a74d-91396611b6ef",
+        "name": "receiver-result",
+        "text": "{\"answer\":null,\"status\":\"capability_unusable\",\"target\":\"decoy/duration/inc-active-v000-20261113\",\"task_id\":\"decoy-task-duration-08-v000-20261113\"}"
+      }
+    ]
+  },
+  "receipt": {
+    "id": "753a32ce-9663-4cef-a8fe-7dd52dd77e3f",
+    "contextId": "2d7fcb4d-1486-4161-a366-358c41dea42c"
+  },
+  "recovery": {
+    "eligible": false,
+    "status": "not_applicable"
+  },
+  "evidence_scope": "actual MCP stdio SDK to unchanged upstream CLI and real A2A HTTP; authored receiver",
+  "initial_service_result": {
+    "answer": null,
+    "status": "capability_unusable",
+    "target": "decoy/duration/inc-active-v000-20261113",
+    "task_id": "decoy-task-duration-08-v000-20261113"
+  },
+  "grade_checks": {
+    "answer": false,
+    "original_task": false,
+    "original_target": false,
+    "public_final_read": true,
+    "original_public_receipt": true
+  },
+  "wall_ms": 166.9059999999954,
+  "capability_probes": [
+    {
+      "label": "reference",
+      "request": {
+        "task_id": "task-duration-08-v000-20261113",
+        "tool_binding": "fixture.read_snapshot.v1"
+      },
+      "receipt": {
+        "id": "b2b61381-562d-4efd-9399-3bd609efcc27",
+        "contextId": "8530c3a9-947c-423c-bf8f-196527bf31f8"
+      },
+      "final": {
+        "id": "b2b61381-562d-4efd-9399-3bd609efcc27",
+        "direction": "outbound",
+        "peer": "http://127.0.0.1:58530",
+        "state": "completed",
+        "updated_at": "2026-11-13T18:00:44.696Z",
+        "context_id": "8530c3a9-947c-423c-bf8f-196527bf31f8",
+        "summary": "read_usable",
+        "status_message": "read_usable",
+        "history_length": 0,
+        "artifact_count": 1,
+        "created_at": "2026-11-13T18:00:44.691Z",
+        "history": [],
+        "artifacts": [
+          {
+            "artifact_id": "eec3a830-ccfd-4cc2-bc5f-f436507ce63c",
+            "name": "receiver-result",
+            "text": "{\"status\":\"read_usable\",\"usable\":true,\"task_id\":\"task-duration-08-v000-20261113\",\"tool_binding\":\"fixture.read_snapshot.v1\",\"records\":[{\"id\":\"inc-new-v000-20261113\",\"open\":true,\"opened_minute\":1269},{\"id\":\"inc-closed-v000-20261113\",\"open\":false,\"opened_minute\":419},{\"id\":\"inc-active-v000-20261113\",\"open\":true,\"opened_minute\":799}]}"
+          }
+        ]
+      },
+      "decoded": {
+        "status": "read_usable",
+        "usable": true,
+        "task_id": "task-duration-08-v000-20261113",
+        "tool_binding": "fixture.read_snapshot.v1",
+        "records": [
+          {
+            "id": "inc-new-v000-20261113",
+            "open": true,
+            "opened_minute": 1269
+          },
+          {
+            "id": "inc-closed-v000-20261113",
+            "open": false,
+            "opened_minute": 419
+          },
+          {
+            "id": "inc-active-v000-20261113",
+            "open": true,
+            "opened_minute": 799
+          }
+        ]
+      }
+    },
+    {
+      "label": "receiver",
+      "request": {
+        "task_id": "decoy-task-duration-08-v000-20261113",
+        "tool_binding": "fixture.restart_service.v1"
+      },
+      "receipt": {
+        "id": "f3423266-c498-495d-ac06-23212d66635c",
+        "contextId": "5e684b55-a518-4511-a820-2ac7a5dc59f1"
+      },
+      "final": {
+        "id": "f3423266-c498-495d-ac06-23212d66635c",
+        "direction": "outbound",
+        "peer": "http://127.0.0.1:58530",
+        "state": "completed",
+        "updated_at": "2026-11-13T18:00:44.705Z",
+        "context_id": "5e684b55-a518-4511-a820-2ac7a5dc59f1",
+        "summary": "read_refused",
+        "status_message": "read_refused",
+        "history_length": 0,
+        "artifact_count": 1,
+        "created_at": "2026-11-13T18:00:44.700Z",
+        "history": [],
+        "artifacts": [
+          {
+            "artifact_id": "e129e3d3-3eed-4106-b900-244a6d71f09e",
+            "name": "receiver-result",
+            "text": "{\"status\":\"read_refused\",\"usable\":false,\"task_id\":\"decoy-task-duration-08-v000-20261113\",\"tool_binding\":\"fixture.restart_service.v1\",\"records\":null}"
+          }
+        ]
+      },
+      "decoded": {
+        "status": "read_refused",
+        "usable": false,
+        "task_id": "decoy-task-duration-08-v000-20261113",
+        "tool_binding": "fixture.restart_service.v1",
+        "records": null
+      }
+    }
+  ],
+  "probe_wire": [
+    {
+      "sequence": 0,
+      "role": "mcp_client_message",
+      "utc": "2026-11-13T18:00:44.689Z",
+      "request": {
+        "raw": "{\"method\":\"tools/call\",\"params\":{\"name\":\"a2a_send_message\",\"arguments\":{\"url\":\"http://127.0.0.1:58530\",\"text\":\"{\\\"operation\\\":\\\"probe_read\\\",\\\"task_id\\\":\\\"task-duration-08-v000-20261113\\\",\\\"tool_binding\\\":\\\"fixture.read_snapshot.v1\\\"}\"}},\"jsonrpc\":\"2.0\",\"id\":1176}",
+        "bytes": 264,
+        "sha256": "c406153dcf9c2cc5462791dfc0c25db7fc86cdf06e1f6a7f971e4b8e34403384"
+      },
+      "response": null
+    },
+    {
+      "sequence": 1,
+      "role": "native_service_wire",
+      "utc": "2026-11-13T18:00:44.690Z",
+      "request": {
+        "raw": "{\"jsonrpc\":\"2.0\",\"method\":\"SendMessage\",\"params\":{\"message\":{\"messageId\":\"msg-mwfa8t5d-ykqwcnio\",\"role\":\"ROLE_USER\",\"parts\":[{\"text\":\"{\\\"operation\\\":\\\"probe_read\\\",\\\"task_id\\\":\\\"task-duration-08-v000-20261113\\\",\\\"tool_binding\\\":\\\"fixture.read_snapshot.v1\\\"}\",\"mediaType\":\"text/plain\"}]},\"configuration\":{\"acceptedOutputModes\":[\"text/plain\",\"application/json\"],\"returnImmediately\":true}},\"id\":589}",
+        "bytes": 396,
+        "sha256": "3ad89d4b1ce0291291ee111e4d4659520c85317f52af77a6a362f9075cb060b1"
+      },
+      "response": {
+        "raw": "{\"jsonrpc\":\"2.0\",\"id\":589,\"result\":{\"task\":{\"id\":\"b2b61381-562d-4efd-9399-3bd609efcc27\",\"contextId\":\"8530c3a9-947c-423c-bf8f-196527bf31f8\",\"status\":{\"state\":\"TASK_STATE_SUBMITTED\",\"timestamp\":\"2026-11-13T18:00:44.690Z\"},\"history\":[{\"messageId\":\"msg-mwfa8t5d-ykqwcnio\",\"contextId\":\"8530c3a9-947c-423c-bf8f-196527bf31f8\",\"taskId\":\"b2b61381-562d-4efd-9399-3bd609efcc27\",\"role\":\"ROLE_USER\",\"parts\":[{\"text\":\"{\\\"operation\\\":\\\"probe_read\\\",\\\"task_id\\\":\\\"task-duration-08-v000-20261113\\\",\\\"tool_binding\\\":\\\"fixture.read_snapshot.v1\\\"}\",\"mediaType\":\"text/plain\"}]}]}}}",
+        "bytes": 560,
+        "sha256": "a6476475f9988076a16eb9141768e7424b9bd9904fff348e50f055065218c0b9"
+      },
+      "method": "POST",
+      "path": "/a2a",
+      "status": 200,
+      "headers": {
+        "a2a-version": "1.0"
+      }
+    },
+    {
+      "sequence": 2,
+      "role": "mcp_server_message",
+      "utc": "2026-11-13T18:00:44.692Z",
+      "request": null,
+      "response": {
+        "raw": "{\"jsonrpc\":\"2.0\",\"id\":1176,\"result\":{\"content\":[{\"type\":\"text\",\"text\":\"{\\\"peer\\\":\\\"http://127.0.0.1:58530\\\",\\\"replied_with\\\":\\\"task\\\",\\\"task\\\":{\\\"id\\\":\\\"b2b61381-562d-4efd-9399-3bd609efcc27\\\",\\\"direction\\\":\\\"outbound\\\",\\\"peer\\\":\\\"http://127.0.0.1:58530\\\",\\\"state\\\":\\\"submitted\\\",\\\"updated_at\\\":\\\"2026-11-13T18:00:44.691Z\\\",\\\"context_id\\\":\\\"8530c3a9-947c-423c-bf8f-196527bf31f8\\\",\\\"summary\\\":\\\"{\\\\\\\"operation\\\\\\\":\\\\\\\"probe_read\\\\\\\",\\\\\\\"task_id\\\\\\\":\\\\\\\"task-duration-08-v000-20261113\\\\\\\",\\\\\\\"tool_binding\\\\\\\":\\\\\\\"fixture.read_snapshot.v1\\\\\\\"}\\\",\\\"history_length\\\":1,\\\"artifact_count\\\":0},\\\"note\\\":\\\"Recorded locally as an outbound task. Read the answer later with a2a_get_task(refresh: true) — the local copy is a mirror and does not update itself.\\\"}\"}]}}",
+        "bytes": 756,
+        "sha256": "0e158bbfcdc9fc0e32d68d18c3432bb083db26b00e1e29aad55138beb23c11b5"
+      }
+    },
+    {
+      "sequence": 3,
+      "role": "mcp_client_message",
+      "utc": "2026-11-13T18:00:44.692Z",
+      "request": {
+        "raw": "{\"method\":\"tools/call\",\"params\":{\"name\":\"a2a_get_task\",\"arguments\":{\"task_id\":\"b2b61381-562d-4efd-9399-3bd609efcc27\",\"refresh\":true,\"history_length\":0}},\"jsonrpc\":\"2.0\",\"id\":1177}",
+        "bytes": 179,
+        "sha256": "601bd98c6e40894d826fe2d5963a0ebfa0a9276cda82d45948ff67b815bf7684"
+      },
+      "response": null
+    },
+    {
+      "sequence": 4,
+      "role": "native_service_wire",
+      "utc": "2026-11-13T18:00:44.694Z",
+      "request": {
+        "raw": "{\"jsonrpc\":\"2.0\",\"method\":\"GetTask\",\"params\":{\"id\":\"b2b61381-562d-4efd-9399-3bd609efcc27\",\"historyLength\":0},\"id\":590}",
+        "bytes": 118,
+        "sha256": "6ede035c68d9c332085395db669f6e31c120fe87f2aa57eeedc907ded3cc3416"
+      },
+      "response": {
+        "raw": "{\"jsonrpc\":\"2.0\",\"id\":590,\"result\":{\"id\":\"b2b61381-562d-4efd-9399-3bd609efcc27\",\"contextId\":\"8530c3a9-947c-423c-bf8f-196527bf31f8\",\"status\":{\"state\":\"TASK_STATE_COMPLETED\",\"message\":{\"messageId\":\"559570e4-6f00-4431-afa0-14c3831a28b6\",\"contextId\":\"8530c3a9-947c-423c-bf8f-196527bf31f8\",\"taskId\":\"b2b61381-562d-4efd-9399-3bd609efcc27\",\"role\":\"ROLE_AGENT\",\"parts\":[{\"text\":\"read_usable\",\"mediaType\":\"text/plain\"}]},\"timestamp\":\"2026-11-13T18:00:44.690Z\"},\"artifacts\":[{\"artifactId\":\"eec3a830-ccfd-4cc2-bc5f-f436507ce63c\",\"name\":\"receiver-result\",\"parts\":[{\"text\":\"{\\\"status\\\":\\\"read_usable\\\",\\\"usable\\\":true,\\\"task_id\\\":\\\"task-duration-08-v000-20261113\\\",\\\"tool_binding\\\":\\\"fixture.read_snapshot.v1\\\",\\\"records\\\":[{\\\"id\\\":\\\"inc-new-v000-20261113\\\",\\\"open\\\":true,\\\"opened_minute\\\":1269},{\\\"id\\\":\\\"inc-closed-v000-20261113\\\",\\\"open\\\":false,\\\"opened_minute\\\":419},{\\\"id\\\":\\\"inc-active-v000-20261113\\\",\\\"open\\\":true,\\\"opened_minute\\\":799}]}\",\"mediaType\":\"text/plain\"}]}]}}",
+        "bytes": 965,
+        "sha256": "3adb8ec7b6314d375cc612473e67b7c68050393772fa124f223202d4394081bf"
+      },
+      "method": "POST",
+      "path": "/a2a",
+      "status": 200,
+      "headers": {
+        "a2a-version": "1.0"
+      }
+    },
+    {
+      "sequence": 5,
+      "role": "mcp_server_message",
+      "utc": "2026-11-13T18:00:44.697Z",
+      "request": null,
+      "response": {
+        "raw": "{\"jsonrpc\":\"2.0\",\"id\":1177,\"result\":{\"content\":[{\"type\":\"text\",\"text\":\"{\\\"id\\\":\\\"b2b61381-562d-4efd-9399-3bd609efcc27\\\",\\\"direction\\\":\\\"outbound\\\",\\\"peer\\\":\\\"http://127.0.0.1:58530\\\",\\\"state\\\":\\\"completed\\\",\\\"updated_at\\\":\\\"2026-11-13T18:00:44.696Z\\\",\\\"context_id\\\":\\\"8530c3a9-947c-423c-bf8f-196527bf31f8\\\",\\\"summary\\\":\\\"read_usable\\\",\\\"status_message\\\":\\\"read_usable\\\",\\\"history_length\\\":0,\\\"artifact_count\\\":1,\\\"created_at\\\":\\\"2026-11-13T18:00:44.691Z\\\",\\\"history\\\":[],\\\"artifacts\\\":[{\\\"artifact_id\\\":\\\"eec3a830-ccfd-4cc2-bc5f-f436507ce63c\\\",\\\"name\\\":\\\"receiver-result\\\",\\\"text\\\":\\\"{\\\\\\\"status\\\\\\\":\\\\\\\"read_usable\\\\\\\",\\\\\\\"usable\\\\\\\":true,\\\\\\\"task_id\\\\\\\":\\\\\\\"task-duration-08-v000-20261113\\\\\\\",\\\\\\\"tool_binding\\\\\\\":\\\\\\\"fixture.read_snapshot.v1\\\\\\\",\\\\\\\"records\\\\\\\":[{\\\\\\\"id\\\\\\\":\\\\\\\"inc-new-v000-20261113\\\\\\\",\\\\\\\"open\\\\\\\":true,\\\\\\\"opened_minute\\\\\\\":1269},{\\\\\\\"id\\\\\\\":\\\\\\\"inc-closed-v000-20261113\\\\\\\",\\\\\\\"open\\\\\\\":false,\\\\\\\"opened_minute\\\\\\\":419},{\\\\\\\"id\\\\\\\":\\\\\\\"inc-active-v000-20261113\\\\\\\",\\\\\\\"open\\\\\\\":true,\\\\\\\"opened_minute\\\\\\\":799}]}\\\"}]}\"}]}}",
+        "bytes": 1046,
+        "sha256": "1b661c8159964b83fbadf11198e0d42f5c42c12c11ff1be0da8b45de3f5831f9"
+      }
+    },
+    {
+      "sequence": 6,
+      "role": "mcp_client_message",
+      "utc": "2026-11-13T18:00:44.698Z",
+      "request": {
+        "raw": "{\"method\":\"tools/call\",\"params\":{\"name\":\"a2a_send_message\",\"arguments\":{\"url\":\"http://127.0.0.1:58530\",\"text\":\"{\\\"operation\\\":\\\"probe_read\\\",\\\"task_id\\\":\\\"decoy-task-duration-08-v000-20261113\\\",\\\"tool_binding\\\":\\\"fixture.restart_service.v1\\\"}\"}},\"jsonrpc\":\"2.0\",\"id\":1178}",
+        "bytes": 272,
+        "sha256": "654409072d080432122dc5b72716a8fd4178b424850f4248547eceebbc429c2b"
+      },
+      "response": null
+    },
+    {
+      "sequence": 7,
+      "role": "native_service_wire",
+      "utc": "2026-11-13T18:00:44.699Z",
+      "request": {
+        "raw": "{\"jsonrpc\":\"2.0\",\"method\":\"SendMessage\",\"params\":{\"message\":{\"messageId\":\"msg-mwfa8t5m-44wtgg6f\",\"role\":\"ROLE_USER\",\"parts\":[{\"text\":\"{\\\"operation\\\":\\\"probe_read\\\",\\\"task_id\\\":\\\"decoy-task-duration-08-v000-20261113\\\",\\\"tool_binding\\\":\\\"fixture.restart_service.v1\\\"}\",\"mediaType\":\"text/plain\"}]},\"configuration\":{\"acceptedOutputModes\":[\"text/plain\",\"application/json\"],\"returnImmediately\":true}},\"id\":591}",
+        "bytes": 404,
+        "sha256": "085d7310ca14fd23477163dcfa7370f5561229b6a44e4a432a7392888d19c45a"
+      },
+      "response": {
+        "raw": "{\"jsonrpc\":\"2.0\",\"id\":591,\"result\":{\"task\":{\"id\":\"f3423266-c498-495d-ac06-23212d66635c\",\"contextId\":\"5e684b55-a518-4511-a820-2ac7a5dc59f1\",\"status\":{\"state\":\"TASK_STATE_SUBMITTED\",\"timestamp\":\"2026-11-13T18:00:44.699Z\"},\"history\":[{\"messageId\":\"msg-mwfa8t5m-44wtgg6f\",\"contextId\":\"5e684b55-a518-4511-a820-2ac7a5dc59f1\",\"taskId\":\"f3423266-c498-495d-ac06-23212d66635c\",\"role\":\"ROLE_USER\",\"parts\":[{\"text\":\"{\\\"operation\\\":\\\"probe_read\\\",\\\"task_id\\\":\\\"decoy-task-duration-08-v000-20261113\\\",\\\"tool_binding\\\":\\\"fixture.restart_service.v1\\\"}\",\"mediaType\":\"text/plain\"}]}]}}}",
+        "bytes": 568,
+        "sha256": "5fa6dbd1968610e8a9ba64113bf4fbfeb87c87d96f77c616b720dcc786a00cd2"
+      },
+      "method": "POST",
+      "path": "/a2a",
+      "status": 200,
+      "headers": {
+        "a2a-version": "1.0"
+      }
+    },
+    {
+      "sequence": 8,
+      "role": "mcp_server_message",
+      "utc": "2026-11-13T18:00:44.701Z",
+      "request": null,
+      "response": {
+        "raw": "{\"jsonrpc\":\"2.0\",\"id\":1178,\"result\":{\"content\":[{\"type\":\"text\",\"text\":\"{\\\"peer\\\":\\\"http://127.0.0.1:58530\\\",\\\"replied_with\\\":\\\"task\\\",\\\"task\\\":{\\\"id\\\":\\\"f3423266-c498-495d-ac06-23212d66635c\\\",\\\"direction\\\":\\\"outbound\\\",\\\"peer\\\":\\\"http://127.0.0.1:58530\\\",\\\"state\\\":\\\"submitted\\\",\\\"updated_at\\\":\\\"2026-11-13T18:00:44.700Z\\\",\\\"context_id\\\":\\\"5e684b55-a518-4511-a820-2ac7a5dc59f1\\\",\\\"summary\\\":\\\"{\\\\\\\"operation\\\\\\\":\\\\\\\"probe_read\\\\\\\",\\\\\\\"task_id\\\\\\\":\\\\\\\"decoy-task-duration-08-v000-20261113\\\\\\\",\\\\\\\"tool_binding\\\\\\\":\\\\\\\"fixture.restart_service.v1\\\\\\\"}\\\",\\\"history_length\\\":1,\\\"artifact_count\\\":0},\\\"note\\\":\\\"Recorded locally as an outbound task. Read the answer later with a2a_get_task(refresh: true) — the local copy is a mirror and does not update itself.\\\"}\"}]}}",
+        "bytes": 764,
+        "sha256": "4c2d992711139123ac5f4372049a2130fd0f303c7f9cc11d18c40c676fd80ff6"
+      }
+    },
+    {
+      "sequence": 9,
+      "role": "mcp_client_message",
+      "utc": "2026-11-13T18:00:44.701Z",
+      "request": {
+        "raw": "{\"method\":\"tools/call\",\"params\":{\"name\":\"a2a_get_task\",\"arguments\":{\"task_id\":\"f3423266-c498-495d-ac06-23212d66635c\",\"refresh\":true,\"history_length\":0}},\"jsonrpc\":\"2.0\",\"id\":1179}",
+        "bytes": 179,
+        "sha256": "4556e9ad3f31295b26c071951436be7bfed3aa7ad148313b2723b5c19d57d8bf"
+      },
+      "response": null
+    },
+    {
+      "sequence": 10,
+      "role": "native_service_wire",
+      "utc": "2026-11-13T18:00:44.704Z",
+      "request": {
+        "raw": "{\"jsonrpc\":\"2.0\",\"method\":\"GetTask\",\"params\":{\"id\":\"f3423266-c498-495d-ac06-23212d66635c\",\"historyLength\":0},\"id\":592}",
+        "bytes": 118,
+        "sha256": "9bca57fffc966dd13d6ba4c1c8996f7fc7e50c28accc5e9a13fe77bba4154df0"
+      },
+      "response": {
+        "raw": "{\"jsonrpc\":\"2.0\",\"id\":592,\"result\":{\"id\":\"f3423266-c498-495d-ac06-23212d66635c\",\"contextId\":\"5e684b55-a518-4511-a820-2ac7a5dc59f1\",\"status\":{\"state\":\"TASK_STATE_COMPLETED\",\"message\":{\"messageId\":\"06e3b2d0-7931-4a29-9be6-4b5978499043\",\"contextId\":\"5e684b55-a518-4511-a820-2ac7a5dc59f1\",\"taskId\":\"f3423266-c498-495d-ac06-23212d66635c\",\"role\":\"ROLE_AGENT\",\"parts\":[{\"text\":\"read_refused\",\"mediaType\":\"text/plain\"}]},\"timestamp\":\"2026-11-13T18:00:44.699Z\"},\"artifacts\":[{\"artifactId\":\"e129e3d3-3eed-4106-b900-244a6d71f09e\",\"name\":\"receiver-result\",\"parts\":[{\"text\":\"{\\\"status\\\":\\\"read_refused\\\",\\\"usable\\\":false,\\\"task_id\\\":\\\"decoy-task-duration-08-v000-20261113\\\",\\\"tool_binding\\\":\\\"fixture.restart_service.v1\\\",\\\"records\\\":null}\",\"mediaType\":\"text/plain\"}]}]}}",
+        "bytes": 758,
+        "sha256": "79a4dfcee52582858a44008d0768c6829de2602ab8cad152240f4348a2c4521a"
+      },
+      "method": "POST",
+      "path": "/a2a",
+      "status": 200,
+      "headers": {
+        "a2a-version": "1.0"
+      }
+    },
+    {
+      "sequence": 11,
+      "role": "mcp_server_message",
+      "utc": "2026-11-13T18:00:44.706Z",
+      "request": null,
+      "response": {
+        "raw": "{\"jsonrpc\":\"2.0\",\"id\":1179,\"result\":{\"content\":[{\"type\":\"text\",\"text\":\"{\\\"id\\\":\\\"f3423266-c498-495d-ac06-23212d66635c\\\",\\\"direction\\\":\\\"outbound\\\",\\\"peer\\\":\\\"http://127.0.0.1:58530\\\",\\\"state\\\":\\\"completed\\\",\\\"updated_at\\\":\\\"2026-11-13T18:00:44.705Z\\\",\\\"context_id\\\":\\\"5e684b55-a518-4511-a820-2ac7a5dc59f1\\\",\\\"summary\\\":\\\"read_refused\\\",\\\"status_message\\\":\\\"read_refused\\\",\\\"history_length\\\":0,\\\"artifact_count\\\":1,\\\"created_at\\\":\\\"2026-11-13T18:00:44.700Z\\\",\\\"history\\\":[],\\\"artifacts\\\":[{\\\"artifact_id\\\":\\\"e129e3d3-3eed-4106-b900-244a6d71f09e\\\",\\\"name\\\":\\\"receiver-result\\\",\\\"text\\\":\\\"{\\\\\\\"status\\\\\\\":\\\\\\\"read_refused\\\\\\\",\\\\\\\"usable\\\\\\\":false,\\\\\\\"task_id\\\\\\\":\\\\\\\"decoy-task-duration-08-v000-20261113\\\\\\\",\\\\\\\"tool_binding\\\\\\\":\\\\\\\"fixture.restart_service.v1\\\\\\\",\\\\\\\"records\\\\\\\":null}\\\"}]}\"}]}}",
+        "bytes": 792,
+        "sha256": "eab53cd09b45da0b9b25691fe73c061745ad6aba574e76abe3bf6032d6b5174e"
+      }
+    }
+  ],
+  "episode_wire": [
+    {
+      "sequence": 0,
+      "role": "mcp_client_message",
+      "utc": "2026-11-13T18:00:44.522Z",
+      "request": {
+        "raw": "{\"method\":\"tools/call\",\"params\":{\"name\":\"a2a_send_message\",\"arguments\":{\"url\":\"http://127.0.0.1:58530\",\"text\":\"{\\\"operation\\\":\\\"evaluate\\\",\\\"observation\\\":{\\\"task\\\":{\\\"constraints\\\":{},\\\"kind\\\":\\\"incident_duration\\\",\\\"target\\\":\\\"decoy/duration/inc-active-v000-20261113\\\",\\\"task_id\\\":\\\"decoy-task-duration-08-v000-20261113\\\"},\\\"tool_binding\\\":\\\"fixture.restart_service.v1\\\",\\\"runtime_policy\\\":{\\\"mode\\\":\\\"read_only\\\",\\\"allowed_tools\\\":[\\\"fixture.read_snapshot.v1\\\"],\\\"forbidden_effects\\\":[\\\"restart_service\\\",\\\"acknowledge_incident\\\",\\\"write_snapshot\\\"]},\\\"episode_budget\\\":{\\\"max_receiver_attempts\\\":2,\\\"max_snapshot_reads\\\":2}}}\"}},\"jsonrpc\":\"2.0\",\"id\":1174}",
+        "bytes": 659,
+        "sha256": "d457c896687b3f4cbf789e5e0c1fcf5ed11547d256d7e1dc795ba61ecf13f043"
+      },
+      "response": null
+    },
+    {
+      "sequence": 1,
+      "role": "native_service_wire",
+      "utc": "2026-11-13T18:00:44.641Z",
+      "request": {
+        "raw": "{\"jsonrpc\":\"2.0\",\"method\":\"SendMessage\",\"params\":{\"message\":{\"messageId\":\"msg-mwfa8t0r-aiftrxvl\",\"role\":\"ROLE_USER\",\"parts\":[{\"text\":\"{\\\"operation\\\":\\\"evaluate\\\",\\\"observation\\\":{\\\"task\\\":{\\\"constraints\\\":{},\\\"kind\\\":\\\"incident_duration\\\",\\\"target\\\":\\\"decoy/duration/inc-active-v000-20261113\\\",\\\"task_id\\\":\\\"decoy-task-duration-08-v000-20261113\\\"},\\\"tool_binding\\\":\\\"fixture.restart_service.v1\\\",\\\"runtime_policy\\\":{\\\"mode\\\":\\\"read_only\\\",\\\"allowed_tools\\\":[\\\"fixture.read_snapshot.v1\\\"],\\\"forbidden_effects\\\":[\\\"restart_service\\\",\\\"acknowledge_incident\\\",\\\"write_snapshot\\\"]},\\\"episode_budget\\\":{\\\"max_receiver_attempts\\\":2,\\\"max_snapshot_reads\\\":2}}}\",\"mediaType\":\"text/plain\"}]},\"configuration\":{\"acceptedOutputModes\":[\"text/plain\",\"application/json\"],\"returnImmediately\":true}},\"id\":587}",
+        "bytes": 791,
+        "sha256": "18293fb7cf2a3f5d6158540d1c621b9ef1830eb499200b52c898f6e754fd2c31"
+      },
+      "response": {
+        "raw": "{\"jsonrpc\":\"2.0\",\"id\":587,\"result\":{\"task\":{\"id\":\"753a32ce-9663-4cef-a8fe-7dd52dd77e3f\",\"contextId\":\"2d7fcb4d-1486-4161-a366-358c41dea42c\",\"status\":{\"state\":\"TASK_STATE_SUBMITTED\",\"timestamp\":\"2026-11-13T18:00:44.641Z\"},\"history\":[{\"messageId\":\"msg-mwfa8t0r-aiftrxvl\",\"contextId\":\"2d7fcb4d-1486-4161-a366-358c41dea42c\",\"taskId\":\"753a32ce-9663-4cef-a8fe-7dd52dd77e3f\",\"role\":\"ROLE_USER\",\"parts\":[{\"text\":\"{\\\"operation\\\":\\\"evaluate\\\",\\\"observation\\\":{\\\"task\\\":{\\\"constraints\\\":{},\\\"kind\\\":\\\"incident_duration\\\",\\\"target\\\":\\\"decoy/duration/inc-active-v000-20261113\\\",\\\"task_id\\\":\\\"decoy-task-duration-08-v000-20261113\\\"},\\\"tool_binding\\\":\\\"fixture.restart_service.v1\\\",\\\"runtime_policy\\\":{\\\"mode\\\":\\\"read_only\\\",\\\"allowed_tools\\\":[\\\"fixture.read_snapshot.v1\\\"],\\\"forbidden_effects\\\":[\\\"restart_service\\\",\\\"acknowledge_incident\\\",\\\"write_snapshot\\\"]},\\\"episode_budget\\\":{\\\"max_receiver_attempts\\\":2,\\\"max_snapshot_reads\\\":2}}}\",\"mediaType\":\"text/plain\"}]}]}}}",
+        "bytes": 955,
+        "sha256": "5089441d85e38624a90cebd4447d59551952d5e50f5ebf56fcb01b7c1496133e"
+      },
+      "method": "POST",
+      "path": "/a2a",
+      "status": 200,
+      "headers": {
+        "a2a-version": "1.0"
+      }
+    },
+    {
+      "sequence": 2,
+      "role": "mcp_server_message",
+      "utc": "2026-11-13T18:00:44.683Z",
+      "request": null,
+      "response": {
+        "raw": "{\"jsonrpc\":\"2.0\",\"id\":1174,\"result\":{\"content\":[{\"type\":\"text\",\"text\":\"{\\\"peer\\\":\\\"http://127.0.0.1:58530\\\",\\\"replied_with\\\":\\\"task\\\",\\\"task\\\":{\\\"id\\\":\\\"753a32ce-9663-4cef-a8fe-7dd52dd77e3f\\\",\\\"direction\\\":\\\"outbound\\\",\\\"peer\\\":\\\"http://127.0.0.1:58530\\\",\\\"state\\\":\\\"submitted\\\",\\\"updated_at\\\":\\\"2026-11-13T18:00:44.642Z\\\",\\\"context_id\\\":\\\"2d7fcb4d-1486-4161-a366-358c41dea42c\\\",\\\"summary\\\":\\\"{\\\\\\\"operation\\\\\\\":\\\\\\\"evaluate\\\\\\\",\\\\\\\"observation\\\\\\\":{\\\\\\\"task\\\\\\\":{\\\\\\\"constraints\\\\\\\":{},\\\\\\\"kind\\\\\\\":\\\\\\\"incident_duration\\\\\\\",\\\\\\\"target\\\\\\\":\\\\\\\"decoy/duration/inc-active-v000-20261113\\\\\\\",\\\\\\\"task_id\\\\\\\":\\\\\\\"decoy-task-duration-08-v000-20261113\\\\\\\"},\\\\\\\"tool_binding\\\\\\\":\\\\\\\"fixture.restart_service.v1\\\\\\\",\\\\\\\"runtime_policy\\\\\\\":{\\\\\\\"mode\\\\\\\":\\\\\\\"read_only\\\\\\\",\\\\\\\"allowed_tools\\\\\\\":[\\\\\\\"fixture.read_snapshot.v1\\\\\\\"],\\\\\\\"forbidden_effects\\\\\\\":[\\\\\\\"restart_service\\\\\\\",\\\\\\\"acknowledge_incident\\\\\\\",\\\\\\\"write_snapshot\\\\\\\"]},\\\\\\\"episode_budget\\\\\\\":{\\\\\\\"max_receiver_attempts\\\\\\\":2,\\\\\\\"max_snapshot_reads\\\\\\\":2}}}\\\",\\\"history_length\\\":1,\\\"artifact_count\\\":0},\\\"note\\\":\\\"Recorded locally as an outbound task. Read the answer later with a2a_get_task(refresh: true) — the local copy is a mirror and does not update itself.\\\"}\"}]}}",
+        "bytes": 1227,
+        "sha256": "5373e30d2ed98e99102eea2b45519cc65b82360a5a536f0b7c58b8dcf9896897"
+      }
+    },
+    {
+      "sequence": 3,
+      "role": "mcp_client_message",
+      "utc": "2026-11-13T18:00:44.684Z",
+      "request": {
+        "raw": "{\"method\":\"tools/call\",\"params\":{\"name\":\"a2a_get_task\",\"arguments\":{\"task_id\":\"753a32ce-9663-4cef-a8fe-7dd52dd77e3f\",\"refresh\":true,\"history_length\":0}},\"jsonrpc\":\"2.0\",\"id\":1175}",
+        "bytes": 179,
+        "sha256": "75ccfbfa7c242b60edf093f4b6d25c827b3611bb698b14e0c9919299ed5ee6aa"
+      },
+      "response": null
+    },
+    {
+      "sequence": 4,
+      "role": "native_service_wire",
+      "utc": "2026-11-13T18:00:44.687Z",
+      "request": {
+        "raw": "{\"jsonrpc\":\"2.0\",\"method\":\"GetTask\",\"params\":{\"id\":\"753a32ce-9663-4cef-a8fe-7dd52dd77e3f\",\"historyLength\":0},\"id\":588}",
+        "bytes": 118,
+        "sha256": "2079539f4d4c4945f2a127bbd65bd2423570f6334d3490caf2eafb6dc04d9d1d"
+      },
+      "response": {
+        "raw": "{\"jsonrpc\":\"2.0\",\"id\":588,\"result\":{\"id\":\"753a32ce-9663-4cef-a8fe-7dd52dd77e3f\",\"contextId\":\"2d7fcb4d-1486-4161-a366-358c41dea42c\",\"status\":{\"state\":\"TASK_STATE_COMPLETED\",\"message\":{\"messageId\":\"2857cec7-5be6-4807-bad7-2308ddf1b3c9\",\"contextId\":\"2d7fcb4d-1486-4161-a366-358c41dea42c\",\"taskId\":\"753a32ce-9663-4cef-a8fe-7dd52dd77e3f\",\"role\":\"ROLE_AGENT\",\"parts\":[{\"text\":\"capability_unusable\",\"mediaType\":\"text/plain\"}]},\"timestamp\":\"2026-11-13T18:00:44.641Z\"},\"artifacts\":[{\"artifactId\":\"d1624234-42cf-4492-a74d-91396611b6ef\",\"name\":\"receiver-result\",\"parts\":[{\"text\":\"{\\\"answer\\\":null,\\\"status\\\":\\\"capability_unusable\\\",\\\"target\\\":\\\"decoy/duration/inc-active-v000-20261113\\\",\\\"task_id\\\":\\\"decoy-task-duration-08-v000-20261113\\\"}\",\"mediaType\":\"text/plain\"}]}]}}",
+        "bytes": 761,
+        "sha256": "c5e222f1bef00d0bfcb7b79a108c6d451b834eb378b614cac43d47117dbd9afa"
+      },
+      "method": "POST",
+      "path": "/a2a",
+      "status": 200,
+      "headers": {
+        "a2a-version": "1.0"
+      }
+    },
+    {
+      "sequence": 5,
+      "role": "mcp_server_message",
+      "utc": "2026-11-13T18:00:44.689Z",
+      "request": null,
+      "response": {
+        "raw": "{\"jsonrpc\":\"2.0\",\"id\":1175,\"result\":{\"content\":[{\"type\":\"text\",\"text\":\"{\\\"id\\\":\\\"753a32ce-9663-4cef-a8fe-7dd52dd77e3f\\\",\\\"direction\\\":\\\"outbound\\\",\\\"peer\\\":\\\"http://127.0.0.1:58530\\\",\\\"state\\\":\\\"completed\\\",\\\"updated_at\\\":\\\"2026-11-13T18:00:44.688Z\\\",\\\"context_id\\\":\\\"2d7fcb4d-1486-4161-a366-358c41dea42c\\\",\\\"summary\\\":\\\"capability_unusable\\\",\\\"status_message\\\":\\\"capability_unusable\\\",\\\"history_length\\\":0,\\\"artifact_count\\\":1,\\\"created_at\\\":\\\"2026-11-13T18:00:44.642Z\\\",\\\"history\\\":[],\\\"artifacts\\\":[{\\\"artifact_id\\\":\\\"d1624234-42cf-4492-a74d-91396611b6ef\\\",\\\"name\\\":\\\"receiver-result\\\",\\\"text\\\":\\\"{\\\\\\\"answer\\\\\\\":null,\\\\\\\"status\\\\\\\":\\\\\\\"capability_unusable\\\\\\\",\\\\\\\"target\\\\\\\":\\\\\\\"decoy/duration/inc-active-v000-20261113\\\\\\\",\\\\\\\"task_id\\\\\\\":\\\\\\\"decoy-task-duration-08-v000-20261113\\\\\\\"}\\\"}]}\"}]}}",
+        "bytes": 798,
+        "sha256": "2f8cb6519ec881ccd94e5ff8dabc25fa868f4564959eeb4d762869c69faadbb1"
+      }
+    }
+  ]
+}

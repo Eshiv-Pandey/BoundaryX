@@ -9,3 +9,5 @@ Two undergraduate reviewers independently fill the forms in `review-decisions.js
 A separate supervisor reviews contract validity, gold rationale, protocol assumptions, evidence and scope. Approval must be explicit and tied to the reviewed definition. Corrections to task/gold create a new version and hash freeze before execution.
 
 The twenty held-out proposals have separate blank forms. Mutable decisions are outside the immutable definition manifest. Never overwrite `v1`; use a new version for corrected definitions/gold. `boundaryx heldout-status` validates the definition hashes and reports eligibility. No held-out evaluation has occurred, and outcomes must never tune implementation. The independent SQL check supports review but cannot replace it. External scientific evaluation remains pending.
+
+The selected held-out candidate bank is v2. Its pre-execution revision strengthens four task structures; the v1 proposal remains frozen and unexecuted. These are versions of a twenty-instance bank, not forty independent evaluations. No results informed the revision.

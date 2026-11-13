@@ -12,6 +12,7 @@ ROOT = Path(__file__).resolve().parents[1]
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--output', type=Path, required=True)
+    parser.add_argument('--core-only', action='store_true', help='Validate changed BoundaryX code without repeating unchanged upstream suites')
     args = parser.parse_args()
     args.output.mkdir(parents=True, exist_ok=False)
     env_bin = '.venv/Scripts' if __import__('os').name == 'nt' else '.venv/bin'
@@ -27,6 +28,8 @@ def main():
         ('mgcrea-lint', 'external/mcp-a2a', ['node', 'node_modules/oxlint/bin/oxlint']),
         ('mgcrea-tests', 'external/mcp-a2a', ['node', 'node_modules/vitest/vitest.mjs', 'run']),
     ]
+    if args.core_only:
+        jobs = jobs[:4]
     rows = []
     for name, cwd, command in jobs:
         started = datetime.now(timezone.utc).isoformat()
@@ -45,7 +48,9 @@ def main():
                'wall_seconds':time.perf_counter()-began,'status':'passed' if code==0 else 'failed'}
         rows.append(row)
         print(json.dumps(row),flush=True)
-    result={'schema_version':'boundaryx_validation_v1','status':'passed' if all(r['exit_code']==0 for r in rows) else 'failed','checks':rows}
+    result={'schema_version':'boundaryx_validation_v1','status':'passed' if all(r['exit_code']==0 for r in rows) else 'failed',
+            'scope':'BoundaryX core only' if args.core_only else 'BoundaryX and installed upstream suites',
+            'python':__import__('sys').version,'platform':__import__('platform').platform(),'checks':rows}
     (args.output/'result.json').write_text(json.dumps(result,indent=2)+'\n',encoding='utf8')
     raise SystemExit(result['status']!='passed')
 

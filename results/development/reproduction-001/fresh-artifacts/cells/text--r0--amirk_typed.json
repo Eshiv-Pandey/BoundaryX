@@ -1,0 +1,278 @@
+{
+  "schema_version": "loss_parts_cell_v2",
+  "case_id": "text",
+  "route": "amirk_typed",
+  "repetition": 0,
+  "spec": {
+    "id": "text",
+    "command": "task: benchmark-survival",
+    "expected": {
+      "text": "lavivrus-kramhcneb",
+      "mediaType": "text/plain"
+    },
+    "payload_key": "text",
+    "requirement": "Exact text artifact; text utility is separate from full metadata fidelity"
+  },
+  "episode_id": "text--r0--amirk_typed",
+  "execution_status": "recorded",
+  "required_representation_survived": true,
+  "initial": {
+    "content": [
+      {
+        "type": "text",
+        "text": "lavivrus-kramhcneb",
+        "_meta": {
+          "io.github.amirk-s/a2a": {
+            "partKind": "text",
+            "mediaType": "text/plain",
+            "artifactId": "b163d0dc-20d5-4ccc-99a9-f5c7a360e715",
+            "artifactName": "result"
+          }
+        }
+      }
+    ],
+    "structuredContent": {
+      "kind": "task",
+      "contextHandle": "cx_g8SaJnFhxdEf2JQmPs3UEw",
+      "taskHandle": "tk_QT5nBGn1Ttv74QKxcjjlSQ",
+      "a2aState": "TASK_STATE_COMPLETED",
+      "status": "completed",
+      "artifacts": [
+        {
+          "artifactId": "b163d0dc-20d5-4ccc-99a9-f5c7a360e715",
+          "name": "result"
+        }
+      ]
+    }
+  },
+  "receipt": {
+    "id": "tk_QT5nBGn1Ttv74QKxcjjlSQ",
+    "contextId": "cx_g8SaJnFhxdEf2JQmPs3UEw"
+  },
+  "final": {
+    "content": [
+      {
+        "type": "text",
+        "text": "lavivrus-kramhcneb",
+        "_meta": {
+          "io.github.amirk-s/a2a": {
+            "partKind": "text",
+            "mediaType": "text/plain",
+            "artifactId": "b163d0dc-20d5-4ccc-99a9-f5c7a360e715",
+            "artifactName": "result"
+          }
+        }
+      }
+    ],
+    "structuredContent": {
+      "kind": "task",
+      "contextHandle": "cx_g8SaJnFhxdEf2JQmPs3UEw",
+      "taskHandle": "tk_QT5nBGn1Ttv74QKxcjjlSQ",
+      "a2aState": "TASK_STATE_COMPLETED",
+      "status": "completed",
+      "artifacts": [
+        {
+          "artifactId": "b163d0dc-20d5-4ccc-99a9-f5c7a360e715",
+          "name": "result"
+        }
+      ],
+      "history": []
+    }
+  },
+  "observed_artifact_projection": {
+    "text": "lavivrus-kramhcneb",
+    "mediaType": "text/plain"
+  },
+  "field_checks": {
+    "text": true,
+    "mediaType": true
+  },
+  "required_payload_survived": true,
+  "recovery": {
+    "eligible": false,
+    "status": "not_applicable"
+  },
+  "initial_wire": [
+    {
+      "role": "recorder_proxy",
+      "method": "GET",
+      "path": "/.well-known/agent-card.json",
+      "status": 200,
+      "upstream_response_sha256": "13fe73eae646830185e898a0e42149ee239166a1cdaa97a2201e92c1dd7f3be5",
+      "rpc_response_bytes_unchanged": null,
+      "utc": "2026-11-13T18:01:16.240Z",
+      "request": {
+        "raw": "",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "response": {
+        "raw": "{\"name\":\"Fixture Agent\",\"description\":\"Deterministic A2A v1.0.1 agent with no language model, driven by the prefix of the first text part. Covers the lifecycles no official sample exercises.\",\"supportedInterfaces\":[{\"url\":\"http://127.0.0.1:55547/a2a\",\"protocolBinding\":\"JSONRPC\",\"tenant\":\"\",\"protocolVersion\":\"1.0\"}],\"provider\":{\"organization\":\"a2a-to-mcp test bench\",\"url\":\"https://example.invalid/a2a-to-mcp\"},\"version\":\"1.0.0\",\"capabilities\":{\"streaming\":true,\"pushNotifications\":false,\"extensions\":[],\"extendedAgentCard\":false},\"securitySchemes\":{},\"securityRequirements\":[],\"defaultInputModes\":[\"text/plain\"],\"defaultOutputModes\":[\"text/plain\"],\"skills\":[{\"id\":\"echo\",\"name\":\"Echo\",\"description\":\"Answers with a direct Message (no Task) carrying the text back verbatim.\",\"tags\":[\"message\",\"deterministic\"],\"examples\":[\"echo: hello\",\"ECHO: mixed case works\"],\"inputModes\":[\"text/plain\"],\"outputModes\":[\"text/plain\"],\"securityRequirements\":[]},{\"id\":\"long-task\",\"name\":\"Long task\",\"description\":\"Runs a Task through SUBMITTED, WORKING and COMPLETED, emitting one artifact. `slow:` holds the task in WORKING so it can be canceled.\",\"tags\":[\"task\",\"streaming\",\"cancel\"],\"examples\":[\"task: reverse me\",\"slow: 2000\"],\"inputModes\":[\"text/plain\"],\"outputModes\":[\"text/plain\"],\"securityRequirements\":[]},{\"id\":\"ask\",\"name\":\"Ask for input\",\"description\":\"Parks the Task in INPUT_REQUIRED with a question, then completes it when a second message carrying the same taskId supplies the answer.\",\"tags\":[\"task\",\"input-required\",\"multi-turn\"],\"examples\":[\"ask: color\",\"ask: target region\"],\"inputModes\":[\"text/plain\"],\"outputModes\":[\"text/plain\"],\"securityRequirements\":[]},{\"id\":\"outcomes\",\"name\":\"Terminal outcomes\",\"description\":\"Drives a Task straight to REJECTED, FAILED or AUTH_REQUIRED, each with an explanatory status message. `vanish` opens a Task, moves it to WORKING and then forgets it, so the next GetTask raises TaskNotFoundError. `error: <code>` makes SendMessage fail with the typed A2A error of that code, from -32001 TaskNotFound to -32009 VersionNotSupported.\",\"tags\":[\"task\",\"errors\",\"auth-required\",\"task-not-found\",\"a2a-error-codes\"],\"examples\":[\"reject\",\"fail\",\"auth\",\"vanish\",\"error: -32004\"],\"inputModes\":[\"text/plain\"],\"outputModes\":[\"text/plain\"],\"securityRequirements\":[]},{\"id\":\"media\",\"name\":\"Non-text parts\",\"description\":\"Completes a Task whose single artifact holds a DataPart, a url file part or raw bytes, exercising every arm of the v1.0 Part oneof.\",\"tags\":[\"task\",\"artifacts\",\"parts\"],\"examples\":[\"data ping\",\"file\",\"image\"],\"inputModes\":[\"text/plain\"],\"outputModes\":[\"text/plain\",\"application/json\",\"application/pdf\",\"image/png\"],\"securityRequirements\":[]}],\"signatures\":[]}",
+        "bytes": 2703,
+        "sha256": "491349ac71501b953d16863c2745868870a362212b25059d3f1741c413712e99"
+      }
+    },
+    {
+      "role": "recorder_proxy",
+      "method": "POST",
+      "path": "/a2a",
+      "status": 200,
+      "upstream_response_sha256": "275e231b0f50a957885d642925bfb617d86792c1fc2da483e81b7ebe6b5cfe7e",
+      "rpc_response_bytes_unchanged": true,
+      "utc": "2026-11-13T18:01:16.247Z",
+      "request": {
+        "raw": "{\"jsonrpc\":\"2.0\",\"method\":\"SendMessage\",\"params\":{\"message\":{\"messageId\":\"15fb930c-8b32-46a4-8f5c-34e5d064f0f4\",\"role\":\"ROLE_USER\",\"parts\":[{\"text\":\"task: benchmark-survival\",\"mediaType\":\"text/plain\"}]},\"configuration\":{}},\"id\":1}",
+        "bytes": 230,
+        "sha256": "271b07f54406de30f8d3736946e0d2b15c0fa02c9a81cc92455505bc7c25a5fb"
+      },
+      "response": {
+        "raw": "{\"jsonrpc\":\"2.0\",\"id\":1,\"result\":{\"task\":{\"id\":\"6fa8184c-7d1f-4d03-b7b2-d133d5a3ab97\",\"contextId\":\"ed9928fd-4538-40af-92c9-f8add6a0513a\",\"status\":{\"state\":\"TASK_STATE_COMPLETED\",\"timestamp\":\"2026-11-13T18:01:16.245Z\"},\"artifacts\":[{\"artifactId\":\"b163d0dc-20d5-4ccc-99a9-f5c7a360e715\",\"name\":\"result\",\"parts\":[{\"text\":\"lavivrus-kramhcneb\",\"mediaType\":\"text/plain\"}]}],\"history\":[{\"messageId\":\"15fb930c-8b32-46a4-8f5c-34e5d064f0f4\",\"contextId\":\"ed9928fd-4538-40af-92c9-f8add6a0513a\",\"taskId\":\"6fa8184c-7d1f-4d03-b7b2-d133d5a3ab97\",\"role\":\"ROLE_USER\",\"parts\":[{\"text\":\"task: benchmark-survival\",\"mediaType\":\"text/plain\"}]},{\"messageId\":\"255c08db-7c58-42d3-92f7-5e7f459d3b5a\",\"contextId\":\"ed9928fd-4538-40af-92c9-f8add6a0513a\",\"taskId\":\"6fa8184c-7d1f-4d03-b7b2-d133d5a3ab97\",\"role\":\"ROLE_AGENT\",\"parts\":[{\"text\":\"Working on it.\",\"mediaType\":\"text/plain\"}]}]}}}",
+        "bytes": 856,
+        "sha256": "275e231b0f50a957885d642925bfb617d86792c1fc2da483e81b7ebe6b5cfe7e"
+      }
+    },
+    {
+      "role": "mcp_http",
+      "method": "tools/call",
+      "status": 200,
+      "utc": "2026-11-13T18:01:16.251Z",
+      "request": {
+        "raw": "{\"jsonrpc\":\"2.0\",\"id\":\"4e464f84-0880-4bfb-a46c-b2f202b74e43\",\"method\":\"tools/call\",\"params\":{\"name\":\"a2a_send_message\",\"arguments\":{\"agent\":\"fixture\",\"text\":\"task: benchmark-survival\"}}}",
+        "bytes": 186,
+        "sha256": "d954f6e9ce32d9eea9b00f664ba25a660477675e600bbabebc53aa12bae3651c"
+      },
+      "response": {
+        "raw": "event: message\ndata: {\"result\":{\"content\":[{\"type\":\"text\",\"text\":\"lavivrus-kramhcneb\",\"_meta\":{\"io.github.amirk-s/a2a\":{\"partKind\":\"text\",\"mediaType\":\"text/plain\",\"artifactId\":\"b163d0dc-20d5-4ccc-99a9-f5c7a360e715\",\"artifactName\":\"result\"}}}],\"structuredContent\":{\"kind\":\"task\",\"contextHandle\":\"cx_g8SaJnFhxdEf2JQmPs3UEw\",\"taskHandle\":\"tk_QT5nBGn1Ttv74QKxcjjlSQ\",\"a2aState\":\"TASK_STATE_COMPLETED\",\"status\":\"completed\",\"artifacts\":[{\"artifactId\":\"b163d0dc-20d5-4ccc-99a9-f5c7a360e715\",\"name\":\"result\"}]}},\"jsonrpc\":\"2.0\",\"id\":\"4e464f84-0880-4bfb-a46c-b2f202b74e43\"}\n\n",
+        "bytes": 566,
+        "sha256": "6c2a88d0142f4900ef697e73341f2c86c50160b9a2ad3e454fe326c35b1cc9c4"
+      }
+    },
+    {
+      "role": "recorder_proxy",
+      "method": "POST",
+      "path": "/a2a",
+      "status": 200,
+      "upstream_response_sha256": "ccb9b4e77f72fc2658bf3299266f37d38d23cbef2a8df3894a46d795d97a4921",
+      "rpc_response_bytes_unchanged": true,
+      "utc": "2026-11-13T18:01:16.259Z",
+      "request": {
+        "raw": "{\"jsonrpc\":\"2.0\",\"method\":\"GetTask\",\"params\":{\"id\":\"6fa8184c-7d1f-4d03-b7b2-d133d5a3ab97\",\"historyLength\":0},\"id\":2}",
+        "bytes": 116,
+        "sha256": "65ad62f5fc13269982b13ba47add24fd505dfb7db6147b781ea74da6bf102684"
+      },
+      "response": {
+        "raw": "{\"jsonrpc\":\"2.0\",\"id\":2,\"result\":{\"id\":\"6fa8184c-7d1f-4d03-b7b2-d133d5a3ab97\",\"contextId\":\"ed9928fd-4538-40af-92c9-f8add6a0513a\",\"status\":{\"state\":\"TASK_STATE_COMPLETED\",\"timestamp\":\"2026-11-13T18:01:16.245Z\"},\"artifacts\":[{\"artifactId\":\"b163d0dc-20d5-4ccc-99a9-f5c7a360e715\",\"name\":\"result\",\"parts\":[{\"text\":\"lavivrus-kramhcneb\",\"mediaType\":\"text/plain\"}]}]}}",
+        "bytes": 360,
+        "sha256": "ccb9b4e77f72fc2658bf3299266f37d38d23cbef2a8df3894a46d795d97a4921"
+      }
+    },
+    {
+      "role": "mcp_http",
+      "method": "tools/call",
+      "status": 200,
+      "utc": "2026-11-13T18:01:16.260Z",
+      "request": {
+        "raw": "{\"jsonrpc\":\"2.0\",\"id\":\"e1852122-a762-4584-b63b-048d9bb36ac6\",\"method\":\"tools/call\",\"params\":{\"name\":\"a2a_get_task\",\"arguments\":{\"agent\":\"fixture\",\"taskHandle\":\"tk_QT5nBGn1Ttv74QKxcjjlSQ\",\"historyLength\":0}}}",
+        "bytes": 207,
+        "sha256": "2883947f63ded40d4ac9fbd9de492f0a750e4931e6a9315ee9032108c1e9facd"
+      },
+      "response": {
+        "raw": "event: message\ndata: {\"result\":{\"content\":[{\"type\":\"text\",\"text\":\"lavivrus-kramhcneb\",\"_meta\":{\"io.github.amirk-s/a2a\":{\"partKind\":\"text\",\"mediaType\":\"text/plain\",\"artifactId\":\"b163d0dc-20d5-4ccc-99a9-f5c7a360e715\",\"artifactName\":\"result\"}}}],\"structuredContent\":{\"kind\":\"task\",\"contextHandle\":\"cx_g8SaJnFhxdEf2JQmPs3UEw\",\"taskHandle\":\"tk_QT5nBGn1Ttv74QKxcjjlSQ\",\"a2aState\":\"TASK_STATE_COMPLETED\",\"status\":\"completed\",\"artifacts\":[{\"artifactId\":\"b163d0dc-20d5-4ccc-99a9-f5c7a360e715\",\"name\":\"result\"}],\"history\":[]}},\"jsonrpc\":\"2.0\",\"id\":\"e1852122-a762-4584-b63b-048d9bb36ac6\"}\n\n",
+        "bytes": 579,
+        "sha256": "ca30be10b133da09e87f607b41a5087c692a93db42e1a503975cb40059bd48c8"
+      }
+    }
+  ],
+  "wall_ms": 29.14930000000004,
+  "wire": [
+    {
+      "role": "recorder_proxy",
+      "method": "GET",
+      "path": "/.well-known/agent-card.json",
+      "status": 200,
+      "upstream_response_sha256": "13fe73eae646830185e898a0e42149ee239166a1cdaa97a2201e92c1dd7f3be5",
+      "rpc_response_bytes_unchanged": null,
+      "utc": "2026-11-13T18:01:16.240Z",
+      "request": {
+        "raw": "",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "response": {
+        "raw": "{\"name\":\"Fixture Agent\",\"description\":\"Deterministic A2A v1.0.1 agent with no language model, driven by the prefix of the first text part. Covers the lifecycles no official sample exercises.\",\"supportedInterfaces\":[{\"url\":\"http://127.0.0.1:55547/a2a\",\"protocolBinding\":\"JSONRPC\",\"tenant\":\"\",\"protocolVersion\":\"1.0\"}],\"provider\":{\"organization\":\"a2a-to-mcp test bench\",\"url\":\"https://example.invalid/a2a-to-mcp\"},\"version\":\"1.0.0\",\"capabilities\":{\"streaming\":true,\"pushNotifications\":false,\"extensions\":[],\"extendedAgentCard\":false},\"securitySchemes\":{},\"securityRequirements\":[],\"defaultInputModes\":[\"text/plain\"],\"defaultOutputModes\":[\"text/plain\"],\"skills\":[{\"id\":\"echo\",\"name\":\"Echo\",\"description\":\"Answers with a direct Message (no Task) carrying the text back verbatim.\",\"tags\":[\"message\",\"deterministic\"],\"examples\":[\"echo: hello\",\"ECHO: mixed case works\"],\"inputModes\":[\"text/plain\"],\"outputModes\":[\"text/plain\"],\"securityRequirements\":[]},{\"id\":\"long-task\",\"name\":\"Long task\",\"description\":\"Runs a Task through SUBMITTED, WORKING and COMPLETED, emitting one artifact. `slow:` holds the task in WORKING so it can be canceled.\",\"tags\":[\"task\",\"streaming\",\"cancel\"],\"examples\":[\"task: reverse me\",\"slow: 2000\"],\"inputModes\":[\"text/plain\"],\"outputModes\":[\"text/plain\"],\"securityRequirements\":[]},{\"id\":\"ask\",\"name\":\"Ask for input\",\"description\":\"Parks the Task in INPUT_REQUIRED with a question, then completes it when a second message carrying the same taskId supplies the answer.\",\"tags\":[\"task\",\"input-required\",\"multi-turn\"],\"examples\":[\"ask: color\",\"ask: target region\"],\"inputModes\":[\"text/plain\"],\"outputModes\":[\"text/plain\"],\"securityRequirements\":[]},{\"id\":\"outcomes\",\"name\":\"Terminal outcomes\",\"description\":\"Drives a Task straight to REJECTED, FAILED or AUTH_REQUIRED, each with an explanatory status message. `vanish` opens a Task, moves it to WORKING and then forgets it, so the next GetTask raises TaskNotFoundError. `error: <code>` makes SendMessage fail with the typed A2A error of that code, from -32001 TaskNotFound to -32009 VersionNotSupported.\",\"tags\":[\"task\",\"errors\",\"auth-required\",\"task-not-found\",\"a2a-error-codes\"],\"examples\":[\"reject\",\"fail\",\"auth\",\"vanish\",\"error: -32004\"],\"inputModes\":[\"text/plain\"],\"outputModes\":[\"text/plain\"],\"securityRequirements\":[]},{\"id\":\"media\",\"name\":\"Non-text parts\",\"description\":\"Completes a Task whose single artifact holds a DataPart, a url file part or raw bytes, exercising every arm of the v1.0 Part oneof.\",\"tags\":[\"task\",\"artifacts\",\"parts\"],\"examples\":[\"data ping\",\"file\",\"image\"],\"inputModes\":[\"text/plain\"],\"outputModes\":[\"text/plain\",\"application/json\",\"application/pdf\",\"image/png\"],\"securityRequirements\":[]}],\"signatures\":[]}",
+        "bytes": 2703,
+        "sha256": "491349ac71501b953d16863c2745868870a362212b25059d3f1741c413712e99"
+      }
+    },
+    {
+      "role": "recorder_proxy",
+      "method": "POST",
+      "path": "/a2a",
+      "status": 200,
+      "upstream_response_sha256": "275e231b0f50a957885d642925bfb617d86792c1fc2da483e81b7ebe6b5cfe7e",
+      "rpc_response_bytes_unchanged": true,
+      "utc": "2026-11-13T18:01:16.247Z",
+      "request": {
+        "raw": "{\"jsonrpc\":\"2.0\",\"method\":\"SendMessage\",\"params\":{\"message\":{\"messageId\":\"15fb930c-8b32-46a4-8f5c-34e5d064f0f4\",\"role\":\"ROLE_USER\",\"parts\":[{\"text\":\"task: benchmark-survival\",\"mediaType\":\"text/plain\"}]},\"configuration\":{}},\"id\":1}",
+        "bytes": 230,
+        "sha256": "271b07f54406de30f8d3736946e0d2b15c0fa02c9a81cc92455505bc7c25a5fb"
+      },
+      "response": {
+        "raw": "{\"jsonrpc\":\"2.0\",\"id\":1,\"result\":{\"task\":{\"id\":\"6fa8184c-7d1f-4d03-b7b2-d133d5a3ab97\",\"contextId\":\"ed9928fd-4538-40af-92c9-f8add6a0513a\",\"status\":{\"state\":\"TASK_STATE_COMPLETED\",\"timestamp\":\"2026-11-13T18:01:16.245Z\"},\"artifacts\":[{\"artifactId\":\"b163d0dc-20d5-4ccc-99a9-f5c7a360e715\",\"name\":\"result\",\"parts\":[{\"text\":\"lavivrus-kramhcneb\",\"mediaType\":\"text/plain\"}]}],\"history\":[{\"messageId\":\"15fb930c-8b32-46a4-8f5c-34e5d064f0f4\",\"contextId\":\"ed9928fd-4538-40af-92c9-f8add6a0513a\",\"taskId\":\"6fa8184c-7d1f-4d03-b7b2-d133d5a3ab97\",\"role\":\"ROLE_USER\",\"parts\":[{\"text\":\"task: benchmark-survival\",\"mediaType\":\"text/plain\"}]},{\"messageId\":\"255c08db-7c58-42d3-92f7-5e7f459d3b5a\",\"contextId\":\"ed9928fd-4538-40af-92c9-f8add6a0513a\",\"taskId\":\"6fa8184c-7d1f-4d03-b7b2-d133d5a3ab97\",\"role\":\"ROLE_AGENT\",\"parts\":[{\"text\":\"Working on it.\",\"mediaType\":\"text/plain\"}]}]}}}",
+        "bytes": 856,
+        "sha256": "275e231b0f50a957885d642925bfb617d86792c1fc2da483e81b7ebe6b5cfe7e"
+      }
+    },
+    {
+      "role": "mcp_http",
+      "method": "tools/call",
+      "status": 200,
+      "utc": "2026-11-13T18:01:16.251Z",
+      "request": {
+        "raw": "{\"jsonrpc\":\"2.0\",\"id\":\"4e464f84-0880-4bfb-a46c-b2f202b74e43\",\"method\":\"tools/call\",\"params\":{\"name\":\"a2a_send_message\",\"arguments\":{\"agent\":\"fixture\",\"text\":\"task: benchmark-survival\"}}}",
+        "bytes": 186,
+        "sha256": "d954f6e9ce32d9eea9b00f664ba25a660477675e600bbabebc53aa12bae3651c"
+      },
+      "response": {
+        "raw": "event: message\ndata: {\"result\":{\"content\":[{\"type\":\"text\",\"text\":\"lavivrus-kramhcneb\",\"_meta\":{\"io.github.amirk-s/a2a\":{\"partKind\":\"text\",\"mediaType\":\"text/plain\",\"artifactId\":\"b163d0dc-20d5-4ccc-99a9-f5c7a360e715\",\"artifactName\":\"result\"}}}],\"structuredContent\":{\"kind\":\"task\",\"contextHandle\":\"cx_g8SaJnFhxdEf2JQmPs3UEw\",\"taskHandle\":\"tk_QT5nBGn1Ttv74QKxcjjlSQ\",\"a2aState\":\"TASK_STATE_COMPLETED\",\"status\":\"completed\",\"artifacts\":[{\"artifactId\":\"b163d0dc-20d5-4ccc-99a9-f5c7a360e715\",\"name\":\"result\"}]}},\"jsonrpc\":\"2.0\",\"id\":\"4e464f84-0880-4bfb-a46c-b2f202b74e43\"}\n\n",
+        "bytes": 566,
+        "sha256": "6c2a88d0142f4900ef697e73341f2c86c50160b9a2ad3e454fe326c35b1cc9c4"
+      }
+    },
+    {
+      "role": "recorder_proxy",
+      "method": "POST",
+      "path": "/a2a",
+      "status": 200,
+      "upstream_response_sha256": "ccb9b4e77f72fc2658bf3299266f37d38d23cbef2a8df3894a46d795d97a4921",
+      "rpc_response_bytes_unchanged": true,
+      "utc": "2026-11-13T18:01:16.259Z",
+      "request": {
+        "raw": "{\"jsonrpc\":\"2.0\",\"method\":\"GetTask\",\"params\":{\"id\":\"6fa8184c-7d1f-4d03-b7b2-d133d5a3ab97\",\"historyLength\":0},\"id\":2}",
+        "bytes": 116,
+        "sha256": "65ad62f5fc13269982b13ba47add24fd505dfb7db6147b781ea74da6bf102684"
+      },
+      "response": {
+        "raw": "{\"jsonrpc\":\"2.0\",\"id\":2,\"result\":{\"id\":\"6fa8184c-7d1f-4d03-b7b2-d133d5a3ab97\",\"contextId\":\"ed9928fd-4538-40af-92c9-f8add6a0513a\",\"status\":{\"state\":\"TASK_STATE_COMPLETED\",\"timestamp\":\"2026-11-13T18:01:16.245Z\"},\"artifacts\":[{\"artifactId\":\"b163d0dc-20d5-4ccc-99a9-f5c7a360e715\",\"name\":\"result\",\"parts\":[{\"text\":\"lavivrus-kramhcneb\",\"mediaType\":\"text/plain\"}]}]}}",
+        "bytes": 360,
+        "sha256": "ccb9b4e77f72fc2658bf3299266f37d38d23cbef2a8df3894a46d795d97a4921"
+      }
+    },
+    {
+      "role": "mcp_http",
+      "method": "tools/call",
+      "status": 200,
+      "utc": "2026-11-13T18:01:16.260Z",
+      "request": {
+        "raw": "{\"jsonrpc\":\"2.0\",\"id\":\"e1852122-a762-4584-b63b-048d9bb36ac6\",\"method\":\"tools/call\",\"params\":{\"name\":\"a2a_get_task\",\"arguments\":{\"agent\":\"fixture\",\"taskHandle\":\"tk_QT5nBGn1Ttv74QKxcjjlSQ\",\"historyLength\":0}}}",
+        "bytes": 207,
+        "sha256": "2883947f63ded40d4ac9fbd9de492f0a750e4931e6a9315ee9032108c1e9facd"
+      },
+      "response": {
+        "raw": "event: message\ndata: {\"result\":{\"content\":[{\"type\":\"text\",\"text\":\"lavivrus-kramhcneb\",\"_meta\":{\"io.github.amirk-s/a2a\":{\"partKind\":\"text\",\"mediaType\":\"text/plain\",\"artifactId\":\"b163d0dc-20d5-4ccc-99a9-f5c7a360e715\",\"artifactName\":\"result\"}}}],\"structuredContent\":{\"kind\":\"task\",\"contextHandle\":\"cx_g8SaJnFhxdEf2JQmPs3UEw\",\"taskHandle\":\"tk_QT5nBGn1Ttv74QKxcjjlSQ\",\"a2aState\":\"TASK_STATE_COMPLETED\",\"status\":\"completed\",\"artifacts\":[{\"artifactId\":\"b163d0dc-20d5-4ccc-99a9-f5c7a360e715\",\"name\":\"result\"}],\"history\":[]}},\"jsonrpc\":\"2.0\",\"id\":\"e1852122-a762-4584-b63b-048d9bb36ac6\"}\n\n",
+        "bytes": 579,
+        "sha256": "ca30be10b133da09e87f607b41a5087c692a93db42e1a503975cb40059bd48c8"
+      }
+    }
+  ]
+}

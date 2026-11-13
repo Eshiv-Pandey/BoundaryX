@@ -1,0 +1,66 @@
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 3 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  test/config.test.ts > resolveStateDir > honours A2A_STATE_DIR, then XDG_STATE_HOME, then ~/.local/state
+AssertionError: expected '\tmp\xdg\mcp-a2a' to be '/tmp/xdg/mcp-a2a' // Object.is equality
+
+Expected: "/tmp/xdg/mcp-a2a"
+Received: "\tmp\xdg\mcp-a2a"
+
+ ❯ test/config.test.ts:110:61
+    108|   it("honours A2A_STATE_DIR, then XDG_STATE_HOME, then ~/.local/state"…
+    109|     expect(resolveStateDir({ A2A_STATE_DIR: "/tmp/explicit" })).toBe("…
+    110|     expect(resolveStateDir({ XDG_STATE_HOME: "/tmp/xdg" })).toBe("/tmp…
+       |                                                             ^
+    111|     expect(resolveStateDir({ HOME: "/tmp/home" })).toMatch(/\.local\/s…
+    112|   });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/3]⎯
+
+ FAIL  test/store.test.ts > FileTaskStore construction > constructs against an unwritable directory without throwing
+AssertionError: expected [ { version: 1, …(5) } ] to deeply equal []
+
+- Expected
++ Received
+
+- []
++ [
++   {
++     "createdAt": "2026-11-13T18:15:55.495Z",
++     "direction": "inbound",
++     "peer": "p",
++     "task": {
++       "contextId": "ctx-t1",
++       "id": "t1",
++       "status": {
++         "state": "TASK_STATE_SUBMITTED",
++         "timestamp": "2026-09-09T00:00:00.000Z",
++       },
++     },
++     "updatedAt": "2026-11-13T18:15:55.498Z",
++     "version": 1,
++   },
++ ]
+
+ ❯ test/store.test.ts:54:25
+     52|     });
+     53|     // Reads answer empty rather than failing: there is nothing there …
+     54|     expect(s.records()).toEqual([]);
+       |                         ^
+     55|     expect(s.get("anything")).toBeUndefined();
+     56|     expect(s.snapshot().size).toBe(0);
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/3]⎯
+
+ FAIL  test/store.test.ts > FileTaskStore construction > fails a WRITE with a remedy naming the variable to change
+AssertionError: expected AssertionError: expected "a write to an u… { …(3) } to be an instance of StoreUnwritableError
+ ❯ test/store.test.ts:77:19
+     75|       expect.unreachable("a write to an unwritable store must throw");
+     76|     } catch (err) {
+     77|       expect(err).toBeInstanceOf(StoreUnwritableError);
+       |                   ^
+     78|       expect((err as StoreUnwritableError).remedy).toContain("A2A_STAT…
+     79|     }
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/3]⎯
+

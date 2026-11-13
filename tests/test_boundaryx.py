@@ -141,8 +141,14 @@ class ReviewBoundaryControls(unittest.TestCase):
         with self.assertRaises(EvidenceError):
             check_review({'decision': 'approve', 'reviewer': 'r', 'reasoning': 'reviewed'}, {'decision': None})
 
+    def test_approval_must_bind_current_frozen_gold(self):
+        review = {'decision': 'approve', 'reviewer': 'r', 'reasoning': 'reviewed', 'reviewed_definition_sha256': 'old'}
+        supervisor = {'decision': 'approve', 'reviewer': 's', 'reasoning': 'reviewed', 'reviewed_definition_sha256': 'old'}
+        with self.assertRaises(EvidenceError):
+            check_review(review, supervisor, 'new')
+
     def test_twenty_frozen_new_candidates_have_zero_eligible_evaluations(self):
-        result = heldout_status(ROOT / 'benchmarks/heldout/v1')
+        result = heldout_status(ROOT / 'benchmarks/heldout/v2')
         self.assertEqual(result['task_instances'], 20)
         self.assertEqual(result['eligible'], [])
         self.assertEqual(result['evaluations'], 0)

@@ -1,0 +1,1 @@
+Historical delivery/browser archive builders are preserved as source, not active BoundaryX packaging commands. Their original ROOT/path allocations refer to the original checkout. Use the current BoundaryX CLI and Git-based artifact. Canonical old sources remain in the local archive.

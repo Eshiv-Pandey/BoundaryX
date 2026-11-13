@@ -18,8 +18,27 @@ jobs:
       - run: python -B scripts/check_loss_software_v2.py --output results/development/ci-software
       - run: python -B scripts/boundaryx.py verify-independent --diagnostics runs/supervisor-handoff-20261113/diagnostics-final-001 --protocol runs/supervisor-handoff-20261113/protocol-main-001 --artifacts runs/supervisor-handoff-20261113/parts-main-001 --output results/development/ci-independent.json
       - run: python -B scripts/boundaryx.py heldout-status
+      - run: python -B scripts/check_distribution.py --output results/development/ci-distribution.json
       - uses: actions/upload-artifact@v4
         if: always()
         with:
           name: validation-receipts
           path: results/development/ci-*
+  upstream-protocols:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22.13.0'
+      - working-directory: external/a2a-to-mcp
+        run: |
+          npm ci --ignore-scripts --no-audit --no-fund
+          node node_modules/typescript/bin/tsc -p tsconfig.build.json
+          node node_modules/vitest/vitest.mjs run test/integration/send-message.test.ts test/integration/tasks-extension.test.ts
+      - working-directory: external/mcp-a2a
+        run: |
+          npm exec --yes --package=pnpm@12.10.1 -- pnpm install --frozen-lockfile --ignore-scripts
+          npm run typecheck
+          npm run lint
+          node node_modules/vitest/vitest.mjs run

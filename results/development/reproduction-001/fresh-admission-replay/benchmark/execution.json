@@ -1,0 +1,259 @@
+{
+  "schema_version": "admission-benchmark-execution/1",
+  "status": "started",
+  "started_at_epoch_ns": 1794592732270873500,
+  "suite_id": "recipe-development-comparison-v1",
+  "split": "development",
+  "evaluation_clock": 100,
+  "timeout_seconds": 30.0,
+  "input_schema": "recipe-continuation/1",
+  "work_budget": 100000,
+  "schema_adapter": {
+    "baseline": "interoperability.refinement_oracle",
+    "reference": "interoperability.refinement_oracle",
+    "checker": "interoperability.direct_goal_pruned_v2",
+    "supports_budget": true
+  },
+  "reference_implementation_is_baseline": true,
+  "algorithms": [
+    {
+      "name": "baseline",
+      "module": "interoperability.refinement_oracle",
+      "entrypoint": "evaluate",
+      "input_schema": "recipe-continuation/1"
+    },
+    {
+      "name": "direct_pruned",
+      "module": "interoperability.direct_goal_pruned_v2",
+      "entrypoint": "evaluate",
+      "input_schema": "recipe-continuation/1"
+    },
+    {
+      "name": "candidate",
+      "module": "interoperability.refinement",
+      "entrypoint": "evaluate",
+      "input_schema": "recipe-continuation/1"
+    },
+    {
+      "name": "shared_lift",
+      "module": "interoperability.refinement_shared_lift_v2",
+      "entrypoint": "evaluate",
+      "input_schema": "recipe-continuation/1"
+    }
+  ],
+  "runtime": {
+    "python": "3.13.1 (tags/v3.13.1:0671451, Dec  3 2024, 19:06:28) [MSC v.1942 64 bit (AMD64)]",
+    "implementation": "CPython",
+    "platform": "Windows-11-10.0.26300-SP0",
+    "executable": "<python-install>\\python.exe"
+  },
+  "captured_inputs": [
+    {
+      "path": "source/interoperability/__init__.py",
+      "bytes": 172,
+      "sha256": "3329d2e18d4778836a21d9b5115c1ae04a59190b14f051f54f75ef174c26b63a"
+    },
+    {
+      "path": "source/interoperability/__main__.py",
+      "bytes": 49,
+      "sha256": "76fa916e93e0ae1a6c1bb51dcc0bcf289c014e9f760a47165f8a84401ccf41d7"
+    },
+    {
+      "path": "source/interoperability/admission_cli.py",
+      "bytes": 5703,
+      "sha256": "4c4a01e177bf7d3a326a2da422981d2607906b82fb5074add092079bb550727b"
+    },
+    {
+      "path": "source/interoperability/baseline.py",
+      "bytes": 3268,
+      "sha256": "c26f4c7db7f89f00f2c781e346aec20a589a862316e34c38a2edd7760407206f"
+    },
+    {
+      "path": "source/interoperability/benchmark.py",
+      "bytes": 34981,
+      "sha256": "38b6cb4e6fd9ff4a48b0a9d45ca44156c8e714663f6c4a73060f44259a9c3a7e"
+    },
+    {
+      "path": "source/interoperability/benchmark_resources_v1.py",
+      "bytes": 8044,
+      "sha256": "b58eaec738a7cd69a54dbd105465c1544390e3de51a3737a0eeea1ee6575fdf9"
+    },
+    {
+      "path": "source/interoperability/cli.py",
+      "bytes": 4935,
+      "sha256": "1c3113908d036099b42b8adf939e701c8a21a082b2bc614479aaefadc214e0f1"
+    },
+    {
+      "path": "source/interoperability/direct_comparison_v2.py",
+      "bytes": 9565,
+      "sha256": "610c082233dcf44b58bb0b0bf68bfc4ca7fec307e380be21699ec3db39e60eb9"
+    },
+    {
+      "path": "source/interoperability/direct_goal_pruned_v2.py",
+      "bytes": 10620,
+      "sha256": "1fba2d0bd747f965056279bbda40b9c28f50f1200b7e9a6869f343ab6f64de51"
+    },
+    {
+      "path": "source/interoperability/direct_guard_pruned_v3.py",
+      "bytes": 8475,
+      "sha256": "3aa025550ea0bcf6974e6eca0fd8c068bbb211e3a49ee40ffd423d3ce7093723"
+    },
+    {
+      "path": "source/interoperability/loss_benchmark_v1.py",
+      "bytes": 19488,
+      "sha256": "6d3e7f1678300b84fe3c69094c82b3365bd58dcf2e0f3173881eceb480f64e4d"
+    },
+    {
+      "path": "source/interoperability/loss_diagnostics_v2.py",
+      "bytes": 8430,
+      "sha256": "4e79ed4aad419b9c10dfaf28742bd3394b4eda94a249861e5fc4a6c07f2720aa"
+    },
+    {
+      "path": "source/interoperability/manifest.py",
+      "bytes": 7117,
+      "sha256": "defc6e9bbc4ea66806beefc9def967d94db8a3856cc121cee13c45ebda70debb"
+    },
+    {
+      "path": "source/interoperability/oracle.py",
+      "bytes": 16255,
+      "sha256": "da29829a077da1ef44c2ffc0a6d5dbcd8e4c579b308b49085ea1af077e601b7f"
+    },
+    {
+      "path": "source/interoperability/pending_admission.py",
+      "bytes": 22633,
+      "sha256": "4adb8f4cfb4b4a517053bbd49e3b9a14a03dda7eba33d66808a832fcb25a2132"
+    },
+    {
+      "path": "source/interoperability/projection_checker.py",
+      "bytes": 41904,
+      "sha256": "5bc96d27428e7fce01b12a8e5ccc946db8e7dc77bbced033e60423e4e769a103"
+    },
+    {
+      "path": "source/interoperability/reference_checker.py",
+      "bytes": 17484,
+      "sha256": "87ca2690fcf296961cea024d66da6323031b5306ef54222d48a7ccfdaf662371"
+    },
+    {
+      "path": "source/interoperability/refinement.py",
+      "bytes": 18566,
+      "sha256": "11175edcb99dbec231390ae767ba97dce2e919810844ed544a1ddd109f4b5b3b"
+    },
+    {
+      "path": "source/interoperability/refinement_oracle.py",
+      "bytes": 25050,
+      "sha256": "b17feac87ed2972cd1a2c34557b653bdf231345e75a9ab8a919c0b4f1520477e"
+    },
+    {
+      "path": "source/interoperability/refinement_shared_lift_v2.py",
+      "bytes": 15366,
+      "sha256": "927538f7ddcb21120913c6c4257754b65a45703db384eec8cd6a28ba9e9b280b"
+    },
+    {
+      "path": "source/interoperability/refutation_prefix_dag_v1.py",
+      "bytes": 13877,
+      "sha256": "6e1b2012432945c3cec8595cafe077d69d56a6a6189001da7f7d7168f1b34c89"
+    },
+    {
+      "path": "source/interoperability/refutation_prefix_dag_v2.py",
+      "bytes": 15326,
+      "sha256": "59794e5bd480763152577af37b1428cf4dcb737681dc380d8abd3c3ea3dc8449"
+    },
+    {
+      "path": "source/interoperability/shared_admission_v1.py",
+      "bytes": 7553,
+      "sha256": "7c37baa751bb8f0e437b02e87b9da47db011449be13a7256dcf43b08ca4cd3ec"
+    },
+    {
+      "path": "source/interoperability/shared_cache_ablation_v3.py",
+      "bytes": 16824,
+      "sha256": "e548f5d7ce1fa5d486974922bddf3d5592b92801fcb36b80fde4b1f86b5b14ca"
+    },
+    {
+      "path": "source/interoperability/shared_cache_comparison_v3.py",
+      "bytes": 13702,
+      "sha256": "f113c7fb67727d09a6d8b589fb4a5c828d971b9985fcc74a1f8f9df5995ec89e"
+    },
+    {
+      "path": "source/interoperability/shared_lifting_comparison_v3.py",
+      "bytes": 13342,
+      "sha256": "d5175683cedecd7f901136086b3294f972d9a19524e4bcd4e416b9120542e100"
+    },
+    {
+      "path": "source/interoperability/status_projection.py",
+      "bytes": 21038,
+      "sha256": "648e18cb6f1e2cbf3ff31f3dab70a29b473701d10df3f1758065bd5d4da8debf"
+    },
+    {
+      "path": "source/interoperability/status_projection_checker.py",
+      "bytes": 37950,
+      "sha256": "3bb82daa320fbb40ac96391c19460e3730a10aef3b0da8c2b39d467cf89d6dea"
+    },
+    {
+      "path": "source/interoperability/wire_projection.py",
+      "bytes": 18564,
+      "sha256": "88223761710725959157607f4a86829fe1d7aa3e85bfe3ccc53af52c063df89e"
+    },
+    {
+      "path": "inputs/original-suite.json",
+      "bytes": 1438,
+      "sha256": "3ba815a205f2cbe48c269dcd87587fb3eaee6eb6f6910b27ffa50b4a34812101"
+    },
+    {
+      "path": "inputs/case-0000.json",
+      "bytes": 2461,
+      "sha256": "97f4b2a1bc8917c4dea31de0e04b7d9bbbb9227d2885d36706da858dd5580e59"
+    },
+    {
+      "path": "inputs/case-0001.json",
+      "bytes": 2346,
+      "sha256": "21379ff1902ee39eca14b2df9f90b49961dd0063806125d12c190465184e722a"
+    },
+    {
+      "path": "inputs/case-0002.json",
+      "bytes": 2467,
+      "sha256": "f435b74062a264e58ca6cc5a4ede7ee6710a11d42fa490adbd00fb2633727a3c"
+    },
+    {
+      "path": "inputs/case-0003.json",
+      "bytes": 3445,
+      "sha256": "dc96adb105481a1db97db4023ece0be6b1d64480f09aaf3481c4af6e5a2457d2"
+    },
+    {
+      "path": "inputs/case-0004.json",
+      "bytes": 2723,
+      "sha256": "6c58ab18285dda26ac45956279a2d7832e01a23f379e0cd881dfaca4ae05bf2e"
+    },
+    {
+      "path": "inputs/case-0005.json",
+      "bytes": 2859,
+      "sha256": "02ee7a3ab5dc41c70efaf1085ce49b7ce1b077c5e419d9324b64301cf119bfef"
+    },
+    {
+      "path": "inputs/case-0006.json",
+      "bytes": 2275,
+      "sha256": "5c18dead06100e4f12781a37673b0aa4d63432530e03bdbc942b4aba162ffe57"
+    },
+    {
+      "path": "inputs/case-0007.json",
+      "bytes": 2626,
+      "sha256": "7bd092597384cf753406cd2d0ea73d999e0c00e21ce6000c10a0b7a03b5f63ab"
+    },
+    {
+      "path": "inputs/case-0008.json",
+      "bytes": 2563,
+      "sha256": "756e0346b6319936e381f25c5fa9ba188619a5cd561b597b93aa9f10ddccbb0a"
+    },
+    {
+      "path": "inputs/case-0009.json",
+      "bytes": 2639,
+      "sha256": "302fbbb365e54ab0e11e40bd9d28d125bc6a073efaca1131c6ea6d3ef1a8088d"
+    },
+    {
+      "path": "inputs/case-0010.json",
+      "bytes": 2439,
+      "sha256": "90789885d71cbd6fd746716388473ac20ba5243d7aeccde4bb3df952505957d8"
+    }
+  ],
+  "live_application_runs": 0,
+  "live_model_calls": 0
+}

@@ -36,7 +36,7 @@ def main(argv: list[str] | None = None) -> int:
         if args.command == "routes":
             print(json.dumps([asdict(r) for r in ROUTES], indent=2))
         elif args.command == "heldout-status":
-            print(json.dumps(heldout_status(root / "benchmarks/heldout/v1"), indent=2))
+            print(json.dumps(heldout_status(root / "benchmarks/heldout/v2"), indent=2))
         elif args.command == "manifest":
             print(json.dumps({"status": "Completed", "verified_files": verify_manifest(args.bundle)}))
         elif args.command == "verify-independent":

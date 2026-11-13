@@ -45,7 +45,7 @@ python -m venv .venv
 python -B -m unittest discover -s tests -p 'test_boundaryx*.py' -v
 python -B scripts/loss_json_io_v2.py --self-test
 python -B scripts/check_loss_software_v2.py --output results/development/software-new-001
-python -B scripts/boundaryx.py manifest benchmarks/heldout/v1
+python -B scripts/boundaryx.py manifest benchmarks/heldout/v2
 python -B scripts/boundaryx.py verify-independent --diagnostics results/development/clean-real-001/pipeline/fresh-diagnostics --protocol results/development/clean-real-001/pipeline/fresh-protocol --artifacts results/development/clean-real-001/pipeline/fresh-artifacts --output results/development/independent-new.json
 ```
 

@@ -1,0 +1,209 @@
+{
+  "schema_version": "shared-admission-command/1",
+  "status": "recorded",
+  "started_at_utc": "2026-11-13T17:58:16.639289+00:00",
+  "method": "shared_lift",
+  "solver_module": "interoperability.refinement_shared_lift_v2",
+  "checker_module": "interoperability.direct_goal_pruned_v2",
+  "checker_entrypoint": "check_certificate",
+  "input_path": "<workspace>\\results\\development\\historical-regrade-002\\fresh-admission-replay\\prepared\\examples\\refinement-development\\02-fixed-text-shape-obstruction.json",
+  "input_sha256": "21379ff1902ee39eca14b2df9f90b49961dd0063806125d12c190465184e722a",
+  "model_sha256": "9bc78cd944e7295afd90668bf0291c274026c0cd42e3bc09f6e2ad827900d273",
+  "runtime_manifest": {
+    "schema_version": "recipe-continuation/1",
+    "id": "fixed-text-shape-obstruction",
+    "model": {
+      "schema_version": "finite-continuation/1",
+      "id": "fixed-text-shape-obstruction-graph",
+      "route": "Authored finite public-recipe development model; not a qualified protocol route",
+      "provenance": {
+        "kind": "authored-development",
+        "source": "tests/test_refinement.py",
+        "review_status": "AI-authored semantic development; human review pending"
+      },
+      "horizon": 1,
+      "evidence": {
+        "complete": true,
+        "observed_at": 0,
+        "valid_until": 4102444800
+      },
+      "initial": "start",
+      "states": {
+        "start": {
+          "safe": true,
+          "done": false
+        },
+        "end": {
+          "safe": true,
+          "done": true
+        }
+      },
+      "transitions": [
+        {
+          "id": "finish",
+          "source": "start",
+          "target": "end",
+          "operation": "finish"
+        }
+      ],
+      "runtime_contract": {
+        "goal": [
+          {
+            "field": "done",
+            "op": "eq",
+            "value": true
+          }
+        ],
+        "invariants": [
+          {
+            "field": "safe",
+            "op": "eq",
+            "value": true
+          }
+        ]
+      }
+    },
+    "initial_bindings": {
+      "public_call": "call-A"
+    },
+    "relations": {
+      "finish": {
+        "source_ref": "Authored finite development relation; source validity is not asserted",
+        "arguments": {
+          "call": [
+            {
+              "binding": "public_call"
+            }
+          ]
+        },
+        "emit": {
+          "object": {
+            "text": {
+              "const": "{\"data\":{\"approved\":true}}"
+            }
+          }
+        },
+        "guards": [
+          {
+            "op": "eq",
+            "left": {
+              "emit_path": [
+                "data",
+                "call"
+              ]
+            },
+            "right": {
+              "binding": "public_call"
+            }
+          },
+          {
+            "op": "eq",
+            "left": {
+              "emit_path": [
+                "data",
+                "approved"
+              ]
+            },
+            "right": {
+              "const": true
+            }
+          }
+        ],
+        "updates": {}
+      }
+    },
+    "coverage": {
+      "complete": true,
+      "scope": "Only the declared finite graph, literal/binding recipe choices and supplied relations; no whole-interface closure claim"
+    }
+  },
+  "evaluation_clock": 100,
+  "work_budget": 100000,
+  "source_sha256": {
+    "__init__.py": "3329d2e18d4778836a21d9b5115c1ae04a59190b14f051f54f75ef174c26b63a",
+    "__main__.py": "76fa916e93e0ae1a6c1bb51dcc0bcf289c014e9f760a47165f8a84401ccf41d7",
+    "admission_cli.py": "4c4a01e177bf7d3a326a2da422981d2607906b82fb5074add092079bb550727b",
+    "baseline.py": "c26f4c7db7f89f00f2c781e346aec20a589a862316e34c38a2edd7760407206f",
+    "benchmark.py": "38b6cb4e6fd9ff4a48b0a9d45ca44156c8e714663f6c4a73060f44259a9c3a7e",
+    "benchmark_resources_v1.py": "b58eaec738a7cd69a54dbd105465c1544390e3de51a3737a0eeea1ee6575fdf9",
+    "cli.py": "1c3113908d036099b42b8adf939e701c8a21a082b2bc614479aaefadc214e0f1",
+    "direct_comparison_v2.py": "610c082233dcf44b58bb0b0bf68bfc4ca7fec307e380be21699ec3db39e60eb9",
+    "direct_goal_pruned_v2.py": "1fba2d0bd747f965056279bbda40b9c28f50f1200b7e9a6869f343ab6f64de51",
+    "direct_guard_pruned_v3.py": "3aa025550ea0bcf6974e6eca0fd8c068bbb211e3a49ee40ffd423d3ce7093723",
+    "loss_benchmark_v1.py": "6d3e7f1678300b84fe3c69094c82b3365bd58dcf2e0f3173881eceb480f64e4d",
+    "loss_diagnostics_v2.py": "4e79ed4aad419b9c10dfaf28742bd3394b4eda94a249861e5fc4a6c07f2720aa",
+    "manifest.py": "defc6e9bbc4ea66806beefc9def967d94db8a3856cc121cee13c45ebda70debb",
+    "oracle.py": "da29829a077da1ef44c2ffc0a6d5dbcd8e4c579b308b49085ea1af077e601b7f",
+    "pending_admission.py": "4adb8f4cfb4b4a517053bbd49e3b9a14a03dda7eba33d66808a832fcb25a2132",
+    "projection_checker.py": "5bc96d27428e7fce01b12a8e5ccc946db8e7dc77bbced033e60423e4e769a103",
+    "reference_checker.py": "87ca2690fcf296961cea024d66da6323031b5306ef54222d48a7ccfdaf662371",
+    "refinement.py": "11175edcb99dbec231390ae767ba97dce2e919810844ed544a1ddd109f4b5b3b",
+    "refinement_oracle.py": "b17feac87ed2972cd1a2c34557b653bdf231345e75a9ab8a919c0b4f1520477e",
+    "refinement_shared_lift_v2.py": "927538f7ddcb21120913c6c4257754b65a45703db384eec8cd6a28ba9e9b280b",
+    "refutation_prefix_dag_v1.py": "6e1b2012432945c3cec8595cafe077d69d56a6a6189001da7f7d7168f1b34c89",
+    "refutation_prefix_dag_v2.py": "59794e5bd480763152577af37b1428cf4dcb737681dc380d8abd3c3ea3dc8449",
+    "shared_admission_v1.py": "7c37baa751bb8f0e437b02e87b9da47db011449be13a7256dcf43b08ca4cd3ec",
+    "shared_cache_ablation_v3.py": "e548f5d7ce1fa5d486974922bddf3d5592b92801fcb36b80fde4b1f86b5b14ca",
+    "shared_cache_comparison_v3.py": "f113c7fb67727d09a6d8b589fb4a5c828d971b9985fcc74a1f8f9df5995ec89e",
+    "shared_lifting_comparison_v3.py": "d5175683cedecd7f901136086b3294f972d9a19524e4bcd4e416b9120542e100",
+    "status_projection.py": "648e18cb6f1e2cbf3ff31f3dab70a29b473701d10df3f1758065bd5d4da8debf",
+    "status_projection_checker.py": "3bb82daa320fbb40ac96391c19460e3730a10aef3b0da8c2b39d467cf89d6dea",
+    "wire_projection.py": "88223761710725959157607f4a86829fe1d7aa3e85bfe3ccc53af52c063df89e"
+  },
+  "python": "3.13.1 (tags/v3.13.1:0671451, Dec  3 2024, 19:06:28) [MSC v.1942 64 bit (AMD64)]",
+  "platform": "Windows-11-10.0.26300-SP0",
+  "evaluation_ns": 298100,
+  "certificate_check_ns": 187400,
+  "certificate_valid": true,
+  "checker_invoked": true,
+  "application_requests": 0,
+  "live_model_calls": 0,
+  "claim_limit": "Decision under supplied finite recipe assumptions; no application execution, established novelty or performance advantage.",
+  "result": {
+    "decision": "unsupported",
+    "reason": "certified_refinement_exhaustion",
+    "certificate": {
+      "profile_sha256": "9bc78cd944e7295afd90668bf0291c274026c0cd42e3bc09f6e2ad827900d273",
+      "checked_at": 100,
+      "horizon": 1,
+      "valid_until": 4102444800,
+      "kind": "refinement-exhaustion",
+      "refuted_prefixes": [
+        [
+          "finish"
+        ]
+      ]
+    },
+    "method": "witness-lift-refine-shared-v2",
+    "novelty_established": false,
+    "stats": {
+      "work_units": 58,
+      "budget": 100000,
+      "abstract_state_visits": 4,
+      "abstract_edge_checks": 2,
+      "abstract_paths": 1,
+      "relation_checks": 1,
+      "expression_evaluations": 6,
+      "refinement_lookups": 1,
+      "refinement_edges": 1,
+      "refinements": 1,
+      "peak_frames": 1,
+      "cache_lookups": 3,
+      "cache_key_nodes": 10,
+      "cache_insertions": 3,
+      "cache_payload_nodes": 26,
+      "cache_status_checks": 0,
+      "cached_prefix_frames": 0,
+      "cached_relation_outcomes": 0,
+      "history_nodes": 0,
+      "witness_nodes": 0,
+      "prefix_cache_hits": 0,
+      "relation_cache_hits": 0,
+      "prefix_cache_entries": 2,
+      "relation_cache_entries": 1,
+      "peak_cached_frames": 1,
+      "elapsed_ns": 290400
+    }
+  },
+  "finished_at_utc": "2026-11-13T17:58:16.714754+00:00"
+}

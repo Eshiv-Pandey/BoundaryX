@@ -1,0 +1,50 @@
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 3 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  test/config.test.ts > resolveStateDir > honours A2A_STATE_DIR, then XDG_STATE_HOME, then ~/.local/state
+AssertionError: expected '\tmp\xdg\mcp-a2a' to be '/tmp/xdg/mcp-a2a' // Object.is equality
+
+Expected: "/tmp/xdg/mcp-a2a"
+Received: "\tmp\xdg\mcp-a2a"
+
+ ❯ test/config.test.ts:110:61
+    108|   it("honours A2A_STATE_DIR, then XDG_STATE_HOME, then ~/.local/state"…
+    109|     expect(resolveStateDir({ A2A_STATE_DIR: "/tmp/explicit" })).toBe("…
+    110|     expect(resolveStateDir({ XDG_STATE_HOME: "/tmp/xdg" })).toBe("/tmp…
+       |                                                             ^
+    111|     expect(resolveStateDir({ HOME: "/tmp/home" })).toMatch(/\.local\/s…
+    112|   });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/3]⎯
+
+ FAIL  test/store.test.ts > FileTaskStore construction > constructs against an unwritable directory without throwing
+AssertionError: expected true to be false // Object.is equality
+
+- Expected
++ Received
+
+- false
++ true
+
+ ❯ test/store.test.ts:59:32
+     57|     // And it says so, which is what `a2a_auth_status` surfaces.
+     58|     const diagnosis = s.diagnose();
+     59|     expect(diagnosis.writable).toBe(false);
+       |                                ^
+     60|     // The property, not the errno: `/nonexistent` is ENOENT on macOS …
+     61|     // on a Linux CI runner (it cannot create a directory at the root)…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/3]⎯
+
+ FAIL  test/store.test.ts > FileTaskStore construction > fails a WRITE with a remedy naming the variable to change
+AssertionError: expected AssertionError: expected "a write to an u… { …(3) } to be an instance of StoreUnwritableError
+ ❯ test/store.test.ts:77:19
+     75|       expect.unreachable("a write to an unwritable store must throw");
+     76|     } catch (err) {
+     77|       expect(err).toBeInstanceOf(StoreUnwritableError);
+       |                   ^
+     78|       expect((err as StoreUnwritableError).remedy).toContain("A2A_STAT…
+     79|     }
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/3]⎯
+

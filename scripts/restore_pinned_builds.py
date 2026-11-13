@@ -13,9 +13,10 @@ ROOT = Path(__file__).resolve().parents[1]
 
 def main():
     upstream = ROOT / 'external/mcp-a2a'
-    manifest = json.loads((upstream / 'pinned-build-manifest.json').read_bytes())
+    snapshot = ROOT / 'external/pinned-builds/mcp-a2a'
+    manifest = json.loads((snapshot / 'manifest.json').read_bytes())
     for row in manifest['files']:
-        source = upstream / 'pinned-dist' / row['path']
+        source = snapshot / 'dist' / row['path']
         raw = source.read_bytes()
         if hashlib.sha256(raw).hexdigest() != row['sha256'] or len(raw) != row['bytes']:
             raise ValueError('Pinned upstream build has changed')

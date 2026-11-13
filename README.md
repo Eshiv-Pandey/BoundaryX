@@ -27,9 +27,9 @@ python -m venv .venv
 
 | Material | Status | Scope |
 | --- | --- | --- |
-| 1,920 diagnostics / 6,400 repair interventions | Historical Evidence | Ten authored families, finite four-group repair universe |
-| 480 protocol episodes / 960 read probes | Historical Evidence | Genuine protocols, deterministic receiver, controlled injections |
-| 80 artifact tasks / 20 raw recoveries | Historical Evidence | Unchanged upstream fixture, same-task recovery |
+| 1,920 diagnostics / 6,400 repair interventions | Reproduced / Historical Evidence | Ten authored families, finite four-group repair universe |
+| 480 protocol episodes / 960 read probes | Reproduced / Historical Evidence | Genuine protocols, deterministic receiver, controlled injections |
+| 80 artifact tasks / 20 raw recoveries | Reproduced / Historical Evidence | Unchanged upstream fixture, same-task recovery |
 | Separate SQLite and wire verifier | Completed | No legacy receiver, gold or scoring imports |
 | 24 representative development examples | Pending Human Review / Pending Supervisor Review | All judgments blank |
 | 20 frozen new held-out candidates | Pending Human Review / Pending Supervisor Review | Provisional gold, zero evaluations |

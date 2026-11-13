@@ -1,0 +1,141 @@
+{
+  "schema_version": "boundaryx_validation_v1",
+  "status": "failed",
+  "checks": [
+    {
+      "name": "lint",
+      "command": [
+        ".venv/Scripts/ruff.exe",
+        "check",
+        "."
+      ],
+      "cwd": ".",
+      "started_utc": "2026-11-13T18:31:34.405319+00:00",
+      "completed_utc": "2026-11-13T18:31:36.957779+00:00",
+      "exit_code": 0,
+      "wall_seconds": 2.5524586999963503,
+      "status": "passed"
+    },
+    {
+      "name": "types",
+      "command": [
+        ".venv/Scripts/mypy.exe"
+      ],
+      "cwd": ".",
+      "started_utc": "2026-11-13T18:31:36.959537+00:00",
+      "completed_utc": "2026-11-13T18:31:40.761550+00:00",
+      "exit_code": 0,
+      "wall_seconds": 3.802018299989868,
+      "status": "passed"
+    },
+    {
+      "name": "new-controls",
+      "command": [
+        "python",
+        "-B",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests",
+        "-p",
+        "test_boundaryx*.py",
+        "-v"
+      ],
+      "cwd": ".",
+      "started_utc": "2026-11-13T18:31:40.761620+00:00",
+      "completed_utc": "2026-11-13T18:31:41.159991+00:00",
+      "exit_code": 0,
+      "wall_seconds": 0.3983875999983866,
+      "status": "passed"
+    },
+    {
+      "name": "frozen-heldout",
+      "command": [
+        "python",
+        "-B",
+        "scripts/boundaryx.py",
+        "heldout-status"
+      ],
+      "cwd": ".",
+      "started_utc": "2026-11-13T18:31:41.160100+00:00",
+      "completed_utc": "2026-11-13T18:31:41.313018+00:00",
+      "exit_code": 0,
+      "wall_seconds": 0.15292459999909624,
+      "status": "passed"
+    },
+    {
+      "name": "amir-types",
+      "command": [
+        "node",
+        "node_modules/typescript/bin/tsc",
+        "--noEmit",
+        "-p",
+        "tsconfig.json"
+      ],
+      "cwd": "external/a2a-to-mcp",
+      "started_utc": "2026-11-13T18:31:41.313078+00:00",
+      "completed_utc": "2026-11-13T18:31:42.949805+00:00",
+      "exit_code": 0,
+      "wall_seconds": 1.6367430000100285,
+      "status": "passed"
+    },
+    {
+      "name": "amir-integration",
+      "command": [
+        "node",
+        "node_modules/vitest/vitest.mjs",
+        "run",
+        "test/integration/send-message.test.ts",
+        "test/integration/tasks-extension.test.ts"
+      ],
+      "cwd": "external/a2a-to-mcp",
+      "started_utc": "2026-11-13T18:31:42.949891+00:00",
+      "completed_utc": "2026-11-13T18:31:48.537597+00:00",
+      "exit_code": 0,
+      "wall_seconds": 5.587725000004866,
+      "status": "passed"
+    },
+    {
+      "name": "mgcrea-types",
+      "command": [
+        "node",
+        "node_modules/typescript/bin/tsc",
+        "--noEmit"
+      ],
+      "cwd": "external/mcp-a2a",
+      "started_utc": "2026-11-13T18:31:48.537711+00:00",
+      "completed_utc": "2026-11-13T18:31:50.701238+00:00",
+      "exit_code": 0,
+      "wall_seconds": 2.1635459000099218,
+      "status": "passed"
+    },
+    {
+      "name": "mgcrea-lint",
+      "command": [
+        "node",
+        "node_modules/oxlint/bin/oxlint"
+      ],
+      "cwd": "external/mcp-a2a",
+      "started_utc": "2026-11-13T18:31:50.701383+00:00",
+      "completed_utc": "2026-11-13T18:31:50.982411+00:00",
+      "exit_code": 0,
+      "wall_seconds": 0.28104119999625254,
+      "status": "passed"
+    },
+    {
+      "name": "mgcrea-tests",
+      "command": [
+        "node",
+        "node_modules/vitest/vitest.mjs",
+        "run"
+      ],
+      "cwd": "external/mcp-a2a",
+      "started_utc": "2026-11-13T18:31:50.982490+00:00",
+      "completed_utc": "2026-11-13T18:31:55.861909+00:00",
+      "exit_code": 1,
+      "wall_seconds": 4.879433100009919,
+      "status": "failed"
+    }
+  ]
+}

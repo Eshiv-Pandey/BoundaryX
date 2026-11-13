@@ -1,0 +1,157 @@
+{
+  "schema_version": "loss_handoff_pipeline_v2",
+  "status": "passed",
+  "started_utc": "2026-11-13T17:55:43.106724+00:00",
+  "completed_utc": "2026-11-13T17:58:49.576117+00:00",
+  "python": "3.13.1 (tags/v3.13.1:0671451, Dec  3 2024, 19:06:28) [MSC v.1942 64 bit (AMD64)]",
+  "planned_stages": 7,
+  "executed_stages": 7,
+  "reproduce_local": true,
+  "live_protocol_execution": false,
+  "model_calls": 0,
+  "stages": [
+    {
+      "stage": "streaming-io-controls",
+      "command": [
+        "<python-install>\\python.exe",
+        "-B",
+        "scripts/loss_json_io_v2.py",
+        "--self-test"
+      ],
+      "exit_code": 0,
+      "error": null,
+      "wall_seconds": 0.24014840000018012,
+      "status": "passed",
+      "stdout_sha256": "41b0776e0a9b50eaaca7ab4695eee5947eeec0d9a2fe2cfbf9cdb86a6a186f33",
+      "stderr_sha256": "24214734ea2ecece65de176a3f931d50ad4842729b44a659003985b872c228fb"
+    },
+    {
+      "stage": "recorded-tasks",
+      "command": [
+        "<python-install>\\python.exe",
+        "-B",
+        "scripts/loss_json_io_v2.py",
+        "verify_loss_release_v2.py",
+        "--diagnostics",
+        "<workspace>\\runs\\supervisor-handoff-20261113\\diagnostics-final-001",
+        "--protocol",
+        "<workspace>\\runs\\supervisor-handoff-20261113\\protocol-main-001",
+        "--output",
+        "<workspace>\\results\\development\\historical-regrade-002\\recorded-tasks"
+      ],
+      "exit_code": 0,
+      "error": null,
+      "wall_seconds": 16.365797899998142,
+      "status": "passed",
+      "stdout_sha256": "6c9f002473489a54411571b23210b33015c3d0990c772e1bf918ffc372f0faf0",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "stage": "recorded-artifacts",
+      "command": [
+        "<python-install>\\python.exe",
+        "-B",
+        "scripts/verify_loss_parts_v2.py",
+        "--bundle",
+        "<workspace>\\runs\\supervisor-handoff-20261113\\parts-main-001",
+        "--output",
+        "<workspace>\\results\\development\\historical-regrade-002\\recorded-artifacts"
+      ],
+      "exit_code": 0,
+      "error": null,
+      "wall_seconds": 0.5314954000059515,
+      "status": "passed",
+      "stdout_sha256": "5117d2410173ba5810fcbeabe7cebe91ba085630a3279d3379acde62c906a2a0",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "stage": "software",
+      "command": [
+        "<python-install>\\python.exe",
+        "-B",
+        "scripts/check_loss_software_v2.py",
+        "--output",
+        "<workspace>\\results\\development\\historical-regrade-002\\software"
+      ],
+      "exit_code": 0,
+      "error": null,
+      "wall_seconds": 50.98573860000761,
+      "status": "passed",
+      "stdout_sha256": "e2588c6d7f059dd3d74cb1e9006ec70683685e8b4d20656dbb2081ea5ac8e499",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "stage": "fresh-diagnostics",
+      "command": [
+        "<python-install>\\python.exe",
+        "-B",
+        "scripts/loss_json_io_v2.py",
+        "run_loss_diagnostics_v2.py",
+        "--variants",
+        "16",
+        "--seed",
+        "20261113",
+        "--output",
+        "<workspace>\\results\\development\\historical-regrade-002\\fresh-diagnostics"
+      ],
+      "exit_code": 0,
+      "error": null,
+      "wall_seconds": 70.7341027999937,
+      "status": "passed",
+      "stdout_sha256": "aa7ea0325b5497eb71233e0d438f19bfcb9a05c0d6a3681abee2d8f98d12cf6e",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "stage": "check-fresh-diagnostics",
+      "command": [
+        "<python-install>\\python.exe",
+        "-B",
+        "scripts/loss_json_io_v2.py",
+        "verify_loss_release_v2.py",
+        "--diagnostics",
+        "<workspace>\\results\\development\\historical-regrade-002\\fresh-diagnostics",
+        "--output",
+        "<workspace>\\results\\development\\historical-regrade-002\\check-fresh-diagnostics"
+      ],
+      "exit_code": 0,
+      "error": null,
+      "wall_seconds": 13.71287580000353,
+      "status": "passed",
+      "stdout_sha256": "7307e615fb7a00fe2c460c158fc637c1bb4e60e501305c4d9b1f25441961f855",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "stage": "fresh-admission-replay",
+      "command": [
+        "<python-install>\\python.exe",
+        "-B",
+        "scripts/run_shared_admission_demo_v1.py",
+        "--replay",
+        "--output",
+        "<workspace>\\results\\development\\historical-regrade-002\\fresh-admission-replay"
+      ],
+      "exit_code": 0,
+      "error": null,
+      "wall_seconds": 33.89303859999927,
+      "status": "passed",
+      "stdout_sha256": "ec60a254dbcfce2f464cd64203bc5319cdb319cb32753cb6c27a0d67fdefd0ff",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "io_adapter_sources": [
+    {
+      "path": "scripts/run_loss_handoff_v2.py",
+      "sha256": "9cfcfdc851babb19b375199a742a52c88b4ab0d63df6fea253f9efe21a83a944"
+    },
+    {
+      "path": "scripts/loss_json_io_v2.py",
+      "sha256": "2e01625a546ce109ddd4c0ce5e8b5f984984b984b5e648dcd644e5057400dc3c"
+    },
+    {
+      "path": "tests/test_loss_json_io_v2.py",
+      "sha256": "bf10ad0c033e68daf9b5416212e13c018ae6a25b1c8b2abbd1871e2a420eeebc"
+    }
+  ],
+  "io_adapter_scope": "Only canonical output serialization is streamed; frozen task/gold/receiver/conversion/scoring source is unchanged. Five differential byte/no-overwrite/rejection controls run first.",
+  "scope": "Offline regrading and fresh software controls by default; local finite reproduction only with --reproduce; new real bridge execution only with --live. None constitutes human or held-out review."
+}

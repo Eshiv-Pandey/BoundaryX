@@ -1,0 +1,347 @@
+{
+  "schema_version": "loss_parts_cell_v2",
+  "case_id": "file",
+  "route": "mgcrea_typed",
+  "repetition": 3,
+  "spec": {
+    "id": "file",
+    "command": "file",
+    "expected": {
+      "url": "https://example.invalid/files/report.pdf",
+      "filename": "report.pdf",
+      "mediaType": "application/pdf"
+    },
+    "payload_key": "url",
+    "requirement": "File URI, name and media type; file bytes are not fetched"
+  },
+  "episode_id": "file--r3--mgcrea_typed",
+  "execution_status": "recorded",
+  "required_representation_survived": false,
+  "initial": {
+    "peer": "http://127.0.0.1:55547",
+    "replied_with": "task",
+    "task": {
+      "id": "d79379e1-c5fd-4a6c-a5cc-b4a371051501",
+      "direction": "outbound",
+      "peer": "http://127.0.0.1:55547",
+      "state": "submitted",
+      "updated_at": "2026-11-13T18:01:17.453Z",
+      "context_id": "25d0f2b4-fc96-4a9d-bbfa-f089970fd81e",
+      "summary": "file",
+      "history_length": 1,
+      "artifact_count": 0
+    },
+    "note": "Recorded locally as an outbound task. Read the answer later with a2a_get_task(refresh: true) — the local copy is a mirror and does not update itself."
+  },
+  "receipt": {
+    "id": "d79379e1-c5fd-4a6c-a5cc-b4a371051501",
+    "contextId": "25d0f2b4-fc96-4a9d-bbfa-f089970fd81e"
+  },
+  "final": {
+    "id": "d79379e1-c5fd-4a6c-a5cc-b4a371051501",
+    "direction": "outbound",
+    "peer": "http://127.0.0.1:55547",
+    "state": "completed",
+    "updated_at": "2026-11-13T18:01:17.459Z",
+    "context_id": "25d0f2b4-fc96-4a9d-bbfa-f089970fd81e",
+    "history_length": 0,
+    "artifact_count": 1,
+    "created_at": "2026-11-13T18:01:17.453Z",
+    "history": [],
+    "artifacts": [
+      {
+        "artifact_id": "686b54bd-4d1d-4ed2-af41-f31de2479a72",
+        "name": "file",
+        "text": ""
+      }
+    ]
+  },
+  "observed_artifact_projection": {
+    "artifact_id": "686b54bd-4d1d-4ed2-af41-f31de2479a72",
+    "name": "file",
+    "text": ""
+  },
+  "field_checks": {
+    "url": false,
+    "filename": false,
+    "mediaType": false
+  },
+  "required_payload_survived": false,
+  "recovery": {
+    "eligible": true,
+    "status": "pass",
+    "final_public_task": {
+      "id": "d79379e1-c5fd-4a6c-a5cc-b4a371051501",
+      "contextId": "25d0f2b4-fc96-4a9d-bbfa-f089970fd81e",
+      "status": {
+        "state": "TASK_STATE_COMPLETED",
+        "timestamp": "2026-11-13T18:01:17.453Z"
+      },
+      "artifacts": [
+        {
+          "artifactId": "686b54bd-4d1d-4ed2-af41-f31de2479a72",
+          "name": "file",
+          "parts": [
+            {
+              "url": "https://example.invalid/files/report.pdf",
+              "filename": "report.pdf",
+              "mediaType": "application/pdf"
+            }
+          ]
+        }
+      ]
+    },
+    "observed_artifact": {
+      "url": "https://example.invalid/files/report.pdf",
+      "filename": "report.pdf",
+      "mediaType": "application/pdf"
+    },
+    "field_checks": {
+      "url": true,
+      "filename": true,
+      "mediaType": true
+    },
+    "wall_ms": 3.989600000000337,
+    "wire": [
+      {
+        "role": "mcp_stdio_request",
+        "utc": "2026-11-13T18:01:17.461Z",
+        "request": {
+          "raw": "{\"method\":\"tools/call\",\"params\":{\"name\":\"a2a_request\",\"arguments\":{\"url\":\"http://127.0.0.1:55547\",\"method\":\"GetTask\",\"params\":{\"id\":\"d79379e1-c5fd-4a6c-a5cc-b4a371051501\",\"historyLength\":0}}},\"jsonrpc\":\"2.0\",\"id\":69}",
+          "bytes": 216,
+          "sha256": "938a1a1358c8db4a76624bb51a6b8ecf92c7447a329a21b3aad5fcefe801d1c7"
+        },
+        "response": null
+      },
+      {
+        "role": "recorder_proxy",
+        "method": "POST",
+        "path": "/a2a",
+        "status": 200,
+        "upstream_response_sha256": "d21cab8693943ea8cb55bf8f6a6ac358f8ec6fcf9c9154fa92da490987969bc5",
+        "rpc_response_bytes_unchanged": true,
+        "utc": "2026-11-13T18:01:17.464Z",
+        "request": {
+          "raw": "{\"jsonrpc\":\"2.0\",\"id\":\"rpc-mwfa9ifq-8x9cqvvw\",\"method\":\"GetTask\",\"params\":{\"id\":\"d79379e1-c5fd-4a6c-a5cc-b4a371051501\",\"historyLength\":0}}",
+          "bytes": 138,
+          "sha256": "3407fde8fb8cccb02bdf79c8ac6277f468ced519dc67b16bdcf08eab5e561029"
+        },
+        "response": {
+          "raw": "{\"jsonrpc\":\"2.0\",\"id\":\"rpc-mwfa9ifq-8x9cqvvw\",\"result\":{\"id\":\"d79379e1-c5fd-4a6c-a5cc-b4a371051501\",\"contextId\":\"25d0f2b4-fc96-4a9d-bbfa-f089970fd81e\",\"status\":{\"state\":\"TASK_STATE_COMPLETED\",\"timestamp\":\"2026-11-13T18:01:17.453Z\"},\"artifacts\":[{\"artifactId\":\"686b54bd-4d1d-4ed2-af41-f31de2479a72\",\"name\":\"file\",\"parts\":[{\"url\":\"https://example.invalid/files/report.pdf\",\"filename\":\"report.pdf\",\"mediaType\":\"application/pdf\"}]}]}}",
+          "bytes": 430,
+          "sha256": "d21cab8693943ea8cb55bf8f6a6ac358f8ec6fcf9c9154fa92da490987969bc5"
+        }
+      },
+      {
+        "role": "mcp_stdio_response",
+        "utc": "2026-11-13T18:01:17.465Z",
+        "request": null,
+        "response": {
+          "raw": "{\"jsonrpc\":\"2.0\",\"id\":69,\"result\":{\"content\":[{\"type\":\"text\",\"text\":\"{\\\"jsonrpc\\\":\\\"2.0\\\",\\\"id\\\":\\\"rpc-mwfa9ifq-8x9cqvvw\\\",\\\"result\\\":{\\\"id\\\":\\\"d79379e1-c5fd-4a6c-a5cc-b4a371051501\\\",\\\"contextId\\\":\\\"25d0f2b4-fc96-4a9d-bbfa-f089970fd81e\\\",\\\"status\\\":{\\\"state\\\":\\\"TASK_STATE_COMPLETED\\\",\\\"timestamp\\\":\\\"2026-11-13T18:01:17.453Z\\\"},\\\"artifacts\\\":[{\\\"artifactId\\\":\\\"686b54bd-4d1d-4ed2-af41-f31de2479a72\\\",\\\"name\\\":\\\"file\\\",\\\"parts\\\":[{\\\"url\\\":\\\"https://example.invalid/files/report.pdf\\\",\\\"filename\\\":\\\"report.pdf\\\",\\\"mediaType\\\":\\\"application/pdf\\\"}]}]}}\"}]}}",
+          "bytes": 556,
+          "sha256": "72344ab00d8c476b640d7567b0d9b5dc989c2c7bf2f209aa6b4cc6b698a38753"
+        }
+      }
+    ]
+  },
+  "initial_wire": [
+    {
+      "role": "mcp_stdio_request",
+      "utc": "2026-11-13T18:01:17.450Z",
+      "request": {
+        "raw": "{\"method\":\"tools/call\",\"params\":{\"name\":\"a2a_send_message\",\"arguments\":{\"url\":\"http://127.0.0.1:55547\",\"text\":\"file\"}},\"jsonrpc\":\"2.0\",\"id\":67}",
+        "bytes": 143,
+        "sha256": "70400cf190bca8f2cd75744de4f3413cb75e5b64124871e29c89e685ce144894"
+      },
+      "response": null
+    },
+    {
+      "role": "recorder_proxy",
+      "method": "POST",
+      "path": "/a2a",
+      "status": 200,
+      "upstream_response_sha256": "ba71ae35f02ff3ce282f682715ff49c487f40ad54a4cfc084d3e9410346de367",
+      "rpc_response_bytes_unchanged": true,
+      "utc": "2026-11-13T18:01:17.453Z",
+      "request": {
+        "raw": "{\"jsonrpc\":\"2.0\",\"method\":\"SendMessage\",\"params\":{\"message\":{\"messageId\":\"msg-mwfa9ife-2zgn86dh\",\"role\":\"ROLE_USER\",\"parts\":[{\"text\":\"file\",\"mediaType\":\"text/plain\"}]},\"configuration\":{\"acceptedOutputModes\":[\"text/plain\",\"application/json\"],\"returnImmediately\":true}},\"id\":27}",
+        "bytes": 276,
+        "sha256": "b04c77ed7216b887b7a6c42b1df7a0799f14dd8743f3635eb04857fa56331084"
+      },
+      "response": {
+        "raw": "{\"jsonrpc\":\"2.0\",\"id\":27,\"result\":{\"task\":{\"id\":\"d79379e1-c5fd-4a6c-a5cc-b4a371051501\",\"contextId\":\"25d0f2b4-fc96-4a9d-bbfa-f089970fd81e\",\"status\":{\"state\":\"TASK_STATE_SUBMITTED\",\"timestamp\":\"2026-11-13T18:01:17.453Z\"},\"history\":[{\"messageId\":\"msg-mwfa9ife-2zgn86dh\",\"contextId\":\"25d0f2b4-fc96-4a9d-bbfa-f089970fd81e\",\"taskId\":\"d79379e1-c5fd-4a6c-a5cc-b4a371051501\",\"role\":\"ROLE_USER\",\"parts\":[{\"text\":\"file\",\"mediaType\":\"text/plain\"}]}]}}}",
+        "bytes": 440,
+        "sha256": "ba71ae35f02ff3ce282f682715ff49c487f40ad54a4cfc084d3e9410346de367"
+      }
+    },
+    {
+      "role": "mcp_stdio_response",
+      "utc": "2026-11-13T18:01:17.455Z",
+      "request": null,
+      "response": {
+        "raw": "{\"jsonrpc\":\"2.0\",\"id\":67,\"result\":{\"content\":[{\"type\":\"text\",\"text\":\"{\\\"peer\\\":\\\"http://127.0.0.1:55547\\\",\\\"replied_with\\\":\\\"task\\\",\\\"task\\\":{\\\"id\\\":\\\"d79379e1-c5fd-4a6c-a5cc-b4a371051501\\\",\\\"direction\\\":\\\"outbound\\\",\\\"peer\\\":\\\"http://127.0.0.1:55547\\\",\\\"state\\\":\\\"submitted\\\",\\\"updated_at\\\":\\\"2026-11-13T18:01:17.453Z\\\",\\\"context_id\\\":\\\"25d0f2b4-fc96-4a9d-bbfa-f089970fd81e\\\",\\\"summary\\\":\\\"file\\\",\\\"history_length\\\":1,\\\"artifact_count\\\":0},\\\"note\\\":\\\"Recorded locally as an outbound task. Read the answer later with a2a_get_task(refresh: true) — the local copy is a mirror and does not update itself.\\\"}\"}]}}",
+        "bytes": 611,
+        "sha256": "0a9304a968c17975b7ce74e393de218c2c291d7a2d6bc6fc03e0d3f6fa8d0bbb"
+      }
+    },
+    {
+      "role": "mcp_stdio_request",
+      "utc": "2026-11-13T18:01:17.455Z",
+      "request": {
+        "raw": "{\"method\":\"tools/call\",\"params\":{\"name\":\"a2a_get_task\",\"arguments\":{\"task_id\":\"d79379e1-c5fd-4a6c-a5cc-b4a371051501\",\"refresh\":true,\"history_length\":0}},\"jsonrpc\":\"2.0\",\"id\":68}",
+        "bytes": 177,
+        "sha256": "61c5429bdab0a26e76aa9633239b5a2e2607382879b78d815c33b69b7128728f"
+      },
+      "response": null
+    },
+    {
+      "role": "recorder_proxy",
+      "method": "POST",
+      "path": "/a2a",
+      "status": 200,
+      "upstream_response_sha256": "01ee1664cb7a823e8719776e3161d150377793562ad1799f5fc115037dd9a81c",
+      "rpc_response_bytes_unchanged": true,
+      "utc": "2026-11-13T18:01:17.458Z",
+      "request": {
+        "raw": "{\"jsonrpc\":\"2.0\",\"method\":\"GetTask\",\"params\":{\"id\":\"d79379e1-c5fd-4a6c-a5cc-b4a371051501\",\"historyLength\":0},\"id\":28}",
+        "bytes": 117,
+        "sha256": "ca7a030e908c47594e883ef9dca3d2b021ba0655f431629c52abf448b8b0289e"
+      },
+      "response": {
+        "raw": "{\"jsonrpc\":\"2.0\",\"id\":28,\"result\":{\"id\":\"d79379e1-c5fd-4a6c-a5cc-b4a371051501\",\"contextId\":\"25d0f2b4-fc96-4a9d-bbfa-f089970fd81e\",\"status\":{\"state\":\"TASK_STATE_COMPLETED\",\"timestamp\":\"2026-11-13T18:01:17.453Z\"},\"artifacts\":[{\"artifactId\":\"686b54bd-4d1d-4ed2-af41-f31de2479a72\",\"name\":\"file\",\"parts\":[{\"url\":\"https://example.invalid/files/report.pdf\",\"filename\":\"report.pdf\",\"mediaType\":\"application/pdf\"}]}]}}",
+        "bytes": 409,
+        "sha256": "01ee1664cb7a823e8719776e3161d150377793562ad1799f5fc115037dd9a81c"
+      }
+    },
+    {
+      "role": "mcp_stdio_response",
+      "utc": "2026-11-13T18:01:17.461Z",
+      "request": null,
+      "response": {
+        "raw": "{\"jsonrpc\":\"2.0\",\"id\":68,\"result\":{\"content\":[{\"type\":\"text\",\"text\":\"{\\\"id\\\":\\\"d79379e1-c5fd-4a6c-a5cc-b4a371051501\\\",\\\"direction\\\":\\\"outbound\\\",\\\"peer\\\":\\\"http://127.0.0.1:55547\\\",\\\"state\\\":\\\"completed\\\",\\\"updated_at\\\":\\\"2026-11-13T18:01:17.459Z\\\",\\\"context_id\\\":\\\"25d0f2b4-fc96-4a9d-bbfa-f089970fd81e\\\",\\\"history_length\\\":0,\\\"artifact_count\\\":1,\\\"created_at\\\":\\\"2026-11-13T18:01:17.453Z\\\",\\\"history\\\":[],\\\"artifacts\\\":[{\\\"artifact_id\\\":\\\"686b54bd-4d1d-4ed2-af41-f31de2479a72\\\",\\\"name\\\":\\\"file\\\",\\\"text\\\":\\\"\\\"}]}\"}]}}",
+        "bytes": 518,
+        "sha256": "6a683cea243a86ae0bcd928cc64ec5c1607995dbe86b0fe59f2b9a355fe5f4f4"
+      }
+    }
+  ],
+  "wall_ms": 15.230499999999665,
+  "wire": [
+    {
+      "role": "mcp_stdio_request",
+      "utc": "2026-11-13T18:01:17.450Z",
+      "request": {
+        "raw": "{\"method\":\"tools/call\",\"params\":{\"name\":\"a2a_send_message\",\"arguments\":{\"url\":\"http://127.0.0.1:55547\",\"text\":\"file\"}},\"jsonrpc\":\"2.0\",\"id\":67}",
+        "bytes": 143,
+        "sha256": "70400cf190bca8f2cd75744de4f3413cb75e5b64124871e29c89e685ce144894"
+      },
+      "response": null
+    },
+    {
+      "role": "recorder_proxy",
+      "method": "POST",
+      "path": "/a2a",
+      "status": 200,
+      "upstream_response_sha256": "ba71ae35f02ff3ce282f682715ff49c487f40ad54a4cfc084d3e9410346de367",
+      "rpc_response_bytes_unchanged": true,
+      "utc": "2026-11-13T18:01:17.453Z",
+      "request": {
+        "raw": "{\"jsonrpc\":\"2.0\",\"method\":\"SendMessage\",\"params\":{\"message\":{\"messageId\":\"msg-mwfa9ife-2zgn86dh\",\"role\":\"ROLE_USER\",\"parts\":[{\"text\":\"file\",\"mediaType\":\"text/plain\"}]},\"configuration\":{\"acceptedOutputModes\":[\"text/plain\",\"application/json\"],\"returnImmediately\":true}},\"id\":27}",
+        "bytes": 276,
+        "sha256": "b04c77ed7216b887b7a6c42b1df7a0799f14dd8743f3635eb04857fa56331084"
+      },
+      "response": {
+        "raw": "{\"jsonrpc\":\"2.0\",\"id\":27,\"result\":{\"task\":{\"id\":\"d79379e1-c5fd-4a6c-a5cc-b4a371051501\",\"contextId\":\"25d0f2b4-fc96-4a9d-bbfa-f089970fd81e\",\"status\":{\"state\":\"TASK_STATE_SUBMITTED\",\"timestamp\":\"2026-11-13T18:01:17.453Z\"},\"history\":[{\"messageId\":\"msg-mwfa9ife-2zgn86dh\",\"contextId\":\"25d0f2b4-fc96-4a9d-bbfa-f089970fd81e\",\"taskId\":\"d79379e1-c5fd-4a6c-a5cc-b4a371051501\",\"role\":\"ROLE_USER\",\"parts\":[{\"text\":\"file\",\"mediaType\":\"text/plain\"}]}]}}}",
+        "bytes": 440,
+        "sha256": "ba71ae35f02ff3ce282f682715ff49c487f40ad54a4cfc084d3e9410346de367"
+      }
+    },
+    {
+      "role": "mcp_stdio_response",
+      "utc": "2026-11-13T18:01:17.455Z",
+      "request": null,
+      "response": {
+        "raw": "{\"jsonrpc\":\"2.0\",\"id\":67,\"result\":{\"content\":[{\"type\":\"text\",\"text\":\"{\\\"peer\\\":\\\"http://127.0.0.1:55547\\\",\\\"replied_with\\\":\\\"task\\\",\\\"task\\\":{\\\"id\\\":\\\"d79379e1-c5fd-4a6c-a5cc-b4a371051501\\\",\\\"direction\\\":\\\"outbound\\\",\\\"peer\\\":\\\"http://127.0.0.1:55547\\\",\\\"state\\\":\\\"submitted\\\",\\\"updated_at\\\":\\\"2026-11-13T18:01:17.453Z\\\",\\\"context_id\\\":\\\"25d0f2b4-fc96-4a9d-bbfa-f089970fd81e\\\",\\\"summary\\\":\\\"file\\\",\\\"history_length\\\":1,\\\"artifact_count\\\":0},\\\"note\\\":\\\"Recorded locally as an outbound task. Read the answer later with a2a_get_task(refresh: true) — the local copy is a mirror and does not update itself.\\\"}\"}]}}",
+        "bytes": 611,
+        "sha256": "0a9304a968c17975b7ce74e393de218c2c291d7a2d6bc6fc03e0d3f6fa8d0bbb"
+      }
+    },
+    {
+      "role": "mcp_stdio_request",
+      "utc": "2026-11-13T18:01:17.455Z",
+      "request": {
+        "raw": "{\"method\":\"tools/call\",\"params\":{\"name\":\"a2a_get_task\",\"arguments\":{\"task_id\":\"d79379e1-c5fd-4a6c-a5cc-b4a371051501\",\"refresh\":true,\"history_length\":0}},\"jsonrpc\":\"2.0\",\"id\":68}",
+        "bytes": 177,
+        "sha256": "61c5429bdab0a26e76aa9633239b5a2e2607382879b78d815c33b69b7128728f"
+      },
+      "response": null
+    },
+    {
+      "role": "recorder_proxy",
+      "method": "POST",
+      "path": "/a2a",
+      "status": 200,
+      "upstream_response_sha256": "01ee1664cb7a823e8719776e3161d150377793562ad1799f5fc115037dd9a81c",
+      "rpc_response_bytes_unchanged": true,
+      "utc": "2026-11-13T18:01:17.458Z",
+      "request": {
+        "raw": "{\"jsonrpc\":\"2.0\",\"method\":\"GetTask\",\"params\":{\"id\":\"d79379e1-c5fd-4a6c-a5cc-b4a371051501\",\"historyLength\":0},\"id\":28}",
+        "bytes": 117,
+        "sha256": "ca7a030e908c47594e883ef9dca3d2b021ba0655f431629c52abf448b8b0289e"
+      },
+      "response": {
+        "raw": "{\"jsonrpc\":\"2.0\",\"id\":28,\"result\":{\"id\":\"d79379e1-c5fd-4a6c-a5cc-b4a371051501\",\"contextId\":\"25d0f2b4-fc96-4a9d-bbfa-f089970fd81e\",\"status\":{\"state\":\"TASK_STATE_COMPLETED\",\"timestamp\":\"2026-11-13T18:01:17.453Z\"},\"artifacts\":[{\"artifactId\":\"686b54bd-4d1d-4ed2-af41-f31de2479a72\",\"name\":\"file\",\"parts\":[{\"url\":\"https://example.invalid/files/report.pdf\",\"filename\":\"report.pdf\",\"mediaType\":\"application/pdf\"}]}]}}",
+        "bytes": 409,
+        "sha256": "01ee1664cb7a823e8719776e3161d150377793562ad1799f5fc115037dd9a81c"
+      }
+    },
+    {
+      "role": "mcp_stdio_response",
+      "utc": "2026-11-13T18:01:17.461Z",
+      "request": null,
+      "response": {
+        "raw": "{\"jsonrpc\":\"2.0\",\"id\":68,\"result\":{\"content\":[{\"type\":\"text\",\"text\":\"{\\\"id\\\":\\\"d79379e1-c5fd-4a6c-a5cc-b4a371051501\\\",\\\"direction\\\":\\\"outbound\\\",\\\"peer\\\":\\\"http://127.0.0.1:55547\\\",\\\"state\\\":\\\"completed\\\",\\\"updated_at\\\":\\\"2026-11-13T18:01:17.459Z\\\",\\\"context_id\\\":\\\"25d0f2b4-fc96-4a9d-bbfa-f089970fd81e\\\",\\\"history_length\\\":0,\\\"artifact_count\\\":1,\\\"created_at\\\":\\\"2026-11-13T18:01:17.453Z\\\",\\\"history\\\":[],\\\"artifacts\\\":[{\\\"artifact_id\\\":\\\"686b54bd-4d1d-4ed2-af41-f31de2479a72\\\",\\\"name\\\":\\\"file\\\",\\\"text\\\":\\\"\\\"}]}\"}]}}",
+        "bytes": 518,
+        "sha256": "6a683cea243a86ae0bcd928cc64ec5c1607995dbe86b0fe59f2b9a355fe5f4f4"
+      }
+    },
+    {
+      "role": "mcp_stdio_request",
+      "utc": "2026-11-13T18:01:17.461Z",
+      "request": {
+        "raw": "{\"method\":\"tools/call\",\"params\":{\"name\":\"a2a_request\",\"arguments\":{\"url\":\"http://127.0.0.1:55547\",\"method\":\"GetTask\",\"params\":{\"id\":\"d79379e1-c5fd-4a6c-a5cc-b4a371051501\",\"historyLength\":0}}},\"jsonrpc\":\"2.0\",\"id\":69}",
+        "bytes": 216,
+        "sha256": "938a1a1358c8db4a76624bb51a6b8ecf92c7447a329a21b3aad5fcefe801d1c7"
+      },
+      "response": null
+    },
+    {
+      "role": "recorder_proxy",
+      "method": "POST",
+      "path": "/a2a",
+      "status": 200,
+      "upstream_response_sha256": "d21cab8693943ea8cb55bf8f6a6ac358f8ec6fcf9c9154fa92da490987969bc5",
+      "rpc_response_bytes_unchanged": true,
+      "utc": "2026-11-13T18:01:17.464Z",
+      "request": {
+        "raw": "{\"jsonrpc\":\"2.0\",\"id\":\"rpc-mwfa9ifq-8x9cqvvw\",\"method\":\"GetTask\",\"params\":{\"id\":\"d79379e1-c5fd-4a6c-a5cc-b4a371051501\",\"historyLength\":0}}",
+        "bytes": 138,
+        "sha256": "3407fde8fb8cccb02bdf79c8ac6277f468ced519dc67b16bdcf08eab5e561029"
+      },
+      "response": {
+        "raw": "{\"jsonrpc\":\"2.0\",\"id\":\"rpc-mwfa9ifq-8x9cqvvw\",\"result\":{\"id\":\"d79379e1-c5fd-4a6c-a5cc-b4a371051501\",\"contextId\":\"25d0f2b4-fc96-4a9d-bbfa-f089970fd81e\",\"status\":{\"state\":\"TASK_STATE_COMPLETED\",\"timestamp\":\"2026-11-13T18:01:17.453Z\"},\"artifacts\":[{\"artifactId\":\"686b54bd-4d1d-4ed2-af41-f31de2479a72\",\"name\":\"file\",\"parts\":[{\"url\":\"https://example.invalid/files/report.pdf\",\"filename\":\"report.pdf\",\"mediaType\":\"application/pdf\"}]}]}}",
+        "bytes": 430,
+        "sha256": "d21cab8693943ea8cb55bf8f6a6ac358f8ec6fcf9c9154fa92da490987969bc5"
+      }
+    },
+    {
+      "role": "mcp_stdio_response",
+      "utc": "2026-11-13T18:01:17.465Z",
+      "request": null,
+      "response": {
+        "raw": "{\"jsonrpc\":\"2.0\",\"id\":69,\"result\":{\"content\":[{\"type\":\"text\",\"text\":\"{\\\"jsonrpc\\\":\\\"2.0\\\",\\\"id\\\":\\\"rpc-mwfa9ifq-8x9cqvvw\\\",\\\"result\\\":{\\\"id\\\":\\\"d79379e1-c5fd-4a6c-a5cc-b4a371051501\\\",\\\"contextId\\\":\\\"25d0f2b4-fc96-4a9d-bbfa-f089970fd81e\\\",\\\"status\\\":{\\\"state\\\":\\\"TASK_STATE_COMPLETED\\\",\\\"timestamp\\\":\\\"2026-11-13T18:01:17.453Z\\\"},\\\"artifacts\\\":[{\\\"artifactId\\\":\\\"686b54bd-4d1d-4ed2-af41-f31de2479a72\\\",\\\"name\\\":\\\"file\\\",\\\"parts\\\":[{\\\"url\\\":\\\"https://example.invalid/files/report.pdf\\\",\\\"filename\\\":\\\"report.pdf\\\",\\\"mediaType\\\":\\\"application/pdf\\\"}]}]}}\"}]}}",
+        "bytes": 556,
+        "sha256": "72344ab00d8c476b640d7567b0d9b5dc989c2c7bf2f209aa6b4cc6b698a38753"
+      }
+    }
+  ]
+}

@@ -12,7 +12,7 @@ Frozen task/gold proposal, source, sent, received, receiver output and raw publi
 src/boundaryx/{core,protocols,adapters,tasks,execution,verification,metrics,recovery,reporting}
 src/interoperability/            historical API and finite-core compatibility
 benchmarks/development/          review package
-benchmarks/heldout/v1/           frozen new proposals, review/evaluation pending
+benchmarks/heldout/v2/           frozen new proposals, review/evaluation pending
 benchmarks/schemas/              task contract schemas
 benchmark/ and runs/             selected historical definitions/evidence
 results/development/             new execution and verification

@@ -315,8 +315,11 @@ def report(output: Path, *, diagnostics: Path | None = None, protocol: Path | No
         if path is not None:
             reports.append(verifier(path))
     require(bool(reports), "No evidence selected")
+    package = Path(__file__).resolve().parents[1]
+    paths = ["verification/independent.py", "verification/semantic.py", "core/evidence.py", "protocols/a2a/evidence.py"]
     result = {"schema_version": "boundaryx_independent_verification_v1", "status": "Completed",
               "timestamp_utc": datetime.now(timezone.utc).isoformat(), "reports": reports,
+              "verifier_sources": [{"path": "src/boundaryx/" + p, "sha256": digest((package / p).read_bytes())} for p in paths],
               "independence": "SQLite task oracle and separate evidence checks; no legacy receiver/gold/scoring functions",
               "limits": ["Shared task definitions, standard JSON/SQLite infrastructure and captured observations",
                          "No authenticated source provenance or independent human scientific review",

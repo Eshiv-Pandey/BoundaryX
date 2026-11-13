@@ -1,0 +1,180 @@
+{
+  "runtime_manifest": {
+    "schema_version": "recipe-continuation/1",
+    "id": "atomic-public-binding-updates",
+    "model": {
+      "schema_version": "finite-continuation/1",
+      "id": "atomic-public-binding-updates-graph",
+      "route": "Authored finite public-recipe development model; not a qualified protocol route",
+      "provenance": {
+        "kind": "authored-development",
+        "source": "tests/test_refinement.py",
+        "review_status": "AI-authored semantic development; human review pending"
+      },
+      "horizon": 2,
+      "evidence": {
+        "complete": true,
+        "observed_at": 0,
+        "valid_until": 4102444800
+      },
+      "initial": "start",
+      "states": {
+        "start": {
+          "safe": true,
+          "done": false
+        },
+        "end": {
+          "safe": true,
+          "done": true
+        },
+        "ready": {
+          "safe": true,
+          "done": false
+        }
+      },
+      "transitions": [
+        {
+          "id": "update",
+          "source": "start",
+          "target": "ready",
+          "operation": "public_update"
+        },
+        {
+          "id": "finish",
+          "source": "ready",
+          "target": "end",
+          "operation": "finish"
+        }
+      ],
+      "runtime_contract": {
+        "goal": [
+          {
+            "field": "done",
+            "op": "eq",
+            "value": true
+          }
+        ],
+        "invariants": [
+          {
+            "field": "safe",
+            "op": "eq",
+            "value": true
+          }
+        ]
+      }
+    },
+    "initial_bindings": {
+      "x": "A",
+      "y": "unused"
+    },
+    "relations": {
+      "update": {
+        "source_ref": "Authored finite development relation; source validity is not asserted",
+        "arguments": {},
+        "emit": {
+          "object": {}
+        },
+        "guards": [],
+        "updates": {
+          "x": {
+            "const": "B"
+          },
+          "y": {
+            "binding": "x"
+          }
+        }
+      },
+      "finish": {
+        "source_ref": "Authored finite development relation; source validity is not asserted",
+        "arguments": {},
+        "emit": {
+          "object": {}
+        },
+        "guards": [
+          {
+            "op": "eq",
+            "left": {
+              "binding": "x"
+            },
+            "right": {
+              "const": "B"
+            }
+          },
+          {
+            "op": "eq",
+            "left": {
+              "binding": "y"
+            },
+            "right": {
+              "const": "A"
+            }
+          }
+        ],
+        "updates": {}
+      }
+    },
+    "coverage": {
+      "complete": true,
+      "scope": "Only the declared finite graph, literal/binding recipe choices and supplied relations; no whole-interface closure claim"
+    }
+  },
+  "now": 100,
+  "kind": "certificate",
+  "module": "interoperability.direct_goal_pruned_v2",
+  "entrypoint": "check_certificate",
+  "result": {
+    "decision": "supported",
+    "reason": "concrete_recipe_path",
+    "certificate": {
+      "profile_sha256": "f0bef56d3695b79d58903bdaf16d305ebd676170fd90f6eac971e3872f437623",
+      "checked_at": 100,
+      "horizon": 2,
+      "valid_until": 4102444800,
+      "kind": "recipe-path",
+      "transition_ids": [
+        "update",
+        "finish"
+      ],
+      "steps": [
+        {
+          "args": {},
+          "request": {},
+          "bindings_before": {
+            "x": "A",
+            "y": "unused"
+          },
+          "bindings_after": {
+            "x": "B",
+            "y": "A"
+          },
+          "edge": "update"
+        },
+        {
+          "args": {},
+          "request": {},
+          "bindings_before": {
+            "x": "B",
+            "y": "A"
+          },
+          "bindings_after": {
+            "x": "B",
+            "y": "A"
+          },
+          "edge": "finish"
+        }
+      ]
+    },
+    "stats": {
+      "work_units": 28,
+      "budget": 100000,
+      "state_expansions": 8,
+      "graph_edges": 10,
+      "argument_assignments": 2,
+      "expression_evaluations": 8,
+      "product_states": 2,
+      "cached_relation_outcomes": 0,
+      "certificate_checks": 0
+    }
+  },
+  "reply_path": "<workspace>\\results\\development\\reproduction-001\\fresh-admission-replay\\benchmark\\jobs\\case-0008-baseline-certificate\\reply.json"
+}

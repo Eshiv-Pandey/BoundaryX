@@ -1,0 +1,255 @@
+{
+  "schema_version": "loss_parts_cell_v2",
+  "case_id": "file",
+  "route": "mgcrea_raw",
+  "repetition": 4,
+  "spec": {
+    "id": "file",
+    "command": "file",
+    "expected": {
+      "url": "https://example.invalid/files/report.pdf",
+      "filename": "report.pdf",
+      "mediaType": "application/pdf"
+    },
+    "payload_key": "url",
+    "requirement": "File URI, name and media type; file bytes are not fetched"
+  },
+  "episode_id": "file--r4--mgcrea_raw",
+  "execution_status": "recorded",
+  "required_representation_survived": true,
+  "initial": {
+    "id": "dc0b5e97-6bfd-4134-95fe-51dcee58a6f2",
+    "contextId": "5173a8d9-6200-4066-b808-a21f053e5874",
+    "status": {
+      "state": "TASK_STATE_COMPLETED",
+      "timestamp": "2026-11-13T18:01:17.512Z"
+    },
+    "artifacts": [
+      {
+        "artifactId": "4a8dbcf1-2aca-4ee4-b540-03b402315143",
+        "name": "file",
+        "parts": [
+          {
+            "url": "https://example.invalid/files/report.pdf",
+            "filename": "report.pdf",
+            "mediaType": "application/pdf"
+          }
+        ]
+      }
+    ],
+    "history": [
+      {
+        "messageId": "a2b66eaa-03d7-4c24-ac4d-ae78adb178a2",
+        "contextId": "5173a8d9-6200-4066-b808-a21f053e5874",
+        "taskId": "dc0b5e97-6bfd-4134-95fe-51dcee58a6f2",
+        "role": "ROLE_USER",
+        "parts": [
+          {
+            "text": "file"
+          }
+        ]
+      }
+    ]
+  },
+  "receipt": {
+    "id": "dc0b5e97-6bfd-4134-95fe-51dcee58a6f2",
+    "contextId": "5173a8d9-6200-4066-b808-a21f053e5874"
+  },
+  "final": {
+    "id": "dc0b5e97-6bfd-4134-95fe-51dcee58a6f2",
+    "contextId": "5173a8d9-6200-4066-b808-a21f053e5874",
+    "status": {
+      "state": "TASK_STATE_COMPLETED",
+      "timestamp": "2026-11-13T18:01:17.512Z"
+    },
+    "artifacts": [
+      {
+        "artifactId": "4a8dbcf1-2aca-4ee4-b540-03b402315143",
+        "name": "file",
+        "parts": [
+          {
+            "url": "https://example.invalid/files/report.pdf",
+            "filename": "report.pdf",
+            "mediaType": "application/pdf"
+          }
+        ]
+      }
+    ]
+  },
+  "observed_artifact_projection": {
+    "url": "https://example.invalid/files/report.pdf",
+    "filename": "report.pdf",
+    "mediaType": "application/pdf"
+  },
+  "field_checks": {
+    "url": true,
+    "filename": true,
+    "mediaType": true
+  },
+  "required_payload_survived": true,
+  "recovery": {
+    "eligible": false,
+    "status": "not_applicable"
+  },
+  "initial_wire": [
+    {
+      "role": "mcp_stdio_request",
+      "utc": "2026-11-13T18:01:17.510Z",
+      "request": {
+        "raw": "{\"method\":\"tools/call\",\"params\":{\"name\":\"a2a_request\",\"arguments\":{\"url\":\"http://127.0.0.1:55547\",\"method\":\"SendMessage\",\"params\":{\"message\":{\"role\":\"ROLE_USER\",\"messageId\":\"a2b66eaa-03d7-4c24-ac4d-ae78adb178a2\",\"parts\":[{\"text\":\"file\"}]}}}},\"jsonrpc\":\"2.0\",\"id\":75}",
+        "bytes": 266,
+        "sha256": "f3957334f14ab73942aa6a815877c25f1cf235b6acc290114f389052a292c2f4"
+      },
+      "response": null
+    },
+    {
+      "role": "recorder_proxy",
+      "method": "POST",
+      "path": "/a2a",
+      "status": 200,
+      "upstream_response_sha256": "7c8024397f053d7a0b12ef2de4a8fb5e4fff28f0043e6e77b6c9ebd3b810215d",
+      "rpc_response_bytes_unchanged": true,
+      "utc": "2026-11-13T18:01:17.513Z",
+      "request": {
+        "raw": "{\"jsonrpc\":\"2.0\",\"id\":\"rpc-mwfa9ih2-t0yd7gt7\",\"method\":\"SendMessage\",\"params\":{\"message\":{\"role\":\"ROLE_USER\",\"messageId\":\"a2b66eaa-03d7-4c24-ac4d-ae78adb178a2\",\"parts\":[{\"text\":\"file\"}]}}}",
+        "bytes": 188,
+        "sha256": "c980dd2e2813a6adc66f77d9aee7e2d7a5c5d6355774f9a9f8a1f2c5239439c8"
+      },
+      "response": {
+        "raw": "{\"jsonrpc\":\"2.0\",\"id\":\"rpc-mwfa9ih2-t0yd7gt7\",\"result\":{\"task\":{\"id\":\"dc0b5e97-6bfd-4134-95fe-51dcee58a6f2\",\"contextId\":\"5173a8d9-6200-4066-b808-a21f053e5874\",\"status\":{\"state\":\"TASK_STATE_COMPLETED\",\"timestamp\":\"2026-11-13T18:01:17.512Z\"},\"artifacts\":[{\"artifactId\":\"4a8dbcf1-2aca-4ee4-b540-03b402315143\",\"name\":\"file\",\"parts\":[{\"url\":\"https://example.invalid/files/report.pdf\",\"filename\":\"report.pdf\",\"mediaType\":\"application/pdf\"}]}],\"history\":[{\"messageId\":\"a2b66eaa-03d7-4c24-ac4d-ae78adb178a2\",\"contextId\":\"5173a8d9-6200-4066-b808-a21f053e5874\",\"taskId\":\"dc0b5e97-6bfd-4134-95fe-51dcee58a6f2\",\"role\":\"ROLE_USER\",\"parts\":[{\"text\":\"file\"}]}]}}}",
+        "bytes": 648,
+        "sha256": "7c8024397f053d7a0b12ef2de4a8fb5e4fff28f0043e6e77b6c9ebd3b810215d"
+      }
+    },
+    {
+      "role": "mcp_stdio_response",
+      "utc": "2026-11-13T18:01:17.513Z",
+      "request": null,
+      "response": {
+        "raw": "{\"jsonrpc\":\"2.0\",\"id\":75,\"result\":{\"content\":[{\"type\":\"text\",\"text\":\"{\\\"jsonrpc\\\":\\\"2.0\\\",\\\"id\\\":\\\"rpc-mwfa9ih2-t0yd7gt7\\\",\\\"result\\\":{\\\"task\\\":{\\\"id\\\":\\\"dc0b5e97-6bfd-4134-95fe-51dcee58a6f2\\\",\\\"contextId\\\":\\\"5173a8d9-6200-4066-b808-a21f053e5874\\\",\\\"status\\\":{\\\"state\\\":\\\"TASK_STATE_COMPLETED\\\",\\\"timestamp\\\":\\\"2026-11-13T18:01:17.512Z\\\"},\\\"artifacts\\\":[{\\\"artifactId\\\":\\\"4a8dbcf1-2aca-4ee4-b540-03b402315143\\\",\\\"name\\\":\\\"file\\\",\\\"parts\\\":[{\\\"url\\\":\\\"https://example.invalid/files/report.pdf\\\",\\\"filename\\\":\\\"report.pdf\\\",\\\"mediaType\\\":\\\"application/pdf\\\"}]}],\\\"history\\\":[{\\\"messageId\\\":\\\"a2b66eaa-03d7-4c24-ac4d-ae78adb178a2\\\",\\\"contextId\\\":\\\"5173a8d9-6200-4066-b808-a21f053e5874\\\",\\\"taskId\\\":\\\"dc0b5e97-6bfd-4134-95fe-51dcee58a6f2\\\",\\\"role\\\":\\\"ROLE_USER\\\",\\\"parts\\\":[{\\\"text\\\":\\\"file\\\"}]}]}}}\"}]}}",
+        "bytes": 800,
+        "sha256": "0faaf998b9a13c44d27ff149e3d7570ac04c43e35240c9b659ddf92ea532bc4c"
+      }
+    },
+    {
+      "role": "mcp_stdio_request",
+      "utc": "2026-11-13T18:01:17.514Z",
+      "request": {
+        "raw": "{\"method\":\"tools/call\",\"params\":{\"name\":\"a2a_request\",\"arguments\":{\"url\":\"http://127.0.0.1:55547\",\"method\":\"GetTask\",\"params\":{\"id\":\"dc0b5e97-6bfd-4134-95fe-51dcee58a6f2\",\"historyLength\":0}}},\"jsonrpc\":\"2.0\",\"id\":76}",
+        "bytes": 216,
+        "sha256": "567a3403d4fe7bc8c8ac1a8a93c264eae37d1c2b277e56ba4277de67e7f8ed26"
+      },
+      "response": null
+    },
+    {
+      "role": "recorder_proxy",
+      "method": "POST",
+      "path": "/a2a",
+      "status": 200,
+      "upstream_response_sha256": "a3cd133e76d0ef1fbf8db80bcee986278eaf8013e6f97afd7f652ddf34fb2700",
+      "rpc_response_bytes_unchanged": true,
+      "utc": "2026-11-13T18:01:17.516Z",
+      "request": {
+        "raw": "{\"jsonrpc\":\"2.0\",\"id\":\"rpc-mwfa9ih6-c6o3k6ax\",\"method\":\"GetTask\",\"params\":{\"id\":\"dc0b5e97-6bfd-4134-95fe-51dcee58a6f2\",\"historyLength\":0}}",
+        "bytes": 138,
+        "sha256": "50272400c80fa560940a91a674d708f64f2ec15c581e0ae36e47560fe0f8cb05"
+      },
+      "response": {
+        "raw": "{\"jsonrpc\":\"2.0\",\"id\":\"rpc-mwfa9ih6-c6o3k6ax\",\"result\":{\"id\":\"dc0b5e97-6bfd-4134-95fe-51dcee58a6f2\",\"contextId\":\"5173a8d9-6200-4066-b808-a21f053e5874\",\"status\":{\"state\":\"TASK_STATE_COMPLETED\",\"timestamp\":\"2026-11-13T18:01:17.512Z\"},\"artifacts\":[{\"artifactId\":\"4a8dbcf1-2aca-4ee4-b540-03b402315143\",\"name\":\"file\",\"parts\":[{\"url\":\"https://example.invalid/files/report.pdf\",\"filename\":\"report.pdf\",\"mediaType\":\"application/pdf\"}]}]}}",
+        "bytes": 430,
+        "sha256": "a3cd133e76d0ef1fbf8db80bcee986278eaf8013e6f97afd7f652ddf34fb2700"
+      }
+    },
+    {
+      "role": "mcp_stdio_response",
+      "utc": "2026-11-13T18:01:17.517Z",
+      "request": null,
+      "response": {
+        "raw": "{\"jsonrpc\":\"2.0\",\"id\":76,\"result\":{\"content\":[{\"type\":\"text\",\"text\":\"{\\\"jsonrpc\\\":\\\"2.0\\\",\\\"id\\\":\\\"rpc-mwfa9ih6-c6o3k6ax\\\",\\\"result\\\":{\\\"id\\\":\\\"dc0b5e97-6bfd-4134-95fe-51dcee58a6f2\\\",\\\"contextId\\\":\\\"5173a8d9-6200-4066-b808-a21f053e5874\\\",\\\"status\\\":{\\\"state\\\":\\\"TASK_STATE_COMPLETED\\\",\\\"timestamp\\\":\\\"2026-11-13T18:01:17.512Z\\\"},\\\"artifacts\\\":[{\\\"artifactId\\\":\\\"4a8dbcf1-2aca-4ee4-b540-03b402315143\\\",\\\"name\\\":\\\"file\\\",\\\"parts\\\":[{\\\"url\\\":\\\"https://example.invalid/files/report.pdf\\\",\\\"filename\\\":\\\"report.pdf\\\",\\\"mediaType\\\":\\\"application/pdf\\\"}]}]}}\"}]}}",
+        "bytes": 556,
+        "sha256": "09f7f1b2f43c4f37a3d3c01f2b5ca1e4184799d1337704d104f47fe041ecf1af"
+      }
+    }
+  ],
+  "wall_ms": 7.6346999999996115,
+  "wire": [
+    {
+      "role": "mcp_stdio_request",
+      "utc": "2026-11-13T18:01:17.510Z",
+      "request": {
+        "raw": "{\"method\":\"tools/call\",\"params\":{\"name\":\"a2a_request\",\"arguments\":{\"url\":\"http://127.0.0.1:55547\",\"method\":\"SendMessage\",\"params\":{\"message\":{\"role\":\"ROLE_USER\",\"messageId\":\"a2b66eaa-03d7-4c24-ac4d-ae78adb178a2\",\"parts\":[{\"text\":\"file\"}]}}}},\"jsonrpc\":\"2.0\",\"id\":75}",
+        "bytes": 266,
+        "sha256": "f3957334f14ab73942aa6a815877c25f1cf235b6acc290114f389052a292c2f4"
+      },
+      "response": null
+    },
+    {
+      "role": "recorder_proxy",
+      "method": "POST",
+      "path": "/a2a",
+      "status": 200,
+      "upstream_response_sha256": "7c8024397f053d7a0b12ef2de4a8fb5e4fff28f0043e6e77b6c9ebd3b810215d",
+      "rpc_response_bytes_unchanged": true,
+      "utc": "2026-11-13T18:01:17.513Z",
+      "request": {
+        "raw": "{\"jsonrpc\":\"2.0\",\"id\":\"rpc-mwfa9ih2-t0yd7gt7\",\"method\":\"SendMessage\",\"params\":{\"message\":{\"role\":\"ROLE_USER\",\"messageId\":\"a2b66eaa-03d7-4c24-ac4d-ae78adb178a2\",\"parts\":[{\"text\":\"file\"}]}}}",
+        "bytes": 188,
+        "sha256": "c980dd2e2813a6adc66f77d9aee7e2d7a5c5d6355774f9a9f8a1f2c5239439c8"
+      },
+      "response": {
+        "raw": "{\"jsonrpc\":\"2.0\",\"id\":\"rpc-mwfa9ih2-t0yd7gt7\",\"result\":{\"task\":{\"id\":\"dc0b5e97-6bfd-4134-95fe-51dcee58a6f2\",\"contextId\":\"5173a8d9-6200-4066-b808-a21f053e5874\",\"status\":{\"state\":\"TASK_STATE_COMPLETED\",\"timestamp\":\"2026-11-13T18:01:17.512Z\"},\"artifacts\":[{\"artifactId\":\"4a8dbcf1-2aca-4ee4-b540-03b402315143\",\"name\":\"file\",\"parts\":[{\"url\":\"https://example.invalid/files/report.pdf\",\"filename\":\"report.pdf\",\"mediaType\":\"application/pdf\"}]}],\"history\":[{\"messageId\":\"a2b66eaa-03d7-4c24-ac4d-ae78adb178a2\",\"contextId\":\"5173a8d9-6200-4066-b808-a21f053e5874\",\"taskId\":\"dc0b5e97-6bfd-4134-95fe-51dcee58a6f2\",\"role\":\"ROLE_USER\",\"parts\":[{\"text\":\"file\"}]}]}}}",
+        "bytes": 648,
+        "sha256": "7c8024397f053d7a0b12ef2de4a8fb5e4fff28f0043e6e77b6c9ebd3b810215d"
+      }
+    },
+    {
+      "role": "mcp_stdio_response",
+      "utc": "2026-11-13T18:01:17.513Z",
+      "request": null,
+      "response": {
+        "raw": "{\"jsonrpc\":\"2.0\",\"id\":75,\"result\":{\"content\":[{\"type\":\"text\",\"text\":\"{\\\"jsonrpc\\\":\\\"2.0\\\",\\\"id\\\":\\\"rpc-mwfa9ih2-t0yd7gt7\\\",\\\"result\\\":{\\\"task\\\":{\\\"id\\\":\\\"dc0b5e97-6bfd-4134-95fe-51dcee58a6f2\\\",\\\"contextId\\\":\\\"5173a8d9-6200-4066-b808-a21f053e5874\\\",\\\"status\\\":{\\\"state\\\":\\\"TASK_STATE_COMPLETED\\\",\\\"timestamp\\\":\\\"2026-11-13T18:01:17.512Z\\\"},\\\"artifacts\\\":[{\\\"artifactId\\\":\\\"4a8dbcf1-2aca-4ee4-b540-03b402315143\\\",\\\"name\\\":\\\"file\\\",\\\"parts\\\":[{\\\"url\\\":\\\"https://example.invalid/files/report.pdf\\\",\\\"filename\\\":\\\"report.pdf\\\",\\\"mediaType\\\":\\\"application/pdf\\\"}]}],\\\"history\\\":[{\\\"messageId\\\":\\\"a2b66eaa-03d7-4c24-ac4d-ae78adb178a2\\\",\\\"contextId\\\":\\\"5173a8d9-6200-4066-b808-a21f053e5874\\\",\\\"taskId\\\":\\\"dc0b5e97-6bfd-4134-95fe-51dcee58a6f2\\\",\\\"role\\\":\\\"ROLE_USER\\\",\\\"parts\\\":[{\\\"text\\\":\\\"file\\\"}]}]}}}\"}]}}",
+        "bytes": 800,
+        "sha256": "0faaf998b9a13c44d27ff149e3d7570ac04c43e35240c9b659ddf92ea532bc4c"
+      }
+    },
+    {
+      "role": "mcp_stdio_request",
+      "utc": "2026-11-13T18:01:17.514Z",
+      "request": {
+        "raw": "{\"method\":\"tools/call\",\"params\":{\"name\":\"a2a_request\",\"arguments\":{\"url\":\"http://127.0.0.1:55547\",\"method\":\"GetTask\",\"params\":{\"id\":\"dc0b5e97-6bfd-4134-95fe-51dcee58a6f2\",\"historyLength\":0}}},\"jsonrpc\":\"2.0\",\"id\":76}",
+        "bytes": 216,
+        "sha256": "567a3403d4fe7bc8c8ac1a8a93c264eae37d1c2b277e56ba4277de67e7f8ed26"
+      },
+      "response": null
+    },
+    {
+      "role": "recorder_proxy",
+      "method": "POST",
+      "path": "/a2a",
+      "status": 200,
+      "upstream_response_sha256": "a3cd133e76d0ef1fbf8db80bcee986278eaf8013e6f97afd7f652ddf34fb2700",
+      "rpc_response_bytes_unchanged": true,
+      "utc": "2026-11-13T18:01:17.516Z",
+      "request": {
+        "raw": "{\"jsonrpc\":\"2.0\",\"id\":\"rpc-mwfa9ih6-c6o3k6ax\",\"method\":\"GetTask\",\"params\":{\"id\":\"dc0b5e97-6bfd-4134-95fe-51dcee58a6f2\",\"historyLength\":0}}",
+        "bytes": 138,
+        "sha256": "50272400c80fa560940a91a674d708f64f2ec15c581e0ae36e47560fe0f8cb05"
+      },
+      "response": {
+        "raw": "{\"jsonrpc\":\"2.0\",\"id\":\"rpc-mwfa9ih6-c6o3k6ax\",\"result\":{\"id\":\"dc0b5e97-6bfd-4134-95fe-51dcee58a6f2\",\"contextId\":\"5173a8d9-6200-4066-b808-a21f053e5874\",\"status\":{\"state\":\"TASK_STATE_COMPLETED\",\"timestamp\":\"2026-11-13T18:01:17.512Z\"},\"artifacts\":[{\"artifactId\":\"4a8dbcf1-2aca-4ee4-b540-03b402315143\",\"name\":\"file\",\"parts\":[{\"url\":\"https://example.invalid/files/report.pdf\",\"filename\":\"report.pdf\",\"mediaType\":\"application/pdf\"}]}]}}",
+        "bytes": 430,
+        "sha256": "a3cd133e76d0ef1fbf8db80bcee986278eaf8013e6f97afd7f652ddf34fb2700"
+      }
+    },
+    {
+      "role": "mcp_stdio_response",
+      "utc": "2026-11-13T18:01:17.517Z",
+      "request": null,
+      "response": {
+        "raw": "{\"jsonrpc\":\"2.0\",\"id\":76,\"result\":{\"content\":[{\"type\":\"text\",\"text\":\"{\\\"jsonrpc\\\":\\\"2.0\\\",\\\"id\\\":\\\"rpc-mwfa9ih6-c6o3k6ax\\\",\\\"result\\\":{\\\"id\\\":\\\"dc0b5e97-6bfd-4134-95fe-51dcee58a6f2\\\",\\\"contextId\\\":\\\"5173a8d9-6200-4066-b808-a21f053e5874\\\",\\\"status\\\":{\\\"state\\\":\\\"TASK_STATE_COMPLETED\\\",\\\"timestamp\\\":\\\"2026-11-13T18:01:17.512Z\\\"},\\\"artifacts\\\":[{\\\"artifactId\\\":\\\"4a8dbcf1-2aca-4ee4-b540-03b402315143\\\",\\\"name\\\":\\\"file\\\",\\\"parts\\\":[{\\\"url\\\":\\\"https://example.invalid/files/report.pdf\\\",\\\"filename\\\":\\\"report.pdf\\\",\\\"mediaType\\\":\\\"application/pdf\\\"}]}]}}\"}]}}",
+        "bytes": 556,
+        "sha256": "09f7f1b2f43c4f37a3d3c01f2b5ca1e4184799d1337704d104f47fe041ecf1af"
+      }
+    }
+  ]
+}

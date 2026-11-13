@@ -1,0 +1,249 @@
+{
+  "schema_version": "loss_parts_cell_v2",
+  "case_id": "file",
+  "route": "amirk_typed",
+  "repetition": 2,
+  "spec": {
+    "id": "file",
+    "command": "file",
+    "expected": {
+      "url": "https://example.invalid/files/report.pdf",
+      "filename": "report.pdf",
+      "mediaType": "application/pdf"
+    },
+    "payload_key": "url",
+    "requirement": "File URI, name and media type; file bytes are not fetched"
+  },
+  "episode_id": "file--r2--amirk_typed",
+  "execution_status": "recorded",
+  "required_representation_survived": true,
+  "initial": {
+    "content": [
+      {
+        "name": "report.pdf",
+        "uri": "https://example.invalid/files/report.pdf",
+        "mimeType": "application/pdf",
+        "_meta": {
+          "io.github.amirk-s/a2a": {
+            "partKind": "url",
+            "filename": "report.pdf",
+            "mediaType": "application/pdf",
+            "artifactId": "fe89c0e1-834b-4bef-ad45-ef67271baf39",
+            "artifactName": "file"
+          }
+        },
+        "type": "resource_link"
+      }
+    ],
+    "structuredContent": {
+      "kind": "task",
+      "contextHandle": "cx_RXech03WeW63Vxh86mYxWQ",
+      "taskHandle": "tk_n1a6itPhQ82d9qZ22IElOg",
+      "a2aState": "TASK_STATE_COMPLETED",
+      "status": "completed",
+      "artifacts": [
+        {
+          "artifactId": "fe89c0e1-834b-4bef-ad45-ef67271baf39",
+          "name": "file"
+        }
+      ]
+    }
+  },
+  "receipt": {
+    "id": "tk_n1a6itPhQ82d9qZ22IElOg",
+    "contextId": "cx_RXech03WeW63Vxh86mYxWQ"
+  },
+  "final": {
+    "content": [
+      {
+        "name": "report.pdf",
+        "uri": "https://example.invalid/files/report.pdf",
+        "mimeType": "application/pdf",
+        "_meta": {
+          "io.github.amirk-s/a2a": {
+            "partKind": "url",
+            "filename": "report.pdf",
+            "mediaType": "application/pdf",
+            "artifactId": "fe89c0e1-834b-4bef-ad45-ef67271baf39",
+            "artifactName": "file"
+          }
+        },
+        "type": "resource_link"
+      }
+    ],
+    "structuredContent": {
+      "kind": "task",
+      "contextHandle": "cx_RXech03WeW63Vxh86mYxWQ",
+      "taskHandle": "tk_n1a6itPhQ82d9qZ22IElOg",
+      "a2aState": "TASK_STATE_COMPLETED",
+      "status": "completed",
+      "artifacts": [
+        {
+          "artifactId": "fe89c0e1-834b-4bef-ad45-ef67271baf39",
+          "name": "file"
+        }
+      ],
+      "history": []
+    }
+  },
+  "observed_artifact_projection": {
+    "url": "https://example.invalid/files/report.pdf",
+    "filename": "report.pdf",
+    "mediaType": "application/pdf"
+  },
+  "field_checks": {
+    "url": true,
+    "filename": true,
+    "mediaType": true
+  },
+  "required_payload_survived": true,
+  "recovery": {
+    "eligible": false,
+    "status": "not_applicable"
+  },
+  "initial_wire": [
+    {
+      "role": "recorder_proxy",
+      "method": "POST",
+      "path": "/a2a",
+      "status": 200,
+      "upstream_response_sha256": "85747f3c8d512a17619d48c6010a0655482ce8d5f328ce5330f77f5af98c66c1",
+      "rpc_response_bytes_unchanged": true,
+      "utc": "2026-11-13T18:01:17.169Z",
+      "request": {
+        "raw": "{\"jsonrpc\":\"2.0\",\"method\":\"SendMessage\",\"params\":{\"message\":{\"messageId\":\"278226db-9f46-41c0-b848-958d153cfd6a\",\"role\":\"ROLE_USER\",\"parts\":[{\"text\":\"file\",\"mediaType\":\"text/plain\"}]},\"configuration\":{}},\"id\":25}",
+        "bytes": 211,
+        "sha256": "97a2126c1188d8cc3685fd8ee818ec66211a15f63caf479464248d46eb547fa0"
+      },
+      "response": {
+        "raw": "{\"jsonrpc\":\"2.0\",\"id\":25,\"result\":{\"task\":{\"id\":\"3afa5042-6f53-4a5d-b967-82130e87378b\",\"contextId\":\"208ada1a-f577-461d-9e51-a69698dfce03\",\"status\":{\"state\":\"TASK_STATE_COMPLETED\",\"timestamp\":\"2026-11-13T18:01:17.168Z\"},\"artifacts\":[{\"artifactId\":\"fe89c0e1-834b-4bef-ad45-ef67271baf39\",\"name\":\"file\",\"parts\":[{\"url\":\"https://example.invalid/files/report.pdf\",\"filename\":\"report.pdf\",\"mediaType\":\"application/pdf\"}]}],\"history\":[{\"messageId\":\"278226db-9f46-41c0-b848-958d153cfd6a\",\"contextId\":\"208ada1a-f577-461d-9e51-a69698dfce03\",\"taskId\":\"3afa5042-6f53-4a5d-b967-82130e87378b\",\"role\":\"ROLE_USER\",\"parts\":[{\"text\":\"file\",\"mediaType\":\"text/plain\"}]}]}}}",
+        "bytes": 652,
+        "sha256": "85747f3c8d512a17619d48c6010a0655482ce8d5f328ce5330f77f5af98c66c1"
+      }
+    },
+    {
+      "role": "mcp_http",
+      "method": "tools/call",
+      "status": 200,
+      "utc": "2026-11-13T18:01:17.170Z",
+      "request": {
+        "raw": "{\"jsonrpc\":\"2.0\",\"id\":\"c4164b23-935c-4fb4-90ab-0509be67a0d6\",\"method\":\"tools/call\",\"params\":{\"name\":\"a2a_send_message\",\"arguments\":{\"agent\":\"fixture\",\"text\":\"file\"}}}",
+        "bytes": 166,
+        "sha256": "be0867253c33124e787d6042cedd08a276354c3de87c5733821c773bbb3475b0"
+      },
+      "response": {
+        "raw": "event: message\ndata: {\"result\":{\"content\":[{\"name\":\"report.pdf\",\"uri\":\"https://example.invalid/files/report.pdf\",\"mimeType\":\"application/pdf\",\"_meta\":{\"io.github.amirk-s/a2a\":{\"partKind\":\"url\",\"filename\":\"report.pdf\",\"mediaType\":\"application/pdf\",\"artifactId\":\"fe89c0e1-834b-4bef-ad45-ef67271baf39\",\"artifactName\":\"file\"}},\"type\":\"resource_link\"}],\"structuredContent\":{\"kind\":\"task\",\"contextHandle\":\"cx_RXech03WeW63Vxh86mYxWQ\",\"taskHandle\":\"tk_n1a6itPhQ82d9qZ22IElOg\",\"a2aState\":\"TASK_STATE_COMPLETED\",\"status\":\"completed\",\"artifacts\":[{\"artifactId\":\"fe89c0e1-834b-4bef-ad45-ef67271baf39\",\"name\":\"file\"}]}},\"jsonrpc\":\"2.0\",\"id\":\"c4164b23-935c-4fb4-90ab-0509be67a0d6\"}\n\n",
+        "bytes": 669,
+        "sha256": "7670b93abfbc67ceaa1b679a30d8b0928cc8e026fda447ce12d5f5cf79b1267f"
+      }
+    },
+    {
+      "role": "recorder_proxy",
+      "method": "POST",
+      "path": "/a2a",
+      "status": 200,
+      "upstream_response_sha256": "760034d0b58171efe7dc588b4f4f01bb49326c7ce9fde312a1088d16b85c0509",
+      "rpc_response_bytes_unchanged": true,
+      "utc": "2026-11-13T18:01:17.175Z",
+      "request": {
+        "raw": "{\"jsonrpc\":\"2.0\",\"method\":\"GetTask\",\"params\":{\"id\":\"3afa5042-6f53-4a5d-b967-82130e87378b\",\"historyLength\":0},\"id\":26}",
+        "bytes": 117,
+        "sha256": "269ac1efa3936d37755ed2a7e26a7603f15c0adf3d9ed9d353ca336a1ff2f2b3"
+      },
+      "response": {
+        "raw": "{\"jsonrpc\":\"2.0\",\"id\":26,\"result\":{\"id\":\"3afa5042-6f53-4a5d-b967-82130e87378b\",\"contextId\":\"208ada1a-f577-461d-9e51-a69698dfce03\",\"status\":{\"state\":\"TASK_STATE_COMPLETED\",\"timestamp\":\"2026-11-13T18:01:17.168Z\"},\"artifacts\":[{\"artifactId\":\"fe89c0e1-834b-4bef-ad45-ef67271baf39\",\"name\":\"file\",\"parts\":[{\"url\":\"https://example.invalid/files/report.pdf\",\"filename\":\"report.pdf\",\"mediaType\":\"application/pdf\"}]}]}}",
+        "bytes": 409,
+        "sha256": "760034d0b58171efe7dc588b4f4f01bb49326c7ce9fde312a1088d16b85c0509"
+      }
+    },
+    {
+      "role": "mcp_http",
+      "method": "tools/call",
+      "status": 200,
+      "utc": "2026-11-13T18:01:17.176Z",
+      "request": {
+        "raw": "{\"jsonrpc\":\"2.0\",\"id\":\"1764cb1c-14c4-4ec0-a8c4-9ccf1ce37be6\",\"method\":\"tools/call\",\"params\":{\"name\":\"a2a_get_task\",\"arguments\":{\"agent\":\"fixture\",\"taskHandle\":\"tk_n1a6itPhQ82d9qZ22IElOg\",\"historyLength\":0}}}",
+        "bytes": 207,
+        "sha256": "da0ebc82c132d430fba026b2dd8336d1375cfabfc982688d744c6d49d620a0fb"
+      },
+      "response": {
+        "raw": "event: message\ndata: {\"result\":{\"content\":[{\"name\":\"report.pdf\",\"uri\":\"https://example.invalid/files/report.pdf\",\"mimeType\":\"application/pdf\",\"_meta\":{\"io.github.amirk-s/a2a\":{\"partKind\":\"url\",\"filename\":\"report.pdf\",\"mediaType\":\"application/pdf\",\"artifactId\":\"fe89c0e1-834b-4bef-ad45-ef67271baf39\",\"artifactName\":\"file\"}},\"type\":\"resource_link\"}],\"structuredContent\":{\"kind\":\"task\",\"contextHandle\":\"cx_RXech03WeW63Vxh86mYxWQ\",\"taskHandle\":\"tk_n1a6itPhQ82d9qZ22IElOg\",\"a2aState\":\"TASK_STATE_COMPLETED\",\"status\":\"completed\",\"artifacts\":[{\"artifactId\":\"fe89c0e1-834b-4bef-ad45-ef67271baf39\",\"name\":\"file\"}],\"history\":[]}},\"jsonrpc\":\"2.0\",\"id\":\"1764cb1c-14c4-4ec0-a8c4-9ccf1ce37be6\"}\n\n",
+        "bytes": 682,
+        "sha256": "5a1a5d29c4798860092c406ab63449393085e39b4f32b678ae611ffe1340b112"
+      }
+    }
+  ],
+  "wall_ms": 12.891200000000026,
+  "wire": [
+    {
+      "role": "recorder_proxy",
+      "method": "POST",
+      "path": "/a2a",
+      "status": 200,
+      "upstream_response_sha256": "85747f3c8d512a17619d48c6010a0655482ce8d5f328ce5330f77f5af98c66c1",
+      "rpc_response_bytes_unchanged": true,
+      "utc": "2026-11-13T18:01:17.169Z",
+      "request": {
+        "raw": "{\"jsonrpc\":\"2.0\",\"method\":\"SendMessage\",\"params\":{\"message\":{\"messageId\":\"278226db-9f46-41c0-b848-958d153cfd6a\",\"role\":\"ROLE_USER\",\"parts\":[{\"text\":\"file\",\"mediaType\":\"text/plain\"}]},\"configuration\":{}},\"id\":25}",
+        "bytes": 211,
+        "sha256": "97a2126c1188d8cc3685fd8ee818ec66211a15f63caf479464248d46eb547fa0"
+      },
+      "response": {
+        "raw": "{\"jsonrpc\":\"2.0\",\"id\":25,\"result\":{\"task\":{\"id\":\"3afa5042-6f53-4a5d-b967-82130e87378b\",\"contextId\":\"208ada1a-f577-461d-9e51-a69698dfce03\",\"status\":{\"state\":\"TASK_STATE_COMPLETED\",\"timestamp\":\"2026-11-13T18:01:17.168Z\"},\"artifacts\":[{\"artifactId\":\"fe89c0e1-834b-4bef-ad45-ef67271baf39\",\"name\":\"file\",\"parts\":[{\"url\":\"https://example.invalid/files/report.pdf\",\"filename\":\"report.pdf\",\"mediaType\":\"application/pdf\"}]}],\"history\":[{\"messageId\":\"278226db-9f46-41c0-b848-958d153cfd6a\",\"contextId\":\"208ada1a-f577-461d-9e51-a69698dfce03\",\"taskId\":\"3afa5042-6f53-4a5d-b967-82130e87378b\",\"role\":\"ROLE_USER\",\"parts\":[{\"text\":\"file\",\"mediaType\":\"text/plain\"}]}]}}}",
+        "bytes": 652,
+        "sha256": "85747f3c8d512a17619d48c6010a0655482ce8d5f328ce5330f77f5af98c66c1"
+      }
+    },
+    {
+      "role": "mcp_http",
+      "method": "tools/call",
+      "status": 200,
+      "utc": "2026-11-13T18:01:17.170Z",
+      "request": {
+        "raw": "{\"jsonrpc\":\"2.0\",\"id\":\"c4164b23-935c-4fb4-90ab-0509be67a0d6\",\"method\":\"tools/call\",\"params\":{\"name\":\"a2a_send_message\",\"arguments\":{\"agent\":\"fixture\",\"text\":\"file\"}}}",
+        "bytes": 166,
+        "sha256": "be0867253c33124e787d6042cedd08a276354c3de87c5733821c773bbb3475b0"
+      },
+      "response": {
+        "raw": "event: message\ndata: {\"result\":{\"content\":[{\"name\":\"report.pdf\",\"uri\":\"https://example.invalid/files/report.pdf\",\"mimeType\":\"application/pdf\",\"_meta\":{\"io.github.amirk-s/a2a\":{\"partKind\":\"url\",\"filename\":\"report.pdf\",\"mediaType\":\"application/pdf\",\"artifactId\":\"fe89c0e1-834b-4bef-ad45-ef67271baf39\",\"artifactName\":\"file\"}},\"type\":\"resource_link\"}],\"structuredContent\":{\"kind\":\"task\",\"contextHandle\":\"cx_RXech03WeW63Vxh86mYxWQ\",\"taskHandle\":\"tk_n1a6itPhQ82d9qZ22IElOg\",\"a2aState\":\"TASK_STATE_COMPLETED\",\"status\":\"completed\",\"artifacts\":[{\"artifactId\":\"fe89c0e1-834b-4bef-ad45-ef67271baf39\",\"name\":\"file\"}]}},\"jsonrpc\":\"2.0\",\"id\":\"c4164b23-935c-4fb4-90ab-0509be67a0d6\"}\n\n",
+        "bytes": 669,
+        "sha256": "7670b93abfbc67ceaa1b679a30d8b0928cc8e026fda447ce12d5f5cf79b1267f"
+      }
+    },
+    {
+      "role": "recorder_proxy",
+      "method": "POST",
+      "path": "/a2a",
+      "status": 200,
+      "upstream_response_sha256": "760034d0b58171efe7dc588b4f4f01bb49326c7ce9fde312a1088d16b85c0509",
+      "rpc_response_bytes_unchanged": true,
+      "utc": "2026-11-13T18:01:17.175Z",
+      "request": {
+        "raw": "{\"jsonrpc\":\"2.0\",\"method\":\"GetTask\",\"params\":{\"id\":\"3afa5042-6f53-4a5d-b967-82130e87378b\",\"historyLength\":0},\"id\":26}",
+        "bytes": 117,
+        "sha256": "269ac1efa3936d37755ed2a7e26a7603f15c0adf3d9ed9d353ca336a1ff2f2b3"
+      },
+      "response": {
+        "raw": "{\"jsonrpc\":\"2.0\",\"id\":26,\"result\":{\"id\":\"3afa5042-6f53-4a5d-b967-82130e87378b\",\"contextId\":\"208ada1a-f577-461d-9e51-a69698dfce03\",\"status\":{\"state\":\"TASK_STATE_COMPLETED\",\"timestamp\":\"2026-11-13T18:01:17.168Z\"},\"artifacts\":[{\"artifactId\":\"fe89c0e1-834b-4bef-ad45-ef67271baf39\",\"name\":\"file\",\"parts\":[{\"url\":\"https://example.invalid/files/report.pdf\",\"filename\":\"report.pdf\",\"mediaType\":\"application/pdf\"}]}]}}",
+        "bytes": 409,
+        "sha256": "760034d0b58171efe7dc588b4f4f01bb49326c7ce9fde312a1088d16b85c0509"
+      }
+    },
+    {
+      "role": "mcp_http",
+      "method": "tools/call",
+      "status": 200,
+      "utc": "2026-11-13T18:01:17.176Z",
+      "request": {
+        "raw": "{\"jsonrpc\":\"2.0\",\"id\":\"1764cb1c-14c4-4ec0-a8c4-9ccf1ce37be6\",\"method\":\"tools/call\",\"params\":{\"name\":\"a2a_get_task\",\"arguments\":{\"agent\":\"fixture\",\"taskHandle\":\"tk_n1a6itPhQ82d9qZ22IElOg\",\"historyLength\":0}}}",
+        "bytes": 207,
+        "sha256": "da0ebc82c132d430fba026b2dd8336d1375cfabfc982688d744c6d49d620a0fb"
+      },
+      "response": {
+        "raw": "event: message\ndata: {\"result\":{\"content\":[{\"name\":\"report.pdf\",\"uri\":\"https://example.invalid/files/report.pdf\",\"mimeType\":\"application/pdf\",\"_meta\":{\"io.github.amirk-s/a2a\":{\"partKind\":\"url\",\"filename\":\"report.pdf\",\"mediaType\":\"application/pdf\",\"artifactId\":\"fe89c0e1-834b-4bef-ad45-ef67271baf39\",\"artifactName\":\"file\"}},\"type\":\"resource_link\"}],\"structuredContent\":{\"kind\":\"task\",\"contextHandle\":\"cx_RXech03WeW63Vxh86mYxWQ\",\"taskHandle\":\"tk_n1a6itPhQ82d9qZ22IElOg\",\"a2aState\":\"TASK_STATE_COMPLETED\",\"status\":\"completed\",\"artifacts\":[{\"artifactId\":\"fe89c0e1-834b-4bef-ad45-ef67271baf39\",\"name\":\"file\"}],\"history\":[]}},\"jsonrpc\":\"2.0\",\"id\":\"1764cb1c-14c4-4ec0-a8c4-9ccf1ce37be6\"}\n\n",
+        "bytes": 682,
+        "sha256": "5a1a5d29c4798860092c406ab63449393085e39b4f32b678ae611ffe1340b112"
+      }
+    }
+  ]
+}
