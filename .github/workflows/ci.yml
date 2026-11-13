@@ -1,0 +1,25 @@
+name: BoundaryX validation
+on: [push, pull_request, workflow_dispatch]
+permissions:
+  contents: read
+jobs:
+  offline:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+      - run: python -m pip install -e '.[dev]'
+      - run: ruff check .
+      - run: mypy
+      - run: python -B -m unittest discover -s tests -p 'test_boundaryx*.py' -v
+      - run: python -B scripts/loss_json_io_v2.py --self-test
+      - run: python -B scripts/check_loss_software_v2.py --output results/development/ci-software
+      - run: python -B scripts/boundaryx.py verify-independent --diagnostics runs/supervisor-handoff-20261113/diagnostics-final-001 --protocol runs/supervisor-handoff-20261113/protocol-main-001 --artifacts runs/supervisor-handoff-20261113/parts-main-001 --output results/development/ci-independent.json
+      - run: python -B scripts/boundaryx.py heldout-status
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: validation-receipts
+          path: results/development/ci-*

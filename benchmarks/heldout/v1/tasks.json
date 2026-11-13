@@ -1,0 +1,820 @@
+{
+  "schema_version": "boundaryx_heldout_candidates_v1",
+  "status": "Pending Human Review",
+  "design": "Twenty new task structures, not identifier or timestamp variations of the ten historical development templates.",
+  "authorship": "AI-assisted task proposals; not independently authored human gold.",
+  "executed": false,
+  "tasks": [
+    {
+      "id": "heldout-01",
+      "definition": "Stable multi-key sorting: category ascending, score descending, equal keys retain source order.",
+      "source": {
+        "rows": [
+          {
+            "id": "r1",
+            "category": "b",
+            "score": 2
+          },
+          {
+            "id": "r2",
+            "category": "a",
+            "score": 3
+          },
+          {
+            "id": "r3",
+            "category": "a",
+            "score": 3
+          },
+          {
+            "id": "r4",
+            "category": "a",
+            "score": 1
+          }
+        ]
+      },
+      "proposed_gold": {
+        "ordered_ids": [
+          "r2",
+          "r3",
+          "r4",
+          "r1"
+        ]
+      },
+      "gold_status": "Pending Human Review",
+      "required_fields": [
+        "ordered_ids"
+      ],
+      "constraints": {
+        "stable_ties": true
+      },
+      "success_criteria": "Retain every row exactly once in the specified order.",
+      "protocol_assumptions": "A2A message/task and MCP tool transports may encode the task; semantic support must be qualified separately. No promise that existing routes solve this new family.",
+      "evidence_requirements": [
+        "frozen source/task/gold proposal hashes",
+        "source/sent/received captures",
+        "task/context binding",
+        "actual final output and any tool/effect evidence"
+      ]
+    },
+    {
+      "id": "heldout-02",
+      "definition": "Union half-open intervals; overlapping or touching intervals merge, gaps stay separate.",
+      "source": {
+        "intervals": [
+          [
+            1,
+            4
+          ],
+          [
+            3,
+            7
+          ],
+          [
+            7,
+            8
+          ],
+          [
+            10,
+            12
+          ]
+        ]
+      },
+      "proposed_gold": {
+        "intervals": [
+          [
+            1,
+            8
+          ],
+          [
+            10,
+            12
+          ]
+        ]
+      },
+      "gold_status": "Pending Human Review",
+      "required_fields": [
+        "intervals"
+      ],
+      "constraints": {
+        "half_open": true
+      },
+      "success_criteria": "Return the exact disjoint union.",
+      "protocol_assumptions": "A2A message/task and MCP tool transports may encode the task; semantic support must be qualified separately. No promise that existing routes solve this new family.",
+      "evidence_requirements": [
+        "frozen source/task/gold proposal hashes",
+        "source/sent/received captures",
+        "task/context binding",
+        "actual final output and any tool/effect evidence"
+      ]
+    },
+    {
+      "id": "heldout-03",
+      "definition": "Compute a two-line invoice with exact decimal arithmetic and round the final sum to two decimals using half-even.",
+      "source": {
+        "lines": [
+          {
+            "quantity": 3,
+            "unit_price": "0.105"
+          },
+          {
+            "quantity": 2,
+            "unit_price": "1.20"
+          }
+        ]
+      },
+      "proposed_gold": {
+        "total": "2.72",
+        "currency": "USD"
+      },
+      "gold_status": "Pending Human Review",
+      "required_fields": [
+        "total",
+        "currency"
+      ],
+      "constraints": {
+        "currency": "USD",
+        "rounding": "ROUND_HALF_EVEN"
+      },
+      "success_criteria": "Do not round individual lines or use binary-float display as the gold.",
+      "protocol_assumptions": "A2A message/task and MCP tool transports may encode the task; semantic support must be qualified separately. No promise that existing routes solve this new family.",
+      "evidence_requirements": [
+        "frozen source/task/gold proposal hashes",
+        "source/sent/received captures",
+        "task/context binding",
+        "actual final output and any tool/effect evidence"
+      ]
+    },
+    {
+      "id": "heldout-04",
+      "definition": "Composite-key many-to-many join, retaining all match multiplicities and source left/right order.",
+      "source": {
+        "left": [
+          {
+            "k": [
+              "a",
+              1
+            ],
+            "id": "l1"
+          },
+          {
+            "k": [
+              "a",
+              1
+            ],
+            "id": "l2"
+          }
+        ],
+        "right": [
+          {
+            "k": [
+              "a",
+              1
+            ],
+            "id": "r1"
+          },
+          {
+            "k": [
+              "a",
+              1
+            ],
+            "id": "r2"
+          },
+          {
+            "k": [
+              "a",
+              2
+            ],
+            "id": "r3"
+          }
+        ]
+      },
+      "proposed_gold": {
+        "pairs": [
+          [
+            "l1",
+            "r1"
+          ],
+          [
+            "l1",
+            "r2"
+          ],
+          [
+            "l2",
+            "r1"
+          ],
+          [
+            "l2",
+            "r2"
+          ]
+        ]
+      },
+      "gold_status": "Pending Human Review",
+      "required_fields": [
+        "pairs"
+      ],
+      "constraints": {
+        "key_fields": [
+          "name",
+          "revision"
+        ]
+      },
+      "success_criteria": "Match composite keys with no duplicate collapse.",
+      "protocol_assumptions": "A2A message/task and MCP tool transports may encode the task; semantic support must be qualified separately. No promise that existing routes solve this new family.",
+      "evidence_requirements": [
+        "frozen source/task/gold proposal hashes",
+        "source/sent/received captures",
+        "task/context binding",
+        "actual final output and any tool/effect evidence"
+      ]
+    },
+    {
+      "id": "heldout-05",
+      "definition": "Merge independent edits to a base object and explicitly report a same-field conflict.",
+      "source": {
+        "base": {
+          "x": 1,
+          "y": 2
+        },
+        "left": {
+          "x": 3,
+          "y": 2
+        },
+        "right": {
+          "x": 4,
+          "y": 5
+        }
+      },
+      "proposed_gold": {
+        "merged": {
+          "y": 5
+        },
+        "conflicts": {
+          "x": {
+            "base": 1,
+            "left": 3,
+            "right": 4
+          }
+        }
+      },
+      "gold_status": "Pending Human Review",
+      "required_fields": [
+        "merged",
+        "conflicts"
+      ],
+      "constraints": {
+        "no_silent_conflict_resolution": true
+      },
+      "success_criteria": "Retain competing values and provenance rather than selecting an arbitrary winner.",
+      "protocol_assumptions": "A2A message/task and MCP tool transports may encode the task; semantic support must be qualified separately. No promise that existing routes solve this new family.",
+      "evidence_requirements": [
+        "frozen source/task/gold proposal hashes",
+        "source/sent/received captures",
+        "task/context binding",
+        "actual final output and any tool/effect evidence"
+      ]
+    },
+    {
+      "id": "heldout-06",
+      "definition": "Correlate interleaved tasks sharing a context; task identity takes precedence over arrival order.",
+      "source": {
+        "context": "ctx",
+        "tasks": [
+          {
+            "id": "A",
+            "expected": "alpha"
+          },
+          {
+            "id": "B",
+            "expected": "beta"
+          }
+        ],
+        "received": [
+          {
+            "task": "B",
+            "answer": "beta"
+          },
+          {
+            "task": "A",
+            "answer": "alpha"
+          }
+        ]
+      },
+      "proposed_gold": {
+        "A": "alpha",
+        "B": "beta"
+      },
+      "gold_status": "Pending Human Review",
+      "required_fields": [
+        "A",
+        "B"
+      ],
+      "constraints": {
+        "cross_task_contamination": false
+      },
+      "success_criteria": "Produce the original task association for each answer.",
+      "protocol_assumptions": "A2A message/task and MCP tool transports may encode the task; semantic support must be qualified separately. No promise that existing routes solve this new family.",
+      "evidence_requirements": [
+        "frozen source/task/gold proposal hashes",
+        "source/sent/received captures",
+        "task/context binding",
+        "actual final output and any tool/effect evidence"
+      ]
+    },
+    {
+      "id": "heldout-07",
+      "definition": "Validate a strict Boolean field and reject an integer value without coercion.",
+      "source": {
+        "schema": {
+          "flag": "boolean",
+          "additional_fields": false
+        },
+        "payload": {
+          "flag": 1
+        }
+      },
+      "proposed_gold": {
+        "valid": false,
+        "reason": "flag_type"
+      },
+      "gold_status": "Pending Human Review",
+      "required_fields": [
+        "valid",
+        "reason"
+      ],
+      "constraints": {
+        "coercion": false
+      },
+      "success_criteria": "A numeric one is not the declared Boolean type.",
+      "protocol_assumptions": "A2A message/task and MCP tool transports may encode the task; semantic support must be qualified separately. No promise that existing routes solve this new family.",
+      "evidence_requirements": [
+        "frozen source/task/gold proposal hashes",
+        "source/sent/received captures",
+        "task/context binding",
+        "actual final output and any tool/effect evidence"
+      ]
+    },
+    {
+      "id": "heldout-08",
+      "definition": "Enforce a per-task zero write budget despite an advertised writable tool.",
+      "source": {
+        "advertised_tools": [
+          "read",
+          "write"
+        ],
+        "task_budget": {
+          "writes": 0
+        },
+        "requested": "write"
+      },
+      "proposed_gold": {
+        "authorized": false,
+        "executed_writes": 0
+      },
+      "gold_status": "Pending Human Review",
+      "required_fields": [
+        "authorized",
+        "executed_writes"
+      ],
+      "constraints": {
+        "writes": 0
+      },
+      "success_criteria": "Refuse the forbidden call and retain observable evidence of no execution; protocol acknowledgment is insufficient.",
+      "protocol_assumptions": "A2A message/task and MCP tool transports may encode the task; semantic support must be qualified separately. No promise that existing routes solve this new family.",
+      "evidence_requirements": [
+        "frozen source/task/gold proposal hashes",
+        "source/sent/received captures",
+        "task/context binding",
+        "actual final output and any tool/effect evidence"
+      ]
+    },
+    {
+      "id": "heldout-09",
+      "definition": "Preserve a UTF-8 text artifact together with its exact byte length and SHA-256.",
+      "source": {
+        "text": "\u03c0\n",
+        "encoding": "utf-8"
+      },
+      "proposed_gold": {
+        "text": "\u03c0\n",
+        "bytes": 3,
+        "sha256": "d59279f283574337bf8ff32c34b0d17ead2e8290702ca429e9e4f14200939d56"
+      },
+      "gold_status": "Pending Human Review",
+      "required_fields": [
+        "text",
+        "bytes",
+        "sha256"
+      ],
+      "constraints": {
+        "byte_equality": true
+      },
+      "success_criteria": "Retain both original bytes and declared metadata.",
+      "protocol_assumptions": "A2A message/task and MCP tool transports may encode the task; semantic support must be qualified separately. No promise that existing routes solve this new family.",
+      "evidence_requirements": [
+        "frozen source/task/gold proposal hashes",
+        "source/sent/received captures",
+        "task/context binding",
+        "actual final output and any tool/effect evidence"
+      ]
+    },
+    {
+      "id": "heldout-10",
+      "definition": "Preserve a two-entry artifact manifest with mixed text/binary content and distinct file identities.",
+      "source": {
+        "entries": {
+          "a.txt": "YQ==",
+          "b.bin": "AP8="
+        }
+      },
+      "proposed_gold": {
+        "manifest": [
+          {
+            "path": "a.txt",
+            "bytes": 1,
+            "sha256": "ca978112ca1bbdcafac231b39a23dc4da786eff8147c4e72b9807785afee48bb"
+          },
+          {
+            "path": "b.bin",
+            "bytes": 2,
+            "sha256": "06eb7d6a69ee19e5fbdf749018d3d2abfa04bcbd1365db312eb86dc7169389b8"
+          }
+        ]
+      },
+      "gold_status": "Pending Human Review",
+      "required_fields": [
+        "manifest"
+      ],
+      "constraints": {
+        "file_order": [
+          "a.txt",
+          "b.bin"
+        ]
+      },
+      "success_criteria": "Keep both entries and verify every individual content digest.",
+      "protocol_assumptions": "A2A message/task and MCP tool transports may encode the task; semantic support must be qualified separately. No promise that existing routes solve this new family.",
+      "evidence_requirements": [
+        "frozen source/task/gold proposal hashes",
+        "source/sent/received captures",
+        "task/context binding",
+        "actual final output and any tool/effect evidence"
+      ]
+    },
+    {
+      "id": "heldout-11",
+      "definition": "Combine paginated records only when their snapshot versions agree.",
+      "source": {
+        "pages": [
+          {
+            "version": 7,
+            "items": [
+              "a"
+            ],
+            "next": "p2"
+          },
+          {
+            "version": 8,
+            "items": [
+              "b"
+            ],
+            "next": null
+          }
+        ]
+      },
+      "proposed_gold": {
+        "status": "snapshot_conflict",
+        "versions": [
+          7,
+          8
+        ]
+      },
+      "gold_status": "Pending Human Review",
+      "required_fields": [
+        "status",
+        "versions"
+      ],
+      "constraints": {
+        "single_snapshot": true
+      },
+      "success_criteria": "Expose version inconsistency rather than silently combining records.",
+      "protocol_assumptions": "A2A message/task and MCP tool transports may encode the task; semantic support must be qualified separately. No promise that existing routes solve this new family.",
+      "evidence_requirements": [
+        "frozen source/task/gold proposal hashes",
+        "source/sent/received captures",
+        "task/context binding",
+        "actual final output and any tool/effect evidence"
+      ]
+    },
+    {
+      "id": "heldout-12",
+      "definition": "Deduplicate event retries by event identity while preserving the declared dependency order.",
+      "source": {
+        "events": [
+          {
+            "id": "e2",
+            "after": "e1"
+          },
+          {
+            "id": "e1",
+            "after": null
+          },
+          {
+            "id": "e1",
+            "after": null
+          }
+        ]
+      },
+      "proposed_gold": {
+        "ordered_event_ids": [
+          "e1",
+          "e2"
+        ],
+        "retry_count": 1
+      },
+      "gold_status": "Pending Human Review",
+      "required_fields": [
+        "ordered_event_ids",
+        "retry_count"
+      ],
+      "constraints": {
+        "identity_based_deduplication": true
+      },
+      "success_criteria": "Distinguish a repeated observation from an additional effect.",
+      "protocol_assumptions": "A2A message/task and MCP tool transports may encode the task; semantic support must be qualified separately. No promise that existing routes solve this new family.",
+      "evidence_requirements": [
+        "frozen source/task/gold proposal hashes",
+        "source/sent/received captures",
+        "task/context binding",
+        "actual final output and any tool/effect evidence"
+      ]
+    },
+    {
+      "id": "heldout-13",
+      "definition": "Intersect parent and child authorization scopes without widening either.",
+      "source": {
+        "parent": [
+          "read",
+          "list"
+        ],
+        "child": [
+          "read",
+          "write"
+        ]
+      },
+      "proposed_gold": {
+        "effective": [
+          "read"
+        ]
+      },
+      "gold_status": "Pending Human Review",
+      "required_fields": [
+        "effective"
+      ],
+      "constraints": {
+        "scope_rule": "intersection"
+      },
+      "success_criteria": "A child request cannot add parent-forbidden capabilities.",
+      "protocol_assumptions": "A2A message/task and MCP tool transports may encode the task; semantic support must be qualified separately. No promise that existing routes solve this new family.",
+      "evidence_requirements": [
+        "frozen source/task/gold proposal hashes",
+        "source/sent/received captures",
+        "task/context binding",
+        "actual final output and any tool/effect evidence"
+      ]
+    },
+    {
+      "id": "heldout-14",
+      "definition": "Convert measurements using explicit rational unit factors and retain measurement identities.",
+      "source": {
+        "measurements": [
+          {
+            "id": "x",
+            "millimetres": 1250
+          },
+          {
+            "id": "y",
+            "millimetres": -500
+          }
+        ]
+      },
+      "proposed_gold": {
+        "metres": [
+          {
+            "id": "x",
+            "value": "1.25"
+          },
+          {
+            "id": "y",
+            "value": "-0.5"
+          }
+        ]
+      },
+      "gold_status": "Pending Human Review",
+      "required_fields": [
+        "metres"
+      ],
+      "constraints": {
+        "factor": "1/1000"
+      },
+      "success_criteria": "Preserve sign, units and record association without hidden rounding.",
+      "protocol_assumptions": "A2A message/task and MCP tool transports may encode the task; semantic support must be qualified separately. No promise that existing routes solve this new family.",
+      "evidence_requirements": [
+        "frozen source/task/gold proposal hashes",
+        "source/sent/received captures",
+        "task/context binding",
+        "actual final output and any tool/effect evidence"
+      ]
+    },
+    {
+      "id": "heldout-15",
+      "definition": "Convert an explicit-offset leap-day timestamp to UTC without changing the instant.",
+      "source": {
+        "timestamp": "2024-02-29T23:30:00+05:30"
+      },
+      "proposed_gold": {
+        "utc": "2024-02-29T18:00:00Z"
+      },
+      "gold_status": "Pending Human Review",
+      "required_fields": [
+        "utc"
+      ],
+      "constraints": {
+        "timezone_required": true
+      },
+      "success_criteria": "Preserve the exact instant and timezone provenance.",
+      "protocol_assumptions": "A2A message/task and MCP tool transports may encode the task; semantic support must be qualified separately. No promise that existing routes solve this new family.",
+      "evidence_requirements": [
+        "frozen source/task/gold proposal hashes",
+        "source/sent/received captures",
+        "task/context binding",
+        "actual final output and any tool/effect evidence"
+      ]
+    },
+    {
+      "id": "heldout-16",
+      "definition": "Aggregate rational quantities exactly, returning a reduced rational fraction.",
+      "source": {
+        "quantities": [
+          "1/3",
+          "1/6",
+          "-1/4"
+        ]
+      },
+      "proposed_gold": {
+        "sum": "1/4"
+      },
+      "gold_status": "Pending Human Review",
+      "required_fields": [
+        "sum"
+      ],
+      "constraints": {
+        "arithmetic": "rational"
+      },
+      "success_criteria": "Return 1/4, with no decimal tolerance substitution.",
+      "protocol_assumptions": "A2A message/task and MCP tool transports may encode the task; semantic support must be qualified separately. No promise that existing routes solve this new family.",
+      "evidence_requirements": [
+        "frozen source/task/gold proposal hashes",
+        "source/sent/received captures",
+        "task/context binding",
+        "actual final output and any tool/effect evidence"
+      ]
+    },
+    {
+      "id": "heldout-17",
+      "definition": "Preserve original Unicode code points and provide a separately labeled NFC view.",
+      "source": {
+        "original": "e\u0301"
+      },
+      "proposed_gold": {
+        "original": "e\u0301",
+        "nfc": "\u00e9"
+      },
+      "gold_status": "Pending Human Review",
+      "required_fields": [
+        "original",
+        "nfc"
+      ],
+      "constraints": {
+        "original_must_not_be_replaced": true
+      },
+      "success_criteria": "Do not silently normalize the original artifact.",
+      "protocol_assumptions": "A2A message/task and MCP tool transports may encode the task; semantic support must be qualified separately. No promise that existing routes solve this new family.",
+      "evidence_requirements": [
+        "frozen source/task/gold proposal hashes",
+        "source/sent/received captures",
+        "task/context binding",
+        "actual final output and any tool/effect evidence"
+      ]
+    },
+    {
+      "id": "heldout-18",
+      "definition": "Reject a schema downgrade that would drop a required v2 integrity field.",
+      "source": {
+        "source_version": 2,
+        "receiver_version": 1,
+        "payload": {
+          "body": "abc",
+          "integrity": "required"
+        }
+      },
+      "proposed_gold": {
+        "status": "incompatible_schema",
+        "lost_required_fields": [
+          "integrity"
+        ]
+      },
+      "gold_status": "Pending Human Review",
+      "required_fields": [
+        "status",
+        "lost_required_fields"
+      ],
+      "constraints": {
+        "lossy_downgrade_allowed": false
+      },
+      "success_criteria": "Report the incompatibility with evidence rather than a partial successful delivery.",
+      "protocol_assumptions": "A2A message/task and MCP tool transports may encode the task; semantic support must be qualified separately. No promise that existing routes solve this new family.",
+      "evidence_requirements": [
+        "frozen source/task/gold proposal hashes",
+        "source/sent/received captures",
+        "task/context binding",
+        "actual final output and any tool/effect evidence"
+      ]
+    },
+    {
+      "id": "heldout-19",
+      "definition": "Keep artifact URI identity and retrieval status separate when retrieval evidence is absent.",
+      "source": {
+        "uri": "https://example.invalid/private/report",
+        "owner_task": "task-u",
+        "retrieval_capture": null
+      },
+      "proposed_gold": {
+        "uri": "https://example.invalid/private/report",
+        "owner_task": "task-u",
+        "retrieval_status": "unknown"
+      },
+      "gold_status": "Pending Human Review",
+      "required_fields": [
+        "uri",
+        "owner_task",
+        "retrieval_status"
+      ],
+      "constraints": {
+        "do_not_fetch_remote_uri": true
+      },
+      "success_criteria": "Preserve the reference and do not invent successful access.",
+      "protocol_assumptions": "A2A message/task and MCP tool transports may encode the task; semantic support must be qualified separately. No promise that existing routes solve this new family.",
+      "evidence_requirements": [
+        "frozen source/task/gold proposal hashes",
+        "source/sent/received captures",
+        "task/context binding",
+        "actual final output and any tool/effect evidence"
+      ]
+    },
+    {
+      "id": "heldout-20",
+      "definition": "Preserve a nested artifact attachment reference chain and its originating task.",
+      "source": {
+        "task": "root-task",
+        "artifact": {
+          "id": "main",
+          "attachments": [
+            {
+              "id": "aux",
+              "parent": "main",
+              "uri": "urn:artifact:aux"
+            }
+          ]
+        }
+      },
+      "proposed_gold": {
+        "task": "root-task",
+        "edges": [
+          [
+            "main",
+            "aux"
+          ]
+        ],
+        "uri_bindings": {
+          "aux": "urn:artifact:aux"
+        }
+      },
+      "gold_status": "Pending Human Review",
+      "required_fields": [
+        "task",
+        "edges",
+        "uri_bindings"
+      ],
+      "constraints": {
+        "no_reference_rebinding": true
+      },
+      "success_criteria": "Retain the origin, child identity and URI association.",
+      "protocol_assumptions": "A2A message/task and MCP tool transports may encode the task; semantic support must be qualified separately. No promise that existing routes solve this new family.",
+      "evidence_requirements": [
+        "frozen source/task/gold proposal hashes",
+        "source/sent/received captures",
+        "task/context binding",
+        "actual final output and any tool/effect evidence"
+      ]
+    }
+  ]
+}

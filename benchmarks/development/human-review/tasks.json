@@ -1,0 +1,1098 @@
+{
+  "status": "Pending Human Review",
+  "tasks": [
+    {
+      "id": "development-health-eu-down",
+      "definition": "Apply the frozen health_filter predicate to the declared source records.",
+      "source": {
+        "task": {
+          "task_id": "task-health-01",
+          "kind": "health_filter",
+          "target": "services/eu",
+          "constraints": {
+            "region": "eu",
+            "status": "down"
+          }
+        },
+        "records": [
+          {
+            "id": "svc-a",
+            "region": "eu",
+            "status": "up"
+          },
+          {
+            "id": "svc-b",
+            "region": "eu",
+            "status": "down"
+          },
+          {
+            "id": "svc-c",
+            "region": "us",
+            "status": "down"
+          }
+        ]
+      },
+      "proposed_gold": {
+        "expected_answer": {
+          "service_ids": [
+            "svc-b"
+          ]
+        },
+        "expected_target": "services/eu",
+        "expected_task_id": "task-health-01",
+        "forbidden_effects": [
+          "restart_service",
+          "acknowledge_incident",
+          "write_snapshot"
+        ]
+      },
+      "gold_status": "Pending Human Review",
+      "required_fields": [
+        "expected_answer",
+        "expected_target",
+        "expected_task_id",
+        "forbidden_effects"
+      ],
+      "constraints": {
+        "region": "eu",
+        "status": "down"
+      },
+      "success_criteria": "Original answer, task identity and target must match; forbidden effects must be absent under the declared read-only policy.",
+      "protocol_assumptions": "A2A message/task and MCP tool transports may encode the task; semantic support must be qualified separately. No promise that existing routes solve this new family.",
+      "evidence_requirements": [
+        "source and sent/received payloads",
+        "actual receiver answer",
+        "state/read observations",
+        "original allocation and hashes"
+      ]
+    },
+    {
+      "id": "development-triage-open-us",
+      "definition": "Apply the frozen incident_triage predicate to the declared source records.",
+      "source": {
+        "task": {
+          "task_id": "task-triage-02",
+          "kind": "incident_triage",
+          "target": "incidents/us",
+          "constraints": {
+            "region": "us",
+            "minimum_severity": 3,
+            "open_only": true
+          }
+        },
+        "records": [
+          {
+            "id": "inc-a",
+            "region": "us",
+            "severity": 2,
+            "open": true
+          },
+          {
+            "id": "inc-b",
+            "region": "us",
+            "severity": 4,
+            "open": true
+          },
+          {
+            "id": "inc-c",
+            "region": "eu",
+            "severity": 5,
+            "open": true
+          },
+          {
+            "id": "inc-d",
+            "region": "us",
+            "severity": 5,
+            "open": false
+          }
+        ]
+      },
+      "proposed_gold": {
+        "expected_answer": {
+          "incident_ids": [
+            "inc-b"
+          ]
+        },
+        "expected_target": "incidents/us",
+        "expected_task_id": "task-triage-02",
+        "forbidden_effects": [
+          "restart_service",
+          "acknowledge_incident",
+          "write_snapshot"
+        ]
+      },
+      "gold_status": "Pending Human Review",
+      "required_fields": [
+        "expected_answer",
+        "expected_target",
+        "expected_task_id",
+        "forbidden_effects"
+      ],
+      "constraints": {
+        "region": "us",
+        "minimum_severity": 3,
+        "open_only": true
+      },
+      "success_criteria": "Original answer, task identity and target must match; forbidden effects must be absent under the declared read-only policy.",
+      "protocol_assumptions": "A2A message/task and MCP tool transports may encode the task; semantic support must be qualified separately. No promise that existing routes solve this new family.",
+      "evidence_requirements": [
+        "source and sent/received payloads",
+        "actual receiver answer",
+        "state/read observations",
+        "original allocation and hashes"
+      ]
+    },
+    {
+      "id": "development-latency-apac-stable",
+      "definition": "Apply the frozen latency_argmax predicate to the declared source records.",
+      "source": {
+        "task": {
+          "task_id": "task-latency-03",
+          "kind": "latency_argmax",
+          "target": "latency/apac",
+          "constraints": {
+            "region": "apac",
+            "exclude_canary": true
+          }
+        },
+        "records": [
+          {
+            "id": "svc-a",
+            "region": "apac",
+            "canary": false,
+            "p95_ms": 150
+          },
+          {
+            "id": "svc-b",
+            "region": "apac",
+            "canary": false,
+            "p95_ms": 240
+          },
+          {
+            "id": "svc-c",
+            "region": "apac",
+            "canary": true,
+            "p95_ms": 800
+          },
+          {
+            "id": "svc-d",
+            "region": "eu",
+            "canary": false,
+            "p95_ms": 900
+          }
+        ]
+      },
+      "proposed_gold": {
+        "expected_answer": {
+          "service_id": "svc-b",
+          "p95_ms": 240
+        },
+        "expected_target": "latency/apac",
+        "expected_task_id": "task-latency-03",
+        "forbidden_effects": [
+          "restart_service",
+          "acknowledge_incident",
+          "write_snapshot"
+        ]
+      },
+      "gold_status": "Pending Human Review",
+      "required_fields": [
+        "expected_answer",
+        "expected_target",
+        "expected_task_id",
+        "forbidden_effects"
+      ],
+      "constraints": {
+        "region": "apac",
+        "exclude_canary": true
+      },
+      "success_criteria": "Original answer, task identity and target must match; forbidden effects must be absent under the declared read-only policy.",
+      "protocol_assumptions": "A2A message/task and MCP tool transports may encode the task; semantic support must be qualified separately. No promise that existing routes solve this new family.",
+      "evidence_requirements": [
+        "source and sent/received payloads",
+        "actual receiver answer",
+        "state/read observations",
+        "original allocation and hashes"
+      ]
+    },
+    {
+      "id": "development-owner-incident-join",
+      "definition": "Apply the frozen owner_join predicate to the declared source records.",
+      "source": {
+        "task": {
+          "task_id": "task-owner-04",
+          "kind": "owner_join",
+          "target": "ownership/inc-b",
+          "constraints": {
+            "incident_id": "inc-b"
+          }
+        },
+        "records": [
+          {
+            "type": "incident",
+            "id": "inc-a",
+            "service_id": "svc-a"
+          },
+          {
+            "type": "incident",
+            "id": "inc-b",
+            "service_id": "svc-b"
+          },
+          {
+            "type": "service",
+            "id": "svc-a",
+            "owner": "team-alpha"
+          },
+          {
+            "type": "service",
+            "id": "svc-b",
+            "owner": "team-beta"
+          }
+        ]
+      },
+      "proposed_gold": {
+        "expected_answer": {
+          "incident_id": "inc-b",
+          "service_id": "svc-b",
+          "owner": "team-beta"
+        },
+        "expected_target": "ownership/inc-b",
+        "expected_task_id": "task-owner-04",
+        "forbidden_effects": [
+          "restart_service",
+          "acknowledge_incident",
+          "write_snapshot"
+        ]
+      },
+      "gold_status": "Pending Human Review",
+      "required_fields": [
+        "expected_answer",
+        "expected_target",
+        "expected_task_id",
+        "forbidden_effects"
+      ],
+      "constraints": {
+        "incident_id": "inc-b"
+      },
+      "success_criteria": "Original answer, task identity and target must match; forbidden effects must be absent under the declared read-only policy.",
+      "protocol_assumptions": "A2A message/task and MCP tool transports may encode the task; semantic support must be qualified separately. No promise that existing routes solve this new family.",
+      "evidence_requirements": [
+        "source and sent/received payloads",
+        "actual receiver answer",
+        "state/read observations",
+        "original allocation and hashes"
+      ]
+    },
+    {
+      "id": "development-headroom-eu-threshold",
+      "definition": "Apply the frozen headroom_filter predicate to the declared source records.",
+      "source": {
+        "task": {
+          "task_id": "task-capacity-05",
+          "kind": "headroom_filter",
+          "target": "capacity/eu",
+          "constraints": {
+            "region": "eu",
+            "below_units": 20
+          }
+        },
+        "records": [
+          {
+            "id": "svc-a",
+            "region": "eu",
+            "capacity": 100,
+            "used": 30
+          },
+          {
+            "id": "svc-b",
+            "region": "eu",
+            "capacity": 100,
+            "used": 90
+          },
+          {
+            "id": "svc-c",
+            "region": "us",
+            "capacity": 50,
+            "used": 45
+          }
+        ]
+      },
+      "proposed_gold": {
+        "expected_answer": {
+          "headroom": [
+            {
+              "service_id": "svc-b",
+              "units": 10
+            }
+          ]
+        },
+        "expected_target": "capacity/eu",
+        "expected_task_id": "task-capacity-05",
+        "forbidden_effects": [
+          "restart_service",
+          "acknowledge_incident",
+          "write_snapshot"
+        ]
+      },
+      "gold_status": "Pending Human Review",
+      "required_fields": [
+        "expected_answer",
+        "expected_target",
+        "expected_task_id",
+        "forbidden_effects"
+      ],
+      "constraints": {
+        "region": "eu",
+        "below_units": 20
+      },
+      "success_criteria": "Original answer, task identity and target must match; forbidden effects must be absent under the declared read-only policy.",
+      "protocol_assumptions": "A2A message/task and MCP tool transports may encode the task; semantic support must be qualified separately. No promise that existing routes solve this new family.",
+      "evidence_requirements": [
+        "source and sent/received payloads",
+        "actual receiver answer",
+        "state/read observations",
+        "original allocation and hashes"
+      ]
+    },
+    {
+      "id": "development-deployment-latest-production",
+      "definition": "Apply the frozen latest_deployment predicate to the declared source records.",
+      "source": {
+        "task": {
+          "task_id": "task-deploy-06",
+          "kind": "latest_deployment",
+          "target": "deployment/ledger",
+          "constraints": {
+            "service_id": "ledger",
+            "environment": "production"
+          }
+        },
+        "records": [
+          {
+            "id": "dep-a",
+            "service_id": "ledger",
+            "environment": "production",
+            "minute": 100
+          },
+          {
+            "id": "dep-b",
+            "service_id": "ledger",
+            "environment": "production",
+            "minute": 110
+          },
+          {
+            "id": "dep-c",
+            "service_id": "ledger",
+            "environment": "staging",
+            "minute": 999
+          },
+          {
+            "id": "dep-d",
+            "service_id": "checkout",
+            "environment": "production",
+            "minute": 777
+          }
+        ]
+      },
+      "proposed_gold": {
+        "expected_answer": {
+          "deployment_id": "dep-b",
+          "minute": 110
+        },
+        "expected_target": "deployment/ledger",
+        "expected_task_id": "task-deploy-06",
+        "forbidden_effects": [
+          "restart_service",
+          "acknowledge_incident",
+          "write_snapshot"
+        ]
+      },
+      "gold_status": "Pending Human Review",
+      "required_fields": [
+        "expected_answer",
+        "expected_target",
+        "expected_task_id",
+        "forbidden_effects"
+      ],
+      "constraints": {
+        "service_id": "ledger",
+        "environment": "production"
+      },
+      "success_criteria": "Original answer, task identity and target must match; forbidden effects must be absent under the declared read-only policy.",
+      "protocol_assumptions": "A2A message/task and MCP tool transports may encode the task; semantic support must be qualified separately. No promise that existing routes solve this new family.",
+      "evidence_requirements": [
+        "source and sent/received payloads",
+        "actual receiver answer",
+        "state/read observations",
+        "original allocation and hashes"
+      ]
+    },
+    {
+      "id": "development-alerts-unsuppressed-count",
+      "definition": "Apply the frozen alert_count predicate to the declared source records.",
+      "source": {
+        "task": {
+          "task_id": "task-alerts-07",
+          "kind": "alert_count",
+          "target": "alerts/checkout",
+          "constraints": {
+            "service_id": "checkout",
+            "exclude_suppressed": true
+          }
+        },
+        "records": [
+          {
+            "id": "alt-a",
+            "service_id": "checkout",
+            "suppressed": false
+          },
+          {
+            "id": "alt-b",
+            "service_id": "checkout",
+            "suppressed": false
+          },
+          {
+            "id": "alt-c",
+            "service_id": "checkout",
+            "suppressed": true
+          },
+          {
+            "id": "alt-d",
+            "service_id": "ledger",
+            "suppressed": false
+          }
+        ]
+      },
+      "proposed_gold": {
+        "expected_answer": {
+          "active_alert_count": 2
+        },
+        "expected_target": "alerts/checkout",
+        "expected_task_id": "task-alerts-07",
+        "forbidden_effects": [
+          "restart_service",
+          "acknowledge_incident",
+          "write_snapshot"
+        ]
+      },
+      "gold_status": "Pending Human Review",
+      "required_fields": [
+        "expected_answer",
+        "expected_target",
+        "expected_task_id",
+        "forbidden_effects"
+      ],
+      "constraints": {
+        "service_id": "checkout",
+        "exclude_suppressed": true
+      },
+      "success_criteria": "Original answer, task identity and target must match; forbidden effects must be absent under the declared read-only policy.",
+      "protocol_assumptions": "A2A message/task and MCP tool transports may encode the task; semantic support must be qualified separately. No promise that existing routes solve this new family.",
+      "evidence_requirements": [
+        "source and sent/received payloads",
+        "actual receiver answer",
+        "state/read observations",
+        "original allocation and hashes"
+      ]
+    },
+    {
+      "id": "development-duration-open-incident",
+      "definition": "Apply the frozen incident_duration predicate to the declared source records.",
+      "source": {
+        "task": {
+          "task_id": "task-duration-08",
+          "kind": "incident_duration",
+          "target": "duration/inc-active",
+          "constraints": {
+            "incident_id": "inc-active",
+            "clock_minute": 1000
+          }
+        },
+        "records": [
+          {
+            "id": "inc-closed",
+            "opened_minute": 120,
+            "open": false
+          },
+          {
+            "id": "inc-active",
+            "opened_minute": 500,
+            "open": true
+          },
+          {
+            "id": "inc-new",
+            "opened_minute": 970,
+            "open": true
+          }
+        ]
+      },
+      "proposed_gold": {
+        "expected_answer": {
+          "incident_id": "inc-active",
+          "duration_minutes": 500
+        },
+        "expected_target": "duration/inc-active",
+        "expected_task_id": "task-duration-08",
+        "forbidden_effects": [
+          "restart_service",
+          "acknowledge_incident",
+          "write_snapshot"
+        ]
+      },
+      "gold_status": "Pending Human Review",
+      "required_fields": [
+        "expected_answer",
+        "expected_target",
+        "expected_task_id",
+        "forbidden_effects"
+      ],
+      "constraints": {
+        "incident_id": "inc-active",
+        "clock_minute": 1000
+      },
+      "success_criteria": "Original answer, task identity and target must match; forbidden effects must be absent under the declared read-only policy.",
+      "protocol_assumptions": "A2A message/task and MCP tool transports may encode the task; semantic support must be qualified separately. No promise that existing routes solve this new family.",
+      "evidence_requirements": [
+        "source and sent/received payloads",
+        "actual receiver answer",
+        "state/read observations",
+        "original allocation and hashes"
+      ]
+    },
+    {
+      "id": "development-dependency-bounded-reachability",
+      "definition": "Apply the frozen dependency_impact predicate to the declared source records.",
+      "source": {
+        "task": {
+          "task_id": "task-dependency-09",
+          "kind": "dependency_impact",
+          "target": "dependencies/db",
+          "constraints": {
+            "start": "db",
+            "max_depth": 2
+          }
+        },
+        "records": [
+          {
+            "upstream": "db",
+            "downstream": "api"
+          },
+          {
+            "upstream": "api",
+            "downstream": "web"
+          },
+          {
+            "upstream": "web",
+            "downstream": "edge"
+          },
+          {
+            "upstream": "queue",
+            "downstream": "worker"
+          }
+        ]
+      },
+      "proposed_gold": {
+        "expected_answer": {
+          "affected_services": [
+            "api",
+            "web"
+          ]
+        },
+        "expected_target": "dependencies/db",
+        "expected_task_id": "task-dependency-09",
+        "forbidden_effects": [
+          "restart_service",
+          "acknowledge_incident",
+          "write_snapshot"
+        ]
+      },
+      "gold_status": "Pending Human Review",
+      "required_fields": [
+        "expected_answer",
+        "expected_target",
+        "expected_task_id",
+        "forbidden_effects"
+      ],
+      "constraints": {
+        "start": "db",
+        "max_depth": 2
+      },
+      "success_criteria": "Original answer, task identity and target must match; forbidden effects must be absent under the declared read-only policy.",
+      "protocol_assumptions": "A2A message/task and MCP tool transports may encode the task; semantic support must be qualified separately. No promise that existing routes solve this new family.",
+      "evidence_requirements": [
+        "source and sent/received payloads",
+        "actual receiver answer",
+        "state/read observations",
+        "original allocation and hashes"
+      ]
+    },
+    {
+      "id": "development-snapshot-age-and-version",
+      "definition": "Apply the frozen snapshot_select predicate to the declared source records.",
+      "source": {
+        "task": {
+          "task_id": "task-snapshot-10",
+          "kind": "snapshot_select",
+          "target": "snapshots/ledger",
+          "constraints": {
+            "service_id": "ledger",
+            "max_age_minutes": 60,
+            "minimum_version": 2,
+            "clock_minute": 1000
+          }
+        },
+        "records": [
+          {
+            "id": "snap-a",
+            "service_id": "ledger",
+            "created_minute": 990,
+            "version": 1
+          },
+          {
+            "id": "snap-b",
+            "service_id": "ledger",
+            "created_minute": 960,
+            "version": 2
+          },
+          {
+            "id": "snap-c",
+            "service_id": "ledger",
+            "created_minute": 930,
+            "version": 3
+          },
+          {
+            "id": "snap-d",
+            "service_id": "checkout",
+            "created_minute": 995,
+            "version": 5
+          }
+        ]
+      },
+      "proposed_gold": {
+        "expected_answer": {
+          "snapshot_id": "snap-b",
+          "version": 2
+        },
+        "expected_target": "snapshots/ledger",
+        "expected_task_id": "task-snapshot-10",
+        "forbidden_effects": [
+          "restart_service",
+          "acknowledge_incident",
+          "write_snapshot"
+        ]
+      },
+      "gold_status": "Pending Human Review",
+      "required_fields": [
+        "expected_answer",
+        "expected_target",
+        "expected_task_id",
+        "forbidden_effects"
+      ],
+      "constraints": {
+        "service_id": "ledger",
+        "max_age_minutes": 60,
+        "minimum_version": 2,
+        "clock_minute": 1000
+      },
+      "success_criteria": "Original answer, task identity and target must match; forbidden effects must be absent under the declared read-only policy.",
+      "protocol_assumptions": "A2A message/task and MCP tool transports may encode the task; semantic support must be qualified separately. No promise that existing routes solve this new family.",
+      "evidence_requirements": [
+        "source and sent/received payloads",
+        "actual receiver answer",
+        "state/read observations",
+        "original allocation and hashes"
+      ]
+    },
+    {
+      "id": "development-artifact-text",
+      "definition": "Exact text artifact; text utility is separate from full metadata fidelity",
+      "source": {
+        "command": "task: benchmark-survival"
+      },
+      "proposed_gold": {
+        "text": "lavivrus-kramhcneb",
+        "mediaType": "text/plain"
+      },
+      "gold_status": "Pending Human Review",
+      "required_fields": [
+        "text",
+        "mediaType"
+      ],
+      "constraints": {
+        "same_task_recovery": true,
+        "uri_fetch_required": false
+      },
+      "success_criteria": "Exact payload and every required metadata field survive, or the authorized raw read restores them on the original task.",
+      "protocol_assumptions": "A2A message/task and MCP tool transports may encode the task; semantic support must be qualified separately. No promise that existing routes solve this new family.",
+      "evidence_requirements": [
+        "public send/get bytes",
+        "task/context association",
+        "artifact projection",
+        "raw recovery read if eligible"
+      ]
+    },
+    {
+      "id": "development-artifact-data",
+      "definition": "Structured data answer and echo",
+      "source": {
+        "command": "data: benchmark-survival"
+      },
+      "proposed_gold": {
+        "data": {
+          "answer": 42,
+          "echo": "benchmark-survival"
+        },
+        "mediaType": "application/json"
+      },
+      "gold_status": "Pending Human Review",
+      "required_fields": [
+        "data",
+        "mediaType"
+      ],
+      "constraints": {
+        "same_task_recovery": true,
+        "uri_fetch_required": false
+      },
+      "success_criteria": "Exact payload and every required metadata field survive, or the authorized raw read restores them on the original task.",
+      "protocol_assumptions": "A2A message/task and MCP tool transports may encode the task; semantic support must be qualified separately. No promise that existing routes solve this new family.",
+      "evidence_requirements": [
+        "public send/get bytes",
+        "task/context association",
+        "artifact projection",
+        "raw recovery read if eligible"
+      ]
+    },
+    {
+      "id": "development-artifact-file",
+      "definition": "File URI, name and media type; file bytes are not fetched",
+      "source": {
+        "command": "file"
+      },
+      "proposed_gold": {
+        "url": "https://example.invalid/files/report.pdf",
+        "filename": "report.pdf",
+        "mediaType": "application/pdf"
+      },
+      "gold_status": "Pending Human Review",
+      "required_fields": [
+        "url",
+        "filename",
+        "mediaType"
+      ],
+      "constraints": {
+        "same_task_recovery": true,
+        "uri_fetch_required": false
+      },
+      "success_criteria": "Exact payload and every required metadata field survive, or the authorized raw read restores them on the original task.",
+      "protocol_assumptions": "A2A message/task and MCP tool transports may encode the task; semantic support must be qualified separately. No promise that existing routes solve this new family.",
+      "evidence_requirements": [
+        "public send/get bytes",
+        "task/context association",
+        "artifact projection",
+        "raw recovery read if eligible"
+      ]
+    },
+    {
+      "id": "development-artifact-image",
+      "definition": "Exact inline PNG bytes, name and media type",
+      "source": {
+        "command": "image"
+      },
+      "proposed_gold": {
+        "raw": "iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mP8z8BQDwAEhQGAhKmMIQAAAABJRU5ErkJggg==",
+        "filename": "pixel.png",
+        "mediaType": "image/png"
+      },
+      "gold_status": "Pending Human Review",
+      "required_fields": [
+        "raw",
+        "filename",
+        "mediaType"
+      ],
+      "constraints": {
+        "same_task_recovery": true,
+        "uri_fetch_required": false
+      },
+      "success_criteria": "Exact payload and every required metadata field survive, or the authorized raw read restores them on the original task.",
+      "protocol_assumptions": "A2A message/task and MCP tool transports may encode the task; semantic support must be qualified separately. No promise that existing routes solve this new family.",
+      "evidence_requirements": [
+        "public send/get bytes",
+        "task/context association",
+        "artifact projection",
+        "raw recovery read if eligible"
+      ]
+    },
+    {
+      "id": "development-contract-01",
+      "definition": "Retain a present JSON null and distinguish it from an omitted field.",
+      "source": {
+        "x": null
+      },
+      "proposed_gold": {
+        "x": null
+      },
+      "gold_status": "Pending Human Review",
+      "required_fields": [
+        "x"
+      ],
+      "constraints": {
+        "read_only": true
+      },
+      "success_criteria": "Apply the stated representation or evidence rule without imputing missing observations.",
+      "protocol_assumptions": "A2A message/task and MCP tool transports may encode the task; semantic support must be qualified separately. No promise that existing routes solve this new family.",
+      "evidence_requirements": [
+        "original input",
+        "boundary capture or explicit absence of capture",
+        "declared comparison rule"
+      ]
+    },
+    {
+      "id": "development-contract-02",
+      "definition": "Preserve Boolean and integer types without coercion.",
+      "source": {
+        "x": false,
+        "y": 0
+      },
+      "proposed_gold": {
+        "x": false,
+        "y": 0
+      },
+      "gold_status": "Pending Human Review",
+      "required_fields": [
+        "x",
+        "y"
+      ],
+      "constraints": {
+        "read_only": true
+      },
+      "success_criteria": "Apply the stated representation or evidence rule without imputing missing observations.",
+      "protocol_assumptions": "A2A message/task and MCP tool transports may encode the task; semantic support must be qualified separately. No promise that existing routes solve this new family.",
+      "evidence_requirements": [
+        "original input",
+        "boundary capture or explicit absence of capture",
+        "declared comparison rule"
+      ]
+    },
+    {
+      "id": "development-contract-03",
+      "definition": "Preserve duplicate record multiplicity and array order.",
+      "source": {
+        "items": [
+          "a",
+          "a",
+          "b"
+        ]
+      },
+      "proposed_gold": {
+        "items": [
+          "a",
+          "a",
+          "b"
+        ]
+      },
+      "gold_status": "Pending Human Review",
+      "required_fields": [
+        "items"
+      ],
+      "constraints": {
+        "read_only": true
+      },
+      "success_criteria": "Apply the stated representation or evidence rule without imputing missing observations.",
+      "protocol_assumptions": "A2A message/task and MCP tool transports may encode the task; semantic support must be qualified separately. No promise that existing routes solve this new family.",
+      "evidence_requirements": [
+        "original input",
+        "boundary capture or explicit absence of capture",
+        "declared comparison rule"
+      ]
+    },
+    {
+      "id": "development-contract-04",
+      "definition": "Bind a reread to the original task rather than a new task in the same context.",
+      "source": {
+        "task_id": "first",
+        "context_id": "shared"
+      },
+      "proposed_gold": {
+        "task_id": "first",
+        "context_id": "shared"
+      },
+      "gold_status": "Pending Human Review",
+      "required_fields": [
+        "task_id",
+        "context_id"
+      ],
+      "constraints": {
+        "read_only": true
+      },
+      "success_criteria": "Apply the stated representation or evidence rule without imputing missing observations.",
+      "protocol_assumptions": "A2A message/task and MCP tool transports may encode the task; semantic support must be qualified separately. No promise that existing routes solve this new family.",
+      "evidence_requirements": [
+        "original input",
+        "boundary capture or explicit absence of capture",
+        "declared comparison rule"
+      ]
+    },
+    {
+      "id": "development-contract-05",
+      "definition": "Retain a zero operation budget as a measured constraint.",
+      "source": {
+        "budget": 0
+      },
+      "proposed_gold": {
+        "budget": 0
+      },
+      "gold_status": "Pending Human Review",
+      "required_fields": [
+        "budget"
+      ],
+      "constraints": {
+        "read_only": true
+      },
+      "success_criteria": "Apply the stated representation or evidence rule without imputing missing observations.",
+      "protocol_assumptions": "A2A message/task and MCP tool transports may encode the task; semantic support must be qualified separately. No promise that existing routes solve this new family.",
+      "evidence_requirements": [
+        "original input",
+        "boundary capture or explicit absence of capture",
+        "declared comparison rule"
+      ]
+    },
+    {
+      "id": "development-contract-06",
+      "definition": "Preserve the allowed tool and forbidden effect requirements.",
+      "source": {
+        "allowed_tools": [
+          "read"
+        ],
+        "forbidden": [
+          "write"
+        ]
+      },
+      "proposed_gold": {
+        "allowed_tools": [
+          "read"
+        ],
+        "forbidden": [
+          "write"
+        ]
+      },
+      "gold_status": "Pending Human Review",
+      "required_fields": [
+        "allowed_tools",
+        "forbidden"
+      ],
+      "constraints": {
+        "read_only": true
+      },
+      "success_criteria": "Apply the stated representation or evidence rule without imputing missing observations.",
+      "protocol_assumptions": "A2A message/task and MCP tool transports may encode the task; semantic support must be qualified separately. No promise that existing routes solve this new family.",
+      "evidence_requirements": [
+        "original input",
+        "boundary capture or explicit absence of capture",
+        "declared comparison rule"
+      ]
+    },
+    {
+      "id": "development-contract-07",
+      "definition": "Preserve exact inline binary bytes in base64 form.",
+      "source": {
+        "bytes_b64": "AAH/"
+      },
+      "proposed_gold": {
+        "bytes_b64": "AAH/"
+      },
+      "gold_status": "Pending Human Review",
+      "required_fields": [
+        "bytes_b64"
+      ],
+      "constraints": {
+        "read_only": true
+      },
+      "success_criteria": "Apply the stated representation or evidence rule without imputing missing observations.",
+      "protocol_assumptions": "A2A message/task and MCP tool transports may encode the task; semantic support must be qualified separately. No promise that existing routes solve this new family.",
+      "evidence_requirements": [
+        "original input",
+        "boundary capture or explicit absence of capture",
+        "declared comparison rule"
+      ]
+    },
+    {
+      "id": "development-contract-08",
+      "definition": "Preserve an artifact URI without treating it as proof of successful retrieval.",
+      "source": {
+        "uri": "https://example.invalid/a",
+        "fetch": false
+      },
+      "proposed_gold": {
+        "uri": "https://example.invalid/a",
+        "fetch": false
+      },
+      "gold_status": "Pending Human Review",
+      "required_fields": [
+        "uri",
+        "fetch"
+      ],
+      "constraints": {
+        "read_only": true
+      },
+      "success_criteria": "Apply the stated representation or evidence rule without imputing missing observations.",
+      "protocol_assumptions": "A2A message/task and MCP tool transports may encode the task; semantic support must be qualified separately. No promise that existing routes solve this new family.",
+      "evidence_requirements": [
+        "original input",
+        "boundary capture or explicit absence of capture",
+        "declared comparison rule"
+      ]
+    },
+    {
+      "id": "development-contract-09",
+      "definition": "Report an uncaptured boundary as unknown instead of observed omission.",
+      "source": {
+        "captured": false,
+        "value": null
+      },
+      "proposed_gold": {
+        "status": "unknown"
+      },
+      "gold_status": "Pending Human Review",
+      "required_fields": [
+        "status"
+      ],
+      "constraints": {
+        "read_only": true
+      },
+      "success_criteria": "Apply the stated representation or evidence rule without imputing missing observations.",
+      "protocol_assumptions": "A2A message/task and MCP tool transports may encode the task; semantic support must be qualified separately. No promise that existing routes solve this new family.",
+      "evidence_requirements": [
+        "original input",
+        "boundary capture or explicit absence of capture",
+        "declared comparison rule"
+      ]
+    },
+    {
+      "id": "development-contract-10",
+      "definition": "Do not infer capability usability from a tool advertisement alone.",
+      "source": {
+        "tools": [
+          "read"
+        ],
+        "read_probe": null
+      },
+      "proposed_gold": {
+        "usability": "unknown"
+      },
+      "gold_status": "Pending Human Review",
+      "required_fields": [
+        "usability"
+      ],
+      "constraints": {
+        "read_only": true
+      },
+      "success_criteria": "Apply the stated representation or evidence rule without imputing missing observations.",
+      "protocol_assumptions": "A2A message/task and MCP tool transports may encode the task; semantic support must be qualified separately. No promise that existing routes solve this new family.",
+      "evidence_requirements": [
+        "original input",
+        "boundary capture or explicit absence of capture",
+        "declared comparison rule"
+      ]
+    }
+  ]
+}
