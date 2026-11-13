@@ -31,8 +31,8 @@ python -m venv .venv
 | 480 protocol episodes / 960 read probes | Reproduced / Historical Evidence | Genuine protocols, deterministic receiver, controlled injections |
 | 80 artifact tasks / 20 raw recoveries | Reproduced / Historical Evidence | Unchanged upstream fixture, same-task recovery |
 | Separate SQLite and wire verifier | Completed | No legacy receiver, gold or scoring imports |
-| 24 representative development examples | Pending Human Review / Pending Supervisor Review | All judgments blank |
-| 20 frozen new held-out candidates | Pending Human Review / Pending Supervisor Review | Provisional gold, zero evaluations |
+| 24 representative development examples | Pending Human Review | All judgments blank |
+| 20 frozen new held-out candidates | Pending Human Review | Provisional gold, zero evaluations |
 | Outside reproduction and live LLM evaluation | Pending External Evaluation | No completed external scientific evaluation claimed |
 
 See [FINAL_REPORT](docs/FINAL_REPORT.md) for newly reproduced experiments and actual validation commands. [The original supervisor report](SUPERVISOR_HANDOFF_2026-11-13.md) and [static evidence explorer](demo/benchmark-v2/index.html) preserve development conclusions.

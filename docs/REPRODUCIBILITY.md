@@ -51,4 +51,4 @@ python -B scripts/boundaryx.py verify-independent --diagnostics results/developm
 
 The historical suite has 278 passes and one Windows symlink skip in the fresh reproduction; the five differential delivery I/O controls are separate. New adverse-evidence controls and type/lint results are in FINAL_REPORT. Lint/type checking applies to new BoundaryX code; unchanged archival implementations are covered by their relevant regression suites, not represented as newly lint-clean code.
 
-Twenty held-out proposals and their manifest are frozen. Do not rerun the preparation script over them. Named human/supervisor review is pending; corrections require a new freeze before qualified execution. Final evaluation, live LLM tasks and independent external scientific reproduction remain Not Established.
+Twenty held-out proposals and their manifest are frozen. Do not rerun the preparation script over them. Named teammate review is pending; the supervisor observes progress only; corrections require a new freeze before qualified execution. Final evaluation, live LLM tasks and independent external scientific reproduction remain Not Established.

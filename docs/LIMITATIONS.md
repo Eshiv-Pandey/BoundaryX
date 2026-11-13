@@ -6,7 +6,7 @@ The legacy runner/verifier share receiver and gold logic, establishing consisten
 
 Twenty structurally new held-out candidates are frozen in the selected v2 bank with zero evaluations. The pre-execution v2 revision strengthens four structures; v1 remains frozen and unexecuted. These are versions of twenty proposals, not forty independent tasks. Gold, reviewer acceptance and route support are Not Established. The existing receiver supports only the ten original families and cannot silently mock new families. Candidates are AI-assisted proposals, not independently designed human gold. Human changes require a new freeze. Final evaluation remains pending.
 
-The 24-example human packet has blank judgments. Undergraduates assess clarity, consistency, output logic and traceability, not domain expertise. Supervisor review and external evaluation are pending.
+The 24-example human packet has blank judgments. Undergraduates assess clarity, consistency, output logic and traceability, not domain expertise. Teammate review and external evaluation are pending. The supervisor observes progress and does not approve gold.
 
 Algo V1 refinement is a CEGAR/lazy-symbolic adaptation. The early comparator fairness defect and unfavorable corrected/shared-lifting/common-cost results remain explicit. Memoization, pruning, proof compression, contracts, fault injection and recovery are established ideas. General superiority, a new semantic theorem and scientific novelty are Not Established.
 
@@ -14,4 +14,4 @@ The original checkout, complete Git bundle, owned-source snapshot and original d
 
 The full mgcrea upstream suite on Windows reports 84 passes and three failures: one POSIX path-separator expectation and two assumptions that /nonexistent is unwritable. The original tests remain unchanged. Integration execution and type/lint checks passing do not make that full Windows suite green. Linux CI outcomes are recorded separately in the final report.
 
-Fresh tsdown builds can change mgcrea hashed chunk names. Historical runners use licensed pinned build bytes restored by a hash-checking script plus separately installed frozen dependencies. This is a declared reproducibility constraint. Source-only wheels are not the complete artifact. No project-wide license, missing-license source rights, publication readiness, supervisor acceptance or completion percentage is invented.
+Fresh tsdown builds can change mgcrea hashed chunk names. Historical runners use licensed pinned build bytes restored by a hash-checking script plus separately installed frozen dependencies. This is a declared reproducibility constraint. Source-only wheels are not the complete artifact. No project-wide license, missing-license source rights, publication readiness, supervisor review or completion percentage is invented.

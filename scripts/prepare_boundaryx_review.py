@@ -54,7 +54,7 @@ def main():
                              {'read_only': True}, 'Apply the stated representation or evidence rule without imputing missing observations.',
                              ['original input', 'boundary capture or explicit absence of capture', 'declared comparison rule']))
     reviews = {t['id']: {'reviews': [blank_review(), blank_review()], 'disagreement': None,
-                         'resolution': None, 'supervisor': blank_review()} for t in examples}
+                         'resolution': None} for t in examples}
     publish(ROOT / 'benchmarks/development/human-review/tasks.json', {'status': 'Pending Human Review', 'tasks': examples})
     publish(ROOT / 'benchmarks/development/human-review/review-decisions.json', {'status': 'Pending Human Review', 'tasks': reviews})
 
@@ -100,7 +100,7 @@ def main():
     publish(heldout/'tasks.json',{'schema_version':'boundaryx_heldout_candidates_v1','status':'Pending Human Review',
                                'design':'Twenty new task structures, not identifier or timestamp variations of the ten historical development templates.',
                                'authorship':'AI-assisted task proposals; not independently authored human gold.', 'executed':False,'tasks':candidates})
-    decisions={t['id']:{'reviews':[blank_review(),blank_review()], 'disagreement':None,'resolution':None,'supervisor':blank_review()} for t in candidates}
+    decisions={t['id']:{'reviews':[blank_review(),blank_review()], 'disagreement':None,'resolution':None} for t in candidates}
     publish(heldout/'review-decisions.json',{'status':'Pending Human Review','tasks':decisions})
     publish(heldout/'freeze.json',{'schema_version':'boundaryx_freeze_v1','frozen_utc':datetime.now(timezone.utc).isoformat(),
                                  'task_instances':20,'executed':False,'gold_status':'proposed, not established',

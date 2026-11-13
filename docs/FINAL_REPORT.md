@@ -121,7 +121,7 @@ Manifest: benchmarks/heldout/v2/manifest.json. tasks.json SHA-256:
 dcc3a6e6b48c9281c27a03421ede77448bbd047874779fe1be6133dbb6a14efa
 ```
 
-Pending Human Review and Pending Supervisor Review: gold requirements are provisional, all decisions are blank and evaluations total zero. Not Established: accepted gold, supported execution for new families and held-out scores. The existing receiver covers only ten original families; no fake held-out solver was supplied. Human corrections require a new definition freeze before qualified execution.
+Pending Human Review: gold requirements are provisional, all decisions are blank and evaluations total zero. Not Established: accepted gold, supported execution for new families and held-out scores. The existing receiver covers only ten original families; no fake held-out solver was supplied. Human corrections require a new definition freeze before qualified execution.
 
 ```powershell
 python -B scripts/boundaryx.py manifest benchmarks/heldout/v2
@@ -144,7 +144,7 @@ Independence limits: task definitions, standard JSON/SQLite infrastructure and c
 
 Completed: 24 representative development examples with definitions, proposed gold, required fields, constraints, success criteria, protocol assumptions and evidence requirements. Separate held-out forms cover twenty proposals. [HUMAN_REVIEW](HUMAN_REVIEW.md) explains the procedure.
 
-Pending Human Review: two undergraduate reviewers assess clarity, consistency, expected-output logic and traceability; names, decisions, reasoning, disagreements and resolutions remain blank. Pending Supervisor Review: separate supervisor acceptance of gold/contracts/scope, tied to exact definition hashes. No domain expertise or human approval is invented.
+Pending Human Review: two undergraduate reviewers assess clarity, consistency, expected-output logic and traceability; names, decisions, reasoning, disagreements and resolutions remain blank. The supervisor observes progress only; two distinct teammate reviewers supply the human judgments tied to exact definition hashes. No domain expertise or human approval is invented.
 
 ## 11. Literature, metrics and novelty
 
@@ -156,7 +156,7 @@ Established: contracts, schema/field preservation, faults, recovery, pruning, me
 
 ## 12. Remaining limitations
 
-Pending Human Review / Pending Supervisor Review: proposed gold and research acceptance. Pending External Evaluation: outside scientific reproduction, live-model applications and production consequence/authentication coverage. Not Established: held-out performance, naturally occurring fault prevalence, general semantic correctness and novelty. See [LIMITATIONS](LIMITATIONS.md).
+Pending Human Review: proposed gold and research acceptance. Pending External Evaluation: outside scientific reproduction, live-model applications and production consequence/authentication coverage. Not Established: held-out performance, naturally occurring fault prevalence, general semantic correctness and novelty. See [LIMITATIONS](LIMITATIONS.md).
 
 The framework executes deterministic development tasks through real protocols. It is not yet a completed human-validated LLM empirical study. Windows upstream failures, fixed build-chunk dependency, shared definitions/observations, local-only archives and absent project licensing decision are material limits, not hidden green checks.
 
@@ -189,3 +189,7 @@ Completed delivery validation: isolated clean clone at 94f861355163b474bc278f463
 Completed: [GitHub Actions run 43493963275](https://github.com/Eshiv-Pandey/BoundaryX/actions/runs/43493963275), both offline and upstream-protocols jobs succeeded on Ubuntu at 94f861355163b474bc278f4639dca629ad8248a4. CI reports 279 benchmark/core passes, 0 skips, 18 new controls, five I/O controls, Ruff, mypy across 22 modules, 42 Amir integration passes and all 87 mgcrea upstream tests passing. The Windows 84-pass / three-failure record remains unchanged. CI regrades historical protocol evidence; it does not newly execute the 480-episode research allocation. Summary and canonical log digest: results/development/github-ci-001.json.
 
 Important delivery commits: fea8145c2df949c16b4a190d1d790ff44710c6c1 (research/framework delivery) and 94f861355163b474bc278f4639dca629ad8248a4 (verified build inputs and clean-clone packaging fix). A signed report/receipt commit follows these; git log --oneline identifies the delivery tip. All pushes use origin main only.
+
+Role clarification: the project owner confirmed that the supervisor observes progress only. Supervisor approval is no longer an evaluation gate. Two distinct teammate reviews, frozen-definition hash binding and disagreement resolution remain required. Current blank forms and the eligibility checker follow benchmarks/review-policy.json. The inactive v1 forms and historical reports retain their original unused supervisor fields/plans for provenance. No task/gold definitions, historical metrics, results or held-out hashes changed. See TEAM_REVIEW_GUIDE.md and PROGRESS_FOR_SUPERVISOR.md for the sharing materials.
+
+Current review-policy validation: 21 BoundaryX controls passed, Ruff and mypy passed, the readable packet manifest validated and the selected held-out task hash remained unchanged. These are new affected-code checks, separate from the previously recorded 18-control validation runs. No human review decisions were filled.

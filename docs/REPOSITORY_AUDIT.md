@@ -20,7 +20,7 @@ An automated content, hash/duplicate and Python AST audit inspected 89 source, 5
 | loss handoff command and streaming JSON adapter | Migrate unchanged | Reuse the existing tested delivery path and five differential I/O controls. |
 | Public package/CLI and execution reporting | Refactor | Add a modular BoundaryX API, allocation receipts and separated result directories around verified implementations. |
 | Independent semantic and wire evidence verifier | Refactor | Add a separate path with no legacy scoring, receiver or gold-computation imports. Independence is limited by shared specifications and captured observations. |
-| Human gold and supervisor review | Migrate with modifications | Prepare review forms without inventing decisions; original AI-authored gold is provisional. |
+| Human gold review and progress reporting | Migrate with modifications | Prepare review forms without inventing decisions; original AI-authored gold is provisional. |
 | New held-out task specifications | Migrate with modifications | New task structures in separate frozen storage; no evaluation or tuning before human approval. |
 | Final 1,920 diagnostic / 480 protocol / 80 artifact allocations | Migrate unchanged | Preserve immutable evidence and manifests, distinguish regrading from fresh execution. |
 | Protocol setup failures and smoke attempts | Preserve separately/archive | Retain failure provenance; exclude machine-specific runtime configuration from remote distribution. |

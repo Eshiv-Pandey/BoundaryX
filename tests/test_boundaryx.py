@@ -9,7 +9,7 @@ import sys
 ROOT = Path(__file__).resolve().parents[1]
 sys.path[:0] = [str(ROOT / 'src'), str(ROOT)]
 from boundaryx.core.evidence import EvidenceError, digest, member, parse, publish, read, same, verify_manifest
-from boundaryx.tasks.contracts import check_review, heldout_status
+from boundaryx.tasks.contracts import check_review, check_team_reviews, heldout_status
 from boundaryx.verification.independent import source_check, verify_artifact_cell
 from boundaryx.verification.semantic import expected_answer
 
@@ -135,23 +135,40 @@ class ActualArtifactCaptureControls(unittest.TestCase):
 class ReviewBoundaryControls(unittest.TestCase):
     def test_pending_review_is_not_approval(self):
         with self.assertRaises(EvidenceError):
-            check_review({'decision': None}, {'decision': None})
+            check_review({'decision': None})
 
-    def test_supervisor_is_separate_and_required(self):
+    def test_one_teammate_review_is_not_enough(self):
         with self.assertRaises(EvidenceError):
-            check_review({'decision': 'approve', 'reviewer': 'r', 'reasoning': 'reviewed'}, {'decision': None})
+            check_team_reviews({'reviews': [{'decision': 'approve', 'reviewer': 'r', 'reasoning': 'reviewed'}]}, 'hash')
+
+    def test_two_team_approvals_do_not_require_a_supervisor(self):
+        reviews = [{'decision': 'approve', 'reviewer': name, 'reasoning': 'reviewed independently',
+                    'reviewed_definition_sha256': 'hash'} for name in ('Reviewer A', 'Reviewer B')]
+        check_team_reviews({'reviews': reviews}, 'hash')
+
+    def test_duplicate_reviewer_is_not_independent_review(self):
+        reviews = [{'decision': 'approve', 'reviewer': name, 'reasoning': 'reviewed',
+                    'reviewed_definition_sha256': 'hash'} for name in ('Reviewer A', ' reviewer a ')]
+        with self.assertRaises(EvidenceError):
+            check_team_reviews({'reviews': reviews}, 'hash')
+
+    def test_unresolved_disagreement_blocks_eligibility(self):
+        reviews = [{'decision': 'approve', 'reviewer': name, 'reasoning': 'reviewed',
+                    'reviewed_definition_sha256': 'hash'} for name in ('a', 'b')]
+        with self.assertRaises(EvidenceError):
+            check_team_reviews({'reviews': reviews, 'disagreement': 'conflicting expected answer', 'resolution': None}, 'hash')
 
     def test_approval_must_bind_current_frozen_gold(self):
         review = {'decision': 'approve', 'reviewer': 'r', 'reasoning': 'reviewed', 'reviewed_definition_sha256': 'old'}
-        supervisor = {'decision': 'approve', 'reviewer': 's', 'reasoning': 'reviewed', 'reviewed_definition_sha256': 'old'}
         with self.assertRaises(EvidenceError):
-            check_review(review, supervisor, 'new')
+            check_review(review, 'new')
 
     def test_twenty_frozen_new_candidates_have_zero_eligible_evaluations(self):
         result = heldout_status(ROOT / 'benchmarks/heldout/v2')
         self.assertEqual(result['task_instances'], 20)
         self.assertEqual(result['eligible'], [])
         self.assertEqual(result['evaluations'], 0)
+        self.assertFalse(result['supervisor_approval_required'])
 
 
 if __name__ == '__main__':
