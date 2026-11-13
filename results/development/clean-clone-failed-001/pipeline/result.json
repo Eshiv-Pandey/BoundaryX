@@ -1,0 +1,66 @@
+{
+  "schema_version": "loss_handoff_pipeline_v2",
+  "status": "failed",
+  "started_utc": "2026-11-13T19:26:30.370716+00:00",
+  "completed_utc": "2026-11-13T19:29:28.874292+00:00",
+  "python": "3.13.1 (tags/v3.13.1:0671451, Dec  3 2024, 19:06:28) [MSC v.1942 64 bit (AMD64)]",
+  "planned_stages": 4,
+  "executed_stages": 2,
+  "reproduce_local": false,
+  "live_protocol_execution": false,
+  "model_calls": 0,
+  "stages": [
+    {
+      "stage": "streaming-io-controls",
+      "command": [
+        "<failed-clean-clone>\\.venv-clean\\Scripts\\python.exe",
+        "-B",
+        "scripts/loss_json_io_v2.py",
+        "--self-test"
+      ],
+      "exit_code": 0,
+      "error": null,
+      "wall_seconds": 0.7552454000106081,
+      "status": "passed",
+      "stdout_sha256": "41b0776e0a9b50eaaca7ab4695eee5947eeec0d9a2fe2cfbf9cdb86a6a186f33",
+      "stderr_sha256": "4a5ad7d4186e440a120a16ce347a0c9554e920ab032eabbc56d34e304d7d564f"
+    },
+    {
+      "stage": "recorded-tasks",
+      "command": [
+        "<failed-clean-clone>\\.venv-clean\\Scripts\\python.exe",
+        "-B",
+        "scripts/loss_json_io_v2.py",
+        "verify_loss_release_v2.py",
+        "--diagnostics",
+        "<failed-clean-clone>\\runs\\supervisor-handoff-20261113\\diagnostics-final-001",
+        "--protocol",
+        "<failed-clean-clone>\\runs\\supervisor-handoff-20261113\\protocol-main-001",
+        "--output",
+        "<failed-clean-clone>\\results\\development\\clean-history-001\\pipeline\\recorded-tasks"
+      ],
+      "exit_code": 1,
+      "error": null,
+      "wall_seconds": 177.7277943999943,
+      "status": "failed",
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "02223123cdc2580453e94ea8ead23380cfcc3f3fbde31ae173a51d365254d27b"
+    }
+  ],
+  "io_adapter_sources": [
+    {
+      "path": "scripts/run_loss_handoff_v2.py",
+      "sha256": "9cfcfdc851babb19b375199a742a52c88b4ab0d63df6fea253f9efe21a83a944"
+    },
+    {
+      "path": "scripts/loss_json_io_v2.py",
+      "sha256": "2e01625a546ce109ddd4c0ce5e8b5f984984b984b5e648dcd644e5057400dc3c"
+    },
+    {
+      "path": "tests/test_loss_json_io_v2.py",
+      "sha256": "bf10ad0c033e68daf9b5416212e13c018ae6a25b1c8b2abbd1871e2a420eeebc"
+    }
+  ],
+  "io_adapter_scope": "Only canonical output serialization is streamed; frozen task/gold/receiver/conversion/scoring source is unchanged. Five differential byte/no-overwrite/rejection controls run first.",
+  "scope": "Offline regrading and fresh software controls by default; local finite reproduction only with --reproduce; new real bridge execution only with --live. None constitutes human or held-out review."
+}

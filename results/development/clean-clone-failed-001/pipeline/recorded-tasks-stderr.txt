@@ -1,0 +1,25 @@
+Traceback (most recent call last):
+  File "<failed-clean-clone>\scripts\loss_json_io_v2.py", line 46, in <module>
+    raise SystemExit(main())
+                     ~~~~^^
+  File "<failed-clean-clone>\scripts\loss_json_io_v2.py", line 41, in main
+    result = module.main()
+  File "<failed-clean-clone>\scripts\verify_loss_release_v2.py", line 432, in main
+    result["protocol"], episodes = verify_protocol(args.protocol)
+                                   ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "<failed-clean-clone>\scripts\verify_loss_release_v2.py", line 377, in verify_protocol
+    verify_sources(bundle, allocation)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^
+  File "<failed-clean-clone>\scripts\verify_loss_release_v2.py", line 71, in verify_sources
+    require(sha(local) == source["sha256"] == sha(captured), "current/captured source mismatch: " + source["path"])
+            ~~~^^^^^^^
+  File "<failed-clean-clone>\scripts\verify_loss_release_v2.py", line 41, in sha
+    return hashlib.sha256(path.read_bytes()).hexdigest()
+                          ~~~~~~~~~~~~~~~^^
+  File "<python-install>\Lib\pathlib\_abc.py", line 625, in read_bytes
+    with self.open(mode='rb') as f:
+         ~~~~~~~~~^^^^^^^^^^^
+  File "<python-install>\Lib\pathlib\_local.py", line 537, in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: '<failed-clean-clone>\\external\\a2a-to-mcp\\dist\\server.js'
