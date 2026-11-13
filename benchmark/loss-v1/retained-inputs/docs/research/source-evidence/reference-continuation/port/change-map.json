@@ -1,0 +1,123 @@
+{
+  "schema_version": "source-port-change-map/1",
+  "prepared_at_utc": "2026-10-23T20:58:42.347046+00:00",
+  "kind": "authored-development-port-unexecuted",
+  "original_repository": "https://github.com/a2aproject/a2a-samples",
+  "original_source_commit": "6603ba3f2c31a7ef33e70b9d8b5b5f8be42ac9a3",
+  "original_source_sha256": {
+    "README.md": "2688a75ad71c29ea324dc1285cf825cbd63ba5583ed119c4689431016ac24e7f",
+    "agent_Alice.py": "afe3b1d3b264dea45592fc9861b7dd0fd8f08a6bb537540ffb777ad4e2026c74",
+    "agent_Bob.py": "33c0e32833f14dad4250e160852c78da263e9bdfa0e00dae4fe48463e3d4b8be",
+    "agent_Carol.py": "d5a35d2a9e2be96d948c369f1523cb23b25bc82b8f3392db8f65880324b441d3",
+    "config.py": "d1a58bb4a6fc3bb78cdcaba413fa184af42e8c394a62ed2501585f9286618ad7",
+    "requirements.txt": "c797ab689ee0012c2e612b2b6a7a4ddb6b8ef1c810057a64f3c6e9395c81332a",
+    "utils/__init__.py": "d4fee62924b983d210dc286a39dc28c64c54000317e998c7858546e49043668e",
+    "utils/game_logic.py": "c1dd3b27dbb74c00e249a1aed84ad395f74691d33275b9c5fee8be456997e7f2",
+    "utils/helpers.py": "5a28335983803d82a443c2e3f8771825569b0021bcbd2400acbb7d8cf8f35b29",
+    "utils/protocol_wrappers.py": "b2147424eeb816ddec8d1592e418edb5b55ed60178126737a2d915166884b2ef",
+    "utils/server.py": "445d23b9f61a72e5ffe70bb5414c245b423115618a4bd399c043224906248e5d"
+  },
+  "port_file": "scripts/fixtures/carol-reference-v1.mjs",
+  "port_sha256": "b6b6492ee5c27cf5db0474054b0f18a8feafe0859d9faaa4fd67946c7768626d",
+  "attribution_sha256": "f20fb8fe6a579634cfac93ccd11c9fe77bb4d2507228de6e8f2125beabb72983",
+  "sdk": {
+    "package": "@a2a-js/sdk",
+    "version": "1.1.0",
+    "source_checkout_commit": "58eff9da469bccdc432bf164662727947de646b4",
+    "dependency_lock_sha256": "3e3c7e550d7166bd7f32e4e8e27811eaaf678bf3c3a1157b974f87734037b4da"
+  },
+  "changes": [
+    {
+      "original": "agent_Carol.py:87-89,133-142",
+      "port": "scripts/fixtures/carol-reference-v1.mjs:62-65,94-100",
+      "meaning": "Global last-history list preserved per executor; not rewritten into per-task cache. Parse/shuffle response list remains distinct from separately parsed retained original list."
+    },
+    {
+      "original": "agent_Carol.py:166-178",
+      "port": "scripts/fixtures/carol-reference-v1.mjs:67-82",
+      "meaning": "Same nonempty reference list guard selects follow-up. Explicit task association alone does not select follow-up. No equality/referential-integrity guard added."
+    },
+    {
+      "original": "agent_Carol.py:110-123",
+      "port": "scripts/fixtures/carol-reference-v1.mjs:83-91",
+      "meaning": "well done prefix completes task; other follow-up text reshuffles retained history, emits artifact and returns input-required."
+    },
+    {
+      "original": "agent_Carol.py:125-160; utils/game_logic.py:141-175",
+      "port": "scripts/fixtures/carol-reference-v1.mjs:48-60,93-102",
+      "meaning": "No-reference initial branch processes JSON shuffle/list or invalid text, emits artifact and returns input-required. Fixed Well done! without refs remains initial branch."
+    },
+    {
+      "original": "agent_Carol.py:99-108,144-149",
+      "port": "scripts/fixtures/carol-reference-v1.mjs:68-76",
+      "meaning": "Modern RequestContext supplies associated task/context IDs; reuse its existing task when provided. Modern SDK validates association. Original fallback to first ref is unreachable when SDK supplies a task ID; no reference-only success claimed."
+    },
+    {
+      "original": "agent_Carol.py:104-108,121-123,145-160",
+      "port": "scripts/fixtures/carol-reference-v1.mjs:72-76,105-114",
+      "meaning": "Python TaskUpdater becomes official JS AgentEvent task/artifact/status events; initial task event added as modern SDK requires. Required modern empty strings/part oneof fields supplied. Terminal completion adds no new artifact."
+    },
+    {
+      "original": "agent_Carol.py:180-193",
+      "port": "scripts/fixtures/carol-reference-v1.mjs:116-118",
+      "meaning": "SDK signature cancel(context,queue) becomes cancelTask(taskId,eventBus). Auxiliary task-context map supports cancellation association, not task history storage."
+    },
+    {
+      "original": "agent_Carol.py:53-69; utils/server.py:10-17,44-47,74-76",
+      "port": "scripts/fixtures/carol-reference-v1.mjs:121-176",
+      "meaning": "0.3 url/preferredTransport card and Starlette JSONRPC become1.0 supportedInterfaces and Node HTTP dispatch using official pinned JsonRpcTransportHandler. Loopback ephemeral port and /a2a chosen; streaming=false retained. No mocked transport."
+    },
+    {
+      "original": "utils/game_logic.py:random.shuffle; agent_Carol.py:117",
+      "port": "scripts/fixtures/carol-reference-v1.mjs:29-34,52-53,87",
+      "meaning": "Python random.shuffle becomes cryptographic Fisher-Yates; sequence/RNG differs. One-element prospective input is invariant to all permutations; no artificial delays/faults/seed introduced."
+    },
+    {
+      "original": "Python json.dumps / formatted string representation",
+      "port": "JS JSON.stringify / String conversion",
+      "meaning": "Language serialization/formatting can differ on noncontrol values. Claim covers decoded valid one-entry shuffle payload and original-task/context completion, not byte-equivalence for arbitrary inputs."
+    }
+  ],
+  "native_controls": [
+    {
+      "id": "N1",
+      "task": "original",
+      "context": "original",
+      "referenceTaskIds": "[original task ID]",
+      "answer": "Well done!",
+      "expected_original_state": "completed"
+    },
+    {
+      "id": "N2",
+      "task": "original",
+      "context": "original",
+      "referenceTaskIds": [],
+      "answer": "Well done!",
+      "expected_original_state": "input_required"
+    },
+    {
+      "id": "N3",
+      "task": "omitted",
+      "context": "original",
+      "referenceTaskIds": [],
+      "answer": "Well done!",
+      "expected": "record actual new/existing task and original state; no same-task assumption"
+    }
+  ],
+  "exposed_action_choices": {
+    "amirk": {
+      "ordinary_send": "a2a_send_message(agent,text,taskHandle?,contextHandle?) always constructs empty native refs",
+      "modern_tasks": "tasks/get inputRequests + tasks/update accepted answer also build empty-ref native message",
+      "raw_alternative": "No raw SendMessage/metadata/reference tool is declared among four tools; output content metadata does not add an input operation"
+    },
+    "mgcrea": {
+      "ordinary_send": "a2a_send_message(url,text,task_id?,context_id?) constructs empty native refs",
+      "raw_alternative": "When writes enabled, a2a_request(method=SendMessage,params.message.referenceTaskIds=...) permits native fields and preserves JSON params; native endpoint selected from agent card",
+      "raw_read": "a2a_request(GetTask) is available to read native task without relying on mirror registration; normal refreshed get requires mirror task record"
+    }
+  },
+  "no_new_native_or_bridge_capture": true,
+  "model_calls": 0,
+  "evidence_complete": false,
+  "claim_limit": "Version-matched port preparation and source-derived action-space hypothesis only; original0.3 native result does not establish1.0 compatibility, natural bridge defect, efficiency or novelty"
+}

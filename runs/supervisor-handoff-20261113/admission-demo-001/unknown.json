@@ -1,0 +1,249 @@
+{
+  "schema_version": "shared-admission-command/1",
+  "status": "recorded",
+  "started_at_utc": "2026-11-12T21:24:13.663780+00:00",
+  "method": "shared_lift",
+  "solver_module": "interoperability.refinement_shared_lift_v2",
+  "checker_module": "interoperability.direct_goal_pruned_v2",
+  "checker_entrypoint": "check_certificate",
+  "input_path": "<legacy-workspace>\\runs\\supervisor-handoff-20261113\\admission-demo-001\\prepared\\examples\\refinement-development\\07-opaque-serialization.json",
+  "input_sha256": "5c18dead06100e4f12781a37673b0aa4d63432530e03bdbc942b4aba162ffe57",
+  "model_sha256": "1264f5d04cd538e31afba95bed247131c8a7a596f727676804f4317d1e89ac73",
+  "runtime_manifest": {
+    "schema_version": "recipe-continuation/1",
+    "id": "opaque-serialization",
+    "model": {
+      "schema_version": "finite-continuation/1",
+      "id": "opaque-serialization-graph",
+      "route": "Authored finite public-recipe development model; not a qualified protocol route",
+      "provenance": {
+        "kind": "authored-development",
+        "source": "tests/test_refinement.py",
+        "review_status": "AI-authored semantic development; human review pending"
+      },
+      "horizon": 1,
+      "evidence": {
+        "complete": true,
+        "observed_at": 0,
+        "valid_until": 4102444800
+      },
+      "initial": "start",
+      "states": {
+        "start": {
+          "safe": true,
+          "done": false
+        },
+        "end": {
+          "safe": true,
+          "done": true
+        }
+      },
+      "transitions": [
+        {
+          "id": "finish",
+          "source": "start",
+          "target": "end",
+          "operation": "finish"
+        }
+      ],
+      "runtime_contract": {
+        "goal": [
+          {
+            "field": "done",
+            "op": "eq",
+            "value": true
+          }
+        ],
+        "invariants": [
+          {
+            "field": "safe",
+            "op": "eq",
+            "value": true
+          }
+        ]
+      }
+    },
+    "initial_bindings": {
+      "public_call": "call-A"
+    },
+    "relations": {
+      "finish": {
+        "source_ref": "Authored finite development relation; source validity is not asserted",
+        "arguments": {
+          "call": [
+            {
+              "binding": "public_call"
+            }
+          ]
+        },
+        "emit": {
+          "unknown": "Unmodeled public serialization boundary"
+        },
+        "guards": [
+          {
+            "op": "eq",
+            "left": {
+              "emit_path": [
+                "data",
+                "call"
+              ]
+            },
+            "right": {
+              "binding": "public_call"
+            }
+          },
+          {
+            "op": "eq",
+            "left": {
+              "emit_path": [
+                "data",
+                "approved"
+              ]
+            },
+            "right": {
+              "const": true
+            }
+          }
+        ],
+        "updates": {}
+      }
+    },
+    "coverage": {
+      "complete": true,
+      "scope": "Only the declared finite graph, literal/binding recipe choices and supplied relations; no whole-interface closure claim"
+    }
+  },
+  "evaluation_clock": 100,
+  "work_budget": 100000,
+  "source_sha256": {
+    "__init__.py": "3329d2e18d4778836a21d9b5115c1ae04a59190b14f051f54f75ef174c26b63a",
+    "__main__.py": "76fa916e93e0ae1a6c1bb51dcc0bcf289c014e9f760a47165f8a84401ccf41d7",
+    "admission_cli.py": "4c4a01e177bf7d3a326a2da422981d2607906b82fb5074add092079bb550727b",
+    "agentops_answer_schema_v1.py": "ae4f198820419f4083bf7094dca1a6c0eadd21183e73757c18f429dc2337a11d",
+    "agentops_case_boundary_evidence_v1.py": "55995ba40591d7f68387e31e32be9b4d1a76c5576afd8111adf44f44f343d689",
+    "agentops_event_binding_v1.py": "d3beb0f2440d5698124bc7aedf27a8beb34136f60e15e70be1c7b6745da08fa5",
+    "agentops_memory_evidence_v1.py": "a7989553aa007955718eb3a1f1e24f26c3bd86cff67336d4b24282458d157773",
+    "agentops_public_events_v1.py": "c008b818befafa4c212a8978ecbc28e927a54d3720fd8fe34ab1f873252f53e5",
+    "agentops_raw_events_v1.py": "de196858e75738e1976df39c077b4ab5b4c45d53298cf885cda212e82eba421b",
+    "agentops_reply_dependencies_v1.py": "ae70b1a5dd901d3e1b298e30258fd7b12f51cc3f461a3be5880da9c26eb102e3",
+    "agentops_reply_dependencies_v2.py": "0475d55ba2a4aa84d0dacd77fefaa357440f35c27020d43d747879e3df39d2b3",
+    "agentops_required_trajectory_v1.py": "ad41fd029c1111ad4b2d933fd42e8d9ea8183bee7c99e088a57d219d9d574ed5",
+    "agentops_restart_effects_v1.py": "d04fde3c70b6028eb8b71bc72351a28d34fd0ae62cccb100fde39a150cd2750f",
+    "agentops_runtime_stream_evidence_v1.py": "0bc4002cf726f0df6ce719102a0c7bee1049a39f2f9239a1ccc76cf887e51d49",
+    "agentops_source_case_assessment_v1.py": "996173207112b97c3e9b6ec72d01bb32232684a2de4efcd36e65c85f5461b769",
+    "agentops_source_case_assessment_v2.py": "a2fec6d9bafbf1b76bd4654932a994a5e8cb6a8466ae1d30473dac03a8598fc8",
+    "agentops_source_case_assessment_v3.py": "3b6b1ec0a7c274590562ddd6a66bd06bf9ad5b79f78baecdaa58f1f07d175aa3",
+    "agentops_source_case_effects_v1.py": "ea1a88f1e062c332b2ebd7e0c9360deae75b9c46397b5ee71e84d7c0a805f7dd",
+    "ap2_application_coordinator_v5.py": "95c1197f2ea03dcaa5e7c64cc7c2018f6c462ba9830672dd67c7aeeb032fe66f",
+    "ap2_application_profile_v5.py": "93e16f091d42c9194d3036a705fae9dbdb052c634241ff67deee8d1f0187fdcc",
+    "ap2_hp_durable_observer_v1.py": "3ba610b079af528cca7301c8357de5cbd609dbf5cedd9460bdf843ce05e8f6bc",
+    "ap2_hp_final_asgi_binding_v1.py": "51623f3333c0479a708d05b10b1bac46117cee2c2cde8a8b75d033659445c1d3",
+    "ap2_hp_gemini_client_state_v1.py": "058ce68e4d0cf605ee0641c7b6e6dc51163242120e845e1472652f5b2822337e",
+    "ap2_hp_gemini_source_graph_v1.py": "c07f3652fef746d654587da3bccf04b8055fef2f5ef32b3081cb91716f3d0c88",
+    "ap2_hp_gemini_transport_v1.py": "cfa1ebfbec3b99f7ecd0b4be996359bf01d075160e08397dbf66a4041a2b7627",
+    "ap2_hp_gemini_usage_v1.py": "0475f889a5825626adaec6fc1b2477c15972a9c09138c795343538c3b391fe45",
+    "ap2_hp_native_gate_v1.py": "5282f1f7d921818fc7dc6b2caa2e7e0a086416ef66d0512f4a94b6fd6634ab10",
+    "ap2_hp_observed_service_v1.py": "798150157d3598f21ae78298e5ec318cb49d9d4a18ce809a5dd27da13ae9e4d2",
+    "ap2_hp_original_binding_v1.py": "27c37938751dfb00f21a3a53043ea2f468814d264df71bb8024dd58cea5ac3af",
+    "ap2_hp_original_server_owner_v1.py": "4dc3dde0e602ce7e863c291bf58e1dfb4c2a1b8b6430dec8c7a6beae4cb9ca26",
+    "ap2_hp_passive_capture_v1.py": "e3abb063246ee0688b098bba933a74c3c2e6c5789b7c9b39bc59cc12b135a5a8",
+    "ap2_hp_public_assessment_v1.py": "2d675b1043671dc3319ce55df43b7b1bd3a967c650a35aff1a50e6fc47d5345e",
+    "ap2_hp_reference_execution_v1.py": "821b463c1e8d8500b32774b7c04ace2b865c7089c7a8e0ca1f5e7f20ab5df340",
+    "ap2_hp_reference_plan_v1.py": "4699f8aba9c8adfdc6c07ee8558b9ea356d64f1a80eb5d07f64e586f5aa0a8e0",
+    "ap2_hp_windows_runtime_v1.py": "8cc07d5149e345918590564111620f259946996451e199feb66afeb834e9106e",
+    "ap2_native_transport_v10.py": "3a3eb2a00b41abf62afc6f82fcb068103fb31445d842727420564a6171c4f242",
+    "ap2_native_transport_v11.py": "c0f81a0a8138377a09998afa563d3b270624fc524fa521793d06dac4bcfd709a",
+    "ap2_native_transport_v12.py": "5ed79e75f722954dc5d603a43fa8ba038e50d707d910709ed818b0691898661d",
+    "ap2_native_transport_v13.py": "374e83e804b2a4dd0e48b4b688a8b52f349bd5afa18a39e231df3130c3ad66cc",
+    "ap2_native_transport_v8.py": "75813d2c71198c9e40014059e50e0be99d84b9c63395d10b443ae0468d6c39a7",
+    "ap2_native_transport_v9.py": "f84c4643d7fedae56eb5db786f9703f1a23516751dd027e924d5a7d0c7335c1b",
+    "ap2_original_shopper_conversation_v6.py": "78ad0a02764d2491d48dae88e5ad3872e382df1f4f608ae8ab6c0a79a5cbec3e",
+    "ap2_original_shopper_conversation_v7.py": "1b621525595a156bbb79c6285ac7b53f02c18f3df37339347ac619fc7605878c",
+    "ap2_original_shopper_fixture_v6.py": "3ea0d7bb3cede7dacf4446f0a693c6675eb8b5a937a57de92e495d548fcbc7b7",
+    "ap2_original_shopper_fixture_v7.py": "2e13e50231a2f9081b1a5c7c4eae2b5fbb34942d52d48ddcbf960080b8ef0759",
+    "ap2_pending_admission_v4.py": "dcd42e1cf0a64686c3cbac6d7c6fff309730e7f578f2821d75c38e86a34288d7",
+    "ap2_public_original_binding_v2.py": "f5ecd810445c445b19cd6ce2cb99f714d47f137895b96a68b8c56c2d9cfc0787",
+    "ap2_public_scripted_continuation_v1.py": "aa8bf308fad6c9b112ed815cb2b393ac8c9fcbaf97ee71c1c4547ccc1b1342c0",
+    "ap2_public_scripted_continuation_v2.py": "afc3f0a010b83eb516d59c329811aaa257f8d8973205c4428b08bb6770fd9048",
+    "ap2_public_task_read_v1.py": "feaa86eb5ec62d1627a0d7e0744bd8a626e3f597a7a2012e7f8eb0a80dbf0c46",
+    "baseline.py": "c26f4c7db7f89f00f2c781e346aec20a589a862316e34c38a2edd7760407206f",
+    "benchmark.py": "38b6cb4e6fd9ff4a48b0a9d45ca44156c8e714663f6c4a73060f44259a9c3a7e",
+    "benchmark_resources_v1.py": "b58eaec738a7cd69a54dbd105465c1544390e3de51a3737a0eeea1ee6575fdf9",
+    "cli.py": "1c3113908d036099b42b8adf939e701c8a21a082b2bc614479aaefadc214e0f1",
+    "direct_comparison_v2.py": "610c082233dcf44b58bb0b0bf68bfc4ca7fec307e380be21699ec3db39e60eb9",
+    "direct_goal_pruned_v2.py": "1fba2d0bd747f965056279bbda40b9c28f50f1200b7e9a6869f343ab6f64de51",
+    "direct_guard_pruned_v3.py": "3aa025550ea0bcf6974e6eca0fd8c068bbb211e3a49ee40ffd423d3ce7093723",
+    "loss_benchmark_v1.py": "6d3e7f1678300b84fe3c69094c82b3365bd58dcf2e0f3173881eceb480f64e4d",
+    "loss_diagnostics_v2.py": "4e79ed4aad419b9c10dfaf28742bd3394b4eda94a249861e5fc4a6c07f2720aa",
+    "manifest.py": "defc6e9bbc4ea66806beefc9def967d94db8a3856cc121cee13c45ebda70debb",
+    "oracle.py": "da29829a077da1ef44c2ffc0a6d5dbcd8e4c579b308b49085ea1af077e601b7f",
+    "pending_admission.py": "4adb8f4cfb4b4a517053bbd49e3b9a14a03dda7eba33d66808a832fcb25a2132",
+    "projection_checker.py": "5bc96d27428e7fce01b12a8e5ccc946db8e7dc77bbced033e60423e4e769a103",
+    "reference_checker.py": "87ca2690fcf296961cea024d66da6323031b5306ef54222d48a7ccfdaf662371",
+    "refinement.py": "11175edcb99dbec231390ae767ba97dce2e919810844ed544a1ddd109f4b5b3b",
+    "refinement_oracle.py": "b17feac87ed2972cd1a2c34557b653bdf231345e75a9ab8a919c0b4f1520477e",
+    "refinement_shared_lift_v2.py": "927538f7ddcb21120913c6c4257754b65a45703db384eec8cd6a28ba9e9b280b",
+    "refutation_prefix_dag_v1.py": "6e1b2012432945c3cec8595cafe077d69d56a6a6189001da7f7d7168f1b34c89",
+    "refutation_prefix_dag_v2.py": "59794e5bd480763152577af37b1428cf4dcb737681dc380d8abd3c3ea3dc8449",
+    "remaining_gold_v1.py": "002125ea256e910376e80f5bf21006fbaa47cc71dacfcfdb2fed77f5b0570d19",
+    "shared_admission_v1.py": "7c37baa751bb8f0e437b02e87b9da47db011449be13a7256dcf43b08ca4cd3ec",
+    "shared_cache_ablation_v3.py": "e548f5d7ce1fa5d486974922bddf3d5592b92801fcb36b80fde4b1f86b5b14ca",
+    "shared_cache_comparison_v3.py": "f113c7fb67727d09a6d8b589fb4a5c828d971b9985fcc74a1f8f9df5995ec89e",
+    "shared_lifting_comparison_v3.py": "d5175683cedecd7f901136086b3294f972d9a19524e4bcd4e416b9120542e100",
+    "status_projection.py": "648e18cb6f1e2cbf3ff31f3dab70a29b473701d10df3f1758065bd5d4da8debf",
+    "status_projection_checker.py": "3bb82daa320fbb40ac96391c19460e3730a10aef3b0da8c2b39d467cf89d6dea",
+    "upstream_agentops_cases_v1.py": "b87d5e6a1f86962cfe85981c60e868cac6ac46950599ffa6667db23a8126b0e3",
+    "upstream_agentops_client_v1.py": "c8506f66da5cd23750f9fb7cac5e454d4ec34e83babdc1b1b53d6df4847a923b",
+    "upstream_agentops_native_runner_v1.py": "a15c50ce38f6311c620e4681672a49a5f0c401f604bdc5fba28dd82109c12f98",
+    "upstream_agentops_native_runner_v2.py": "fbc4f2f7334298669ce1a33e6d99c7c81139703282079061e1ccf0d5873baa59",
+    "windows_owned_job_v1.py": "67b5dc8190aee3a75b3c1954a530d0bba3edeb3bc64dc2770dd815173ecbd53a",
+    "windows_tcp_ownership_v1.py": "d1beef822af6ac1f3eb228a1dd69d3513dfb45274c5acc93192cbe0d5a7c44ed",
+    "wire_projection.py": "88223761710725959157607f4a86829fe1d7aa3e85bfe3ccc53af52c063df89e"
+  },
+  "python": "3.13.1 (tags/v3.13.1:0671451, Dec  3 2024, 19:06:28) [MSC v.1942 64 bit (AMD64)]",
+  "platform": "Windows-11-10.0.26300-SP0",
+  "evaluation_ns": 323700,
+  "certificate_check_ns": null,
+  "certificate_valid": null,
+  "checker_invoked": false,
+  "application_requests": 0,
+  "live_model_calls": 0,
+  "claim_limit": "Decision under supplied finite recipe assumptions; no application execution, established novelty or performance advantage.",
+  "result": {
+    "decision": "unknown",
+    "reason": "unresolved_relation_or_recipe",
+    "certificate": null,
+    "method": "witness-lift-refine-shared-v2",
+    "novelty_established": false,
+    "stats": {
+      "work_units": 56,
+      "budget": 100000,
+      "abstract_state_visits": 4,
+      "abstract_edge_checks": 2,
+      "abstract_paths": 1,
+      "relation_checks": 1,
+      "expression_evaluations": 5,
+      "refinement_lookups": 1,
+      "refinement_edges": 0,
+      "refinements": 0,
+      "peak_frames": 1,
+      "cache_lookups": 3,
+      "cache_key_nodes": 10,
+      "cache_insertions": 3,
+      "cache_payload_nodes": 26,
+      "cache_status_checks": 0,
+      "cached_prefix_frames": 0,
+      "cached_relation_outcomes": 0,
+      "history_nodes": 0,
+      "witness_nodes": 0,
+      "prefix_cache_hits": 0,
+      "relation_cache_hits": 0,
+      "prefix_cache_entries": 2,
+      "relation_cache_entries": 1,
+      "peak_cached_frames": 1,
+      "elapsed_ns": 314600
+    }
+  },
+  "unknown_has_no_certificate": true,
+  "finished_at_utc": "2026-11-12T21:24:13.746646+00:00"
+}

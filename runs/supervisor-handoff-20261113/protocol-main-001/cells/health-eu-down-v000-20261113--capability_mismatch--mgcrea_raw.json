@@ -1,0 +1,641 @@
+{
+  "schema_version": "loss_protocol_cell_v2",
+  "episode_id": "health-eu-down-v000-20261113--capability_mismatch--mgcrea_raw",
+  "case_id": "health-eu-down-v000-20261113",
+  "family_id": "service_health_filter",
+  "route": "mgcrea_raw",
+  "profile": "capability_mismatch",
+  "observation": {
+    "source": {
+      "task": {
+        "constraints": {
+          "region": "eu",
+          "status": "down"
+        },
+        "kind": "health_filter",
+        "target": "services/eu-v000-20261113",
+        "task_id": "task-health-01-v000-20261113"
+      },
+      "records": [
+        {
+          "id": "svc-b-v000-20261113",
+          "region": "eu",
+          "status": "down"
+        },
+        {
+          "id": "svc-c-v000-20261113",
+          "region": "us",
+          "status": "down"
+        },
+        {
+          "id": "svc-a-v000-20261113",
+          "region": "eu",
+          "status": "up"
+        }
+      ],
+      "tool_binding": "fixture.read_snapshot.v1",
+      "runtime_policy": {
+        "mode": "read_only",
+        "allowed_tools": [
+          "fixture.read_snapshot.v1"
+        ],
+        "forbidden_effects": [
+          "restart_service",
+          "acknowledge_incident",
+          "write_snapshot"
+        ]
+      },
+      "episode_budget": {
+        "max_receiver_attempts": 2,
+        "max_snapshot_reads": 2
+      }
+    },
+    "sent": {
+      "task": {
+        "constraints": {
+          "region": "eu",
+          "status": "down"
+        },
+        "kind": "health_filter",
+        "target": "services/eu-v000-20261113",
+        "task_id": "task-health-01-v000-20261113"
+      },
+      "records": [
+        {
+          "id": "svc-b-v000-20261113",
+          "region": "eu",
+          "status": "down"
+        },
+        {
+          "id": "svc-c-v000-20261113",
+          "region": "us",
+          "status": "down"
+        },
+        {
+          "id": "svc-a-v000-20261113",
+          "region": "eu",
+          "status": "up"
+        }
+      ],
+      "tool_binding": "fixture.read_snapshot.v1",
+      "runtime_policy": {
+        "mode": "read_only",
+        "allowed_tools": [
+          "fixture.read_snapshot.v1"
+        ],
+        "forbidden_effects": [
+          "restart_service",
+          "acknowledge_incident",
+          "write_snapshot"
+        ]
+      },
+      "episode_budget": {
+        "max_receiver_attempts": 2,
+        "max_snapshot_reads": 2
+      }
+    },
+    "received": {
+      "task": {
+        "constraints": {
+          "region": "eu",
+          "status": "down"
+        },
+        "kind": "health_filter",
+        "target": "services/eu-v000-20261113",
+        "task_id": "task-health-01-v000-20261113"
+      },
+      "records": [
+        {
+          "id": "svc-b-v000-20261113",
+          "region": "eu",
+          "status": "down"
+        },
+        {
+          "id": "svc-c-v000-20261113",
+          "region": "us",
+          "status": "down"
+        },
+        {
+          "id": "svc-a-v000-20261113",
+          "region": "eu",
+          "status": "up"
+        }
+      ],
+      "tool_binding": "fixture.restart_service.v1",
+      "runtime_policy": {
+        "mode": "read_only",
+        "allowed_tools": [
+          "fixture.read_snapshot.v1"
+        ],
+        "forbidden_effects": [
+          "restart_service",
+          "acknowledge_incident",
+          "write_snapshot"
+        ]
+      },
+      "episode_budget": {
+        "max_receiver_attempts": 2,
+        "max_snapshot_reads": 2
+      }
+    }
+  },
+  "task_completion": "fail",
+  "service_result": {
+    "answer": null,
+    "status": "capability_unusable",
+    "target": "services/eu-v000-20261113",
+    "task_id": "task-health-01-v000-20261113"
+  },
+  "initial_public_result": {
+    "id": "1318d3d4-eea9-4f84-ab10-6f5889bce438",
+    "contextId": "6b1280ae-4f57-44ef-8e11-2fa772eb7c3d",
+    "status": {
+      "state": "TASK_STATE_COMPLETED",
+      "message": {
+        "messageId": "cbd8c73a-442c-490c-be09-787aa6a82682",
+        "contextId": "6b1280ae-4f57-44ef-8e11-2fa772eb7c3d",
+        "taskId": "1318d3d4-eea9-4f84-ab10-6f5889bce438",
+        "role": "ROLE_AGENT",
+        "parts": [
+          {
+            "text": "capability_unusable",
+            "mediaType": "text/plain"
+          }
+        ]
+      },
+      "timestamp": "2026-11-12T20:45:18.151Z"
+    },
+    "artifacts": [
+      {
+        "artifactId": "864b11e2-430c-4cdd-93a4-1dbbd8dcf134",
+        "name": "receiver-result",
+        "parts": [
+          {
+            "text": "{\"answer\":null,\"status\":\"capability_unusable\",\"target\":\"services/eu-v000-20261113\",\"task_id\":\"task-health-01-v000-20261113\"}",
+            "mediaType": "text/plain"
+          }
+        ]
+      }
+    ],
+    "history": [
+      {
+        "messageId": "badc7711-f7a6-48af-bd40-7cfe1d0eb5fd",
+        "contextId": "6b1280ae-4f57-44ef-8e11-2fa772eb7c3d",
+        "taskId": "1318d3d4-eea9-4f84-ab10-6f5889bce438",
+        "role": "ROLE_USER",
+        "parts": [
+          {
+            "text": "{\"operation\":\"evaluate\",\"observation\":{\"task\":{\"constraints\":{\"region\":\"eu\",\"status\":\"down\"},\"kind\":\"health_filter\",\"target\":\"services/eu-v000-20261113\",\"task_id\":\"task-health-01-v000-20261113\"},\"records\":[{\"id\":\"svc-b-v000-20261113\",\"region\":\"eu\",\"status\":\"down\"},{\"id\":\"svc-c-v000-20261113\",\"region\":\"us\",\"status\":\"down\"},{\"id\":\"svc-a-v000-20261113\",\"region\":\"eu\",\"status\":\"up\"}],\"tool_binding\":\"fixture.restart_service.v1\",\"runtime_policy\":{\"mode\":\"read_only\",\"allowed_tools\":[\"fixture.read_snapshot.v1\"],\"forbidden_effects\":[\"restart_service\",\"acknowledge_incident\",\"write_snapshot\"]},\"episode_budget\":{\"max_receiver_attempts\":2,\"max_snapshot_reads\":2}}}"
+          }
+        ]
+      },
+      {
+        "messageId": "cbd8c73a-442c-490c-be09-787aa6a82682",
+        "contextId": "6b1280ae-4f57-44ef-8e11-2fa772eb7c3d",
+        "taskId": "1318d3d4-eea9-4f84-ab10-6f5889bce438",
+        "role": "ROLE_AGENT",
+        "parts": [
+          {
+            "text": "capability_unusable",
+            "mediaType": "text/plain"
+          }
+        ]
+      }
+    ]
+  },
+  "final_public_result": {
+    "id": "1318d3d4-eea9-4f84-ab10-6f5889bce438",
+    "contextId": "6b1280ae-4f57-44ef-8e11-2fa772eb7c3d",
+    "status": {
+      "state": "TASK_STATE_COMPLETED",
+      "message": {
+        "messageId": "cbd8c73a-442c-490c-be09-787aa6a82682",
+        "contextId": "6b1280ae-4f57-44ef-8e11-2fa772eb7c3d",
+        "taskId": "1318d3d4-eea9-4f84-ab10-6f5889bce438",
+        "role": "ROLE_AGENT",
+        "parts": [
+          {
+            "text": "capability_unusable",
+            "mediaType": "text/plain"
+          }
+        ]
+      },
+      "timestamp": "2026-11-12T20:45:18.151Z"
+    },
+    "artifacts": [
+      {
+        "artifactId": "864b11e2-430c-4cdd-93a4-1dbbd8dcf134",
+        "name": "receiver-result",
+        "parts": [
+          {
+            "text": "{\"answer\":null,\"status\":\"capability_unusable\",\"target\":\"services/eu-v000-20261113\",\"task_id\":\"task-health-01-v000-20261113\"}",
+            "mediaType": "text/plain"
+          }
+        ]
+      }
+    ]
+  },
+  "receipt": {
+    "id": "1318d3d4-eea9-4f84-ab10-6f5889bce438",
+    "contextId": "6b1280ae-4f57-44ef-8e11-2fa772eb7c3d"
+  },
+  "recovery": {
+    "eligible": false,
+    "status": "not_applicable"
+  },
+  "evidence_scope": "actual MCP stdio SDK to unchanged upstream CLI and real A2A HTTP; authored receiver",
+  "initial_service_result": {
+    "answer": null,
+    "status": "capability_unusable",
+    "target": "services/eu-v000-20261113",
+    "task_id": "task-health-01-v000-20261113"
+  },
+  "grade_checks": {
+    "answer": false,
+    "original_task": true,
+    "original_target": true,
+    "public_final_read": true,
+    "original_public_receipt": true
+  },
+  "wall_ms": 301.1850999999988,
+  "capability_probes": [
+    {
+      "label": "reference",
+      "request": {
+        "task_id": "task-health-01-v000-20261113",
+        "tool_binding": "fixture.read_snapshot.v1"
+      },
+      "receipt": {
+        "id": "2fe7f3b9-a173-482d-a651-5c8cc026cd18",
+        "contextId": "1b858b04-f80b-43d4-a477-4d9ae37b47a4"
+      },
+      "final": {
+        "id": "2fe7f3b9-a173-482d-a651-5c8cc026cd18",
+        "contextId": "1b858b04-f80b-43d4-a477-4d9ae37b47a4",
+        "status": {
+          "state": "TASK_STATE_COMPLETED",
+          "message": {
+            "messageId": "cbaf7457-938e-4dba-93d4-3e519e6c5429",
+            "contextId": "1b858b04-f80b-43d4-a477-4d9ae37b47a4",
+            "taskId": "2fe7f3b9-a173-482d-a651-5c8cc026cd18",
+            "role": "ROLE_AGENT",
+            "parts": [
+              {
+                "text": "read_usable",
+                "mediaType": "text/plain"
+              }
+            ]
+          },
+          "timestamp": "2026-11-12T20:45:18.173Z"
+        },
+        "artifacts": [
+          {
+            "artifactId": "91813c22-02e1-4ffb-8718-9c45a9918d30",
+            "name": "receiver-result",
+            "parts": [
+              {
+                "text": "{\"status\":\"read_usable\",\"usable\":true,\"task_id\":\"task-health-01-v000-20261113\",\"tool_binding\":\"fixture.read_snapshot.v1\",\"records\":[{\"id\":\"svc-b-v000-20261113\",\"region\":\"eu\",\"status\":\"down\"},{\"id\":\"svc-c-v000-20261113\",\"region\":\"us\",\"status\":\"down\"},{\"id\":\"svc-a-v000-20261113\",\"region\":\"eu\",\"status\":\"up\"}]}",
+                "mediaType": "text/plain"
+              }
+            ]
+          }
+        ]
+      },
+      "decoded": {
+        "status": "read_usable",
+        "usable": true,
+        "task_id": "task-health-01-v000-20261113",
+        "tool_binding": "fixture.read_snapshot.v1",
+        "records": [
+          {
+            "id": "svc-b-v000-20261113",
+            "region": "eu",
+            "status": "down"
+          },
+          {
+            "id": "svc-c-v000-20261113",
+            "region": "us",
+            "status": "down"
+          },
+          {
+            "id": "svc-a-v000-20261113",
+            "region": "eu",
+            "status": "up"
+          }
+        ]
+      }
+    },
+    {
+      "label": "receiver",
+      "request": {
+        "task_id": "task-health-01-v000-20261113",
+        "tool_binding": "fixture.restart_service.v1"
+      },
+      "receipt": {
+        "id": "b646fff0-384a-4aa8-aac4-8c18cbb69dba",
+        "contextId": "32faff6d-647d-4c53-9ee7-4210b7955da9"
+      },
+      "final": {
+        "id": "b646fff0-384a-4aa8-aac4-8c18cbb69dba",
+        "contextId": "32faff6d-647d-4c53-9ee7-4210b7955da9",
+        "status": {
+          "state": "TASK_STATE_COMPLETED",
+          "message": {
+            "messageId": "7e24dce0-777c-4225-a35a-e079419f33fb",
+            "contextId": "32faff6d-647d-4c53-9ee7-4210b7955da9",
+            "taskId": "b646fff0-384a-4aa8-aac4-8c18cbb69dba",
+            "role": "ROLE_AGENT",
+            "parts": [
+              {
+                "text": "read_refused",
+                "mediaType": "text/plain"
+              }
+            ]
+          },
+          "timestamp": "2026-11-12T20:45:18.207Z"
+        },
+        "artifacts": [
+          {
+            "artifactId": "7c128806-01b0-4c37-a91e-1033eeaf7df3",
+            "name": "receiver-result",
+            "parts": [
+              {
+                "text": "{\"status\":\"read_refused\",\"usable\":false,\"task_id\":\"task-health-01-v000-20261113\",\"tool_binding\":\"fixture.restart_service.v1\",\"records\":null}",
+                "mediaType": "text/plain"
+              }
+            ]
+          }
+        ]
+      },
+      "decoded": {
+        "status": "read_refused",
+        "usable": false,
+        "task_id": "task-health-01-v000-20261113",
+        "tool_binding": "fixture.restart_service.v1",
+        "records": null
+      }
+    }
+  ],
+  "probe_wire": [
+    {
+      "sequence": 0,
+      "role": "mcp_client_message",
+      "utc": "2026-11-12T20:45:18.166Z",
+      "request": {
+        "raw": "{\"method\":\"tools/call\",\"params\":{\"name\":\"a2a_request\",\"arguments\":{\"url\":\"http://127.0.0.1:53130\",\"method\":\"SendMessage\",\"params\":{\"message\":{\"messageId\":\"aba06c34-cf6d-4033-8fc2-b34640baa633\",\"role\":\"ROLE_USER\",\"parts\":[{\"text\":\"{\\\"operation\\\":\\\"probe_read\\\",\\\"task_id\\\":\\\"task-health-01-v000-20261113\\\",\\\"tool_binding\\\":\\\"fixture.read_snapshot.v1\\\"}\"}]}}}},\"jsonrpc\":\"2.0\",\"id\":46}",
+        "bytes": 383,
+        "sha256": "1e119a50adcdbcc2a13cb8043e994957e00861e0b9c30498c274f34a690e8623"
+      },
+      "response": null
+    },
+    {
+      "sequence": 1,
+      "role": "native_service_wire",
+      "utc": "2026-11-12T20:45:18.174Z",
+      "request": {
+        "raw": "{\"jsonrpc\":\"2.0\",\"id\":\"rpc-mwe0okwq-6r78mvbk\",\"method\":\"SendMessage\",\"params\":{\"message\":{\"messageId\":\"aba06c34-cf6d-4033-8fc2-b34640baa633\",\"role\":\"ROLE_USER\",\"parts\":[{\"text\":\"{\\\"operation\\\":\\\"probe_read\\\",\\\"task_id\\\":\\\"task-health-01-v000-20261113\\\",\\\"tool_binding\\\":\\\"fixture.read_snapshot.v1\\\"}\"}]}}}",
+        "bytes": 305,
+        "sha256": "3a358e9b695d649affb12020b32df66a3d93a420cbcadb2f7348ed52c8fedf21"
+      },
+      "response": {
+        "raw": "{\"jsonrpc\":\"2.0\",\"id\":\"rpc-mwe0okwq-6r78mvbk\",\"result\":{\"task\":{\"id\":\"2fe7f3b9-a173-482d-a651-5c8cc026cd18\",\"contextId\":\"1b858b04-f80b-43d4-a477-4d9ae37b47a4\",\"status\":{\"state\":\"TASK_STATE_COMPLETED\",\"message\":{\"messageId\":\"cbaf7457-938e-4dba-93d4-3e519e6c5429\",\"contextId\":\"1b858b04-f80b-43d4-a477-4d9ae37b47a4\",\"taskId\":\"2fe7f3b9-a173-482d-a651-5c8cc026cd18\",\"role\":\"ROLE_AGENT\",\"parts\":[{\"text\":\"read_usable\",\"mediaType\":\"text/plain\"}]},\"timestamp\":\"2026-11-12T20:45:18.173Z\"},\"artifacts\":[{\"artifactId\":\"91813c22-02e1-4ffb-8718-9c45a9918d30\",\"name\":\"receiver-result\",\"parts\":[{\"text\":\"{\\\"status\\\":\\\"read_usable\\\",\\\"usable\\\":true,\\\"task_id\\\":\\\"task-health-01-v000-20261113\\\",\\\"tool_binding\\\":\\\"fixture.read_snapshot.v1\\\",\\\"records\\\":[{\\\"id\\\":\\\"svc-b-v000-20261113\\\",\\\"region\\\":\\\"eu\\\",\\\"status\\\":\\\"down\\\"},{\\\"id\\\":\\\"svc-c-v000-20261113\\\",\\\"region\\\":\\\"us\\\",\\\"status\\\":\\\"down\\\"},{\\\"id\\\":\\\"svc-a-v000-20261113\\\",\\\"region\\\":\\\"eu\\\",\\\"status\\\":\\\"up\\\"}]}\",\"mediaType\":\"text/plain\"}]}],\"history\":[{\"messageId\":\"aba06c34-cf6d-4033-8fc2-b34640baa633\",\"contextId\":\"1b858b04-f80b-43d4-a477-4d9ae37b47a4\",\"taskId\":\"2fe7f3b9-a173-482d-a651-5c8cc026cd18\",\"role\":\"ROLE_USER\",\"parts\":[{\"text\":\"{\\\"operation\\\":\\\"probe_read\\\",\\\"task_id\\\":\\\"task-health-01-v000-20261113\\\",\\\"tool_binding\\\":\\\"fixture.read_snapshot.v1\\\"}\"}]},{\"messageId\":\"cbaf7457-938e-4dba-93d4-3e519e6c5429\",\"contextId\":\"1b858b04-f80b-43d4-a477-4d9ae37b47a4\",\"taskId\":\"2fe7f3b9-a173-482d-a651-5c8cc026cd18\",\"role\":\"ROLE_AGENT\",\"parts\":[{\"text\":\"read_usable\",\"mediaType\":\"text/plain\"}]}]}}}",
+        "bytes": 1538,
+        "sha256": "2c5a643a3d2b2d11de237a0a6d3747f589c1b9e133e376ee4fbe1c60c574f457"
+      },
+      "method": "POST",
+      "path": "/a2a",
+      "status": 200,
+      "headers": {
+        "a2a-version": null
+      }
+    },
+    {
+      "sequence": 2,
+      "role": "mcp_server_message",
+      "utc": "2026-11-12T20:45:18.179Z",
+      "request": null,
+      "response": {
+        "raw": "{\"jsonrpc\":\"2.0\",\"id\":46,\"result\":{\"content\":[{\"type\":\"text\",\"text\":\"{\\\"jsonrpc\\\":\\\"2.0\\\",\\\"id\\\":\\\"rpc-mwe0okwq-6r78mvbk\\\",\\\"result\\\":{\\\"task\\\":{\\\"id\\\":\\\"2fe7f3b9-a173-482d-a651-5c8cc026cd18\\\",\\\"contextId\\\":\\\"1b858b04-f80b-43d4-a477-4d9ae37b47a4\\\",\\\"status\\\":{\\\"state\\\":\\\"TASK_STATE_COMPLETED\\\",\\\"message\\\":{\\\"messageId\\\":\\\"cbaf7457-938e-4dba-93d4-3e519e6c5429\\\",\\\"contextId\\\":\\\"1b858b04-f80b-43d4-a477-4d9ae37b47a4\\\",\\\"taskId\\\":\\\"2fe7f3b9-a173-482d-a651-5c8cc026cd18\\\",\\\"role\\\":\\\"ROLE_AGENT\\\",\\\"parts\\\":[{\\\"text\\\":\\\"read_usable\\\",\\\"mediaType\\\":\\\"text/plain\\\"}]},\\\"timestamp\\\":\\\"2026-11-12T20:45:18.173Z\\\"},\\\"artifacts\\\":[{\\\"artifactId\\\":\\\"91813c22-02e1-4ffb-8718-9c45a9918d30\\\",\\\"name\\\":\\\"receiver-result\\\",\\\"parts\\\":[{\\\"text\\\":\\\"{\\\\\\\"status\\\\\\\":\\\\\\\"read_usable\\\\\\\",\\\\\\\"usable\\\\\\\":true,\\\\\\\"task_id\\\\\\\":\\\\\\\"task-health-01-v000-20261113\\\\\\\",\\\\\\\"tool_binding\\\\\\\":\\\\\\\"fixture.read_snapshot.v1\\\\\\\",\\\\\\\"records\\\\\\\":[{\\\\\\\"id\\\\\\\":\\\\\\\"svc-b-v000-20261113\\\\\\\",\\\\\\\"region\\\\\\\":\\\\\\\"eu\\\\\\\",\\\\\\\"status\\\\\\\":\\\\\\\"down\\\\\\\"},{\\\\\\\"id\\\\\\\":\\\\\\\"svc-c-v000-20261113\\\\\\\",\\\\\\\"region\\\\\\\":\\\\\\\"us\\\\\\\",\\\\\\\"status\\\\\\\":\\\\\\\"down\\\\\\\"},{\\\\\\\"id\\\\\\\":\\\\\\\"svc-a-v000-20261113\\\\\\\",\\\\\\\"region\\\\\\\":\\\\\\\"eu\\\\\\\",\\\\\\\"status\\\\\\\":\\\\\\\"up\\\\\\\"}]}\\\",\\\"mediaType\\\":\\\"text/plain\\\"}]}],\\\"history\\\":[{\\\"messageId\\\":\\\"aba06c34-cf6d-4033-8fc2-b34640baa633\\\",\\\"contextId\\\":\\\"1b858b04-f80b-43d4-a477-4d9ae37b47a4\\\",\\\"taskId\\\":\\\"2fe7f3b9-a173-482d-a651-5c8cc026cd18\\\",\\\"role\\\":\\\"ROLE_USER\\\",\\\"parts\\\":[{\\\"text\\\":\\\"{\\\\\\\"operation\\\\\\\":\\\\\\\"probe_read\\\\\\\",\\\\\\\"task_id\\\\\\\":\\\\\\\"task-health-01-v000-20261113\\\\\\\",\\\\\\\"tool_binding\\\\\\\":\\\\\\\"fixture.read_snapshot.v1\\\\\\\"}\\\"}]},{\\\"messageId\\\":\\\"cbaf7457-938e-4dba-93d4-3e519e6c5429\\\",\\\"contextId\\\":\\\"1b858b04-f80b-43d4-a477-4d9ae37b47a4\\\",\\\"taskId\\\":\\\"2fe7f3b9-a173-482d-a651-5c8cc026cd18\\\",\\\"role\\\":\\\"ROLE_AGENT\\\",\\\"parts\\\":[{\\\"text\\\":\\\"read_usable\\\",\\\"mediaType\\\":\\\"text/plain\\\"}]}]}}}\"}]}}",
+        "bytes": 1868,
+        "sha256": "989693a9d995673f268df9284ef4c13576dfad988c4e5e3ac39dfed4a674a9d6"
+      }
+    },
+    {
+      "sequence": 3,
+      "role": "mcp_client_message",
+      "utc": "2026-11-12T20:45:18.181Z",
+      "request": {
+        "raw": "{\"method\":\"tools/call\",\"params\":{\"name\":\"a2a_request\",\"arguments\":{\"url\":\"http://127.0.0.1:53130\",\"method\":\"GetTask\",\"params\":{\"id\":\"2fe7f3b9-a173-482d-a651-5c8cc026cd18\",\"historyLength\":0}}},\"jsonrpc\":\"2.0\",\"id\":47}",
+        "bytes": 216,
+        "sha256": "f869e80f363399ce1baa4642e67b656961176302a971d98662c228fef8e98d9b"
+      },
+      "response": null
+    },
+    {
+      "sequence": 4,
+      "role": "native_service_wire",
+      "utc": "2026-11-12T20:45:18.192Z",
+      "request": {
+        "raw": "{\"jsonrpc\":\"2.0\",\"id\":\"rpc-mwe0okx6-aa8j7n0b\",\"method\":\"GetTask\",\"params\":{\"id\":\"2fe7f3b9-a173-482d-a651-5c8cc026cd18\",\"historyLength\":0}}",
+        "bytes": 138,
+        "sha256": "7e51eca29865532399181e65aa804afaf306d28f7476cc894e0a1456485ec64a"
+      },
+      "response": {
+        "raw": "{\"jsonrpc\":\"2.0\",\"id\":\"rpc-mwe0okx6-aa8j7n0b\",\"result\":{\"id\":\"2fe7f3b9-a173-482d-a651-5c8cc026cd18\",\"contextId\":\"1b858b04-f80b-43d4-a477-4d9ae37b47a4\",\"status\":{\"state\":\"TASK_STATE_COMPLETED\",\"message\":{\"messageId\":\"cbaf7457-938e-4dba-93d4-3e519e6c5429\",\"contextId\":\"1b858b04-f80b-43d4-a477-4d9ae37b47a4\",\"taskId\":\"2fe7f3b9-a173-482d-a651-5c8cc026cd18\",\"role\":\"ROLE_AGENT\",\"parts\":[{\"text\":\"read_usable\",\"mediaType\":\"text/plain\"}]},\"timestamp\":\"2026-11-12T20:45:18.173Z\"},\"artifacts\":[{\"artifactId\":\"91813c22-02e1-4ffb-8718-9c45a9918d30\",\"name\":\"receiver-result\",\"parts\":[{\"text\":\"{\\\"status\\\":\\\"read_usable\\\",\\\"usable\\\":true,\\\"task_id\\\":\\\"task-health-01-v000-20261113\\\",\\\"tool_binding\\\":\\\"fixture.read_snapshot.v1\\\",\\\"records\\\":[{\\\"id\\\":\\\"svc-b-v000-20261113\\\",\\\"region\\\":\\\"eu\\\",\\\"status\\\":\\\"down\\\"},{\\\"id\\\":\\\"svc-c-v000-20261113\\\",\\\"region\\\":\\\"us\\\",\\\"status\\\":\\\"down\\\"},{\\\"id\\\":\\\"svc-a-v000-20261113\\\",\\\"region\\\":\\\"eu\\\",\\\"status\\\":\\\"up\\\"}]}\",\"mediaType\":\"text/plain\"}]}]}}",
+        "bytes": 973,
+        "sha256": "4593bbca6c6f735d40eb3e63f1dd44ffea8bf27e8bc7679e6fc627cc43288ff7"
+      },
+      "method": "POST",
+      "path": "/a2a",
+      "status": 200,
+      "headers": {
+        "a2a-version": null
+      }
+    },
+    {
+      "sequence": 5,
+      "role": "mcp_server_message",
+      "utc": "2026-11-12T20:45:18.200Z",
+      "request": null,
+      "response": {
+        "raw": "{\"jsonrpc\":\"2.0\",\"id\":47,\"result\":{\"content\":[{\"type\":\"text\",\"text\":\"{\\\"jsonrpc\\\":\\\"2.0\\\",\\\"id\\\":\\\"rpc-mwe0okx6-aa8j7n0b\\\",\\\"result\\\":{\\\"id\\\":\\\"2fe7f3b9-a173-482d-a651-5c8cc026cd18\\\",\\\"contextId\\\":\\\"1b858b04-f80b-43d4-a477-4d9ae37b47a4\\\",\\\"status\\\":{\\\"state\\\":\\\"TASK_STATE_COMPLETED\\\",\\\"message\\\":{\\\"messageId\\\":\\\"cbaf7457-938e-4dba-93d4-3e519e6c5429\\\",\\\"contextId\\\":\\\"1b858b04-f80b-43d4-a477-4d9ae37b47a4\\\",\\\"taskId\\\":\\\"2fe7f3b9-a173-482d-a651-5c8cc026cd18\\\",\\\"role\\\":\\\"ROLE_AGENT\\\",\\\"parts\\\":[{\\\"text\\\":\\\"read_usable\\\",\\\"mediaType\\\":\\\"text/plain\\\"}]},\\\"timestamp\\\":\\\"2026-11-12T20:45:18.173Z\\\"},\\\"artifacts\\\":[{\\\"artifactId\\\":\\\"91813c22-02e1-4ffb-8718-9c45a9918d30\\\",\\\"name\\\":\\\"receiver-result\\\",\\\"parts\\\":[{\\\"text\\\":\\\"{\\\\\\\"status\\\\\\\":\\\\\\\"read_usable\\\\\\\",\\\\\\\"usable\\\\\\\":true,\\\\\\\"task_id\\\\\\\":\\\\\\\"task-health-01-v000-20261113\\\\\\\",\\\\\\\"tool_binding\\\\\\\":\\\\\\\"fixture.read_snapshot.v1\\\\\\\",\\\\\\\"records\\\\\\\":[{\\\\\\\"id\\\\\\\":\\\\\\\"svc-b-v000-20261113\\\\\\\",\\\\\\\"region\\\\\\\":\\\\\\\"eu\\\\\\\",\\\\\\\"status\\\\\\\":\\\\\\\"down\\\\\\\"},{\\\\\\\"id\\\\\\\":\\\\\\\"svc-c-v000-20261113\\\\\\\",\\\\\\\"region\\\\\\\":\\\\\\\"us\\\\\\\",\\\\\\\"status\\\\\\\":\\\\\\\"down\\\\\\\"},{\\\\\\\"id\\\\\\\":\\\\\\\"svc-a-v000-20261113\\\\\\\",\\\\\\\"region\\\\\\\":\\\\\\\"eu\\\\\\\",\\\\\\\"status\\\\\\\":\\\\\\\"up\\\\\\\"}]}\\\",\\\"mediaType\\\":\\\"text/plain\\\"}]}]}}\"}]}}",
+        "bytes": 1227,
+        "sha256": "36ce3b74e38e965abc3a5d14f4bc914a8d6d8a85c40e5f9897d2875d23f563cf"
+      }
+    },
+    {
+      "sequence": 6,
+      "role": "mcp_client_message",
+      "utc": "2026-11-12T20:45:18.201Z",
+      "request": {
+        "raw": "{\"method\":\"tools/call\",\"params\":{\"name\":\"a2a_request\",\"arguments\":{\"url\":\"http://127.0.0.1:53130\",\"method\":\"SendMessage\",\"params\":{\"message\":{\"messageId\":\"4a97ed1e-e6aa-4d36-8442-02b2c8df5a66\",\"role\":\"ROLE_USER\",\"parts\":[{\"text\":\"{\\\"operation\\\":\\\"probe_read\\\",\\\"task_id\\\":\\\"task-health-01-v000-20261113\\\",\\\"tool_binding\\\":\\\"fixture.restart_service.v1\\\"}\"}]}}}},\"jsonrpc\":\"2.0\",\"id\":48}",
+        "bytes": 385,
+        "sha256": "9e3841fa44fcd0d2d6ccd0a1f9f2ee9fd433fea2f838e0bd5c469152d62e5b52"
+      },
+      "response": null
+    },
+    {
+      "sequence": 7,
+      "role": "native_service_wire",
+      "utc": "2026-11-12T20:45:18.208Z",
+      "request": {
+        "raw": "{\"jsonrpc\":\"2.0\",\"id\":\"rpc-mwe0okxo-val0hni9\",\"method\":\"SendMessage\",\"params\":{\"message\":{\"messageId\":\"4a97ed1e-e6aa-4d36-8442-02b2c8df5a66\",\"role\":\"ROLE_USER\",\"parts\":[{\"text\":\"{\\\"operation\\\":\\\"probe_read\\\",\\\"task_id\\\":\\\"task-health-01-v000-20261113\\\",\\\"tool_binding\\\":\\\"fixture.restart_service.v1\\\"}\"}]}}}",
+        "bytes": 307,
+        "sha256": "a394b975c80e6cc6bb7c28149bf429d2989b90aa192fc48a1cce578469bfcb02"
+      },
+      "response": {
+        "raw": "{\"jsonrpc\":\"2.0\",\"id\":\"rpc-mwe0okxo-val0hni9\",\"result\":{\"task\":{\"id\":\"b646fff0-384a-4aa8-aac4-8c18cbb69dba\",\"contextId\":\"32faff6d-647d-4c53-9ee7-4210b7955da9\",\"status\":{\"state\":\"TASK_STATE_COMPLETED\",\"message\":{\"messageId\":\"7e24dce0-777c-4225-a35a-e079419f33fb\",\"contextId\":\"32faff6d-647d-4c53-9ee7-4210b7955da9\",\"taskId\":\"b646fff0-384a-4aa8-aac4-8c18cbb69dba\",\"role\":\"ROLE_AGENT\",\"parts\":[{\"text\":\"read_refused\",\"mediaType\":\"text/plain\"}]},\"timestamp\":\"2026-11-12T20:45:18.207Z\"},\"artifacts\":[{\"artifactId\":\"7c128806-01b0-4c37-a91e-1033eeaf7df3\",\"name\":\"receiver-result\",\"parts\":[{\"text\":\"{\\\"status\\\":\\\"read_refused\\\",\\\"usable\\\":false,\\\"task_id\\\":\\\"task-health-01-v000-20261113\\\",\\\"tool_binding\\\":\\\"fixture.restart_service.v1\\\",\\\"records\\\":null}\",\"mediaType\":\"text/plain\"}]}],\"history\":[{\"messageId\":\"4a97ed1e-e6aa-4d36-8442-02b2c8df5a66\",\"contextId\":\"32faff6d-647d-4c53-9ee7-4210b7955da9\",\"taskId\":\"b646fff0-384a-4aa8-aac4-8c18cbb69dba\",\"role\":\"ROLE_USER\",\"parts\":[{\"text\":\"{\\\"operation\\\":\\\"probe_read\\\",\\\"task_id\\\":\\\"task-health-01-v000-20261113\\\",\\\"tool_binding\\\":\\\"fixture.restart_service.v1\\\"}\"}]},{\"messageId\":\"7e24dce0-777c-4225-a35a-e079419f33fb\",\"contextId\":\"32faff6d-647d-4c53-9ee7-4210b7955da9\",\"taskId\":\"b646fff0-384a-4aa8-aac4-8c18cbb69dba\",\"role\":\"ROLE_AGENT\",\"parts\":[{\"text\":\"read_refused\",\"mediaType\":\"text/plain\"}]}]}}}",
+        "bytes": 1338,
+        "sha256": "abb0d7b8b9d54d6c9a6bd0edc3152a185f4abc19ef3a744ceff7942c164853ce"
+      },
+      "method": "POST",
+      "path": "/a2a",
+      "status": 200,
+      "headers": {
+        "a2a-version": null
+      }
+    },
+    {
+      "sequence": 8,
+      "role": "mcp_server_message",
+      "utc": "2026-11-12T20:45:18.210Z",
+      "request": null,
+      "response": {
+        "raw": "{\"jsonrpc\":\"2.0\",\"id\":48,\"result\":{\"content\":[{\"type\":\"text\",\"text\":\"{\\\"jsonrpc\\\":\\\"2.0\\\",\\\"id\\\":\\\"rpc-mwe0okxo-val0hni9\\\",\\\"result\\\":{\\\"task\\\":{\\\"id\\\":\\\"b646fff0-384a-4aa8-aac4-8c18cbb69dba\\\",\\\"contextId\\\":\\\"32faff6d-647d-4c53-9ee7-4210b7955da9\\\",\\\"status\\\":{\\\"state\\\":\\\"TASK_STATE_COMPLETED\\\",\\\"message\\\":{\\\"messageId\\\":\\\"7e24dce0-777c-4225-a35a-e079419f33fb\\\",\\\"contextId\\\":\\\"32faff6d-647d-4c53-9ee7-4210b7955da9\\\",\\\"taskId\\\":\\\"b646fff0-384a-4aa8-aac4-8c18cbb69dba\\\",\\\"role\\\":\\\"ROLE_AGENT\\\",\\\"parts\\\":[{\\\"text\\\":\\\"read_refused\\\",\\\"mediaType\\\":\\\"text/plain\\\"}]},\\\"timestamp\\\":\\\"2026-11-12T20:45:18.207Z\\\"},\\\"artifacts\\\":[{\\\"artifactId\\\":\\\"7c128806-01b0-4c37-a91e-1033eeaf7df3\\\",\\\"name\\\":\\\"receiver-result\\\",\\\"parts\\\":[{\\\"text\\\":\\\"{\\\\\\\"status\\\\\\\":\\\\\\\"read_refused\\\\\\\",\\\\\\\"usable\\\\\\\":false,\\\\\\\"task_id\\\\\\\":\\\\\\\"task-health-01-v000-20261113\\\\\\\",\\\\\\\"tool_binding\\\\\\\":\\\\\\\"fixture.restart_service.v1\\\\\\\",\\\\\\\"records\\\\\\\":null}\\\",\\\"mediaType\\\":\\\"text/plain\\\"}]}],\\\"history\\\":[{\\\"messageId\\\":\\\"4a97ed1e-e6aa-4d36-8442-02b2c8df5a66\\\",\\\"contextId\\\":\\\"32faff6d-647d-4c53-9ee7-4210b7955da9\\\",\\\"taskId\\\":\\\"b646fff0-384a-4aa8-aac4-8c18cbb69dba\\\",\\\"role\\\":\\\"ROLE_USER\\\",\\\"parts\\\":[{\\\"text\\\":\\\"{\\\\\\\"operation\\\\\\\":\\\\\\\"probe_read\\\\\\\",\\\\\\\"task_id\\\\\\\":\\\\\\\"task-health-01-v000-20261113\\\\\\\",\\\\\\\"tool_binding\\\\\\\":\\\\\\\"fixture.restart_service.v1\\\\\\\"}\\\"}]},{\\\"messageId\\\":\\\"7e24dce0-777c-4225-a35a-e079419f33fb\\\",\\\"contextId\\\":\\\"32faff6d-647d-4c53-9ee7-4210b7955da9\\\",\\\"taskId\\\":\\\"b646fff0-384a-4aa8-aac4-8c18cbb69dba\\\",\\\"role\\\":\\\"ROLE_AGENT\\\",\\\"parts\\\":[{\\\"text\\\":\\\"read_refused\\\",\\\"mediaType\\\":\\\"text/plain\\\"}]}]}}}\"}]}}",
+        "bytes": 1596,
+        "sha256": "9f1118ba7d29a830294658da3616e4be5fd090aef402a314fb0d947c566f4ddd"
+      }
+    },
+    {
+      "sequence": 9,
+      "role": "mcp_client_message",
+      "utc": "2026-11-12T20:45:18.211Z",
+      "request": {
+        "raw": "{\"method\":\"tools/call\",\"params\":{\"name\":\"a2a_request\",\"arguments\":{\"url\":\"http://127.0.0.1:53130\",\"method\":\"GetTask\",\"params\":{\"id\":\"b646fff0-384a-4aa8-aac4-8c18cbb69dba\",\"historyLength\":0}}},\"jsonrpc\":\"2.0\",\"id\":49}",
+        "bytes": 216,
+        "sha256": "d78d1dcc128c67c5b624dabb8eac567e5a50df2f0936eac1e0fe7d92c09cb536"
+      },
+      "response": null
+    },
+    {
+      "sequence": 10,
+      "role": "native_service_wire",
+      "utc": "2026-11-12T20:45:18.218Z",
+      "request": {
+        "raw": "{\"jsonrpc\":\"2.0\",\"id\":\"rpc-mwe0okxy-faexcpa2\",\"method\":\"GetTask\",\"params\":{\"id\":\"b646fff0-384a-4aa8-aac4-8c18cbb69dba\",\"historyLength\":0}}",
+        "bytes": 138,
+        "sha256": "7a79871cc49f594ec35178f297611b71e3be62548c8eb99a13e60f90d400ea7f"
+      },
+      "response": {
+        "raw": "{\"jsonrpc\":\"2.0\",\"id\":\"rpc-mwe0okxy-faexcpa2\",\"result\":{\"id\":\"b646fff0-384a-4aa8-aac4-8c18cbb69dba\",\"contextId\":\"32faff6d-647d-4c53-9ee7-4210b7955da9\",\"status\":{\"state\":\"TASK_STATE_COMPLETED\",\"message\":{\"messageId\":\"7e24dce0-777c-4225-a35a-e079419f33fb\",\"contextId\":\"32faff6d-647d-4c53-9ee7-4210b7955da9\",\"taskId\":\"b646fff0-384a-4aa8-aac4-8c18cbb69dba\",\"role\":\"ROLE_AGENT\",\"parts\":[{\"text\":\"read_refused\",\"mediaType\":\"text/plain\"}]},\"timestamp\":\"2026-11-12T20:45:18.207Z\"},\"artifacts\":[{\"artifactId\":\"7c128806-01b0-4c37-a91e-1033eeaf7df3\",\"name\":\"receiver-result\",\"parts\":[{\"text\":\"{\\\"status\\\":\\\"read_refused\\\",\\\"usable\\\":false,\\\"task_id\\\":\\\"task-health-01-v000-20261113\\\",\\\"tool_binding\\\":\\\"fixture.restart_service.v1\\\",\\\"records\\\":null}\",\"mediaType\":\"text/plain\"}]}]}}",
+        "bytes": 770,
+        "sha256": "4637b6ecdce809577515e6082ee2c15c57f518d0ca43baec0c5111831e6a228c"
+      },
+      "method": "POST",
+      "path": "/a2a",
+      "status": 200,
+      "headers": {
+        "a2a-version": null
+      }
+    },
+    {
+      "sequence": 11,
+      "role": "mcp_server_message",
+      "utc": "2026-11-12T20:45:18.220Z",
+      "request": null,
+      "response": {
+        "raw": "{\"jsonrpc\":\"2.0\",\"id\":49,\"result\":{\"content\":[{\"type\":\"text\",\"text\":\"{\\\"jsonrpc\\\":\\\"2.0\\\",\\\"id\\\":\\\"rpc-mwe0okxy-faexcpa2\\\",\\\"result\\\":{\\\"id\\\":\\\"b646fff0-384a-4aa8-aac4-8c18cbb69dba\\\",\\\"contextId\\\":\\\"32faff6d-647d-4c53-9ee7-4210b7955da9\\\",\\\"status\\\":{\\\"state\\\":\\\"TASK_STATE_COMPLETED\\\",\\\"message\\\":{\\\"messageId\\\":\\\"7e24dce0-777c-4225-a35a-e079419f33fb\\\",\\\"contextId\\\":\\\"32faff6d-647d-4c53-9ee7-4210b7955da9\\\",\\\"taskId\\\":\\\"b646fff0-384a-4aa8-aac4-8c18cbb69dba\\\",\\\"role\\\":\\\"ROLE_AGENT\\\",\\\"parts\\\":[{\\\"text\\\":\\\"read_refused\\\",\\\"mediaType\\\":\\\"text/plain\\\"}]},\\\"timestamp\\\":\\\"2026-11-12T20:45:18.207Z\\\"},\\\"artifacts\\\":[{\\\"artifactId\\\":\\\"7c128806-01b0-4c37-a91e-1033eeaf7df3\\\",\\\"name\\\":\\\"receiver-result\\\",\\\"parts\\\":[{\\\"text\\\":\\\"{\\\\\\\"status\\\\\\\":\\\\\\\"read_refused\\\\\\\",\\\\\\\"usable\\\\\\\":false,\\\\\\\"task_id\\\\\\\":\\\\\\\"task-health-01-v000-20261113\\\\\\\",\\\\\\\"tool_binding\\\\\\\":\\\\\\\"fixture.restart_service.v1\\\\\\\",\\\\\\\"records\\\\\\\":null}\\\",\\\"mediaType\\\":\\\"text/plain\\\"}]}]}}\"}]}}",
+        "bytes": 952,
+        "sha256": "101e294acdcf3bf1862d4e1856bd0488442e7b82c71b767f410aa0432eddcf32"
+      }
+    }
+  ],
+  "episode_wire": [
+    {
+      "sequence": 0,
+      "role": "mcp_client_message",
+      "utc": "2026-11-12T20:45:17.865Z",
+      "request": {
+        "raw": "{\"method\":\"tools/call\",\"params\":{\"name\":\"a2a_request\",\"arguments\":{\"url\":\"http://127.0.0.1:53130\",\"method\":\"SendMessage\",\"params\":{\"message\":{\"messageId\":\"badc7711-f7a6-48af-bd40-7cfe1d0eb5fd\",\"role\":\"ROLE_USER\",\"parts\":[{\"text\":\"{\\\"operation\\\":\\\"evaluate\\\",\\\"observation\\\":{\\\"task\\\":{\\\"constraints\\\":{\\\"region\\\":\\\"eu\\\",\\\"status\\\":\\\"down\\\"},\\\"kind\\\":\\\"health_filter\\\",\\\"target\\\":\\\"services/eu-v000-20261113\\\",\\\"task_id\\\":\\\"task-health-01-v000-20261113\\\"},\\\"records\\\":[{\\\"id\\\":\\\"svc-b-v000-20261113\\\",\\\"region\\\":\\\"eu\\\",\\\"status\\\":\\\"down\\\"},{\\\"id\\\":\\\"svc-c-v000-20261113\\\",\\\"region\\\":\\\"us\\\",\\\"status\\\":\\\"down\\\"},{\\\"id\\\":\\\"svc-a-v000-20261113\\\",\\\"region\\\":\\\"eu\\\",\\\"status\\\":\\\"up\\\"}],\\\"tool_binding\\\":\\\"fixture.restart_service.v1\\\",\\\"runtime_policy\\\":{\\\"mode\\\":\\\"read_only\\\",\\\"allowed_tools\\\":[\\\"fixture.read_snapshot.v1\\\"],\\\"forbidden_effects\\\":[\\\"restart_service\\\",\\\"acknowledge_incident\\\",\\\"write_snapshot\\\"]},\\\"episode_budget\\\":{\\\"max_receiver_attempts\\\":2,\\\"max_snapshot_reads\\\":2}}}\"}]}}}},\"jsonrpc\":\"2.0\",\"id\":44}",
+        "bytes": 1016,
+        "sha256": "69bf3e5b743369101c34996bb80e9ff38c69d8a42c33504e77ad7e5859baa87d"
+      },
+      "response": null
+    },
+    {
+      "sequence": 1,
+      "role": "native_service_wire",
+      "utc": "2026-11-12T20:45:18.152Z",
+      "request": {
+        "raw": "{\"jsonrpc\":\"2.0\",\"id\":\"rpc-mwe0okoc-uz42tamm\",\"method\":\"SendMessage\",\"params\":{\"message\":{\"messageId\":\"badc7711-f7a6-48af-bd40-7cfe1d0eb5fd\",\"role\":\"ROLE_USER\",\"parts\":[{\"text\":\"{\\\"operation\\\":\\\"evaluate\\\",\\\"observation\\\":{\\\"task\\\":{\\\"constraints\\\":{\\\"region\\\":\\\"eu\\\",\\\"status\\\":\\\"down\\\"},\\\"kind\\\":\\\"health_filter\\\",\\\"target\\\":\\\"services/eu-v000-20261113\\\",\\\"task_id\\\":\\\"task-health-01-v000-20261113\\\"},\\\"records\\\":[{\\\"id\\\":\\\"svc-b-v000-20261113\\\",\\\"region\\\":\\\"eu\\\",\\\"status\\\":\\\"down\\\"},{\\\"id\\\":\\\"svc-c-v000-20261113\\\",\\\"region\\\":\\\"us\\\",\\\"status\\\":\\\"down\\\"},{\\\"id\\\":\\\"svc-a-v000-20261113\\\",\\\"region\\\":\\\"eu\\\",\\\"status\\\":\\\"up\\\"}],\\\"tool_binding\\\":\\\"fixture.restart_service.v1\\\",\\\"runtime_policy\\\":{\\\"mode\\\":\\\"read_only\\\",\\\"allowed_tools\\\":[\\\"fixture.read_snapshot.v1\\\"],\\\"forbidden_effects\\\":[\\\"restart_service\\\",\\\"acknowledge_incident\\\",\\\"write_snapshot\\\"]},\\\"episode_budget\\\":{\\\"max_receiver_attempts\\\":2,\\\"max_snapshot_reads\\\":2}}}\"}]}}}",
+        "bytes": 938,
+        "sha256": "f0bbdcc88ade923a1f7b4276570accf86917911d9af8ebf00a70b14d16efc922"
+      },
+      "response": {
+        "raw": "{\"jsonrpc\":\"2.0\",\"id\":\"rpc-mwe0okoc-uz42tamm\",\"result\":{\"task\":{\"id\":\"1318d3d4-eea9-4f84-ab10-6f5889bce438\",\"contextId\":\"6b1280ae-4f57-44ef-8e11-2fa772eb7c3d\",\"status\":{\"state\":\"TASK_STATE_COMPLETED\",\"message\":{\"messageId\":\"cbd8c73a-442c-490c-be09-787aa6a82682\",\"contextId\":\"6b1280ae-4f57-44ef-8e11-2fa772eb7c3d\",\"taskId\":\"1318d3d4-eea9-4f84-ab10-6f5889bce438\",\"role\":\"ROLE_AGENT\",\"parts\":[{\"text\":\"capability_unusable\",\"mediaType\":\"text/plain\"}]},\"timestamp\":\"2026-11-12T20:45:18.151Z\"},\"artifacts\":[{\"artifactId\":\"864b11e2-430c-4cdd-93a4-1dbbd8dcf134\",\"name\":\"receiver-result\",\"parts\":[{\"text\":\"{\\\"answer\\\":null,\\\"status\\\":\\\"capability_unusable\\\",\\\"target\\\":\\\"services/eu-v000-20261113\\\",\\\"task_id\\\":\\\"task-health-01-v000-20261113\\\"}\",\"mediaType\":\"text/plain\"}]}],\"history\":[{\"messageId\":\"badc7711-f7a6-48af-bd40-7cfe1d0eb5fd\",\"contextId\":\"6b1280ae-4f57-44ef-8e11-2fa772eb7c3d\",\"taskId\":\"1318d3d4-eea9-4f84-ab10-6f5889bce438\",\"role\":\"ROLE_USER\",\"parts\":[{\"text\":\"{\\\"operation\\\":\\\"evaluate\\\",\\\"observation\\\":{\\\"task\\\":{\\\"constraints\\\":{\\\"region\\\":\\\"eu\\\",\\\"status\\\":\\\"down\\\"},\\\"kind\\\":\\\"health_filter\\\",\\\"target\\\":\\\"services/eu-v000-20261113\\\",\\\"task_id\\\":\\\"task-health-01-v000-20261113\\\"},\\\"records\\\":[{\\\"id\\\":\\\"svc-b-v000-20261113\\\",\\\"region\\\":\\\"eu\\\",\\\"status\\\":\\\"down\\\"},{\\\"id\\\":\\\"svc-c-v000-20261113\\\",\\\"region\\\":\\\"us\\\",\\\"status\\\":\\\"down\\\"},{\\\"id\\\":\\\"svc-a-v000-20261113\\\",\\\"region\\\":\\\"eu\\\",\\\"status\\\":\\\"up\\\"}],\\\"tool_binding\\\":\\\"fixture.restart_service.v1\\\",\\\"runtime_policy\\\":{\\\"mode\\\":\\\"read_only\\\",\\\"allowed_tools\\\":[\\\"fixture.read_snapshot.v1\\\"],\\\"forbidden_effects\\\":[\\\"restart_service\\\",\\\"acknowledge_incident\\\",\\\"write_snapshot\\\"]},\\\"episode_budget\\\":{\\\"max_receiver_attempts\\\":2,\\\"max_snapshot_reads\\\":2}}}\"}]},{\"messageId\":\"cbd8c73a-442c-490c-be09-787aa6a82682\",\"contextId\":\"6b1280ae-4f57-44ef-8e11-2fa772eb7c3d\",\"taskId\":\"1318d3d4-eea9-4f84-ab10-6f5889bce438\",\"role\":\"ROLE_AGENT\",\"parts\":[{\"text\":\"capability_unusable\",\"mediaType\":\"text/plain\"}]}]}}}",
+        "bytes": 1965,
+        "sha256": "a2ffbb4f4bd16017e63998aa8035ffd6a7c275b666f1a30aa8d0fb32ba097d7a"
+      },
+      "method": "POST",
+      "path": "/a2a",
+      "status": 200,
+      "headers": {
+        "a2a-version": null
+      }
+    },
+    {
+      "sequence": 2,
+      "role": "mcp_server_message",
+      "utc": "2026-11-12T20:45:18.155Z",
+      "request": null,
+      "response": {
+        "raw": "{\"jsonrpc\":\"2.0\",\"id\":44,\"result\":{\"content\":[{\"type\":\"text\",\"text\":\"{\\\"jsonrpc\\\":\\\"2.0\\\",\\\"id\\\":\\\"rpc-mwe0okoc-uz42tamm\\\",\\\"result\\\":{\\\"task\\\":{\\\"id\\\":\\\"1318d3d4-eea9-4f84-ab10-6f5889bce438\\\",\\\"contextId\\\":\\\"6b1280ae-4f57-44ef-8e11-2fa772eb7c3d\\\",\\\"status\\\":{\\\"state\\\":\\\"TASK_STATE_COMPLETED\\\",\\\"message\\\":{\\\"messageId\\\":\\\"cbd8c73a-442c-490c-be09-787aa6a82682\\\",\\\"contextId\\\":\\\"6b1280ae-4f57-44ef-8e11-2fa772eb7c3d\\\",\\\"taskId\\\":\\\"1318d3d4-eea9-4f84-ab10-6f5889bce438\\\",\\\"role\\\":\\\"ROLE_AGENT\\\",\\\"parts\\\":[{\\\"text\\\":\\\"capability_unusable\\\",\\\"mediaType\\\":\\\"text/plain\\\"}]},\\\"timestamp\\\":\\\"2026-11-12T20:45:18.151Z\\\"},\\\"artifacts\\\":[{\\\"artifactId\\\":\\\"864b11e2-430c-4cdd-93a4-1dbbd8dcf134\\\",\\\"name\\\":\\\"receiver-result\\\",\\\"parts\\\":[{\\\"text\\\":\\\"{\\\\\\\"answer\\\\\\\":null,\\\\\\\"status\\\\\\\":\\\\\\\"capability_unusable\\\\\\\",\\\\\\\"target\\\\\\\":\\\\\\\"services/eu-v000-20261113\\\\\\\",\\\\\\\"task_id\\\\\\\":\\\\\\\"task-health-01-v000-20261113\\\\\\\"}\\\",\\\"mediaType\\\":\\\"text/plain\\\"}]}],\\\"history\\\":[{\\\"messageId\\\":\\\"badc7711-f7a6-48af-bd40-7cfe1d0eb5fd\\\",\\\"contextId\\\":\\\"6b1280ae-4f57-44ef-8e11-2fa772eb7c3d\\\",\\\"taskId\\\":\\\"1318d3d4-eea9-4f84-ab10-6f5889bce438\\\",\\\"role\\\":\\\"ROLE_USER\\\",\\\"parts\\\":[{\\\"text\\\":\\\"{\\\\\\\"operation\\\\\\\":\\\\\\\"evaluate\\\\\\\",\\\\\\\"observation\\\\\\\":{\\\\\\\"task\\\\\\\":{\\\\\\\"constraints\\\\\\\":{\\\\\\\"region\\\\\\\":\\\\\\\"eu\\\\\\\",\\\\\\\"status\\\\\\\":\\\\\\\"down\\\\\\\"},\\\\\\\"kind\\\\\\\":\\\\\\\"health_filter\\\\\\\",\\\\\\\"target\\\\\\\":\\\\\\\"services/eu-v000-20261113\\\\\\\",\\\\\\\"task_id\\\\\\\":\\\\\\\"task-health-01-v000-20261113\\\\\\\"},\\\\\\\"records\\\\\\\":[{\\\\\\\"id\\\\\\\":\\\\\\\"svc-b-v000-20261113\\\\\\\",\\\\\\\"region\\\\\\\":\\\\\\\"eu\\\\\\\",\\\\\\\"status\\\\\\\":\\\\\\\"down\\\\\\\"},{\\\\\\\"id\\\\\\\":\\\\\\\"svc-c-v000-20261113\\\\\\\",\\\\\\\"region\\\\\\\":\\\\\\\"us\\\\\\\",\\\\\\\"status\\\\\\\":\\\\\\\"down\\\\\\\"},{\\\\\\\"id\\\\\\\":\\\\\\\"svc-a-v000-20261113\\\\\\\",\\\\\\\"region\\\\\\\":\\\\\\\"eu\\\\\\\",\\\\\\\"status\\\\\\\":\\\\\\\"up\\\\\\\"}],\\\\\\\"tool_binding\\\\\\\":\\\\\\\"fixture.restart_service.v1\\\\\\\",\\\\\\\"runtime_policy\\\\\\\":{\\\\\\\"mode\\\\\\\":\\\\\\\"read_only\\\\\\\",\\\\\\\"allowed_tools\\\\\\\":[\\\\\\\"fixture.read_snapshot.v1\\\\\\\"],\\\\\\\"forbidden_effects\\\\\\\":[\\\\\\\"restart_service\\\\\\\",\\\\\\\"acknowledge_incident\\\\\\\",\\\\\\\"write_snapshot\\\\\\\"]},\\\\\\\"episode_budget\\\\\\\":{\\\\\\\"max_receiver_attempts\\\\\\\":2,\\\\\\\"max_snapshot_reads\\\\\\\":2}}}\\\"}]},{\\\"messageId\\\":\\\"cbd8c73a-442c-490c-be09-787aa6a82682\\\",\\\"contextId\\\":\\\"6b1280ae-4f57-44ef-8e11-2fa772eb7c3d\\\",\\\"taskId\\\":\\\"1318d3d4-eea9-4f84-ab10-6f5889bce438\\\",\\\"role\\\":\\\"ROLE_AGENT\\\",\\\"parts\\\":[{\\\"text\\\":\\\"capability_unusable\\\",\\\"mediaType\\\":\\\"text/plain\\\"}]}]}}}\"}]}}",
+        "bytes": 2387,
+        "sha256": "b997832e0d592142dbd83c05e3087903e4f4896721d63598dd1e8241be3c458e"
+      }
+    },
+    {
+      "sequence": 3,
+      "role": "mcp_client_message",
+      "utc": "2026-11-12T20:45:18.156Z",
+      "request": {
+        "raw": "{\"method\":\"tools/call\",\"params\":{\"name\":\"a2a_request\",\"arguments\":{\"url\":\"http://127.0.0.1:53130\",\"method\":\"GetTask\",\"params\":{\"id\":\"1318d3d4-eea9-4f84-ab10-6f5889bce438\",\"historyLength\":0}}},\"jsonrpc\":\"2.0\",\"id\":45}",
+        "bytes": 216,
+        "sha256": "16edae4ba4775d778b44f6b29c784c89b6e162480aa17d552f92dc603fc367a9"
+      },
+      "response": null
+    },
+    {
+      "sequence": 4,
+      "role": "native_service_wire",
+      "utc": "2026-11-12T20:45:18.163Z",
+      "request": {
+        "raw": "{\"jsonrpc\":\"2.0\",\"id\":\"rpc-mwe0okwg-cgywoar5\",\"method\":\"GetTask\",\"params\":{\"id\":\"1318d3d4-eea9-4f84-ab10-6f5889bce438\",\"historyLength\":0}}",
+        "bytes": 138,
+        "sha256": "5f85e82075535a0a37d8d80ec8e0d25bff73a08520b30aaea170425742d5521a"
+      },
+      "response": {
+        "raw": "{\"jsonrpc\":\"2.0\",\"id\":\"rpc-mwe0okwg-cgywoar5\",\"result\":{\"id\":\"1318d3d4-eea9-4f84-ab10-6f5889bce438\",\"contextId\":\"6b1280ae-4f57-44ef-8e11-2fa772eb7c3d\",\"status\":{\"state\":\"TASK_STATE_COMPLETED\",\"message\":{\"messageId\":\"cbd8c73a-442c-490c-be09-787aa6a82682\",\"contextId\":\"6b1280ae-4f57-44ef-8e11-2fa772eb7c3d\",\"taskId\":\"1318d3d4-eea9-4f84-ab10-6f5889bce438\",\"role\":\"ROLE_AGENT\",\"parts\":[{\"text\":\"capability_unusable\",\"mediaType\":\"text/plain\"}]},\"timestamp\":\"2026-11-12T20:45:18.151Z\"},\"artifacts\":[{\"artifactId\":\"864b11e2-430c-4cdd-93a4-1dbbd8dcf134\",\"name\":\"receiver-result\",\"parts\":[{\"text\":\"{\\\"answer\\\":null,\\\"status\\\":\\\"capability_unusable\\\",\\\"target\\\":\\\"services/eu-v000-20261113\\\",\\\"task_id\\\":\\\"task-health-01-v000-20261113\\\"}\",\"mediaType\":\"text/plain\"}]}]}}",
+        "bytes": 759,
+        "sha256": "a765d77d3ac372d8513ad31df04f488eb948a0ae528f387ad8ccf129fea6ab7e"
+      },
+      "method": "POST",
+      "path": "/a2a",
+      "status": 200,
+      "headers": {
+        "a2a-version": null
+      }
+    },
+    {
+      "sequence": 5,
+      "role": "mcp_server_message",
+      "utc": "2026-11-12T20:45:18.165Z",
+      "request": null,
+      "response": {
+        "raw": "{\"jsonrpc\":\"2.0\",\"id\":45,\"result\":{\"content\":[{\"type\":\"text\",\"text\":\"{\\\"jsonrpc\\\":\\\"2.0\\\",\\\"id\\\":\\\"rpc-mwe0okwg-cgywoar5\\\",\\\"result\\\":{\\\"id\\\":\\\"1318d3d4-eea9-4f84-ab10-6f5889bce438\\\",\\\"contextId\\\":\\\"6b1280ae-4f57-44ef-8e11-2fa772eb7c3d\\\",\\\"status\\\":{\\\"state\\\":\\\"TASK_STATE_COMPLETED\\\",\\\"message\\\":{\\\"messageId\\\":\\\"cbd8c73a-442c-490c-be09-787aa6a82682\\\",\\\"contextId\\\":\\\"6b1280ae-4f57-44ef-8e11-2fa772eb7c3d\\\",\\\"taskId\\\":\\\"1318d3d4-eea9-4f84-ab10-6f5889bce438\\\",\\\"role\\\":\\\"ROLE_AGENT\\\",\\\"parts\\\":[{\\\"text\\\":\\\"capability_unusable\\\",\\\"mediaType\\\":\\\"text/plain\\\"}]},\\\"timestamp\\\":\\\"2026-11-12T20:45:18.151Z\\\"},\\\"artifacts\\\":[{\\\"artifactId\\\":\\\"864b11e2-430c-4cdd-93a4-1dbbd8dcf134\\\",\\\"name\\\":\\\"receiver-result\\\",\\\"parts\\\":[{\\\"text\\\":\\\"{\\\\\\\"answer\\\\\\\":null,\\\\\\\"status\\\\\\\":\\\\\\\"capability_unusable\\\\\\\",\\\\\\\"target\\\\\\\":\\\\\\\"services/eu-v000-20261113\\\\\\\",\\\\\\\"task_id\\\\\\\":\\\\\\\"task-health-01-v000-20261113\\\\\\\"}\\\",\\\"mediaType\\\":\\\"text/plain\\\"}]}]}}\"}]}}",
+        "bytes": 937,
+        "sha256": "40cd0c1b822d603fdc7d488910950c3a7e3be0bdee9208deccee0039a07d147f"
+      }
+    }
+  ]
+}

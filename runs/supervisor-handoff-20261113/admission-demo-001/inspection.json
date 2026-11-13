@@ -1,0 +1,323 @@
+{
+  "schema_version": "shared-admission-demo-inspection/1",
+  "status": "passed",
+  "cases": 11,
+  "examples": [
+    {
+      "profile_id": "correlated-prefix-refinement",
+      "standalone_receipt": "supported.json",
+      "input": "benchmark/inputs/case-0003.json",
+      "model_sha256": "b0056476d11059109253220fbce479103f8d5552595e6b2cf0176b9fac962b08",
+      "reply": "benchmark/jobs/case-0003-shared_lift/reply.json",
+      "result": {
+        "certificate": {
+          "checked_at": 100,
+          "horizon": 2,
+          "kind": "recipe-path",
+          "profile_sha256": "b0056476d11059109253220fbce479103f8d5552595e6b2cf0176b9fac962b08",
+          "steps": [
+            {
+              "args": {},
+              "bindings_after": {
+                "call": "call-B",
+                "target": "B"
+              },
+              "bindings_before": {},
+              "edge": "b_good_binding",
+              "request": {}
+            },
+            {
+              "args": {
+                "call": "call-B",
+                "target": "B"
+              },
+              "bindings_after": {
+                "call": "call-B",
+                "target": "B"
+              },
+              "bindings_before": {
+                "call": "call-B",
+                "target": "B"
+              },
+              "edge": "finish",
+              "request": {
+                "call": "call-B",
+                "target": "B"
+              }
+            }
+          ],
+          "transition_ids": [
+            "b_good_binding",
+            "finish"
+          ],
+          "valid_until": 4102444800
+        },
+        "decision": "supported",
+        "method": "witness-lift-refine-shared-v2",
+        "novelty_established": false,
+        "reason": "public_recipe_witness",
+        "stats": {
+          "abstract_edge_checks": 7,
+          "abstract_paths": 2,
+          "abstract_state_visits": 8,
+          "budget": 100000,
+          "cache_insertions": 7,
+          "cache_key_nodes": 56,
+          "cache_lookups": 14,
+          "cache_payload_nodes": 114,
+          "cache_status_checks": 1,
+          "cached_prefix_frames": 1,
+          "cached_relation_outcomes": 0,
+          "elapsed_ns": 872200,
+          "expression_evaluations": 20,
+          "history_nodes": 3,
+          "peak_cached_frames": 5,
+          "peak_frames": 1,
+          "prefix_cache_entries": 4,
+          "prefix_cache_hits": 1,
+          "refinement_edges": 2,
+          "refinement_lookups": 4,
+          "refinements": 1,
+          "relation_cache_entries": 3,
+          "relation_cache_hits": 0,
+          "relation_checks": 4,
+          "witness_nodes": 50,
+          "work_units": 293
+        }
+      },
+      "certificate_reply": "benchmark/jobs/case-0003-shared_lift-certificate/reply.json",
+      "certificate_check": {
+        "status": "returned",
+        "input_sha256_before": "b0056476d11059109253220fbce479103f8d5552595e6b2cf0176b9fac962b08",
+        "evaluation_ns": 599100,
+        "result": true,
+        "input_sha256_after": "b0056476d11059109253220fbce479103f8d5552595e6b2cf0176b9fac962b08",
+        "input_unchanged": true,
+        "resources": {
+          "schema_version": "benchmark-worker-resources/1",
+          "timings": {
+            "preparation_ns": 22353200,
+            "result_serialization_ns": 17400,
+            "post_validation_ns": 74000
+          },
+          "memory": {
+            "status": "observed",
+            "peak_resident_bytes": 22745088,
+            "source": "GetProcessMemoryInfo.PeakWorkingSetSize",
+            "platform": "win32"
+          }
+        },
+        "worker_body_ns": 32685800
+      },
+      "certificate_valid": true
+    },
+    {
+      "profile_id": "fixed-text-shape-obstruction",
+      "standalone_receipt": "unsupported.json",
+      "input": "benchmark/inputs/case-0001.json",
+      "model_sha256": "9bc78cd944e7295afd90668bf0291c274026c0cd42e3bc09f6e2ad827900d273",
+      "reply": "benchmark/jobs/case-0001-shared_lift/reply.json",
+      "result": {
+        "certificate": {
+          "checked_at": 100,
+          "horizon": 1,
+          "kind": "refinement-exhaustion",
+          "profile_sha256": "9bc78cd944e7295afd90668bf0291c274026c0cd42e3bc09f6e2ad827900d273",
+          "refuted_prefixes": [
+            [
+              "finish"
+            ]
+          ],
+          "valid_until": 4102444800
+        },
+        "decision": "unsupported",
+        "method": "witness-lift-refine-shared-v2",
+        "novelty_established": false,
+        "reason": "certified_refinement_exhaustion",
+        "stats": {
+          "abstract_edge_checks": 2,
+          "abstract_paths": 1,
+          "abstract_state_visits": 4,
+          "budget": 100000,
+          "cache_insertions": 3,
+          "cache_key_nodes": 10,
+          "cache_lookups": 3,
+          "cache_payload_nodes": 26,
+          "cache_status_checks": 0,
+          "cached_prefix_frames": 0,
+          "cached_relation_outcomes": 0,
+          "elapsed_ns": 236800,
+          "expression_evaluations": 6,
+          "history_nodes": 0,
+          "peak_cached_frames": 1,
+          "peak_frames": 1,
+          "prefix_cache_entries": 2,
+          "prefix_cache_hits": 0,
+          "refinement_edges": 1,
+          "refinement_lookups": 1,
+          "refinements": 1,
+          "relation_cache_entries": 1,
+          "relation_cache_hits": 0,
+          "relation_checks": 1,
+          "witness_nodes": 0,
+          "work_units": 58
+        }
+      },
+      "certificate_reply": "benchmark/jobs/case-0001-shared_lift-certificate/reply.json",
+      "certificate_check": {
+        "status": "returned",
+        "input_sha256_before": "9bc78cd944e7295afd90668bf0291c274026c0cd42e3bc09f6e2ad827900d273",
+        "evaluation_ns": 324600,
+        "result": true,
+        "input_sha256_after": "9bc78cd944e7295afd90668bf0291c274026c0cd42e3bc09f6e2ad827900d273",
+        "input_unchanged": true,
+        "resources": {
+          "schema_version": "benchmark-worker-resources/1",
+          "timings": {
+            "preparation_ns": 25861200,
+            "result_serialization_ns": 6600,
+            "post_validation_ns": 36500
+          },
+          "memory": {
+            "status": "observed",
+            "peak_resident_bytes": 22482944,
+            "source": "GetProcessMemoryInfo.PeakWorkingSetSize",
+            "platform": "win32"
+          }
+        },
+        "worker_body_ns": 35046700
+      },
+      "certificate_valid": true
+    },
+    {
+      "profile_id": "opaque-serialization",
+      "standalone_receipt": "unknown.json",
+      "input": "benchmark/inputs/case-0006.json",
+      "model_sha256": "1264f5d04cd538e31afba95bed247131c8a7a596f727676804f4317d1e89ac73",
+      "reply": "benchmark/jobs/case-0006-shared_lift/reply.json",
+      "result": {
+        "certificate": null,
+        "decision": "unknown",
+        "method": "witness-lift-refine-shared-v2",
+        "novelty_established": false,
+        "reason": "unresolved_relation_or_recipe",
+        "stats": {
+          "abstract_edge_checks": 2,
+          "abstract_paths": 1,
+          "abstract_state_visits": 4,
+          "budget": 100000,
+          "cache_insertions": 3,
+          "cache_key_nodes": 10,
+          "cache_lookups": 3,
+          "cache_payload_nodes": 26,
+          "cache_status_checks": 0,
+          "cached_prefix_frames": 0,
+          "cached_relation_outcomes": 0,
+          "elapsed_ns": 255900,
+          "expression_evaluations": 5,
+          "history_nodes": 0,
+          "peak_cached_frames": 1,
+          "peak_frames": 1,
+          "prefix_cache_entries": 2,
+          "prefix_cache_hits": 0,
+          "refinement_edges": 0,
+          "refinement_lookups": 1,
+          "refinements": 0,
+          "relation_cache_entries": 1,
+          "relation_cache_hits": 0,
+          "relation_checks": 1,
+          "witness_nodes": 0,
+          "work_units": 56
+        }
+      },
+      "certificate_reply": null,
+      "certificate_check": null,
+      "certificate_valid": null
+    }
+  ],
+  "budget_exhaustion_receipt": "budget-unknown.json",
+  "budget_exhaustion_result": {
+    "decision": "unknown",
+    "reason": "work_budget_exhausted",
+    "certificate": null,
+    "method": "witness-lift-refine-shared-v2",
+    "novelty_established": false,
+    "stats": {
+      "work_units": 1,
+      "budget": 1,
+      "abstract_state_visits": 1,
+      "abstract_edge_checks": 0,
+      "abstract_paths": 0,
+      "relation_checks": 0,
+      "expression_evaluations": 0,
+      "refinement_lookups": 0,
+      "refinement_edges": 0,
+      "refinements": 0,
+      "peak_frames": 1,
+      "cache_lookups": 0,
+      "cache_key_nodes": 0,
+      "cache_insertions": 0,
+      "cache_payload_nodes": 0,
+      "cache_status_checks": 0,
+      "cached_prefix_frames": 0,
+      "cached_relation_outcomes": 0,
+      "history_nodes": 0,
+      "witness_nodes": 0,
+      "prefix_cache_hits": 0,
+      "relation_cache_hits": 0,
+      "prefix_cache_entries": 0,
+      "relation_cache_entries": 0,
+      "peak_cached_frames": 0,
+      "elapsed_ns": 210900
+    }
+  },
+  "algorithms": {
+    "baseline": {
+      "supported": 4,
+      "unsupported": 3,
+      "unknown": 4,
+      "conclusive": 7,
+      "certificates_valid": 7,
+      "certificates_invalid": 0,
+      "certificate_check_errors": 0,
+      "errors": 0,
+      "decision_agreements": 11
+    },
+    "direct_pruned": {
+      "supported": 4,
+      "unsupported": 3,
+      "unknown": 4,
+      "conclusive": 7,
+      "certificates_valid": 7,
+      "certificates_invalid": 0,
+      "certificate_check_errors": 0,
+      "errors": 0,
+      "decision_agreements": 11
+    },
+    "candidate": {
+      "supported": 4,
+      "unsupported": 3,
+      "unknown": 4,
+      "conclusive": 7,
+      "certificates_valid": 7,
+      "certificates_invalid": 0,
+      "certificate_check_errors": 0,
+      "errors": 0,
+      "decision_agreements": 11
+    },
+    "shared_lift": {
+      "supported": 4,
+      "unsupported": 3,
+      "unknown": 4,
+      "conclusive": 7,
+      "certificates_valid": 7,
+      "certificates_invalid": 0,
+      "certificate_check_errors": 0,
+      "errors": 0,
+      "decision_agreements": 11
+    }
+  },
+  "summary": "benchmark/summary.json",
+  "verification": "verify.stdout.json",
+  "claim_limit": "Authored eleven-case software rehearsal; no live task, novelty, superiority or completion-percentage claim."
+}

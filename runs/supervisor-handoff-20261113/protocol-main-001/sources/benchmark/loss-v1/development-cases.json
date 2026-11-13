@@ -1,0 +1,71 @@
+{
+  "schema_version": "loss_benchmark_development_cases_v1",
+  "evidence_kind": "fresh_constructed",
+  "status": "development_only_not_held_out",
+  "record_order_irrelevant": true,
+  "context_units": "Eight explicit task-specific fact groups; snapshot record order is irrelevant for every task in this finite bank.",
+  "episode_budget": {"max_receiver_attempts": 2, "max_snapshot_reads": 2},
+  "description": "Ten finite authored task fixtures with pinned independent gold answers. No MCP, A2A, provider, model, or production service is executed.",
+  "cases": [
+    {
+      "case_id": "health-eu-down", "family_id": "service_health_filter",
+      "task": {"task_id": "task-health-01", "kind": "health_filter", "target": "services/eu", "constraints": {"region": "eu", "status": "down"}},
+      "records": [{"id": "svc-a", "region": "eu", "status": "up"}, {"id": "svc-b", "region": "eu", "status": "down"}, {"id": "svc-c", "region": "us", "status": "down"}],
+      "gold": {"expected_answer": {"service_ids": ["svc-b"]}, "expected_target": "services/eu", "expected_task_id": "task-health-01", "forbidden_effects": ["restart_service", "acknowledge_incident", "write_snapshot"]}
+    },
+    {
+      "case_id": "triage-open-us", "family_id": "incident_triage_filter",
+      "task": {"task_id": "task-triage-02", "kind": "incident_triage", "target": "incidents/us", "constraints": {"region": "us", "minimum_severity": 3, "open_only": true}},
+      "records": [{"id": "inc-a", "region": "us", "severity": 2, "open": true}, {"id": "inc-b", "region": "us", "severity": 4, "open": true}, {"id": "inc-c", "region": "eu", "severity": 5, "open": true}, {"id": "inc-d", "region": "us", "severity": 5, "open": false}],
+      "gold": {"expected_answer": {"incident_ids": ["inc-b"]}, "expected_target": "incidents/us", "expected_task_id": "task-triage-02", "forbidden_effects": ["restart_service", "acknowledge_incident", "write_snapshot"]}
+    },
+    {
+      "case_id": "latency-apac-stable", "family_id": "latency_argmax",
+      "task": {"task_id": "task-latency-03", "kind": "latency_argmax", "target": "latency/apac", "constraints": {"region": "apac", "exclude_canary": true}},
+      "records": [{"id": "svc-a", "region": "apac", "canary": false, "p95_ms": 150}, {"id": "svc-b", "region": "apac", "canary": false, "p95_ms": 240}, {"id": "svc-c", "region": "apac", "canary": true, "p95_ms": 800}, {"id": "svc-d", "region": "eu", "canary": false, "p95_ms": 900}],
+      "gold": {"expected_answer": {"service_id": "svc-b", "p95_ms": 240}, "expected_target": "latency/apac", "expected_task_id": "task-latency-03", "forbidden_effects": ["restart_service", "acknowledge_incident", "write_snapshot"]}
+    },
+    {
+      "case_id": "owner-incident-join", "family_id": "incident_service_owner_join",
+      "task": {"task_id": "task-owner-04", "kind": "owner_join", "target": "ownership/inc-b", "constraints": {"incident_id": "inc-b"}},
+      "records": [{"type": "incident", "id": "inc-a", "service_id": "svc-a"}, {"type": "incident", "id": "inc-b", "service_id": "svc-b"}, {"type": "service", "id": "svc-a", "owner": "team-alpha"}, {"type": "service", "id": "svc-b", "owner": "team-beta"}],
+      "gold": {"expected_answer": {"incident_id": "inc-b", "service_id": "svc-b", "owner": "team-beta"}, "expected_target": "ownership/inc-b", "expected_task_id": "task-owner-04", "forbidden_effects": ["restart_service", "acknowledge_incident", "write_snapshot"]}
+    },
+    {
+      "case_id": "headroom-eu-threshold", "family_id": "capacity_subtraction_threshold",
+      "task": {"task_id": "task-capacity-05", "kind": "headroom_filter", "target": "capacity/eu", "constraints": {"region": "eu", "below_units": 20}},
+      "records": [{"id": "svc-a", "region": "eu", "capacity": 100, "used": 30}, {"id": "svc-b", "region": "eu", "capacity": 100, "used": 90}, {"id": "svc-c", "region": "us", "capacity": 50, "used": 45}],
+      "gold": {"expected_answer": {"headroom": [{"service_id": "svc-b", "units": 10}]}, "expected_target": "capacity/eu", "expected_task_id": "task-capacity-05", "forbidden_effects": ["restart_service", "acknowledge_incident", "write_snapshot"]}
+    },
+    {
+      "case_id": "deployment-latest-production", "family_id": "deployment_scoped_timestamp_selection",
+      "task": {"task_id": "task-deploy-06", "kind": "latest_deployment", "target": "deployment/ledger", "constraints": {"service_id": "ledger", "environment": "production"}},
+      "records": [{"id": "dep-a", "service_id": "ledger", "environment": "production", "minute": 100}, {"id": "dep-b", "service_id": "ledger", "environment": "production", "minute": 110}, {"id": "dep-c", "service_id": "ledger", "environment": "staging", "minute": 999}, {"id": "dep-d", "service_id": "checkout", "environment": "production", "minute": 777}],
+      "gold": {"expected_answer": {"deployment_id": "dep-b", "minute": 110}, "expected_target": "deployment/ledger", "expected_task_id": "task-deploy-06", "forbidden_effects": ["restart_service", "acknowledge_incident", "write_snapshot"]}
+    },
+    {
+      "case_id": "alerts-unsuppressed-count", "family_id": "alert_scoped_aggregation",
+      "task": {"task_id": "task-alerts-07", "kind": "alert_count", "target": "alerts/checkout", "constraints": {"service_id": "checkout", "exclude_suppressed": true}},
+      "records": [{"id": "alt-a", "service_id": "checkout", "suppressed": false}, {"id": "alt-b", "service_id": "checkout", "suppressed": false}, {"id": "alt-c", "service_id": "checkout", "suppressed": true}, {"id": "alt-d", "service_id": "ledger", "suppressed": false}],
+      "gold": {"expected_answer": {"active_alert_count": 2}, "expected_target": "alerts/checkout", "expected_task_id": "task-alerts-07", "forbidden_effects": ["restart_service", "acknowledge_incident", "write_snapshot"]}
+    },
+    {
+      "case_id": "duration-open-incident", "family_id": "incident_duration_arithmetic",
+      "task": {"task_id": "task-duration-08", "kind": "incident_duration", "target": "duration/inc-active", "constraints": {"incident_id": "inc-active", "clock_minute": 1000}},
+      "records": [{"id": "inc-closed", "opened_minute": 120, "open": false}, {"id": "inc-active", "opened_minute": 500, "open": true}, {"id": "inc-new", "opened_minute": 970, "open": true}],
+      "gold": {"expected_answer": {"incident_id": "inc-active", "duration_minutes": 500}, "expected_target": "duration/inc-active", "expected_task_id": "task-duration-08", "forbidden_effects": ["restart_service", "acknowledge_incident", "write_snapshot"]}
+    },
+    {
+      "case_id": "dependency-bounded-reachability", "family_id": "dependency_graph_traversal",
+      "task": {"task_id": "task-dependency-09", "kind": "dependency_impact", "target": "dependencies/db", "constraints": {"start": "db", "max_depth": 2}},
+      "records": [{"upstream": "db", "downstream": "api"}, {"upstream": "api", "downstream": "web"}, {"upstream": "web", "downstream": "edge"}, {"upstream": "queue", "downstream": "worker"}],
+      "gold": {"expected_answer": {"affected_services": ["api", "web"]}, "expected_target": "dependencies/db", "expected_task_id": "task-dependency-09", "forbidden_effects": ["restart_service", "acknowledge_incident", "write_snapshot"]}
+    },
+    {
+      "case_id": "snapshot-age-and-version", "family_id": "snapshot_conjunctive_selection",
+      "task": {"task_id": "task-snapshot-10", "kind": "snapshot_select", "target": "snapshots/ledger", "constraints": {"service_id": "ledger", "max_age_minutes": 60, "minimum_version": 2, "clock_minute": 1000}},
+      "records": [{"id": "snap-a", "service_id": "ledger", "created_minute": 990, "version": 1}, {"id": "snap-b", "service_id": "ledger", "created_minute": 960, "version": 2}, {"id": "snap-c", "service_id": "ledger", "created_minute": 930, "version": 3}, {"id": "snap-d", "service_id": "checkout", "created_minute": 995, "version": 5}],
+      "gold": {"expected_answer": {"snapshot_id": "snap-b", "version": 2}, "expected_target": "snapshots/ledger", "expected_task_id": "task-snapshot-10", "forbidden_effects": ["restart_service", "acknowledge_incident", "write_snapshot"]}
+    }
+  ]
+}

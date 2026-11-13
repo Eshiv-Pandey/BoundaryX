@@ -1,0 +1,106 @@
+{
+  "evidence": {
+    "complete": true,
+    "observed_at": 0,
+    "valid_until": 4102444800
+  },
+  "horizon": 3,
+  "id": "development-positive",
+  "initial": "pending",
+  "provenance": {
+    "kind": "authored-development",
+    "review_status": "AI-authored semantic tests; human validation pending",
+    "source": "scripts/create_development_fixtures.py"
+  },
+  "route": "authored task binding model; no external bridge observation",
+  "runtime_contract": {
+    "goal": [
+      {
+        "field": "status",
+        "op": "eq",
+        "value": "completed"
+      },
+      {
+        "field": "task_handle",
+        "op": "eq_field",
+        "other_field": "required_handle"
+      },
+      {
+        "field": "artifact_accessible",
+        "op": "eq",
+        "value": true
+      },
+      {
+        "field": "principal",
+        "op": "eq_field",
+        "other_field": "authorized_principal"
+      }
+    ],
+    "invariants": [
+      {
+        "field": "unauthorized_effect",
+        "op": "eq",
+        "value": false
+      }
+    ]
+  },
+  "schema_version": "finite-continuation/1",
+  "states": {
+    "approved": {
+      "artifact_accessible": false,
+      "authorized_principal": "receiver",
+      "principal": "receiver",
+      "required_handle": "scope-a:task-17",
+      "status": "approved",
+      "task_handle": "scope-a:task-17",
+      "unauthorized_effect": false
+    },
+    "completed": {
+      "artifact_accessible": true,
+      "authorized_principal": "receiver",
+      "principal": "receiver",
+      "required_handle": "scope-a:task-17",
+      "status": "completed",
+      "task_handle": "scope-a:task-17",
+      "unauthorized_effect": false
+    },
+    "pending": {
+      "artifact_accessible": false,
+      "authorized_principal": "receiver",
+      "principal": "receiver",
+      "required_handle": "scope-a:task-17",
+      "status": "pending",
+      "task_handle": "scope-a:task-17",
+      "unauthorized_effect": false
+    },
+    "retrieved": {
+      "artifact_accessible": true,
+      "authorized_principal": "receiver",
+      "principal": "receiver",
+      "required_handle": "scope-a:task-17",
+      "status": "retrieved",
+      "task_handle": "scope-a:task-17",
+      "unauthorized_effect": false
+    }
+  },
+  "transitions": [
+    {
+      "id": "resume_with_authorized_input",
+      "operation": "resume_with_authorized_input",
+      "source": "pending",
+      "target": "approved"
+    },
+    {
+      "id": "retrieve_artifact",
+      "operation": "retrieve_artifact",
+      "source": "approved",
+      "target": "retrieved"
+    },
+    {
+      "id": "finish_task",
+      "operation": "finish_task",
+      "source": "retrieved",
+      "target": "completed"
+    }
+  ]
+}

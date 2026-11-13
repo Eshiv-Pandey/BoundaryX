@@ -1,0 +1,576 @@
+{
+  "case_count": 10,
+  "cases": [
+    {
+      "case_id": "health-eu-down-v000-20261113",
+      "family_id": "service_health_filter",
+      "generation": {
+        "changes": "consistent identifier renaming, timestamp/latency translation, record permutation",
+        "numeric_offset": 92,
+        "seed": 20261113,
+        "template_case_id": "health-eu-down",
+        "variant": 0
+      },
+      "gold": {
+        "expected_answer": {
+          "service_ids": [
+            "svc-b-v000-20261113"
+          ]
+        },
+        "expected_target": "services/eu-v000-20261113",
+        "expected_task_id": "task-health-01-v000-20261113",
+        "forbidden_effects": [
+          "restart_service",
+          "acknowledge_incident",
+          "write_snapshot"
+        ]
+      },
+      "records": [
+        {
+          "id": "svc-b-v000-20261113",
+          "region": "eu",
+          "status": "down"
+        },
+        {
+          "id": "svc-c-v000-20261113",
+          "region": "us",
+          "status": "down"
+        },
+        {
+          "id": "svc-a-v000-20261113",
+          "region": "eu",
+          "status": "up"
+        }
+      ],
+      "task": {
+        "constraints": {
+          "region": "eu",
+          "status": "down"
+        },
+        "kind": "health_filter",
+        "target": "services/eu-v000-20261113",
+        "task_id": "task-health-01-v000-20261113"
+      }
+    },
+    {
+      "case_id": "triage-open-us-v000-20261113",
+      "family_id": "incident_triage_filter",
+      "generation": {
+        "changes": "consistent identifier renaming, timestamp/latency translation, record permutation",
+        "numeric_offset": 187,
+        "seed": 20261113,
+        "template_case_id": "triage-open-us",
+        "variant": 0
+      },
+      "gold": {
+        "expected_answer": {
+          "incident_ids": [
+            "inc-b-v000-20261113"
+          ]
+        },
+        "expected_target": "incidents/us-v000-20261113",
+        "expected_task_id": "task-triage-02-v000-20261113",
+        "forbidden_effects": [
+          "restart_service",
+          "acknowledge_incident",
+          "write_snapshot"
+        ]
+      },
+      "records": [
+        {
+          "id": "inc-c-v000-20261113",
+          "open": true,
+          "region": "eu",
+          "severity": 5
+        },
+        {
+          "id": "inc-d-v000-20261113",
+          "open": false,
+          "region": "us",
+          "severity": 5
+        },
+        {
+          "id": "inc-b-v000-20261113",
+          "open": true,
+          "region": "us",
+          "severity": 4
+        },
+        {
+          "id": "inc-a-v000-20261113",
+          "open": true,
+          "region": "us",
+          "severity": 2
+        }
+      ],
+      "task": {
+        "constraints": {
+          "minimum_severity": 3,
+          "open_only": true,
+          "region": "us"
+        },
+        "kind": "incident_triage",
+        "target": "incidents/us-v000-20261113",
+        "task_id": "task-triage-02-v000-20261113"
+      }
+    },
+    {
+      "case_id": "latency-apac-stable-v000-20261113",
+      "family_id": "latency_argmax",
+      "generation": {
+        "changes": "consistent identifier renaming, timestamp/latency translation, record permutation",
+        "numeric_offset": 264,
+        "seed": 20261113,
+        "template_case_id": "latency-apac-stable",
+        "variant": 0
+      },
+      "gold": {
+        "expected_answer": {
+          "p95_ms": 504,
+          "service_id": "svc-b-v000-20261113"
+        },
+        "expected_target": "latency/apac-v000-20261113",
+        "expected_task_id": "task-latency-03-v000-20261113",
+        "forbidden_effects": [
+          "restart_service",
+          "acknowledge_incident",
+          "write_snapshot"
+        ]
+      },
+      "records": [
+        {
+          "canary": false,
+          "id": "svc-d-v000-20261113",
+          "p95_ms": 1164,
+          "region": "eu"
+        },
+        {
+          "canary": true,
+          "id": "svc-c-v000-20261113",
+          "p95_ms": 1064,
+          "region": "apac"
+        },
+        {
+          "canary": false,
+          "id": "svc-a-v000-20261113",
+          "p95_ms": 414,
+          "region": "apac"
+        },
+        {
+          "canary": false,
+          "id": "svc-b-v000-20261113",
+          "p95_ms": 504,
+          "region": "apac"
+        }
+      ],
+      "task": {
+        "constraints": {
+          "exclude_canary": true,
+          "region": "apac"
+        },
+        "kind": "latency_argmax",
+        "target": "latency/apac-v000-20261113",
+        "task_id": "task-latency-03-v000-20261113"
+      }
+    },
+    {
+      "case_id": "owner-incident-join-v000-20261113",
+      "family_id": "incident_service_owner_join",
+      "generation": {
+        "changes": "consistent identifier renaming, timestamp/latency translation, record permutation",
+        "numeric_offset": 201,
+        "seed": 20261113,
+        "template_case_id": "owner-incident-join",
+        "variant": 0
+      },
+      "gold": {
+        "expected_answer": {
+          "incident_id": "inc-b-v000-20261113",
+          "owner": "team-beta-v000-20261113",
+          "service_id": "svc-b-v000-20261113"
+        },
+        "expected_target": "ownership/inc-b-v000-20261113",
+        "expected_task_id": "task-owner-04-v000-20261113",
+        "forbidden_effects": [
+          "restart_service",
+          "acknowledge_incident",
+          "write_snapshot"
+        ]
+      },
+      "records": [
+        {
+          "id": "inc-b-v000-20261113",
+          "service_id": "svc-b-v000-20261113",
+          "type": "incident"
+        },
+        {
+          "id": "svc-b-v000-20261113",
+          "owner": "team-beta-v000-20261113",
+          "type": "service"
+        },
+        {
+          "id": "svc-a-v000-20261113",
+          "owner": "team-alpha-v000-20261113",
+          "type": "service"
+        },
+        {
+          "id": "inc-a-v000-20261113",
+          "service_id": "svc-a-v000-20261113",
+          "type": "incident"
+        }
+      ],
+      "task": {
+        "constraints": {
+          "incident_id": "inc-b-v000-20261113"
+        },
+        "kind": "owner_join",
+        "target": "ownership/inc-b-v000-20261113",
+        "task_id": "task-owner-04-v000-20261113"
+      }
+    },
+    {
+      "case_id": "headroom-eu-threshold-v000-20261113",
+      "family_id": "capacity_subtraction_threshold",
+      "generation": {
+        "changes": "consistent identifier renaming, timestamp/latency translation, record permutation",
+        "numeric_offset": 308,
+        "seed": 20261113,
+        "template_case_id": "headroom-eu-threshold",
+        "variant": 0
+      },
+      "gold": {
+        "expected_answer": {
+          "headroom": [
+            {
+              "service_id": "svc-b-v000-20261113",
+              "units": 10
+            }
+          ]
+        },
+        "expected_target": "capacity/eu-v000-20261113",
+        "expected_task_id": "task-capacity-05-v000-20261113",
+        "forbidden_effects": [
+          "restart_service",
+          "acknowledge_incident",
+          "write_snapshot"
+        ]
+      },
+      "records": [
+        {
+          "capacity": 50,
+          "id": "svc-c-v000-20261113",
+          "region": "us",
+          "used": 45
+        },
+        {
+          "capacity": 100,
+          "id": "svc-a-v000-20261113",
+          "region": "eu",
+          "used": 30
+        },
+        {
+          "capacity": 100,
+          "id": "svc-b-v000-20261113",
+          "region": "eu",
+          "used": 90
+        }
+      ],
+      "task": {
+        "constraints": {
+          "below_units": 20,
+          "region": "eu"
+        },
+        "kind": "headroom_filter",
+        "target": "capacity/eu-v000-20261113",
+        "task_id": "task-capacity-05-v000-20261113"
+      }
+    },
+    {
+      "case_id": "deployment-latest-production-v000-20261113",
+      "family_id": "deployment_scoped_timestamp_selection",
+      "generation": {
+        "changes": "consistent identifier renaming, timestamp/latency translation, record permutation",
+        "numeric_offset": 154,
+        "seed": 20261113,
+        "template_case_id": "deployment-latest-production",
+        "variant": 0
+      },
+      "gold": {
+        "expected_answer": {
+          "deployment_id": "dep-b-v000-20261113",
+          "minute": 264
+        },
+        "expected_target": "deployment/ledger-v000-20261113",
+        "expected_task_id": "task-deploy-06-v000-20261113",
+        "forbidden_effects": [
+          "restart_service",
+          "acknowledge_incident",
+          "write_snapshot"
+        ]
+      },
+      "records": [
+        {
+          "environment": "staging",
+          "id": "dep-c-v000-20261113",
+          "minute": 1153,
+          "service_id": "ledger-v000-20261113"
+        },
+        {
+          "environment": "production",
+          "id": "dep-b-v000-20261113",
+          "minute": 264,
+          "service_id": "ledger-v000-20261113"
+        },
+        {
+          "environment": "production",
+          "id": "dep-a-v000-20261113",
+          "minute": 254,
+          "service_id": "ledger-v000-20261113"
+        },
+        {
+          "environment": "production",
+          "id": "dep-d-v000-20261113",
+          "minute": 931,
+          "service_id": "checkout-v000-20261113"
+        }
+      ],
+      "task": {
+        "constraints": {
+          "environment": "production",
+          "service_id": "ledger-v000-20261113"
+        },
+        "kind": "latest_deployment",
+        "target": "deployment/ledger-v000-20261113",
+        "task_id": "task-deploy-06-v000-20261113"
+      }
+    },
+    {
+      "case_id": "alerts-unsuppressed-count-v000-20261113",
+      "family_id": "alert_scoped_aggregation",
+      "generation": {
+        "changes": "consistent identifier renaming, timestamp/latency translation, record permutation",
+        "numeric_offset": 259,
+        "seed": 20261113,
+        "template_case_id": "alerts-unsuppressed-count",
+        "variant": 0
+      },
+      "gold": {
+        "expected_answer": {
+          "active_alert_count": 2
+        },
+        "expected_target": "alerts/checkout-v000-20261113",
+        "expected_task_id": "task-alerts-07-v000-20261113",
+        "forbidden_effects": [
+          "restart_service",
+          "acknowledge_incident",
+          "write_snapshot"
+        ]
+      },
+      "records": [
+        {
+          "id": "alt-c-v000-20261113",
+          "service_id": "checkout-v000-20261113",
+          "suppressed": true
+        },
+        {
+          "id": "alt-a-v000-20261113",
+          "service_id": "checkout-v000-20261113",
+          "suppressed": false
+        },
+        {
+          "id": "alt-b-v000-20261113",
+          "service_id": "checkout-v000-20261113",
+          "suppressed": false
+        },
+        {
+          "id": "alt-d-v000-20261113",
+          "service_id": "ledger-v000-20261113",
+          "suppressed": false
+        }
+      ],
+      "task": {
+        "constraints": {
+          "exclude_suppressed": true,
+          "service_id": "checkout-v000-20261113"
+        },
+        "kind": "alert_count",
+        "target": "alerts/checkout-v000-20261113",
+        "task_id": "task-alerts-07-v000-20261113"
+      }
+    },
+    {
+      "case_id": "duration-open-incident-v000-20261113",
+      "family_id": "incident_duration_arithmetic",
+      "generation": {
+        "changes": "consistent identifier renaming, timestamp/latency translation, record permutation",
+        "numeric_offset": 250,
+        "seed": 20261113,
+        "template_case_id": "duration-open-incident",
+        "variant": 0
+      },
+      "gold": {
+        "expected_answer": {
+          "duration_minutes": 500,
+          "incident_id": "inc-active-v000-20261113"
+        },
+        "expected_target": "duration/inc-active-v000-20261113",
+        "expected_task_id": "task-duration-08-v000-20261113",
+        "forbidden_effects": [
+          "restart_service",
+          "acknowledge_incident",
+          "write_snapshot"
+        ]
+      },
+      "records": [
+        {
+          "id": "inc-closed-v000-20261113",
+          "open": false,
+          "opened_minute": 370
+        },
+        {
+          "id": "inc-new-v000-20261113",
+          "open": true,
+          "opened_minute": 1220
+        },
+        {
+          "id": "inc-active-v000-20261113",
+          "open": true,
+          "opened_minute": 750
+        }
+      ],
+      "task": {
+        "constraints": {
+          "clock_minute": 1250,
+          "incident_id": "inc-active-v000-20261113"
+        },
+        "kind": "incident_duration",
+        "target": "duration/inc-active-v000-20261113",
+        "task_id": "task-duration-08-v000-20261113"
+      }
+    },
+    {
+      "case_id": "dependency-bounded-reachability-v000-20261113",
+      "family_id": "dependency_graph_traversal",
+      "generation": {
+        "changes": "consistent identifier renaming, timestamp/latency translation, record permutation",
+        "numeric_offset": 351,
+        "seed": 20261113,
+        "template_case_id": "dependency-bounded-reachability",
+        "variant": 0
+      },
+      "gold": {
+        "expected_answer": {
+          "affected_services": [
+            "api-v000-20261113",
+            "web-v000-20261113"
+          ]
+        },
+        "expected_target": "dependencies/db-v000-20261113",
+        "expected_task_id": "task-dependency-09-v000-20261113",
+        "forbidden_effects": [
+          "restart_service",
+          "acknowledge_incident",
+          "write_snapshot"
+        ]
+      },
+      "records": [
+        {
+          "downstream": "web-v000-20261113",
+          "upstream": "api-v000-20261113"
+        },
+        {
+          "downstream": "worker-v000-20261113",
+          "upstream": "queue-v000-20261113"
+        },
+        {
+          "downstream": "api-v000-20261113",
+          "upstream": "db-v000-20261113"
+        },
+        {
+          "downstream": "edge-v000-20261113",
+          "upstream": "web-v000-20261113"
+        }
+      ],
+      "task": {
+        "constraints": {
+          "max_depth": 2,
+          "start": "db-v000-20261113"
+        },
+        "kind": "dependency_impact",
+        "target": "dependencies/db-v000-20261113",
+        "task_id": "task-dependency-09-v000-20261113"
+      }
+    },
+    {
+      "case_id": "snapshot-age-and-version-v000-20261113",
+      "family_id": "snapshot_conjunctive_selection",
+      "generation": {
+        "changes": "consistent identifier renaming, timestamp/latency translation, record permutation",
+        "numeric_offset": 461,
+        "seed": 20261113,
+        "template_case_id": "snapshot-age-and-version",
+        "variant": 0
+      },
+      "gold": {
+        "expected_answer": {
+          "snapshot_id": "snap-b-v000-20261113",
+          "version": 2
+        },
+        "expected_target": "snapshots/ledger-v000-20261113",
+        "expected_task_id": "task-snapshot-10-v000-20261113",
+        "forbidden_effects": [
+          "restart_service",
+          "acknowledge_incident",
+          "write_snapshot"
+        ]
+      },
+      "records": [
+        {
+          "created_minute": 1456,
+          "id": "snap-d-v000-20261113",
+          "service_id": "checkout-v000-20261113",
+          "version": 5
+        },
+        {
+          "created_minute": 1391,
+          "id": "snap-c-v000-20261113",
+          "service_id": "ledger-v000-20261113",
+          "version": 3
+        },
+        {
+          "created_minute": 1421,
+          "id": "snap-b-v000-20261113",
+          "service_id": "ledger-v000-20261113",
+          "version": 2
+        },
+        {
+          "created_minute": 1451,
+          "id": "snap-a-v000-20261113",
+          "service_id": "ledger-v000-20261113",
+          "version": 1
+        }
+      ],
+      "task": {
+        "constraints": {
+          "clock_minute": 1461,
+          "max_age_minutes": 60,
+          "minimum_version": 2,
+          "service_id": "ledger-v000-20261113"
+        },
+        "kind": "snapshot_select",
+        "target": "snapshots/ledger-v000-20261113",
+        "task_id": "task-snapshot-10-v000-20261113"
+      }
+    }
+  ],
+  "episode_budget": {
+    "max_receiver_attempts": 2,
+    "max_snapshot_reads": 2
+  },
+  "evidence_kind": "fresh_constructed",
+  "family_count": 10,
+  "held_out_cases": 0,
+  "notice": "Authored development diagnostics; no LLM, held-out evaluation or original application execution.",
+  "schema_version": "loss_diagnostic_bank_v2",
+  "seed": 20261113,
+  "variants_per_family": 1
+}

@@ -1,0 +1,61 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    name: Unit and integration tests
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node: [20, 22, 24]
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
+        with:
+          node-version: ${{ matrix.node }}
+          cache: npm
+      - run: npm ci
+      - run: npm run typecheck
+      - run: npm run build
+      - run: npm run test:unit
+      - run: npm run test:integration
+
+  helloworld:
+    name: Official helloworld sample (a2a-samples)
+    runs-on: ubuntu-latest
+    env:
+      # The sample hard-codes 9999 in its card; run.sh rewrites it for any
+      # other port, but there is no reason to move it here.
+      HELLOWORLD_PORT: 9999
+      HELLOWORLD_PYTHON: '3.13'
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 22
+          cache: npm
+      - uses: actions/setup-python@v7
+        with:
+          # The sample declares no pyproject.toml; its README asks for 3.10 or
+          # higher, and 3.13 is what a2a-sdk 1.1.0 was verified against.
+          python-version: '3.13'
+      - uses: astral-sh/setup-uv@v10.0.1
+        with:
+          enable-cache: true
+      - run: npm ci
+      - name: Start the helloworld agent
+        run: echo "HELLOWORLD_URL=$(sh scripts/helloworld/run.sh)" >> "$GITHUB_ENV"
+      - run: npm run test:helloworld
+      - name: Stop the helloworld agent
+        if: always()
+        run: sh scripts/helloworld/stop.sh
+      - name: Agent log
+        if: always()
+        run: cat .cache/helloworld-"$HELLOWORLD_PORT".log || true

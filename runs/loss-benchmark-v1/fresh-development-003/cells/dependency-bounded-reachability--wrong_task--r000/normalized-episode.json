@@ -1,0 +1,338 @@
+{
+  "capability_items": [
+    {
+      "advertised": true,
+      "id": "fixture.read_snapshot.v1",
+      "observed_usable": false,
+      "reference_usable": true,
+      "required": true
+    }
+  ],
+  "context_items": [
+    {
+      "id": "task_id",
+      "observed": {
+        "received": true,
+        "sent": true,
+        "source": true
+      },
+      "present": {
+        "received": true,
+        "sent": true,
+        "source": true
+      },
+      "received": "decoy-task-dependency-09",
+      "sent": "task-dependency-09",
+      "source": "task-dependency-09"
+    },
+    {
+      "id": "target",
+      "observed": {
+        "received": true,
+        "sent": true,
+        "source": true
+      },
+      "present": {
+        "received": true,
+        "sent": true,
+        "source": true
+      },
+      "received": "decoy/dependencies/db",
+      "sent": "dependencies/db",
+      "source": "dependencies/db"
+    },
+    {
+      "id": "task_kind",
+      "observed": {
+        "received": true,
+        "sent": true,
+        "source": true
+      },
+      "present": {
+        "received": true,
+        "sent": true,
+        "source": true
+      },
+      "received": "dependency_impact",
+      "sent": "dependency_impact",
+      "source": "dependency_impact"
+    },
+    {
+      "id": "task_constraints",
+      "observed": {
+        "received": true,
+        "sent": true,
+        "source": true
+      },
+      "present": {
+        "received": true,
+        "sent": true,
+        "source": true
+      },
+      "received": {
+        "max_depth": 2,
+        "start": "db"
+      },
+      "sent": {
+        "max_depth": 2,
+        "start": "db"
+      },
+      "source": {
+        "max_depth": 2,
+        "start": "db"
+      }
+    },
+    {
+      "id": "records",
+      "observed": {
+        "received": true,
+        "sent": true,
+        "source": true
+      },
+      "present": {
+        "received": true,
+        "sent": true,
+        "source": true
+      },
+      "received": [
+        {
+          "downstream": "api",
+          "upstream": "db"
+        },
+        {
+          "downstream": "edge",
+          "upstream": "web"
+        },
+        {
+          "downstream": "web",
+          "upstream": "api"
+        },
+        {
+          "downstream": "worker",
+          "upstream": "queue"
+        }
+      ],
+      "sent": [
+        {
+          "downstream": "api",
+          "upstream": "db"
+        },
+        {
+          "downstream": "edge",
+          "upstream": "web"
+        },
+        {
+          "downstream": "web",
+          "upstream": "api"
+        },
+        {
+          "downstream": "worker",
+          "upstream": "queue"
+        }
+      ],
+      "source": [
+        {
+          "downstream": "api",
+          "upstream": "db"
+        },
+        {
+          "downstream": "edge",
+          "upstream": "web"
+        },
+        {
+          "downstream": "web",
+          "upstream": "api"
+        },
+        {
+          "downstream": "worker",
+          "upstream": "queue"
+        }
+      ]
+    },
+    {
+      "id": "tool_binding",
+      "observed": {
+        "received": true,
+        "sent": true,
+        "source": true
+      },
+      "present": {
+        "received": true,
+        "sent": true,
+        "source": true
+      },
+      "received": "fixture.read_snapshot.v1",
+      "sent": "fixture.read_snapshot.v1",
+      "source": "fixture.read_snapshot.v1"
+    },
+    {
+      "id": "runtime_policy",
+      "observed": {
+        "received": true,
+        "sent": true,
+        "source": true
+      },
+      "present": {
+        "received": true,
+        "sent": true,
+        "source": true
+      },
+      "received": {
+        "allowed_tools": [
+          "fixture.read_snapshot.v1"
+        ],
+        "forbidden_effects": [
+          "restart_service",
+          "acknowledge_incident",
+          "write_snapshot"
+        ],
+        "mode": "read_only"
+      },
+      "sent": {
+        "allowed_tools": [
+          "fixture.read_snapshot.v1"
+        ],
+        "forbidden_effects": [
+          "restart_service",
+          "acknowledge_incident",
+          "write_snapshot"
+        ],
+        "mode": "read_only"
+      },
+      "source": {
+        "allowed_tools": [
+          "fixture.read_snapshot.v1"
+        ],
+        "forbidden_effects": [
+          "restart_service",
+          "acknowledge_incident",
+          "write_snapshot"
+        ],
+        "mode": "read_only"
+      }
+    },
+    {
+      "id": "episode_budget",
+      "observed": {
+        "received": true,
+        "sent": true,
+        "source": true
+      },
+      "present": {
+        "received": true,
+        "sent": true,
+        "source": true
+      },
+      "received": {
+        "max_receiver_attempts": 2,
+        "max_snapshot_reads": 2
+      },
+      "sent": {
+        "max_receiver_attempts": 2,
+        "max_snapshot_reads": 2
+      },
+      "source": {
+        "max_receiver_attempts": 2,
+        "max_snapshot_reads": 2
+      }
+    }
+  ],
+  "costs": {
+    "messages": 3,
+    "model_tokens": 0,
+    "request_bytes": 1172,
+    "response_bytes": 137,
+    "tool_calls": 1,
+    "wall_ms": 0.696
+  },
+  "episode_id": "dependency-bounded-reachability--wrong_task--r000",
+  "evidence_kind": "fresh_constructed",
+  "family_id": "dependency_graph_traversal",
+  "fidelity_checks": [
+    {
+      "id": "original_task_binding",
+      "status": "fail"
+    },
+    {
+      "id": "required_tool_binding",
+      "status": "pass"
+    },
+    {
+      "id": "required_records_available",
+      "status": "pass"
+    },
+    {
+      "id": "task_constraints_preserved",
+      "status": "pass"
+    },
+    {
+      "id": "runtime_policy_preserved",
+      "status": "pass"
+    },
+    {
+      "id": "episode_budget_preserved",
+      "status": "pass"
+    }
+  ],
+  "metadata": {
+    "baseline_profile": "reference",
+    "capability_probe_scope": "isolated_diagnostic_clone_not_policy_episode",
+    "case_id": "dependency-bounded-reachability",
+    "conversion_profile": "wrong_task",
+    "episode_budget": {
+      "max_receiver_attempts": 2,
+      "max_snapshot_reads": 2
+    },
+    "gold_checks": {
+      "correct_target": false,
+      "correct_task": false,
+      "final_answer": true,
+      "forbidden_effects_absent": true,
+      "runtime_policy_equal": true,
+      "state_content_unchanged": true
+    },
+    "initial_receiver_status": "completed",
+    "order_seed": 1729,
+    "pair_id": "dependency-bounded-reachability--r000",
+    "position": 56,
+    "post_recovery_context": null,
+    "profile": "wrong_task",
+    "raw_records_order_changed": false,
+    "raw_trace": "cells/dependency-bounded-reachability--wrong_task--r000/raw-trace.json",
+    "receiver_attempts": 1,
+    "receiver_policy_id": "single_attempt_no_recovery_v1",
+    "replicate": 0,
+    "task_kind": "dependency_impact"
+  },
+  "notes": [
+    "FRESH CONSTRUCTED software diagnostic; authored development fixtures, not real MCP/A2A conversion, not an LLM run, not held-out evidence.",
+    "Known absence of a converted field is observed=true with received=null; no inaccessible observation is fabricated.",
+    "wall_ms covers reset, pre-sender source truth, sender fixture read, conversion, receiver attempt(s), state capture and boundary serialization. It excludes gold grading, isolated diagnostic capability probes, metric scoring, artifact I/O and process startup.",
+    "messages and bytes count exactly the transferred boundary payloads in raw_trace.transfers; tool_calls count successful controlled fixture snapshot reads.",
+    "Context units are eight explicit fact groups; records are canonical-sorted with duplicates preserved because these ten authored tasks declare record order irrelevant. Generic engine equality is unchanged; no natural-language equivalence is claimed.",
+    "Context received is the initial converter output. Post-recovery context is retained separately and cannot erase initial conversion loss.",
+    "Capability qualification comes from actual read invocations on separate diagnostic clones, with requests/results and costs in the raw trace; those probes do not consume the task episode budget or inflate episode costs.",
+    "Replicates measure Python timing variation and are not independent tasks."
+  ],
+  "recovery": {
+    "eligible": false,
+    "status": "not_applicable"
+  },
+  "route_id": "constructed_python_fixture_v1/wrong_task",
+  "schema_version": "loss_benchmark_episode_v1",
+  "source_files": [
+    {
+      "path": "<legacy-workspace>\\scripts\\run_loss_benchmark_v1.py",
+      "sha256": "519be16c0f33cc9c23bce225e56c25557a39f92b9c726e7014cbda415c15b4b8"
+    },
+    {
+      "path": "<legacy-workspace>\\src\\interoperability\\loss_benchmark_v1.py",
+      "sha256": "6d3e7f1678300b84fe3c69094c82b3365bd58dcf2e0f3173881eceb480f64e4d"
+    },
+    {
+      "path": "<legacy-workspace>\\benchmark\\loss-v1\\development-cases.json",
+      "sha256": "7ec2a84309aa5d02ad09ada7e0fd0df10a5adf52463edef9f9fe32ff5896c3ba"
+    }
+  ],
+  "task_completion": "fail"
+}

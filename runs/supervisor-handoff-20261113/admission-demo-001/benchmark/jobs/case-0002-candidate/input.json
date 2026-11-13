@@ -1,0 +1,123 @@
+{
+  "runtime_manifest": {
+    "schema_version": "recipe-continuation/1",
+    "id": "missing-public-binding-partial-coverage",
+    "model": {
+      "schema_version": "finite-continuation/1",
+      "id": "missing-public-binding-partial-coverage-graph",
+      "route": "Authored finite public-recipe development model; not a qualified protocol route",
+      "provenance": {
+        "kind": "authored-development",
+        "source": "tests/test_refinement.py",
+        "review_status": "AI-authored semantic development; human review pending"
+      },
+      "horizon": 1,
+      "evidence": {
+        "complete": true,
+        "observed_at": 0,
+        "valid_until": 4102444800
+      },
+      "initial": "start",
+      "states": {
+        "start": {
+          "safe": true,
+          "done": false
+        },
+        "end": {
+          "safe": true,
+          "done": true
+        }
+      },
+      "transitions": [
+        {
+          "id": "finish",
+          "source": "start",
+          "target": "end",
+          "operation": "finish"
+        }
+      ],
+      "runtime_contract": {
+        "goal": [
+          {
+            "field": "done",
+            "op": "eq",
+            "value": true
+          }
+        ],
+        "invariants": [
+          {
+            "field": "safe",
+            "op": "eq",
+            "value": true
+          }
+        ]
+      }
+    },
+    "initial_bindings": {},
+    "relations": {
+      "finish": {
+        "source_ref": "Authored finite development relation; source validity is not asserted",
+        "arguments": {
+          "call": [
+            {
+              "binding": "public_call"
+            }
+          ]
+        },
+        "emit": {
+          "object": {
+            "data": {
+              "object": {
+                "call": {
+                  "arg": "call"
+                },
+                "approved": {
+                  "const": true
+                }
+              }
+            }
+          }
+        },
+        "guards": [
+          {
+            "op": "eq",
+            "left": {
+              "emit_path": [
+                "data",
+                "call"
+              ]
+            },
+            "right": {
+              "binding": "public_call"
+            }
+          },
+          {
+            "op": "eq",
+            "left": {
+              "emit_path": [
+                "data",
+                "approved"
+              ]
+            },
+            "right": {
+              "const": true
+            }
+          }
+        ],
+        "updates": {}
+      }
+    },
+    "coverage": {
+      "complete": false,
+      "scope": "Only the declared finite graph, literal/binding recipe choices and supplied relations; no whole-interface closure claim"
+    }
+  },
+  "now": 100,
+  "kind": "evaluate",
+  "module": "interoperability.refinement",
+  "entrypoint": "evaluate",
+  "keyword_arguments": {
+    "budget": 100000
+  },
+  "reply_path": "<legacy-workspace>\\runs\\supervisor-handoff-20261113\\admission-demo-001\\benchmark\\jobs\\case-0002-candidate\\reply.json"
+}
